@@ -19,7 +19,7 @@ var player
 var state = MOVEMODE.WAITING
 
 func _ready():
-	player = Global.player
+	player = Player.current
 	$AttackCooldownTimer.timeout.connect(_on_Timer_timeout)
 
 func _physics_process(delta: float) -> void:

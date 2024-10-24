@@ -48,10 +48,8 @@ func move_walk(delta:float, move_dir:Vector2) -> void:
 		return
 	
 	# math for exponential decay for movement decel
-	var friction_exp:float = exp(-accel_ratio)
-	print(friction_exp)
 	var accel:Vector2 = move_dir * max_speed * accel_ratio * delta
-	var decay:float = friction_exp ** delta
+	var decay:float = exp(-accel_ratio * delta) # exponential decay per second for speed limiting, turning, and deceleration
 	
 	# apply decay then movement accel
 	velocity *= decay

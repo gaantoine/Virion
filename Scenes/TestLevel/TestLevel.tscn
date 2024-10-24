@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://by0200nc3sigq"]
+
+[ext_resource type="PackedScene" uid="uid://f6n573w57vu6" path="res://Scenes/Enemies/Bruiser/EnemyBruiser.tscn" id="1_8rsap"]
+[ext_resource type="PackedScene" uid="uid://coujnnoiesx2e" path="res://Scenes/PlayerCharacter/player.tscn" id="2_l7chi"]
+[ext_resource type="PackedScene" uid="uid://bd4nwu5b2pj1g" path="res://Scenes/TestLevel/test_obstacle.tscn" id="3_hjgaq"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource("2_l7chi")]
+position = Vector2(236, 406)
+
+[node name="TestObstacle" parent="." instance=ExtResource("3_hjgaq")]
+position = Vector2(228, 119)
+
+[node name="TestObstacle2" parent="." instance=ExtResource("3_hjgaq")]
+position = Vector2(835, 493)
+
+[node name="EnemyBruiser" parent="." instance=ExtResource("1_8rsap")]
+position = Vector2(641, 222)

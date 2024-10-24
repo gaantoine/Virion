@@ -32,6 +32,9 @@ enum MOVEMODE {
 var move_mode := MOVEMODE.WALKING
 var can_dodge := true
 
+func _ready():
+	Global.player = self # Sets a global player reference
+
 func _physics_process(delta:float) -> void:
 	var move_dir := Input.get_vector("move_left", "move_right", "move_up", "move_down").normalized()
 	
@@ -49,7 +52,7 @@ func move_walk(delta:float, move_dir:Vector2) -> void:
 	
 	# math for exponential decay for movement decel
 	var friction_exp:float = exp(-accel_ratio)
-	print(friction_exp)
+	# print(friction_exp)
 	var accel:Vector2 = move_dir * max_speed * accel_ratio * delta
 	var decay:float = friction_exp ** delta
 	
@@ -75,7 +78,7 @@ func move_dodge(move_dir:Vector2) -> void:
 	collision_layer &= ~5 # make player invisible to collision layer 5 (enemies and damage search for the player on this layer)
 	$Sprite2D.modulate = Color(0, 1, 0.5, 0.5) # placeholder dodge effect
 	can_dodge = false
-	print(can_dodge)
+	# print(can_dodge)
 	
 	# return to normal movement
 	await get_tree().create_timer(dodge_time).timeout

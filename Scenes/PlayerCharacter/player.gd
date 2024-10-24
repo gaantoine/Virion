@@ -1,17 +1,25 @@
 extends CharacterBody2D
 
 @export_category("Walking")
+## Top movement speed of character, pixels/second
 @export var max_speed:float = 300
-@export var accel_ratio:float = 4
+## How fast the player gets up to speed compared to the max speed. Lower value for floatiness, raise it for snappiness.
+@export var accel_ratio:float = 12
 
 @export_category("Dodging")
+## Travel distance of dodge
 @export var dodge_range:float = 150
+## Duration of dodge travel and iframes, in seconds.
 @export var dodge_time:float = 0.2
+## Cooldown between dodge uses in seconds. Starts when the dodge is triggered, not when it ends.
 @export var dodge_cooldown:float = 0.75
 
 @export_category("Energy")
+## Max number of consecutive dodges
 @export var max_energy:float = 4
+## Rate at which energy regenerates per second.
 @export var energy_regen_rate:float = 1
+## Delay (in seconds) after consuming energy before regeneration resumes. 
 @export var energy_regen_delay:float = 1
 
 @onready var energy:float = max_energy
@@ -38,6 +46,7 @@ func move_walk(delta:float, move_dir:Vector2) -> void:
 	
 	# math for exponential decay for movement decel
 	var friction_exp:float = exp(-accel_ratio)
+	print(friction_exp)
 	var accel:Vector2 = move_dir * max_speed * accel_ratio * delta
 	var decay:float = friction_exp ** delta
 	

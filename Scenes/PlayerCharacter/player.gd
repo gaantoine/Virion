@@ -1,5 +1,10 @@
 extends CharacterBody2D
 
+enum MOVEMODE {
+	WALKING, 
+	DODGING
+}
+
 @export_category("Walking")
 ## Top movement speed of character, pixels/second
 @export var max_speed:float = 300
@@ -23,10 +28,9 @@ extends CharacterBody2D
 @export var energy_regen_delay:float = 1
 
 @onready var energy:float = max_energy
+
 var move_mode := MOVEMODE.WALKING
-
 var can_dodge := true
-
 
 func _physics_process(delta:float) -> void:
 	var move_dir := Input.get_vector("move_left", "move_right", "move_up", "move_down").normalized()
@@ -38,7 +42,6 @@ func _physics_process(delta:float) -> void:
 	regen_energy(delta)	
 	
 	move_and_slide()
-
 
 func move_walk(delta:float, move_dir:Vector2) -> void:
 	if move_mode != MOVEMODE.WALKING:
@@ -86,7 +89,6 @@ func move_dodge(move_dir:Vector2) -> void:
 	can_dodge = true
 	$Sprite2D.modulate = Color.WHITE
 
-
 func use_energy(amount:float = 1) -> bool:
 	if energy >= amount:
 		energy -= amount
@@ -98,8 +100,3 @@ func regen_energy(delta:float) -> void:
 	if $EnergyRegenDelayTimer.is_stopped():
 		energy = min(max_energy, energy + delta * energy_regen_rate)
 	$EnergyLabel.text = str(int(energy))
-
-enum MOVEMODE {
-	WALKING, 
-	DODGING
-}

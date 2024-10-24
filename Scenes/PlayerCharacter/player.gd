@@ -1,9 +1,12 @@
 extends CharacterBody2D
+class_name Player
 
 enum MOVEMODE {
 	WALKING, 
 	DODGING
 }
+
+static var current:Player
 
 @export_category("Walking")
 ## Top movement speed of character, pixels/second
@@ -33,7 +36,7 @@ var move_mode := MOVEMODE.WALKING
 var can_dodge := true
 
 func _ready():
-	Global.player = self # Sets a global player reference
+	current = self
 
 func _physics_process(delta:float) -> void:
 	var move_dir := Input.get_vector("move_left", "move_right", "move_up", "move_down").normalized()

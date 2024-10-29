@@ -29,7 +29,8 @@ enum MOVEMODE {
 @export var lead_time: float = 0.3
 ## Deceleration magnitutde
 @export var deceleration: float = 3000
-## The distance within which the player needs to be mid charge before the attack animation is triggered in pixels
+## The distance within which the player needs to be mid charge before the
+## attack animation is triggered in pixels
 @export var middash_attack_range: float = 10
 ## Duration of the pause after attacks in seconds
 @export var attack_duration: float = 1.0
@@ -114,7 +115,8 @@ func take_aim() -> bool:
 	raycast_from = global_position
 	var deceleration_distance = (dash_speed * dash_speed) / (2 * deceleration)
 	
-	raycast_to = raycast_from + (player.global_position - raycast_from).normalized() * (dash_speed * dash_duration + deceleration_distance)
+	raycast_to = raycast_from + (player.global_position - raycast_from).normalized() \
+		* (dash_speed * dash_duration + deceleration_distance)
 	
 	var space_state = get_world_2d().direct_space_state
 	var query = PhysicsRayQueryParameters2D.new()

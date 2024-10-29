@@ -35,6 +35,10 @@ static var current:Player
 var move_mode := MOVEMODE.WALKING
 var can_dodge := true
 
+var attr_defaults:Dictionary # string -> int
+var attr_current:Dictionary # string -> int
+var attr_mods:Dictionary # string -> array[string]
+
 func _ready():
 	current = self
 
@@ -105,7 +109,7 @@ func regen_energy(delta:float) -> void:
 		energy = min(max_energy, energy + delta * energy_regen_rate)
 	$EnergyLabel.text = str(int(energy))
 
-func apply_mods(mods:Dictionary) -> void:
+func add_mods(mods:Dictionary) -> void:
 	for key in mods:
 		print(key," ",mods[key])
 	pass

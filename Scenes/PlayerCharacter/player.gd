@@ -36,7 +36,7 @@ var move_mode := MOVEMODE.WALKING
 var can_dodge := true
 
 var attr_defaults:Dictionary # string -> int
-var attrs:Dictionary # string -> int
+var attr_current:Dictionary # string -> int
 var attr_mods:Dictionary # string -> array[string]
 
 func _ready():
@@ -111,28 +111,5 @@ func regen_energy(delta:float) -> void:
 
 func add_mods(mods:Dictionary) -> void:
 	for key in mods:
-		var mod:String = mods[key]
-		var prio:int = mod_prio(mod)
-		if not attr_mods.has(key):
-			attr_mods[key] = []
-		var mod_list:Array = attr_mods[key]
-		var i:int = 0
-		while i < len(mod_list) and mod_prio(mod_list[i]) > prio:
-			i += 1
-		mod_list.insert(i, mod)
-		
 		print(key," ",mods[key])
 	pass
-
-func apply_mods() -> void:
-	pass
-
-func mod_prio(mod:String) -> int:
-	if mod[0] in "+-":
-		if mod[-1] == "%":
-			return 2
-		return 1
-	if mod[0] == "=":
-		return 0
-	push_error("invalid mod: ", mod)
-	return -1

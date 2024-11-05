@@ -134,5 +134,5 @@ func mod_prio(mod:String) -> int:
 		return 1
 	if mod[0] == "=":
 		return 0
-	push_error("invalid mod: ", mod)
+	push_error("invalid mod format: ", mod)
 	return -1

@@ -5,5 +5,5 @@ class_name BasePickup
 
 func _on_pickup_detector_body_entered(body: Node2D) -> void:
 	if body is Player:
-		body.apply_mods(mods)
+		body.add_mods(mods)
 		queue_free()

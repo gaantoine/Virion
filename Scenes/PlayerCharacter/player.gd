@@ -35,8 +35,30 @@ static var current:Player
 var move_mode := MOVEMODE.WALKING
 var can_dodge := true
 
+var attr_defaults:Dictionary # string -> int
+var attrs:Dictionary # string -> int
+var attr_mods:Dictionary # string -> array[string]
+
 func _ready():
 	current = self
+	attr_defaults = {
+		"bullet_damage": 5,
+		"bullet_speed": 1,
+		"bullet_range": 5,
+		"bullet_firing_rate": 1,
+		"bullet_piercing": 0,
+		"bullet_count": 1,
+		"bullet_arc": 0, # for multi-shot weapons
+		"melee_damage": 5,
+		"consumable_damage": 5,
+		"consumable_size": 1,
+		"droprate_grenade": 1,
+		"droprate_firebomb": 1,
+		"droprate_stun": 1,
+		"dodge_speed": 1,
+		"stamina": 4
+	}
+	attrs = attr_defaults.duplicate()
 
 func _physics_process(delta:float) -> void:
 	var move_dir := Input.get_vector("move_left", "move_right", "move_up", "move_down").normalized()
@@ -48,6 +70,16 @@ func _physics_process(delta:float) -> void:
 	regen_energy(delta)	
 	
 	move_and_slide()
+	
+	if Input.is_action_just_pressed("ui_focus_next"): # mod system testing
+		print(attrs["bullet_firing_rate"])
+		#attr_defaults = {"fire_rate": 10, "bullet_damage": 5}
+		#add_mods({"fire_rate": "=5", "bullet_damage": "+20%"})
+		#add_mods({"fire_rate": "+1"})
+		#add_mods({"fire_rate": "-50%"})
+		#apply_mods()
+		#print("fire_rate: ", attrs["fire_rate"])
+		#print("damage: ", attrs["bullet_damage"])
 
 func move_walk(delta:float, move_dir:Vector2) -> void:
 	if move_mode != MOVEMODE.WALKING:
@@ -105,7 +137,43 @@ func regen_energy(delta:float) -> void:
 		energy = min(max_energy, energy + delta * energy_regen_rate)
 	$EnergyLabel.text = str(int(energy))
 
-func apply_mods(mods:Dictionary) -> void:
+func add_mods(mods:Dictionary) -> void:
 	for key in mods:
-		print(key," ",mods[key])
-	pass
+		var mod:String = mods[key]
+		var prio:int = mod_prio(mod)
+		if not attr_mods.has(key):
+			attr_mods[key] = []
+		var mod_list:Array = attr_mods[key]
+		var i:int = 0
+		while i < len(mod_list) and mod_prio(mod_list[i]) < prio:
+			i += 1
+		mod_list.insert(i, mod)
+	apply_mods()
+	
+
+func apply_mods() -> void:
+	attrs = attr_defaults.duplicate()
+	for attr in attr_mods:
+		var mod_list:Array = attr_mods[attr]
+		for mod in mod_list:
+			if mod[0] == "=":
+				mod = mod.right(-1)
+				if mod[-1] == "%":
+					attrs[attr] *= int(mod.left(-1)) / 100.0
+				else:
+					attrs[attr] = int(mod)
+			else:
+				if mod[-1] == "%":
+					attrs[attr] += attrs[attr] * int(mod.left(-1)) / 100.0
+				else:
+					attrs[attr] += int(mod)
+
+func mod_prio(mod:String) -> int:
+	if mod[0] in "+-":
+		if mod[-1] == "%":
+			return 2
+		return 1
+	if mod[0] == "=":
+		return 0
+	push_error("invalid mod format: ", mod)
+	return -1

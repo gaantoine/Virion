@@ -52,6 +52,17 @@ func _physics_process(delta:float) -> void:
 	regen_energy(delta)	
 	
 	move_and_slide()
+	
+	if Input.is_action_just_pressed("ui_focus_next"):
+		print(mod_prio("=5"))
+		print(mod_prio("+1"))
+		attr_defaults = {"fire_rate": 10, "bullet_damage": 5}
+		add_mods({"fire_rate": "=5", "bullet_damage": "+20%"})
+		add_mods({"fire_rate": "+1"})
+		add_mods({"fire_rate": "-50%"})
+		apply_mods()
+		print("fire_rate: ", attrs["fire_rate"])
+		print("damage: ", attrs["bullet_damage"])
 
 func move_walk(delta:float, move_dir:Vector2) -> void:
 	if move_mode != MOVEMODE.WALKING:
@@ -117,15 +128,32 @@ func add_mods(mods:Dictionary) -> void:
 			attr_mods[key] = []
 		var mod_list:Array = attr_mods[key]
 		var i:int = 0
-		while i < len(mod_list) and mod_prio(mod_list[i]) > prio:
+		while i < len(mod_list) and mod_prio(mod_list[i]) < prio:
 			i += 1
 		mod_list.insert(i, mod)
 		
 		print(key," ",mods[key])
-	pass
+	
 
 func apply_mods() -> void:
-	pass
+	attrs = attr_defaults.duplicate()
+	for attr in attr_mods:
+		print(attr)
+		var mod_list:Array = attr_mods[attr]
+		for mod in mod_list:
+			print("  ", mod)
+			if mod[0] == "=":
+				mod = mod.right(-1)
+				if mod[-1] == "%":
+					attrs[attr] *= int(int(mod.left(-1)) / 100.0)
+				else:
+					attrs[attr] = int(mod)
+			else:
+				if mod[-1] == "%":
+					attrs[attr] += int(attrs[attr] * int(mod.left(-1)) / 100.0)
+				else:
+					attrs[attr] += int(mod)
+					
 
 func mod_prio(mod:String) -> int:
 	if mod[0] in "+-":

@@ -23,5 +23,5 @@ middash_attack_range = 10.0
 [node name="BasePickup" parent="." instance=ExtResource("4_k6ggg")]
 position = Vector2(538, 444)
 mods = {
-"bullets": "+1"
+"bullet_firing_rate": "+50%"
 }

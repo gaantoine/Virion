@@ -1,3 +1,4 @@
+extends Node2D
 
 # Preload the Bullet scene
 var BulletScene = preload("res://path_to_your_bullet_scene.tscn")

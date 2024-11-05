@@ -1,0 +1,34 @@
+
+# Preload the Bullet scene
+var BulletScene = preload("res://path_to_your_bullet_scene.tscn")
+
+# Define the shooting cooldown time (in seconds)
+var shoot_cooldown = 0.5
+var time_since_last_shot = 0.0
+
+func _ready():
+    # Initialize any necessary variables or states here
+    pass
+
+func _process(delta):
+    # Update the time since the last shot
+    time_since_last_shot += delta
+    
+    # Check for shooting input and if enough time has passed since the last shot
+    if Input.is_action_pressed("shoot") and time_since_last_shot >= shoot_cooldown:
+        shoot()
+        time_since_last_shot = 0.0
+
+func shoot():
+    # Create an instance of the Bullet scene
+    var bullet_instance = BulletScene.instance()
+    
+    # Set the bullet's position to the player's position
+    bullet_instance.position = self.position
+    
+    # Optionally, set the bullet's direction or velocity here
+    # For example, if the bullet has a direction property:
+    # bullet_instance.direction = Vector2(1, 0) # Example direction
+    
+    # Add the bullet instance to the current scene
+    get_parent().add_child(bullet_instance)

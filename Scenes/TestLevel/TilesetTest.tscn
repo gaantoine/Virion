@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=4 uid="uid://cfnck58mjxdjq"]
 
 [ext_resource type="PackedScene" uid="uid://coujnnoiesx2e" path="res://Scenes/PlayerCharacter/player.tscn" id="1_swgki"]
-[ext_resource type="Texture2D" uid="uid://6tsm52cuk5af" path="res://Scenes/Tilesets/VirionRoomTiles.png" id="2_qkhuo"]
+[ext_resource type="Texture2D" uid="uid://6tsm52cuk5af" path="res://Scenes/Tilesets/Tiles1.png" id="2_qkhuo"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ginxh"]
 texture = ExtResource("2_qkhuo")
@@ -55,7 +55,7 @@ tile_map_data = PackedByteArray("AAAJAAgAAAAFAAAAAAANAAgAAAAFAAAAAAANAAwAAAAEAAA
 tile_set = SubResource("TileSet_uaw5c")
 
 [node name="Player" parent="." instance=ExtResource("1_swgki")]
-position = Vector2(576, 324)
+position = Vector2(576, 327)
 rotation = 0.00474254
 
 [node name="Camera2D" type="Camera2D" parent="Player"]

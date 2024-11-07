@@ -7,9 +7,10 @@
 [node name="TestObstacle" type="StaticBody2D"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-scale = Vector2(6.5, 6.5)
+scale = Vector2(3.25, 3.25)
 shape = SubResource("RectangleShape2D_ohgxh")
 debug_color = Color(0.96359, 0, 0.497817, 0.42)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
 texture = ExtResource("1_c11qe")

@@ -8,13 +8,31 @@
 [node name="Node2D" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource("2_l7chi")]
-position = Vector2(236, 406)
+position = Vector2(235, 406)
 
 [node name="TestObstacle" parent="." instance=ExtResource("3_hjgaq")]
-position = Vector2(228, 119)
+position = Vector2(224, 96)
+
+[node name="TestObstacle" parent="TestObstacle" instance=ExtResource("3_hjgaq")]
+position = Vector2(64, 0)
+
+[node name="TestObstacle2" parent="TestObstacle" instance=ExtResource("3_hjgaq")]
+position = Vector2(0, 64)
+
+[node name="TestObstacle3" parent="TestObstacle" instance=ExtResource("3_hjgaq")]
+position = Vector2(64, 64)
 
 [node name="TestObstacle2" parent="." instance=ExtResource("3_hjgaq")]
-position = Vector2(835, 493)
+position = Vector2(800, 480)
+
+[node name="TestObstacle2" parent="TestObstacle2" instance=ExtResource("3_hjgaq")]
+position = Vector2(64, 0)
+
+[node name="TestObstacle3" parent="TestObstacle2" instance=ExtResource("3_hjgaq")]
+position = Vector2(0, 64)
+
+[node name="TestObstacle4" parent="TestObstacle2" instance=ExtResource("3_hjgaq")]
+position = Vector2(64, 64)
 
 [node name="EnemyBruiser" parent="." instance=ExtResource("1_8rsap")]
 position = Vector2(641, 222)

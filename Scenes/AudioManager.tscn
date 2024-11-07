@@ -1,0 +1,26 @@
+[gd_scene load_steps=7 format=3 uid="uid://cutapgcxin544"]
+
+[ext_resource type="Script" path="res://Scenes/audio_manager.gd" id="1_dmmbd"]
+[ext_resource type="AudioStream" uid="uid://dnmkv66hpgmky" path="res://Audio/Music/TestMusicRogue_Bass_104bpm_26b_4-4_gmin.ogg" id="1_qgjwp"]
+[ext_resource type="AudioStream" uid="uid://l4c0asvy1004" path="res://Audio/Music/TestMusicRogue_Drums_104bpm_26b_4-4_gmin.ogg" id="2_30m76"]
+[ext_resource type="AudioStream" uid="uid://byrc4ybm0uawv" path="res://Audio/Music/TestMusicRogue_Alto_104bpm_26b_4-4_gmin.ogg" id="3_vn31v"]
+[ext_resource type="AudioStream" uid="uid://by5uec3ajpm2l" path="res://Audio/Music/TestMusicRogue_Soprano_104bpm_26b_4-4_gmin.ogg" id="4_k4gq6"]
+
+[sub_resource type="AudioStreamSynchronized" id="AudioStreamSynchronized_c56i2"]
+stream_count = 4
+stream_0/stream = ExtResource("1_qgjwp")
+stream_0/volume = 0.0
+stream_1/stream = ExtResource("2_30m76")
+stream_1/volume = 0.0
+stream_2/stream = ExtResource("3_vn31v")
+stream_2/volume = 0.0
+stream_3/stream = ExtResource("4_k4gq6")
+stream_3/volume = 0.0
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_dmmbd")
+
+[node name="Music_System" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamSynchronized_c56i2")
+autoplay = true
+bus = &"Music"

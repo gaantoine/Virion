@@ -39,6 +39,9 @@ var attr_defaults:Dictionary # string -> int
 var attrs:Dictionary # string -> int
 var attr_mods:Dictionary # string -> array[string]
 
+# Renzo -- This will store the tilemaps the player is colliding with
+var collidingTileMaps:Array = []
+
 func _ready():
 	current = self
 	attr_defaults = {
@@ -80,6 +83,26 @@ func _physics_process(delta:float) -> void:
 		#apply_mods()
 		#print("fire_rate: ", attrs["fire_rate"])
 		#print("damage: ", attrs["bullet_damage"])
+		
+#		Renzo -- It will detect tile map collision and if Custom Data "is_destructive" is true, it will destroy player
+	for collider in collidingTileMaps:
+		var tile_pos = collider.local_to_map(collider.to_local(global_position))
+		var tile_data = collider.get_cell_tile_data(tile_pos)
+		
+		if tile_data and tile_data.get_custom_data("is_destructive"):
+			destroy_player()
+
+# Renzo -- Spike Collision Event
+	for i in get_slide_collision_count():
+		var collider = get_slide_collision(i).get_collider()
+		if collider is TileMapLayer:
+			
+			var tile_pos = collider.local_to_map(collider.to_local(get_slide_collision(i).get_position()-get_slide_collision(i).get_normal()))
+			var tile_data = collider.get_cell_tile_data(tile_pos)
+			
+			if tile_data and tile_data.get_custom_data("is_destructive"):
+				print("damaging player")
+				velocity = get_slide_collision(i).get_normal()*1000
 
 func move_walk(delta:float, move_dir:Vector2) -> void:
 	if move_mode != MOVEMODE.WALKING:
@@ -177,3 +200,29 @@ func mod_prio(mod:String) -> int:
 		return 0
 	push_error("invalid mod format: ", mod)
 	return -1
+	
+
+
+# Renzo -- Pit Collision Event
+
+func destroy_player() -> void:
+	# Implement player destruction logic here
+	print("Player destroyed by destructive tile!")
+	# You might want to add effects, play a sound, or transition to a game over screen
+	# For example:
+	# $DeathSound.play()
+	# $DeathParticles.emitting = true
+	# await get_tree().create_timer(1.0).timeout
+	# get_tree().change_scene_to_file("res://game_over.tscn")
+	queue_free()
+
+
+func _on_area_2d_body_entered(collider: Node2D) -> void:
+	if collider is TileMapLayer:
+		collidingTileMaps.append(collider)
+
+
+func _on_area_2d_body_exited(body: Node2D) -> void:
+	if body is TileMapLayer:
+		collidingTileMaps.erase(body)
+	pass # Replace with function body.

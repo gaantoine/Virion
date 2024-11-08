@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://bia5pmq87fx1g" path="res://Scenes/Tilesets/TestImages/TilesetsExample.png" id="1_5ry7g"]
 [ext_resource type="PackedScene" uid="uid://coujnnoiesx2e" path="res://Scenes/PlayerCharacter/player.tscn" id="1_swgki"]
-[ext_resource type="Texture2D" uid="uid://6tsm52cuk5af" path="res://Scenes/Tilesets/VirionRoomTiles.png" id="2_qkhuo"]
+[ext_resource type="Texture2D" uid="uid://6tsm52cuk5af" path="res://Scenes/Tilesets/Tiles1.png" id="2_qkhuo"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5o6em"]
 texture = ExtResource("1_5ry7g")

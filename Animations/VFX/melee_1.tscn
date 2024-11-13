@@ -5,7 +5,6 @@
 [sub_resource type="Animation" id="Animation_c7rpo"]
 resource_name = "Melee_Anim"
 length = 0.4
-loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true

@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://bxm1eibplk4y2"]
+[gd_scene load_steps=3 format=3 uid="uid://3v3kjh44gkyj"]
 
 [ext_resource type="Script" path="res://Scenes/PlayerCharacter/bullet.gd" id="1_gdarg"]
 

@@ -35,7 +35,7 @@ static var current:Player
 @onready var t_EnergyRegenDelay:Timer = $EnergyRegenDelayTimer
 @onready var t_Refire:Timer = $RefireTimer
 
-var sc_bullet := preload("res://Scenes/PlayerCharacter/bullet.tscn")
+var sc_bullet := preload("res://Animations/VFX/projectile_1.tscn")
 
 var move_mode := MOVEMODE.WALKING
 var can_dodge := true

@@ -3,8 +3,8 @@
 [ext_resource type="Texture2D" uid="uid://cminetoyt22sf" path="res://Misc PNGs and assets/placeholder_icon.png" id="1_p1dxc"]
 [ext_resource type="Script" path="res://Scenes/Enemies/Bruiser/enemy_bruiser.gd" id="1_rmu8v"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_afoq0"]
-size = Vector2(64, 64)
+[sub_resource type="CircleShape2D" id="CircleShape2D_s373b"]
+radius = 32.0
 
 [node name="EnemyBruiser" type="CharacterBody2D" groups=["enemy"]]
 collision_layer = 256
@@ -13,7 +13,7 @@ script = ExtResource("1_rmu8v")
 middash_attack_range = 110.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_afoq0")
+shape = SubResource("CircleShape2D_s373b")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.5, 0.5)

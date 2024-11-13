@@ -147,7 +147,7 @@ func move_dodge(move_dir:Vector2) -> void:
 	move_mode = MOVEMODE.DODGING
 	velocity = move_dir * dodge_range / dodge_time
 	collision_layer &= ~(1<<5) # make player invisible to collision layer 5 (enemies and damage search for the player on this layer)
-	$Sprite2D.modulate = Color(0, 1, 0.5, 0.5) # placeholder dodge effect
+	$CollisionShape2D.debug_color = Color(0, 1, 0.5, 0.5) # placeholder dodge effect
 	can_dodge = false
 	# print(can_dodge)
 	
@@ -156,12 +156,12 @@ func move_dodge(move_dir:Vector2) -> void:
 	move_mode = MOVEMODE.WALKING
 	velocity = velocity.limit_length(max_speed)
 	collision_layer |= (1<<5) # re-enable enemy collision detection
-	$Sprite2D.modulate = Color(1, 0.5, 0.5)
+	$CollisionShape2D.debug_color = Color(1, 0.5, 0.5, 0.5)
 	
 	# reset dodge
 	await get_tree().create_timer(maxf(0, dodge_cooldown - dodge_time)).timeout
 	can_dodge = true
-	$Sprite2D.modulate = Color.WHITE
+	$CollisionShape2D.debug_color = Color(0, 0.6, 0.69, 0.41)
 
 func use_energy(amount:float = 1) -> bool:
 	if energy >= amount:

@@ -8,6 +8,9 @@ size = Vector2(64, 64)
 
 [node name="BasePickup" type="Node2D"]
 script = ExtResource("1_avmmo")
+mods = {
+"move_speed": "+30%"
+}
 
 [node name="PickupDetector" type="Area2D" parent="."]
 collision_layer = 0

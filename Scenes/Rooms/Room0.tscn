@@ -1,0 +1,102 @@
+[gd_scene load_steps=8 format=4 uid="uid://cfnck58mjxdjq"]
+
+[ext_resource type="Texture2D" uid="uid://bc75dxvsc61bg" path="res://Scenes/Tilesets/TestTiles002.png" id="2_4dmx7"]
+[ext_resource type="Texture2D" uid="uid://6tsm52cuk5af" path="res://Scenes/Tilesets/Tiles1.png" id="2_qkhuo"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_2i67p"]
+texture = ExtResource("2_qkhuo")
+texture_region_size = Vector2i(256, 256)
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(88.5, 128, 128, 128, 128, 85, 89.5, 86)
+0:1/0 = 0
+0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(128, -88, 128, -128, 88.5, -128, 87.5, -88)
+0:2/0 = 0
+0:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-112, -128, -112, 26, 110, 26, 112, -128)
+1:0/0 = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-128, 85, -128, 128, -90.5, 128, -90.5, 85)
+1:1/0 = 0
+1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-88.5, -128, -128, -128, -128, -85, -89.5, -86)
+1:2/0 = 0
+2:0/0 = 0
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(128, 120, 128, -121, 86, -120, 86, 120)
+2:1/0 = 0
+2:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(128, 120, 128, -121, 86, -120, 86, 120)
+2:2/0 = 0
+2:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-112, -128, -112, 26, 110, 26, 112, -128)
+3:1/0 = 0
+3:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-128, -120, -128, 121, -86, 120, -86, -120)
+3:0/0 = 0
+3:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-128, -120, -128, 121, -86, 120, -86, -120)
+4:0/0 = 0
+4:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-120, 128, 121, 128, 120, 86, -120, 86)
+4:1/0 = 0
+4:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-120, 128, 121, 128, 120, 86, -120, 86)
+5:0/0 = 0
+5:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(120, -128, -121, -128, -120, -86, 120, -86)
+5:1/0 = 0
+5:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(120, -128, -121, -128, -120, -86, 120, -86)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jira0"]
+texture = ExtResource("2_4dmx7")
+texture_region_size = Vector2i(256, 256)
+0:0/0 = 0
+0:1/0 = 0
+1:0/0 = 0
+1:1/0 = 0
+2:0/0 = 0
+2:1/0 = 0
+3:0/0 = 0
+3:1/0 = 0
+4:0/0 = 0
+4:1/0 = 0
+5:1/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_xrdn6"]
+tile_size = Vector2i(256, 256)
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_2i67p")
+sources/3 = SubResource("TileSetAtlasSource_jira0")
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ginxh"]
+texture = ExtResource("2_qkhuo")
+texture_region_size = Vector2i(256, 256)
+1:2/0 = 0
+0:2/0 = 0
+2:2/0 = 0
+2:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-128, -128, 128, -128, 128, 128, -128, 128)
+2:1/0 = 0
+3:1/0 = 0
+4:1/0 = 0
+5:1/0 = 0
+5:0/0 = 0
+4:0/0 = 0
+3:0/0 = 0
+2:0/0 = 0
+1:1/0 = 0
+1:0/0 = 0
+0:0/0 = 0
+0:1/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_uaw5c"]
+tile_size = Vector2i(256, 256)
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_ginxh")
+
+[node name="TilesetTest" type="Node2D"]
+
+[node name="BaseMapLayer" type="TileMapLayer" parent="."]
+scale = Vector2(0.25, 0.25)
+tile_map_data = PackedByteArray("AAAGAAIAAwABAAAAAAAGAAMAAwABAAAAAAAGAAQAAwABAAAAAAAGAAUAAwABAAAAAAAGAAYAAwABAAAAAAAGAAcAAwABAAAAAAAHAAIAAwABAAAAAAAHAAMAAwABAAAAAAAHAAQAAwABAAAAAAAHAAUAAwABAAAAAAAHAAYAAwABAAAAAAAHAAcAAwABAAAAAAAIAAIAAwABAAAAAAAIAAMAAwABAAAAAAAIAAQAAwABAAAAAAAIAAUAAwABAAAAAAAIAAYAAwABAAAAAAAIAAcAAwABAAAAAAAJAAIAAwABAAAAAAAJAAMAAwABAAAAAAAJAAQAAwABAAAAAAAJAAUAAwABAAAAAAAJAAYAAwABAAAAAAAJAAcAAwABAAAAAAAKAAIAAwABAAAAAAAKAAMAAwABAAAAAAAKAAQAAwABAAAAAAAKAAUAAwABAAAAAAAKAAYAAwABAAAAAAAKAAcAAwABAAAAAAALAAIAAwABAAAAAAALAAMAAwABAAAAAAAMAAIAAwABAAAAAAAMAAMAAwABAAAAAAANAAIAAwABAAAAAAANAAMAAwABAAAAAAAOAAIAAwABAAAAAAAOAAMAAwABAAAAAAANAAQAAwABAAAAAAANAAUAAwABAAAAAAANAAYAAwABAAAAAAANAAcAAwABAAAAAAAOAAQAAwABAAAAAAAOAAUAAwABAAAAAAAOAAYAAwABAAAAAAAOAAcAAwABAAAAAAACAAYAAwABAAAAAAACAAcAAwABAAAAAAADAAYAAwABAAAAAAADAAcAAwABAAAAAAAEAAYAAwABAAAAAAAEAAcAAwABAAAAAAAFAAYAAwABAAAAAAAFAAcAAwABAAAAAAACAAIAAwABAAAAAAACAAMAAwABAAAAAAACAAQAAwABAAAAAAACAAUAAwABAAAAAAADAAIAAwABAAAAAAADAAMAAwABAAAAAAADAAQAAwABAAAAAAADAAUAAwABAAAAAAADAAEAAAAAAAIAAAAEAAUAAwABAAAAAAAFAAUAAwABAAAAAAAGAAEAAAAAAAIAAAAHAAEAAAAAAAIAAAAIAAEAAAAAAAIAAAAJAAEAAAAAAAIAAAAKAAEAAAAAAAIAAAALAAEAAAAAAAIAAAAMAAEAAwABAAAAAAANAAEAAAAAAAIAAAAOAAEAAAAAAAIAAAAMAAcAAwABAAAAAAAMAAUAAwABAAAAAAAMAAYAAwABAAAAAAAMAAQAAwABAAAAAAALAAQAAwABAAAAAAALAAUAAwABAAAAAAALAAcAAwABAAAAAAALAAYAAwABAAAAAAAOAAAAAAACAAAAAFANAAAAAAACAAEAAFALAAAAAAACAAEAAFAKAAAAAAACAAAAAFAJAAAAAAACAAEAAFAIAAAAAAACAAAAAFAHAAAAAAACAAEAAFAGAAAAAAACAAAAAFAFAAEAAAAAAAIAAAAFAAIAAwABAAAAAAAFAAMAAwABAAAAAAAFAAQAAwABAAAAAAAEAAEAAAAAAAIAAAAEAAIAAwABAAAAAAAEAAMAAwABAAAAAAAEAAQAAwABAAAAAAADAAAAAAACAAAAAFACAAAAAAACAAEAAFACAAEAAAAAAAIAAAAFAAAAAAAEAAEAAAAEAAAAAAAEAAAAAAABAAAAAAAAAAAAAAABAAEAAAACAAAAAAABAAIAAAACAAEAAAABAAMAAAACAAAAAAABAAQAAAACAAEAAAABAAUAAAACAAAAAAABAAYAAAACAAEAAAABAAcAAAACAAAAAAABAAgAAAAAAAEAAAACAAgAAAAFAAAAAAAEAAgAAAAFAAAAAAAGAAgAAAAFAAAAAAAIAAgAAAAFAAAAAAAKAAgAAAAFAAAAAAAMAAgAAAAFAAAAAAAOAAgAAAAFAAAAAAAPAAgAAAABAAEAAAANAAgAAAAFAAEAAAALAAgAAAAFAAEAAAAJAAgAAAAFAAEAAAAHAAgAAAAFAAEAAAAFAAgAAAAFAAEAAAADAAgAAAAFAAEAAAAPAAYAAAADAAAAAAAPAAcAAAADAAEAAAAPAAQAAAADAAAAAAAPAAUAAAADAAEAAAAPAAIAAAADAAAAAAAPAAMAAAADAAEAAAAPAAEAAAADAAEAAAAPAAAAAAABAAAAAAA=")
+tile_set = SubResource("TileSet_xrdn6")
+
+[node name="RoomTileLayer2" type="TileMapLayer" parent="."]
+scale = Vector2(0.25, 0.25)
+tile_map_data = PackedByteArray("AAALAAEAAAACAAEAAAANAAEAAAADAAEAAAA=")
+tile_set = SubResource("TileSet_uaw5c")
+
+[node name="ExitDoorLayer" type="TileMapLayer" parent="."]
+visible = false
+scale = Vector2(0.25, 0.25)
+tile_map_data = PackedByteArray("AAAMAAEAAAACAAIAAAAMAAAAAAAEAAAAAAA=")
+tile_set = SubResource("TileSet_xrdn6")
+collision_enabled = false

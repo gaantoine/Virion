@@ -6,8 +6,9 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_afoq0"]
 size = Vector2(64, 64)
 
-[node name="EnemyBruiser" type="CharacterBody2D"]
-collision_layer = 2
+[node name="EnemyBruiser" type="CharacterBody2D" groups=["enemy"]]
+collision_layer = 256
+collision_mask = 49
 script = ExtResource("1_rmu8v")
 middash_attack_range = 110.0
 

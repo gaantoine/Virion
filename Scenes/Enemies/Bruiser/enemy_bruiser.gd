@@ -142,7 +142,7 @@ func take_aim() -> bool:
 	var query = PhysicsRayQueryParameters2D.new()
 	query.from = raycast_from
 	query.to = raycast_to
-	query.collision_mask = 1
+	query.collision_mask = 1 | (1<<4)
 	
 	var result = space_state.intersect_ray(query)
 	if result.get("collider") != player:
@@ -211,7 +211,7 @@ func update_collision_map() -> void:
 		var query = PhysicsRayQueryParameters2D.new()
 		query.from = global_position
 		query.to = global_position + ray_directions[x] * collision_detection_range
-		query.collision_mask = 1 
+		query.collision_mask = 1
 		
 		# Perform the raycast
 		var result = space_state.intersect_ray(query)

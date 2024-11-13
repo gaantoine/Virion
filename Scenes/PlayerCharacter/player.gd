@@ -32,6 +32,11 @@ static var current:Player
 
 @onready var energy:float = max_energy
 
+@onready var t_EnergyRegenDelay:Timer = $EnergyRegenDelayTimer
+@onready var t_Refire:Timer = $RefireTimer
+
+var sc_bullet := preload("res://Scenes/PlayerCharacter/bullet.tscn")
+
 var move_mode := MOVEMODE.WALKING
 var can_dodge := true
 
@@ -41,6 +46,13 @@ var attr_mods:Dictionary # string -> array[string]
 
 # Renzo -- This will store the tilemaps the player is colliding with
 var collidingTileMaps:Array = []
+
+func try_shoot():
+	if Input.is_action_pressed("shoot") and t_Refire.is_stopped():
+		t_Refire.start(1)
+		var new_bullet:Bullet = sc_bullet.instantiate()
+		new_bullet.global_position = global_position
+		get_tree().root.add_child(new_bullet)
 
 func _ready():
 	current = self
@@ -61,6 +73,7 @@ func _ready():
 		"dodge_speed": 1,
 		"stamina": 4
 	}
+	
 	attrs = attr_defaults.duplicate()
 
 func _physics_process(delta:float) -> void:
@@ -71,6 +84,8 @@ func _physics_process(delta:float) -> void:
 	move_walk(delta, move_dir)
 	
 	regen_energy(delta)	
+	
+	try_shoot()
 	
 	move_and_slide()
 	
@@ -84,7 +99,7 @@ func _physics_process(delta:float) -> void:
 		#print("fire_rate: ", attrs["fire_rate"])
 		#print("damage: ", attrs["bullet_damage"])
 		
-#		Renzo -- It will detect tile map collision and if Custom Data "is_destructive" is true, it will destroy player
+	# Renzo -- It will detect tile map collision and if Custom Data "is_destructive" is true, it will destroy player
 	for collider in collidingTileMaps:
 		var tile_pos = collider.local_to_map(collider.to_local(global_position))
 		var tile_data = collider.get_cell_tile_data(tile_pos)
@@ -92,7 +107,7 @@ func _physics_process(delta:float) -> void:
 		if tile_data and tile_data.get_custom_data("is_destructive"):
 			destroy_player()
 
-# Renzo -- Spike Collision Event
+	# Renzo -- Spike Collision Event
 	for i in get_slide_collision_count():
 		var collider = get_slide_collision(i).get_collider()
 		if collider is TileMapLayer:
@@ -131,7 +146,7 @@ func move_dodge(move_dir:Vector2) -> void:
 	# initiate dodge
 	move_mode = MOVEMODE.DODGING
 	velocity = move_dir * dodge_range / dodge_time
-	collision_layer &= ~5 # make player invisible to collision layer 5 (enemies and damage search for the player on this layer)
+	collision_layer &= ~(1<<5) # make player invisible to collision layer 5 (enemies and damage search for the player on this layer)
 	$Sprite2D.modulate = Color(0, 1, 0.5, 0.5) # placeholder dodge effect
 	can_dodge = false
 	# print(can_dodge)
@@ -140,7 +155,7 @@ func move_dodge(move_dir:Vector2) -> void:
 	await get_tree().create_timer(dodge_time).timeout
 	move_mode = MOVEMODE.WALKING
 	velocity = velocity.limit_length(max_speed)
-	collision_layer |= 5 # re-enable enemy collision detection
+	collision_layer |= (1<<5) # re-enable enemy collision detection
 	$Sprite2D.modulate = Color(1, 0.5, 0.5)
 	
 	# reset dodge
@@ -151,12 +166,12 @@ func move_dodge(move_dir:Vector2) -> void:
 func use_energy(amount:float = 1) -> bool:
 	if energy >= amount:
 		energy -= amount
-		$EnergyRegenDelayTimer.start(energy_regen_delay)
+		t_EnergyRegenDelay.start(energy_regen_delay)
 		return true
 	return false
 
 func regen_energy(delta:float) -> void:
-	if $EnergyRegenDelayTimer.is_stopped():
+	if t_EnergyRegenDelay.is_stopped():
 		energy = min(max_energy, energy + delta * energy_regen_rate)
 	$EnergyLabel.text = str(int(energy))
 

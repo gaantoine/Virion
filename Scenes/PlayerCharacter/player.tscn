@@ -83,7 +83,7 @@ _data = {
 }
 
 [node name="Player" type="CharacterBody2D"]
-collision_layer = 17
+collision_layer = 48
 motion_mode = 1
 script = ExtResource("1_nm4sk")
 
@@ -109,6 +109,9 @@ grow_vertical = 2
 horizontal_alignment = 1
 
 [node name="EnergyRegenDelayTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="RefireTimer" type="Timer" parent="."]
 one_shot = true
 
 [node name="Melee" type="Sprite2D" parent="."]

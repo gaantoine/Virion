@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://6tsm52cuk5af" path="res://Scenes/Tilesets/Tiles1.png" id="1_niffs"]
 [ext_resource type="Texture2D" uid="uid://bc75dxvsc61bg" path="res://Scenes/Tilesets/TestTiles002.png" id="2_y05pb"]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_to50k"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vjghk"]
 texture = ExtResource("1_niffs")
 texture_region_size = Vector2i(256, 256)
 0:0/0 = 0
@@ -36,13 +36,17 @@ texture_region_size = Vector2i(256, 256)
 5:1/0 = 0
 5:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(128, -128, -128, -128, -128, -87.5, 128, -87.5)
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_md50e"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mct3e"]
 texture = ExtResource("2_y05pb")
 texture_region_size = Vector2i(256, 256)
 0:0/0 = 0
 0:1/0 = 0
+0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-82.5, -78, 77.5, -78, 76.5, 76, -79.5, 77)
+0:1/0/custom_data_0 = true
 1:0/0 = 0
 1:1/0 = 0
+1:1/0/physics_layer_1/polygon_0/points = PackedVector2Array(-128, 128, 128, 128, 128, -128, -128, -128)
+1:1/0/custom_data_0 = true
 2:0/0 = 0
 2:1/0 = 0
 3:0/0 = 0
@@ -51,16 +55,19 @@ texture_region_size = Vector2i(256, 256)
 4:1/0 = 0
 5:1/0 = 0
 
-[sub_resource type="TileSet" id="TileSet_xrdn6"]
+[sub_resource type="TileSet" id="TileSet_ynyo3"]
 tile_size = Vector2i(256, 256)
 physics_layer_0/collision_layer = 1
-sources/0 = SubResource("TileSetAtlasSource_to50k")
-sources/3 = SubResource("TileSetAtlasSource_md50e")
+physics_layer_1/collision_layer = 512
+physics_layer_1/collision_mask = 0
+custom_data_layer_0/name = "is_destructive"
+custom_data_layer_0/type = 1
+sources/0 = SubResource("TileSetAtlasSource_vjghk")
+sources/3 = SubResource("TileSetAtlasSource_mct3e")
 
-[node name="TilesetTest" type="Node2D"]
+[node name="InBetweenRooms" type="Node2D"]
 
 [node name="BaseMapLayer" type="TileMapLayer" parent="."]
-rotation = 0.00474254
 scale = Vector2(0.25, 0.25)
-tile_map_data = PackedByteArray("AAABAAEAAAACAAAAAAABAAIAAAACAAEAAAABAAMAAAACAAAAAAABAAQAAAACAAEAAAACAAEAAwABAAAAAAACAAIAAwABAAAAAAACAAMAAwABAAAAAAACAAQAAwABAAAAAAADAAEAAAADAAAAAAADAAIAAAADAAEAAAADAAMAAAADAAAAAAADAAQAAAADAAEAAAA=")
-tile_set = SubResource("TileSet_xrdn6")
+tile_map_data = PackedByteArray("AAACAAQAAwABAAAAAAACAAMAAwABAAAAAAACAAIAAwABAAAAAAACAAEAAwABAAAAAAABAAMAAAACAAAAAAABAAQAAAACAAEAAAABAAEAAAACAAAAAAABAAIAAAACAAEAAAADAAEAAAACAAEAADADAAIAAAACAAAAADADAAMAAAACAAEAADADAAQAAAACAAAAADA=")
+tile_set = SubResource("TileSet_ynyo3")

@@ -33,9 +33,6 @@ static var current:Player
 @onready var energy:float = max_energy
 
 @onready var t_EnergyRegenDelay:Timer = $EnergyRegenDelayTimer
-@onready var t_Refire:Timer = $RefireTimer
-
-var sc_bullet := preload("res://Animations/VFX/projectile_1.tscn")
 
 var move_mode := MOVEMODE.WALKING
 var can_dodge := true
@@ -46,16 +43,7 @@ var attr_mods:Dictionary # string -> array[string]
 
 # Renzo -- This will store the tilemaps the player is colliding with
 var collidingTileMaps:Array = []
-
-const REFIRE__S:float = 0.5 # base refire delay
-
-func try_shoot():
-	if Input.is_action_pressed("shoot") and t_Refire.is_stopped():
-		t_Refire.start(REFIRE__S / attrs["bullet_firing_rate"])
-		var new_bullet:Bullet = sc_bullet.instantiate()
-		new_bullet.init(attrs, global_position, global_position.angle_to_point(get_global_mouse_position()))
-		get_tree().root.add_child(new_bullet)
-
+		
 func _ready():
 	current = self
 	attr_defaults = {
@@ -87,9 +75,7 @@ func _physics_process(delta:float) -> void:
 	move_dodge(move_dir)
 	move_walk(delta, move_dir)
 	
-	regen_energy(delta)	
-	
-	try_shoot()
+	regen_energy(delta)
 	
 	move_and_slide()
 	

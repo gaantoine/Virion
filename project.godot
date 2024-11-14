@@ -29,6 +29,7 @@ window/size/initial_position=Vector2i(1920, 1080)
 [global_group]
 
 enemy=""
+player=""
 
 [input]
 

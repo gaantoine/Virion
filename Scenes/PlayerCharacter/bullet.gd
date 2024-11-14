@@ -2,6 +2,7 @@ extends CharacterBody2D
 class_name Bullet
 
 @onready var t_Lifetime:Timer = $BulletLifeTime
+@onready var pierces:int = attrs["bullet_piercing"]
 
 const SPEED__TILE_S:float = 10 # base bullet speed, tiles/second
 
@@ -23,18 +24,19 @@ func init(player_attrs:Dictionary, pos:Vector2, rot:float) -> void:
 	attrs = player_attrs
 
 func _physics_process(delta:float) -> void:
-	var collision:KinematicCollision2D = move_and_collide(velocity * delta)
-	if collision != null:
-		var object = collision.get_collider()
-		if object is Node2D:
-			var node:Node2D = object
-			if node.is_in_group("enemy"):
-				print("damage enemy: ", node.name)
-		else:
-			push_error("NON-NODE OBJECT: ", object)
-		
-		break_bullet()
+	move_and_slide()
 
 
 func break_bullet() -> void:
 	queue_free()
+
+
+func _on_area_2d_body_entered(body: Node2D) -> void:
+	if body.is_in_group("enemy"):
+		print("damage enemy: ", body.name)
+		pierces -= 1
+	else:
+		pierces = 0
+	
+	if pierces <= 0:
+		break_bullet()

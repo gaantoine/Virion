@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://bc75dxvsc61bg" path="res://Scenes/Tilesets/TestTiles002.png" id="2_4dmx7"]
 [ext_resource type="Texture2D" uid="uid://6tsm52cuk5af" path="res://Scenes/Tilesets/Tiles1.png" id="2_qkhuo"]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ceghg"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_tqk6s"]
 texture = ExtResource("2_qkhuo")
 texture_region_size = Vector2i(256, 256)
 0:0/0 = 0
@@ -36,7 +36,7 @@ texture_region_size = Vector2i(256, 256)
 5:1/0 = 0
 5:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(128, -128, -128, -128, -128, -87.5, 128, -87.5)
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wl4bi"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1uygh"]
 texture = ExtResource("2_4dmx7")
 texture_region_size = Vector2i(256, 256)
 0:0/0 = 0
@@ -62,8 +62,8 @@ physics_layer_1/collision_layer = 512
 physics_layer_1/collision_mask = 0
 custom_data_layer_0/name = "is_destructive"
 custom_data_layer_0/type = 1
-sources/0 = SubResource("TileSetAtlasSource_ceghg")
-sources/3 = SubResource("TileSetAtlasSource_wl4bi")
+sources/0 = SubResource("TileSetAtlasSource_tqk6s")
+sources/3 = SubResource("TileSetAtlasSource_1uygh")
 
 [node name="TilesetTest" type="Node2D"]
 

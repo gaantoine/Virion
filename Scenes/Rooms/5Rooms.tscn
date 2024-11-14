@@ -37,4 +37,3 @@ position = Vector2(1813, 2528)
 scale = Vector2(0.8, 0.8)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
-scale = Vector2(1, 1)

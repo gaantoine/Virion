@@ -33,9 +33,6 @@ static var current:Player
 @onready var energy:float = max_energy
 
 @onready var t_EnergyRegenDelay:Timer = $EnergyRegenDelayTimer
-@onready var t_Refire:Timer = $RefireTimer
-
-var sc_bullet := preload("res://Animations/VFX/projectile_1.tscn")
 
 var move_mode := MOVEMODE.WALKING
 var can_dodge := true
@@ -46,20 +43,13 @@ var attr_mods:Dictionary # string -> array[string]
 
 # Renzo -- This will store the tilemaps the player is colliding with
 var collidingTileMaps:Array = []
-
-func try_shoot():
-	if Input.is_action_pressed("shoot") and t_Refire.is_stopped():
-		t_Refire.start(1)
-		var new_bullet:Bullet = sc_bullet.instantiate()
-		new_bullet.global_position = global_position
-		get_tree().root.add_child(new_bullet)
-
+		
 func _ready():
 	current = self
 	attr_defaults = {
-		"bullet_damage": 5,
-		"bullet_speed": 1,
-		"bullet_range": 5,
+		"bullet_damage": 1,
+		"bullet_speed": 1, # tiles per second
+		"bullet_range": 10, # in tiles
 		"bullet_firing_rate": 1,
 		"bullet_piercing": 0,
 		"bullet_count": 1,
@@ -76,16 +66,16 @@ func _ready():
 	
 	attrs = attr_defaults.duplicate()
 
+
 func _physics_process(delta:float) -> void:
+	
 	var move_dir := Input.get_vector("move_left", "move_right", "move_up", "move_down").normalized()
 	
 	# movement functions test validity of a move action and perform it if necessary
 	move_dodge(move_dir)
 	move_walk(delta, move_dir)
 	
-	regen_energy(delta)	
-	
-	try_shoot()
+	regen_energy(delta)
 	
 	move_and_slide()
 	
@@ -111,7 +101,7 @@ func _physics_process(delta:float) -> void:
 	for i in get_slide_collision_count():
 		var collider = get_slide_collision(i).get_collider()
 		if collider is TileMapLayer:
-			
+			print(collider)
 			var tile_pos = collider.local_to_map(collider.to_local(get_slide_collision(i).get_position()-get_slide_collision(i).get_normal()))
 			var tile_data = collider.get_cell_tile_data(tile_pos)
 			
@@ -149,7 +139,6 @@ func move_dodge(move_dir:Vector2) -> void:
 	collision_layer &= ~(1<<5) # make player invisible to collision layer 5 (enemies and damage search for the player on this layer)
 	$CollisionShape2D.debug_color = Color(0, 1, 0.5, 0.5) # placeholder dodge effect
 	can_dodge = false
-	# print(can_dodge)
 	
 	# return to normal movement
 	await get_tree().create_timer(dodge_time).timeout
@@ -240,4 +229,3 @@ func _on_area_2d_body_entered(collider: Node2D) -> void:
 func _on_area_2d_body_exited(body: Node2D) -> void:
 	if body is TileMapLayer:
 		collidingTileMaps.erase(body)
-	pass # Replace with function body.

@@ -1,4 +1,3 @@
 extends Node
 
-# Global reference to the player, reference using Global.player
-var player = null
+var TILE_SIZE:float = 256 * 0.25

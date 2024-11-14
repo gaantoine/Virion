@@ -51,9 +51,10 @@ func _ready():
 		"bullet_speed": 1, # tiles per second
 		"bullet_range": 10, # in tiles
 		"bullet_firing_rate": 1,
-		"bullet_piercing": 0,
+		"bullet_accuracy": 1,
+		"bullet_piercing": 1,
 		"bullet_count": 1,
-		"bullet_arc": 0, # for multi-shot weapons
+		"bullet_arc": 10, # for multi-shot weapons
 		"melee_damage": 5,
 		"consumable_damage": 5,
 		"consumable_size": 1,

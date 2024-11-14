@@ -1,8 +1,7 @@
-[gd_scene load_steps=11 format=4 uid="uid://dxmpwobtluek3"]
+[gd_scene load_steps=9 format=4 uid="uid://dxmpwobtluek3"]
 
 [ext_resource type="Texture2D" uid="uid://6tsm52cuk5af" path="res://Scenes/Tilesets/Tiles1.png" id="1_nkx4p"]
 [ext_resource type="Texture2D" uid="uid://bc75dxvsc61bg" path="res://Scenes/Tilesets/TestTiles002.png" id="2_ikgkf"]
-[ext_resource type="Script" path="res://Scenes/Rooms/area_2d.gd" id="3_oe2qm"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_h6nlw"]
 texture = ExtResource("1_nkx4p")
@@ -120,9 +119,6 @@ physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_mjdil")
 sources/3 = SubResource("TileSetAtlasSource_oskvp")
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_8bbb0"]
-size = Vector2(19.9999, 20)
-
 [node name="Room3" type="Node2D"]
 
 [node name="BaseMapLayer" type="TileMapLayer" parent="."]
@@ -136,16 +132,3 @@ rotation = 0.00474254
 scale = Vector2(0.25, 0.25)
 tile_map_data = PackedByteArray("AAAbAAEAAAADAAAAAAAZAAEAAAACAAAAAAA=")
 tile_set = SubResource("TileSet_usaon")
-
-[node name="Area2D" type="Area2D" parent="."]
-visible = false
-script = ExtResource("3_oe2qm")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-visible = false
-position = Vector2(1696, 48)
-scale = Vector2(3.2, 4)
-shape = SubResource("RectangleShape2D_8bbb0")
-
-[connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]
-[connection signal="body_shape_exited" from="Area2D" to="Area2D" method="_on_body_shape_exited"]

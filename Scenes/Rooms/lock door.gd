@@ -1,11 +1,17 @@
-extends Node
+extends Node2D  
 
+var is_locked = true
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
+func _ready():
+    # Initialization code here
+    pass
 
+func unlock():
+    if is_locked:
+        is_locked = false
+        print("The door is now unlocked!")
+        # You can add additional logic here, like playing an animation or sound
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+func _on_Player_interact_with_door(player):
+    if player.has_key:
+        unlock()

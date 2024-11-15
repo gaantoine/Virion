@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Virion"
-run/main_scene="res://Scenes/TestLevel/TestLevel.tscn"
+run/main_scene="res://Scenes/Rooms/5Rooms.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://Misc PNGs and assets/icon.svg"
 
@@ -19,9 +19,17 @@ config/icon="res://Misc PNGs and assets/icon.svg"
 
 Global="*res://Global.gd"
 
+[display]
+
+window/size/viewport_width=1600
+window/size/viewport_height=900
+window/size/initial_position_type=0
+window/size/initial_position=Vector2i(1920, 1080)
+
 [global_group]
 
 enemy=""
+player=""
 
 [input]
 
@@ -74,3 +82,7 @@ melee={
 "events": [Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"button_mask":0,"position":Vector2(0, 0),"global_position":Vector2(0, 0),"factor":1.0,"button_index":2,"canceled":false,"pressed":false,"double_click":false,"script":null)
 ]
 }
+
+[physics]
+
+common/physics_ticks_per_second=120

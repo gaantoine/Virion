@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://coujnnoiesx2e"]
+[gd_scene load_steps=7 format=3 uid="uid://coujnnoiesx2e"]
 
 [ext_resource type="Script" path="res://Scenes/PlayerCharacter/player.gd" id="1_nm4sk"]
+[ext_resource type="Script" path="res://Scenes/PlayerCharacter/shooter.gd" id="3_slfig"]
 [ext_resource type="Texture2D" uid="uid://cr18de700u81t" path="res://Animations/Nebula idol down animation first pass.png" id="4_wogfe"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_n1ths"]
@@ -9,7 +10,10 @@ radius = 32.0
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_w2em4"]
 size = Vector2(64, 64)
 
-[node name="Player" type="CharacterBody2D"]
+[sub_resource type="SeparationRayShape2D" id="SeparationRayShape2D_1q5aj"]
+length = 50.0
+
+[node name="Player" type="CharacterBody2D" groups=["player"]]
 collision_layer = 48
 motion_mode = 1
 script = ExtResource("1_nm4sk")
@@ -40,9 +44,6 @@ horizontal_alignment = 1
 [node name="EnergyRegenDelayTimer" type="Timer" parent="."]
 one_shot = true
 
-[node name="RefireTimer" type="Timer" parent="."]
-one_shot = true
-
 [node name="Area2D" type="Area2D" parent="."]
 collision_layer = 0
 collision_mask = 512
@@ -50,6 +51,17 @@ collision_mask = 512
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 visible = false
 shape = SubResource("RectangleShape2D_w2em4")
+
+[node name="Shooter" type="Node2D" parent="."]
+script = ExtResource("3_slfig")
+
+[node name="RefireTimer" type="Timer" parent="Shooter"]
+one_shot = true
+
+[node name="PlaceHolderArrow" type="CollisionShape2D" parent="Shooter"]
+rotation = -1.5708
+shape = SubResource("SeparationRayShape2D_1q5aj")
+debug_color = Color(0.3732, 0, 0.0882858, 1)
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

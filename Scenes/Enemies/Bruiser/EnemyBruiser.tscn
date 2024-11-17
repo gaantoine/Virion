@@ -10,7 +10,6 @@ radius = 32.0
 collision_layer = 256
 collision_mask = 289
 script = ExtResource("1_rmu8v")
-middash_attack_range = 110.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_s373b")

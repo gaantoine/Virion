@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://bxm1eibplk4y2"]
+
+[ext_resource type="Script" path="res://Scenes/PlayerCharacter/bullet.gd" id="1_gdarg"]
+
+[node name="Bullet" type="CharacterBody2D"]
+collision_layer = 0
+collision_mask = 3
+script = ExtResource("1_gdarg")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-10, -10, -10, 10, 30, 0)

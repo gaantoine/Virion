@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://6tsm52cuk5af"
-path="res://.godot/imported/VirionRoomTiles.png-187697e4bbf442606cdb05d5535f8a0f.ctex"
+uid="uid://cminetoyt22sf"
+path="res://.godot/imported/placeholder_icon.png-63aed1051c97983af09ddd316620e90b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Scenes/Tilesets/VirionRoomTiles.png"
-dest_files=["res://.godot/imported/VirionRoomTiles.png-187697e4bbf442606cdb05d5535f8a0f.ctex"]
+source_file="res://Misc PNGs and assets/placeholder_icon.png"
+dest_files=["res://.godot/imported/placeholder_icon.png-63aed1051c97983af09ddd316620e90b.ctex"]
 
 [params]
 

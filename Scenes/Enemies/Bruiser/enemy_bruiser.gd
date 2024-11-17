@@ -145,7 +145,7 @@ func take_aim() -> bool:
 	var query = PhysicsRayQueryParameters2D.new()
 	query.from = raycast_from
 	query.to = raycast_to
-	query.collision_mask = (1 << 0) | (1 << 4)
+	query.collision_mask = 1 | (1<<4)
 	
 	var result = space_state.intersect_ray(query)
 	if result.get("collider") != player:

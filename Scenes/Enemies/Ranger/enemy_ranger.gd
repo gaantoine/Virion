@@ -85,10 +85,9 @@ func _physics_process(delta: float) -> void:
 		MOVEMODE.AIMING:
 			handle_aiming_state(delta)
 		MOVEMODE.WAITING:
-			handle_waiting_state(delta)
+			handle_waiting_state()
 
 func handle_chasing_state(delta: float) -> void:
-	print("chasing")
 	var steering_force = get_steering(false)
 	
 	if take_aim():
@@ -102,7 +101,6 @@ func handle_chasing_state(delta: float) -> void:
 	move_and_slide()
 
 func handle_fleeing_state(delta: float) -> void:
-	print("fleeing")
 	var steering_force = get_steering(true)
 	
 	if distance_to_player >= max_flee_range and take_aim():
@@ -206,7 +204,7 @@ func take_aim() -> bool:
 func shoot() -> void:
 	print(shoot)
 
-func handle_waiting_state(delta: float) -> void:
+func handle_waiting_state() -> void:
 	pass
 
 func _on_Timer_timeout():

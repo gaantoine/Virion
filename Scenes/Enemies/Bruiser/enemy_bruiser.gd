@@ -12,10 +12,13 @@ enum MOVEMODE {
 @export_group("Health and Damage")
 ## Maximum total health base
 @export var base_max_hp: float = 24
-## HP increase per level
+# current HP, can implement scaling per level progressed later if needed
+var current_hp = base_max_hp
+## HP increase per level, does nothing currently
 @export var max_hp_scaling: float = 12
 ## Attack damage per hit
 @export var damage: float = 16
+
 
 @export_group("Dash Settings")
 ## Aiming build up time before dashing
@@ -32,7 +35,7 @@ enum MOVEMODE {
 @export var deceleration: float = 3000
 ## The distance within which the player needs to be mid charge before the
 ## attack animation is triggered in pixels
-@export var middash_attack_range: float = 10
+@export var middash_attack_range: float = 100
 ## Duration of the pause after attacks in seconds
 @export var attack_duration: float = 1.0
 
@@ -98,7 +101,7 @@ func _physics_process(delta: float) -> void:
 		MOVEMODE.DECELERATING:
 			handle_decelerating_state(delta)
 		MOVEMODE.ATTACKING:
-			handle_attacking_state(delta)
+			handle_attacking_state()
 		MOVEMODE.WAITING:
 			handle_waiting_state()
 
@@ -142,7 +145,7 @@ func take_aim() -> bool:
 	var query = PhysicsRayQueryParameters2D.new()
 	query.from = raycast_from
 	query.to = raycast_to
-	query.collision_mask = 1
+	query.collision_mask = (1 << 0) | (1 << 4)
 	
 	var result = space_state.intersect_ray(query)
 	if result.get("collider") != player:
@@ -154,7 +157,7 @@ func take_aim() -> bool:
 	# Debug drawing
 	predict_from = global_position
 	predict_to = global_position + dash_direction * dash_speed 
-	call_deferred("queue_redraw")
+	#call_deferred("queue_redraw")
 	
 	return true
 
@@ -183,7 +186,7 @@ func handle_decelerating_state(delta: float) -> void:
 		move_and_slide()
 
 # Attack
-func handle_attacking_state(delta: float) -> void:
+func handle_attacking_state() -> void:
 	$Sprite2D.modulate = Color.RED
 	$Timer.start(attack_duration)
 	state = MOVEMODE.WAITING
@@ -211,7 +214,7 @@ func update_collision_map() -> void:
 		var query = PhysicsRayQueryParameters2D.new()
 		query.from = global_position
 		query.to = global_position + ray_directions[x] * collision_detection_range
-		query.collision_mask = 1 
+		query.collision_mask = 1
 		
 		# Perform the raycast
 		var result = space_state.intersect_ray(query)
@@ -250,6 +253,7 @@ func handle_waiting_state() -> void:
 	velocity = Vector2.ZERO
 	move_and_slide()
 
+# Helper method for dashing
 func start_dashing():
 	charge_build_up = 0
 	state = MOVEMODE.DASHING
@@ -259,6 +263,22 @@ func start_dashing():
 func _on_Timer_timeout():
 	$Sprite2D.modulate = Color.WHITE
 	state = MOVEMODE.AIMING
+
+func take_damage(damage_taken: float) -> void:
+	current_hp -= damage_taken
+	if current_hp <= 0:
+		die()
+
+func die() -> void:
+	set_process(false)
+	# Trigger death animation
+	# $AnimationPlayer.play("death")
+	# Play sound effect
+	# $AudioStreamPlayer.play()
+	# Emit a death signal, useful for later
+	# emit_signal("enemy_died")
+	# await $AnimationPlayer.animation_finished
+	queue_free()
 
 # Debugging
 func _draw() -> void:

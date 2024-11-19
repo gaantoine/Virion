@@ -30,7 +30,7 @@ position = Vector2(2880, -1024)
 position = Vector2(2944, -2496)
 
 [node name="0-1Path" parent="." instance=ExtResource("8_m8x2a")]
-position = Vector2(2176, 1920)
+position = Vector2(2336, 2112)
 
 [node name="Player" parent="." instance=ExtResource("8_81o76")]
 position = Vector2(1813, 2528)

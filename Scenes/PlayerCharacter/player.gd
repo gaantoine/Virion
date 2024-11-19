@@ -56,6 +56,7 @@ func _ready():
 		"bullet_count": 1,
 		"bullet_arc": 10, # for multi-shot weapons
 		"melee_damage": 5,
+		"melee_knockback": 2,
 		"consumable_damage": 5,
 		"consumable_size": 1,
 		"droprate_grenade": 1,

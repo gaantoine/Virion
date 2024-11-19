@@ -50,7 +50,6 @@ var current_hp = base_max_hp
 @export var avoid_weight: float = 100
 
 var state = MOVEMODE.WAITING
-var player
 var distance_to_player
 
 var dash_direction = Vector2.ZERO
@@ -74,8 +73,10 @@ var seek_map = []
 var collision_map = []
 var seek_map_buffer = 0.5
 
+var player:Player:
+	get:return Player.current
+
 func _ready():
-	player = Player.current
 	$Timer.timeout.connect(_on_Timer_timeout)
 	
 	# Generate ray directions
@@ -269,9 +270,9 @@ func take_damage(damage_taken: float) -> void:
 	if current_hp <= 0:
 		die()
 	else:
-		$Sprite2D.modulate = Color.RED
+		$BruiserSpriteSheet.modulate = Color.RED
 		await get_tree().create_timer(3/60.0).timeout
-		$Sprite2D.modulate = Color.WHITE
+		$BruiserSpriteSheet.modulate = Color.WHITE
 		
 func take_knockback(displacement: Vector2) -> void:
 	pass

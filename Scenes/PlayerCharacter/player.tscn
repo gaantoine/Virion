@@ -13,6 +13,7 @@ size = Vector2(64, 64)
 [sub_resource type="SeparationRayShape2D" id="SeparationRayShape2D_1q5aj"]
 length = 50.0
 
+
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 collision_layer = 48
 motion_mode = 1

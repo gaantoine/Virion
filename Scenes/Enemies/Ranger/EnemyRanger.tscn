@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://b0msrln4lgeup"]
+
+[ext_resource type="Script" path="res://Scenes/Enemies/Ranger/enemy_ranger.gd" id="1_0kdd3"]
+[ext_resource type="Texture2D" uid="uid://cr1k60xakb6g7" path="res://placeholder_icon2.png" id="2_hgpwv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hpqkn"]
+size = Vector2(64, 64)
+
+[node name="EnemyRanger" type="CharacterBody2D"]
+collision_layer = 16
+script = ExtResource("1_0kdd3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_hpqkn")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_hgpwv")
+
+[node name="Timer" type="Timer" parent="."]

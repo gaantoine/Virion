@@ -1,0 +1,3 @@
+[gd_scene format=3 uid="uid://cq7jxuujtdmab"]
+
+[node name="LockDoor" type="Node2D"]

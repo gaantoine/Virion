@@ -1,10 +1,68 @@
-[gd_scene load_steps=4 format=3 uid="uid://f6n573w57vu6"]
+[gd_scene load_steps=9 format=3 uid="uid://f6n573w57vu6"]
 
 [ext_resource type="Texture2D" uid="uid://cminetoyt22sf" path="res://Misc PNGs and assets/placeholder_icon.png" id="1_p1dxc"]
 [ext_resource type="Script" path="res://Scenes/Enemies/Bruiser/enemy_bruiser.gd" id="1_rmu8v"]
+[ext_resource type="Texture2D" uid="uid://law1tbcbwmlm" path="res://Scenes/Enemies/Bruiser/BruiserWalkSpriteSheet.png" id="3_iegjd"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_s373b"]
-radius = 32.0
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_kcvma"]
+radius = 3.7
+height = 8.0
+
+[sub_resource type="Animation" id="Animation_4sl46"]
+resource_name = "Bruiser_Down_Walk"
+loop_mode = 1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BruiserSpriteSheet:frame")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.25, 0.35, 0.45, 0.5, 0.6, 0.75, 0.85, 0.95),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+}
+
+[sub_resource type="Animation" id="Animation_mhkqm"]
+resource_name = "Bruiser_Walk_Up"
+loop_mode = 1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BruiserSpriteSheet:frame")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.25, 0.35, 0.45, 0.5, 0.6, 0.75, 0.85, 0.95),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [10, 11, 12, 13, 14, 15, 16, 17, 18, 19]
+}
+
+[sub_resource type="Animation" id="Animation_x7nhy"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BruiserSpriteSheet:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1jak8"]
+_data = {
+"Bruiser_Down_Walk": SubResource("Animation_4sl46"),
+"Bruiser_Walk_Up": SubResource("Animation_mhkqm"),
+"RESET": SubResource("Animation_x7nhy")
+}
 
 [node name="EnemyBruiser" type="CharacterBody2D" groups=["enemy"]]
 collision_layer = 256
@@ -12,12 +70,27 @@ collision_mask = 289
 script = ExtResource("1_rmu8v")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_s373b")
+position = Vector2(2, 10)
+scale = Vector2(10, 10)
+shape = SubResource("CapsuleShape2D_kcvma")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("1_p1dxc")
 
 [node name="Timer" type="Timer" parent="."]
 one_shot = true
 autostart = true
+
+[node name="BruiserSpriteSheet" type="Sprite2D" parent="."]
+position = Vector2(1.5, -1)
+scale = Vector2(0.255859, 0.253906)
+texture = ExtResource("3_iegjd")
+hframes = 5
+vframes = 4
+
+[node name="Bruiser_AnimationP" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_1jak8")
+}

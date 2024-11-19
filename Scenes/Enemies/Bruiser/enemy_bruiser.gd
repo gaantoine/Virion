@@ -268,6 +268,10 @@ func take_damage(damage_taken: float) -> void:
 	current_hp -= damage_taken
 	if current_hp <= 0:
 		die()
+	else:
+		$Sprite2D.modulate = Color.RED
+		await get_tree().create_timer(3/60.0).timeout
+		$Sprite2D.modulate = Color.WHITE
 
 func die() -> void:
 	set_process(false)

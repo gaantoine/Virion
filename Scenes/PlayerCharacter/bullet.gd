@@ -33,7 +33,7 @@ func break_bullet() -> void:
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.is_in_group("enemy"):
-		print("damage enemy: ", body.name)
+		body.take_damage(attrs["bullet_damage"])
 		pierces -= 1
 	else:
 		pierces = 0

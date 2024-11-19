@@ -47,7 +47,7 @@ var collidingTileMaps:Array = []
 func _ready():
 	current = self
 	attr_defaults = {
-		"bullet_damage": 1,
+		"bullet_damage": 5,
 		"bullet_speed": 1, # tiles per second
 		"bullet_range": 10, # in tiles
 		"bullet_firing_rate": 1,

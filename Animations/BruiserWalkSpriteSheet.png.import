@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://law1tbcbwmlm"
-path="res://.godot/imported/BruiserWalkSpriteSheet.png-540b027c22bab0ee2b4b121cdfff3acb.ctex"
+path="res://.godot/imported/BruiserWalkSpriteSheet.png-6b462fb8519a881365f17c72dcc0ab6c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Scenes/Enemies/Bruiser/BruiserWalkSpriteSheet.png"
-dest_files=["res://.godot/imported/BruiserWalkSpriteSheet.png-540b027c22bab0ee2b4b121cdfff3acb.ctex"]
+source_file="res://Animations/BruiserWalkSpriteSheet.png"
+dest_files=["res://.godot/imported/BruiserWalkSpriteSheet.png-6b462fb8519a881365f17c72dcc0ab6c.ctex"]
 
 [params]
 

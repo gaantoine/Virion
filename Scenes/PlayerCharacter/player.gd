@@ -96,7 +96,6 @@ func _physics_process(delta:float) -> void:
 	for i in get_slide_collision_count():
 		var collider = get_slide_collision(i).get_collider()
 		if collider is TileMapLayer:
-			print("testing", collider)
 			var tile_pos = collider.local_to_map(collider.to_local(get_slide_collision(i).get_position()-get_slide_collision(i).get_normal()))
 			var tile_data = collider.get_cell_tile_data(tile_pos)
 			

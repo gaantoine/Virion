@@ -267,6 +267,10 @@ func _on_Timer_timeout():
 
 func take_damage(damage_taken: float) -> void:
 	current_hp -= damage_taken
+	# $AnimationPlayer.play("damage")
+	# $Sprite.modulate = Color.RED # Maybe?
+	# Play sound effect
+	# $AudioStreamPlayer.play()
 	if current_hp <= 0:
 		die()
 	else:

@@ -37,7 +37,27 @@ static var current:Player
 var move_mode := MOVEMODE.WALKING
 var can_dodge := true
 
-var attr_defaults:Dictionary # string -> int
+@export_category("Player Base Attributes")
+@export var attr_defaults:Dictionary = {
+	"bullet_damage": 5,
+	"bullet_speed": 1, # tiles per second
+	"bullet_range": 10, # in tiles
+	"bullet_firing_rate": 1,
+	"bullet_accuracy": 1,
+	"bullet_piercing": 1,
+	"bullet_count": 1,
+	"bullet_arc": 10, # for multi-shot weapons
+	"melee_damage": 5,
+	"melee_knockback": 2,
+	#"consumable_damage": 5,
+	#"consumable_size": 1,
+	#"droprate_grenade": 1,
+	#"droprate_firebomb": 1,
+	#"droprate_stun": 1,
+	"dodge_speed": 1,
+	"stamina": 4
+}
+
 var attrs:Dictionary # string -> int
 var attr_mods:Dictionary # string -> array[string]
 
@@ -46,25 +66,6 @@ var collidingTileMaps:Array = []
 		
 func _ready():
 	current = self
-	attr_defaults = {
-		"bullet_damage": 5,
-		"bullet_speed": 1, # tiles per second
-		"bullet_range": 10, # in tiles
-		"bullet_firing_rate": 1,
-		"bullet_accuracy": 1,
-		"bullet_piercing": 1,
-		"bullet_count": 1,
-		"bullet_arc": 10, # for multi-shot weapons
-		"melee_damage": 5,
-		"melee_knockback": 2,
-		"consumable_damage": 5,
-		"consumable_size": 1,
-		"droprate_grenade": 1,
-		"droprate_firebomb": 1,
-		"droprate_stun": 1,
-		"dodge_speed": 1,
-		"stamina": 4
-	}
 	
 	attrs = attr_defaults.duplicate()
 
@@ -130,7 +131,7 @@ func move_dodge(move_dir:Vector2) -> void:
 	# initiate dodge
 	move_mode = MOVEMODE.DODGING
 	velocity = move_dir * dodge_range / dodge_time
-	collision_layer &= ~(1<<5) # make player invisible to collision layer 5 (enemies and damage search for the player on this layer)
+	set_collision_layer_value(6, false) # make player invisible to collision layer 6 (enemies and damage search for the player on this layer)
 	$CollisionShape2D.debug_color = Color(0, 1, 0.5, 0.5) # placeholder dodge effect
 	can_dodge = false
 	
@@ -138,11 +139,11 @@ func move_dodge(move_dir:Vector2) -> void:
 	await get_tree().create_timer(dodge_time).timeout
 	move_mode = MOVEMODE.WALKING
 	velocity = velocity.limit_length(max_speed)
-	collision_layer |= (1<<5) # re-enable enemy collision detection
+	set_collision_layer_value(6, true) # re-enable enemy collision detection
 	$CollisionShape2D.debug_color = Color(1, 0.5, 0.5, 0.5)
 	
 	# reset dodge
-	await get_tree().create_timer(maxf(0, dodge_cooldown - dodge_time)).timeout
+	await get_tree().create_timer(maxf(0, dodge_cooldown / attrs["dodge_speed"] - dodge_time)).timeout
 	can_dodge = true
 	$CollisionShape2D.debug_color = Color(0, 0.6, 0.69, 0.41)
 

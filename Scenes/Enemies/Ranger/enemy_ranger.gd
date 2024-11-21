@@ -28,7 +28,7 @@ var current_hp = base_max_hp
 ## How fast this enemy normally moves
 @export var move_speed: float = 75
 @export var min_flee_range: float = 300
-@export var max_flee_range: float = 600
+@export var max_flee_range: float = 400
 ## How far an object can be before the enemy detects it in pixels
 @export var collision_detection_range: float = 150
 ## 
@@ -228,6 +228,10 @@ func take_damage(damage_taken: float) -> void:
 	# $AudioStreamPlayer.play()
 	if current_hp <= 0:
 		die()
+	else:
+		$RangerDown.modulate = Color.RED
+		await get_tree().create_timer(3/60.0).timeout
+		$RangerDown.modulate = Color.WHITE
 
 func die() -> void:
 	set_process(false)

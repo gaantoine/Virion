@@ -15,7 +15,7 @@
 position = Vector2(1535, 2112)
 
 [node name="Room1" parent="." instance=ExtResource("1_tk33b")]
-position = Vector2(1344, 1409)
+position = Vector2(1344, 1408)
 
 [node name="Room2" parent="." instance=ExtResource("2_n8gmo")]
 position = Vector2(1344, 640)
@@ -31,6 +31,18 @@ position = Vector2(2944, -2496)
 
 [node name="0-1Path" parent="." instance=ExtResource("8_m8x2a")]
 position = Vector2(2336, 2112)
+
+[node name="1-2Path" parent="." instance=ExtResource("8_m8x2a")]
+position = Vector2(1504, 1408)
+
+[node name="2-3Path" parent="." instance=ExtResource("8_m8x2a")]
+position = Vector2(1504, 640)
+
+[node name="3-4Path" parent="." instance=ExtResource("8_m8x2a")]
+position = Vector2(3040, -192)
+
+[node name="4-5Path" parent="." instance=ExtResource("8_m8x2a")]
+position = Vector2(4000, -1024)
 
 [node name="Player" parent="." instance=ExtResource("8_81o76")]
 position = Vector2(1813, 2528)

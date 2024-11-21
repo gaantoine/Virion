@@ -10,6 +10,8 @@ enum MOVEMODE {
 @export_group("Health and Damage")
 ## Maximum total health base
 @export var base_max_hp: float = 24
+#
+var current_hp = base_max_hp
 ## HP increase per level
 @export var max_hp_scaling: float = 12
 ## Attack damage per hit
@@ -43,6 +45,7 @@ var current_speed = 0.0
 
 # Aim
 var predicted_position
+const bullet := preload("res://Animations/VFX/projectile_2.tscn")
 
 # Debug Draw
 var raycast_from = Vector2.ZERO
@@ -202,6 +205,12 @@ func take_aim() -> bool:
 	return true
 
 func shoot() -> void:
+	var direction = (player.global_position - global_position).angle()
+	
+	var new_bullet:Projectile_2 = bullet.instantiate()
+		
+	new_bullet.init(global_position, direction)
+	get_tree().root.add_child(new_bullet)
 	print(shoot)
 
 func handle_waiting_state() -> void:
@@ -209,6 +218,15 @@ func handle_waiting_state() -> void:
 
 func _on_Timer_timeout():
 	state = MOVEMODE.AIMING
+
+func take_damage(damage_taken: float) -> void:
+	current_hp -= damage_taken
+	# $AnimationPlayer.play("damage")
+	# $Sprite.modulate = Color.RED # Maybe?
+	# Play sound effect
+	# $AudioStreamPlayer.play()
+	if current_hp <= 0:
+		die()
 
 func die() -> void:
 	set_process(false)

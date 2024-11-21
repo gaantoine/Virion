@@ -37,7 +37,8 @@ var current_hp = base_max_hp
 @export var avoid_weight: float = 100
 
 var state = MOVEMODE.AIMING
-var player
+var player:Player:
+	get:return Player.current
 var distance_to_player
 var aim_build_up = 0
 
@@ -61,7 +62,6 @@ var collision_map = []
 var seek_map_buffer = 0.5
 
 func _ready():
-	player = Player.current
 	$Timer.timeout.connect(_on_Timer_timeout)
 	
 	# Generate ray directions

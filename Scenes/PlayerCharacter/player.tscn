@@ -131,6 +131,8 @@ collision_layer = 48
 motion_mode = 1
 script = ExtResource("1_nm4sk")
 
+[node name="Camera2D" type="Camera2D" parent="."]
+
 [node name="Nebula_AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_66isc")

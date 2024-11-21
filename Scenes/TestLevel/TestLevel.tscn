@@ -1,10 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://by0200nc3sigq"]
+[gd_scene load_steps=5 format=3 uid="uid://by0200nc3sigq"]
 
 [ext_resource type="PackedScene" uid="uid://f6n573w57vu6" path="res://Scenes/Enemies/Bruiser/EnemyBruiser.tscn" id="1_8rsap"]
 [ext_resource type="PackedScene" uid="uid://bd4nwu5b2pj1g" path="res://Scenes/TestLevel/test_obstacle.tscn" id="3_hjgaq"]
 [ext_resource type="PackedScene" uid="uid://j1hchdq3d8b5" path="res://Scenes/Pickups/BasePickup.tscn" id="4_k6ggg"]
 [ext_resource type="PackedScene" uid="uid://coujnnoiesx2e" path="res://Scenes/PlayerCharacter/player.tscn" id="4_srbm1"]
-[ext_resource type="PackedScene" uid="uid://b0msrln4lgeup" path="res://Scenes/Enemies/Ranger/EnemyRanger.tscn" id="5_s51re"]
 
 [node name="Node2D" type="Node2D"]
 
@@ -47,6 +46,3 @@ mods = {
 [node name="EnemyBruiser2" parent="." instance=ExtResource("1_8rsap")]
 position = Vector2(891, 317)
 middash_attack_range = 10.0
-
-[node name="EnemyRanger" parent="." instance=ExtResource("5_s51re")]
-position = Vector2(1269, 180)

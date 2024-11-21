@@ -239,6 +239,9 @@ func take_damage(damage_taken: float) -> void:
 		await get_tree().create_timer(3/60.0).timeout
 		$RangerDown.modulate = Color.WHITE
 
+func take_knockback(displacement: Vector2) -> void:
+	pass
+
 func die() -> void:
 	set_process(false)
 	# Trigger death animation

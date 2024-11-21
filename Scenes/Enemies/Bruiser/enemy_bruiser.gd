@@ -48,6 +48,7 @@ var current_hp = base_max_hp
 @export var seek_weight: float = 1
 ##
 @export var avoid_weight: float = 100
+@export var aggro_range: float = 900
 
 var state = MOVEMODE.WAITING
 var distance_to_player
@@ -92,6 +93,8 @@ func update_distance_to_player():
 
 func _physics_process(delta: float) -> void:
 	update_distance_to_player()
+	if distance_to_player >= aggro_range:
+		state = MOVEMODE.WAITING
 	match state:
 		MOVEMODE.CHASING:
 			handle_chasing_state(delta)
@@ -253,6 +256,8 @@ func get_steering() -> Vector2:
 func handle_waiting_state() -> void:
 	velocity = Vector2.ZERO
 	move_and_slide()
+	if distance_to_player > aggro_range:
+		state = MOVEMODE.CHASING
 
 # Helper method for dashing
 func start_dashing():

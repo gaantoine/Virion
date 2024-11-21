@@ -19,7 +19,7 @@ var current_hp = base_max_hp
 
 @export_group("Shoot Settings")
 ## Aiming build up time before shooting
-@export var aim_duration: float = 2
+@export var aim_duration: float = 1.5
 ## Cooldown after shooting in seconds
 @export var shoot_cooldown: float = 1.5
 @export var max_range: float = 800
@@ -35,6 +35,7 @@ var current_hp = base_max_hp
 @export var seek_weight: float = 1
 ##
 @export var avoid_weight: float = 100
+@export var aggro_range: float = 900
 
 var state = MOVEMODE.AIMING
 var player:Player:
@@ -79,6 +80,8 @@ func _physics_process(delta: float) -> void:
 	update_distance_to_player()
 	if (distance_to_player <= min_flee_range):
 		state = MOVEMODE.FLEEING
+	if (distance_to_player >= aggro_range):
+		state = MOVEMODE.WAITING
 	# State Machine
 	match state:
 		MOVEMODE.CHASING:
@@ -200,7 +203,7 @@ func take_aim() -> bool:
 		return false
 	
 	# Debug drawing
-	call_deferred("queue_redraw")
+	#call_deferred("queue_redraw")
 	
 	return true
 
@@ -215,7 +218,10 @@ func shoot() -> void:
 	# Play sound effect
 
 func handle_waiting_state() -> void:
-	pass
+	velocity = Vector2.ZERO
+	move_and_slide()
+	if distance_to_player > aggro_range:
+		state = MOVEMODE.CHASING
 
 func _on_Timer_timeout():
 	state = MOVEMODE.AIMING

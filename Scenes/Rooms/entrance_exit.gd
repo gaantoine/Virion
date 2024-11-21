@@ -11,7 +11,7 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if isInArea:
-		if Input.is_key_pressed(KEY_F):
+		if Input.is_action_pressed("interact"):
 			Doors.visible = false
 			Doors.collision_enabled = false
 

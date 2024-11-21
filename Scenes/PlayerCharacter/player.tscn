@@ -1,10 +1,56 @@
-[gd_scene load_steps=13 format=3 uid="uid://coujnnoiesx2e"]
+[gd_scene load_steps=18 format=3 uid="uid://coujnnoiesx2e"]
 
 [ext_resource type="Script" path="res://Scenes/PlayerCharacter/player.gd" id="1_nm4sk"]
 [ext_resource type="Script" path="res://Scenes/PlayerCharacter/shooter.gd" id="3_slfig"]
 [ext_resource type="Script" path="res://Scenes/PlayerCharacter/melee.gd" id="4_oputj"]
 [ext_resource type="Texture2D" uid="uid://c3075f8qxamhx" path="res://VFX_PNGs/MeleeSpriteSheet.png" id="4_warth"]
 [ext_resource type="Texture2D" uid="uid://cr18de700u81t" path="res://Animations/Nebula idol down animation first pass.png" id="4_wogfe"]
+
+[sub_resource type="Animation" id="Animation_1s1ai"]
+resource_name = "Nebula_Down_Idle"
+loop_mode = 2
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Nebula Down idle:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.1, 0.3, 0.5, 0.6, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [1, 2, 3, 4, 5]
+}
+
+[sub_resource type="Animation" id="Animation_ftswi"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Nebula Down idle:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_66isc"]
+_data = {
+"Nebula_Down_Idle": SubResource("Animation_1s1ai"),
+"RESET": SubResource("Animation_ftswi")
+}
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_017m5"]
+animation = &"Nebula_Down_Idle"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_xa2kd"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_017m5")
+blend_point_0/pos = Vector2(0, -0.6)
+blend_mode = 2
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_45cy6"]
 radius = 24.0
@@ -85,6 +131,16 @@ collision_layer = 48
 motion_mode = 1
 script = ExtResource("1_nm4sk")
 
+[node name="Nebula_AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_66isc")
+}
+
+[node name="Nebula_AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource("AnimationNodeBlendSpace2D_xa2kd")
+anim_player = NodePath("../Nebula_AnimationPlayer")
+parameters/blend_position = Vector2(0.0114537, 0.218978)
+
 [node name="Nebula Down idle" type="Sprite2D" parent="."]
 scale = Vector2(0.25, 0.25)
 texture = ExtResource("4_wogfe")
@@ -118,7 +174,6 @@ collision_layer = 0
 collision_mask = 512
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TileDetectorArea"]
-visible = false
 shape = SubResource("RectangleShape2D_w2em4")
 
 [node name="Shooter" type="Node2D" parent="."]

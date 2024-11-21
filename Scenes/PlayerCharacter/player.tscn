@@ -94,7 +94,6 @@ hframes = 6
 z_index = -3
 position = Vector2(0, 2)
 shape = SubResource("CapsuleShape2D_45cy6")
-disabled = true
 
 [node name="EnergyLabel" type="Label" parent="."]
 anchors_preset = 8

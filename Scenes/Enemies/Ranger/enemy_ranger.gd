@@ -211,7 +211,8 @@ func shoot() -> void:
 		
 	new_bullet.init(global_position, direction)
 	get_tree().root.add_child(new_bullet)
-	print(shoot)
+	
+	# Play sound effect
 
 func handle_waiting_state() -> void:
 	pass

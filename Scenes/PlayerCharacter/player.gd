@@ -47,7 +47,7 @@ var collidingTileMaps:Array = []
 func _ready():
 	current = self
 	attr_defaults = {
-		"bullet_damage": 1,
+		"bullet_damage": 5,
 		"bullet_speed": 1, # tiles per second
 		"bullet_range": 10, # in tiles
 		"bullet_firing_rate": 1,
@@ -56,6 +56,7 @@ func _ready():
 		"bullet_count": 1,
 		"bullet_arc": 10, # for multi-shot weapons
 		"melee_damage": 5,
+		"melee_knockback": 2,
 		"consumable_damage": 5,
 		"consumable_size": 1,
 		"droprate_grenade": 1,
@@ -82,18 +83,11 @@ func _physics_process(delta:float) -> void:
 	
 	if Input.is_action_just_pressed("ui_focus_next"): # mod system testing
 		print(attrs["bullet_firing_rate"])
-		#attr_defaults = {"fire_rate": 10, "bullet_damage": 5}
-		#add_mods({"fire_rate": "=5", "bullet_damage": "+20%"})
-		#add_mods({"fire_rate": "+1"})
-		#add_mods({"fire_rate": "-50%"})
-		#apply_mods()
-		#print("fire_rate: ", attrs["fire_rate"])
-		#print("damage: ", attrs["bullet_damage"])
 		
 	# Renzo -- It will detect tile map collision and if Custom Data "is_destructive" is true, it will destroy player
-	for collider in collidingTileMaps:
-		var tile_pos = collider.local_to_map(collider.to_local(global_position))
-		var tile_data = collider.get_cell_tile_data(tile_pos)
+	for layer:TileMapLayer in collidingTileMaps:
+		var tile_pos:Vector2i = layer.local_to_map(layer.to_local(global_position))
+		var tile_data:TileData = layer.get_cell_tile_data(tile_pos)
 		
 		if tile_data and tile_data.get_custom_data("is_destructive"):
 			destroy_player()
@@ -102,7 +96,7 @@ func _physics_process(delta:float) -> void:
 	for i in get_slide_collision_count():
 		var collider = get_slide_collision(i).get_collider()
 		if collider is TileMapLayer:
-			print(collider)
+			print("testing", collider)
 			var tile_pos = collider.local_to_map(collider.to_local(get_slide_collision(i).get_position()-get_slide_collision(i).get_normal()))
 			var tile_data = collider.get_cell_tile_data(tile_pos)
 			

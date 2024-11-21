@@ -26,4 +26,5 @@ func break_bullet() -> void:
 	queue_free()
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
-	break_bullet()
+	if !body.is_in_group("enemy"):
+		break_bullet()

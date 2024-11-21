@@ -136,11 +136,12 @@ blend_point_1/node = SubResource("AnimationNodeAnimation_i6kt1")
 blend_point_1/pos = Vector2(0, 0.4)
 blend_mode = 2
 
-[node name="EnemyRanger" type="CharacterBody2D"]
-collision_layer = 16
+[node name="EnemyRanger" type="CharacterBody2D" groups=["enemy"]]
+collision_layer = 256
+collision_mask = 289
 script = ExtResource("1_0kdd3")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["enemy"]]
 shape = SubResource("CircleShape2D_s373b")
 
 [node name="Ranger_AnimationP" type="AnimationPlayer" parent="."]

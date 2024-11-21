@@ -43,10 +43,10 @@ mods = {
 
 [node name="EnemyBruiser2" parent="." instance=ExtResource("1_8rsap")]
 position = Vector2(891, 317)
-middash_attack_range = 10.0
 
 [node name="Player" parent="." instance=ExtResource("4_srbm1")]
 position = Vector2(272, 543)
 
 [node name="EnemyRanger" parent="." instance=ExtResource("5_d0q74")]
-position = Vector2(492, 126)
+position = Vector2(469, 192)
+collision_mask = 33

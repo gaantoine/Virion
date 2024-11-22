@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://simi24ffdm24"
+path="res://.godot/imported/Player_Dodge_Jump_3.ogg-8c2be1baf751c2aad54aa7d0e6c33302.oggvorbisstr"
+
+[deps]
+
+source_file="res://Audio/Sound Effects/Player/Dodge/Player_Dodge_Jump_3.ogg"
+dest_files=["res://.godot/imported/Player_Dodge_Jump_3.ogg-8c2be1baf751c2aad54aa7d0e6c33302.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

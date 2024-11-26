@@ -23,14 +23,15 @@ static var current:Player
 @export var dodge_cooldown:float = 0.75
 
 @export_category("Energy")
-## Max number of consecutive dodges
-@export var max_energy:float = 4
 ## Rate at which energy regenerates per second.
 @export var energy_regen_rate:float = 1
 ## Delay (in seconds) after consuming energy before regeneration resumes. 
 @export var energy_regen_delay:float = 1
 
-@onready var energy:float = max_energy
+var max_energy:float:
+	get: return attrs["stamina"]
+
+@onready var energy:float = 4
 
 @onready var t_EnergyRegenDelay:Timer = $EnergyRegenDelayTimer
 

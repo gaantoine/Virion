@@ -131,6 +131,77 @@ var pickups:Dictionary = {
 			"dodge_speed": "=1.1",
 			"stamina": "=5"
 		}
+	},
+	Pickup.transformer: {
+		"texture": "res://Scenes/Pickups/Pickup_PNGS/transformer1.png",
+		"mods": {
+			"bullet_speed": "-25%",
+			"bullet_size": "+50%",
+			"bullet_accuracy": "+20%"
+		}
+	},
+	Pickup.radiator: { 
+		"texture": "res://Scenes/Pickups/Pickup_PNGS/radiator1.png",
+		"mods": {
+			"bullet_accuracy": "-10%",
+			"bullet_firing_rate": "-25%",
+			"bullet_speed": "+10%",
+			"stamina": "+1"
+		}
+	},
+	Pickup.power_converter: {
+		"texture": "res://Scenes/Pickups/Pickup_PNGS/power converter.png",
+		"mods": {
+			"bullet_damage": "-1",
+			"dodge_speed": "+10%",
+			"melee_damage": "+3",
+		}
+	},
+	Pickup.power_diverter: {
+		"texture": "res://Scenes/Pickups/Pickup_PNGS/power diverter.png",
+		"mods": {
+			"melee_damage": "-1",
+			"bullet_speed": "+10%",
+			"bullet_damage": "+3"
+		}
+	},
+	Pickup.voltage_regulator: {
+		"texture": "res://Scenes/Pickups/Pickup_PNGS/voltage regulator.png",
+		"mods": {
+			"bullet_accuracy": "+50%",
+			"bullet_range": "+30%"
+		}
+	},
+	Pickup.malware: {
+		"texture": "res://Scenes/Pickups/Pickup_PNGS/malware.png",
+		"mods": {
+			"dodge_speed": "-10%",
+			"bullet_accuracy": "-5%",
+			"bullet_damage": "+3"
+		}
+	},
+	Pickup.overclock: {
+		"texture": "res://Scenes/Pickups/Pickup_PNGS/overclock.png",
+		"mods": {
+			"bullet_firing_rate": "+10%",
+			"bullet_speed": "+15%",
+			"dodge_speed": "+15%"
+		}
+	},
+	Pickup.virus: {
+		"texture": "res://Scenes/Pickups/Pickup_PNGS/virus.png",
+		"mods": {
+			"bullet_accuracy": "-10%",
+			"bullet_size": "-20%",
+			"bullet_piercing": "+1"
+		}
+	},
+	Pickup.ram: {
+		"texture": "res://Scenes/Pickups/Pickup_PNGS/ram.png",
+		"mods": {
+			"melee_damage": "+1",
+			"dodge_speed": "+25%"
+		}
 	}
 }
 

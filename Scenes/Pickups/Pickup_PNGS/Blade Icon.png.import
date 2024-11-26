@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c2nmobab47w7g"
-path="res://.godot/imported/Slug Chip Logo.jpg-dd00ab0632d5282f670dd0dc46c77727.ctex"
+uid="uid://3w2h7app3c60"
+path="res://.godot/imported/Blade Icon.png-7033287a3346e297d4e3e30851797440.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Chip Logo Icons/Slug Chip Logo.jpg"
-dest_files=["res://.godot/imported/Slug Chip Logo.jpg-dd00ab0632d5282f670dd0dc46c77727.ctex"]
+source_file="res://Scenes/Pickups/Pickup_PNGS/Blade Icon.png"
+dest_files=["res://.godot/imported/Blade Icon.png-7033287a3346e297d4e3e30851797440.ctex"]
 
 [params]
 

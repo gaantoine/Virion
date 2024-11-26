@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cf1kfl4x2fejm"
-path="res://.godot/imported/Repeat Chip Logo.jpg-55f7c152fb9752ce1cb0d4e144cb93a5.ctex"
+uid="uid://b6a772612a0u4"
+path="res://.godot/imported/Repeat Icon.png-f4a2038b69b69e7f42df9fbe2bce5659.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Chip Logo Icons/Repeat Chip Logo.jpg"
-dest_files=["res://.godot/imported/Repeat Chip Logo.jpg-55f7c152fb9752ce1cb0d4e144cb93a5.ctex"]
+source_file="res://Scenes/Pickups/Pickup_PNGS/Repeat Icon.png"
+dest_files=["res://.godot/imported/Repeat Icon.png-f4a2038b69b69e7f42df9fbe2bce5659.ctex"]
 
 [params]
 

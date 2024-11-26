@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b6a772612a0u4"
-path="res://.godot/imported/Repeat Icon.png-f4a2038b69b69e7f42df9fbe2bce5659.ctex"
+uid="uid://bxg4u2xyhcqsi"
+path="res://.godot/imported/Spread Icon.png-194b609aeb708a9a9d291f35fe58709c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Scenes/Pickups/Pickup_PNGS/Repeat Icon.png"
-dest_files=["res://.godot/imported/Repeat Icon.png-f4a2038b69b69e7f42df9fbe2bce5659.ctex"]
+source_file="res://Scenes/Pickups/Spread Icon.png"
+dest_files=["res://.godot/imported/Spread Icon.png-194b609aeb708a9a9d291f35fe58709c.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cyie47q6ym6u4"
-path="res://.godot/imported/Spread Chip Logo.jpg-940176c172e03c268843da5252875c0d.ctex"
+uid="uid://4wq3t8uc0nmq"
+path="res://.godot/imported/Snipe Icon.png-47a6613ccc4d03744a27cd9274673454.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Chip Logo Icons/Spread Chip Logo.jpg"
-dest_files=["res://.godot/imported/Spread Chip Logo.jpg-940176c172e03c268843da5252875c0d.ctex"]
+source_file="res://Scenes/Pickups/Pickup_PNGS/Snipe Icon.png"
+dest_files=["res://.godot/imported/Snipe Icon.png-47a6613ccc4d03744a27cd9274673454.ctex"]
 
 [params]
 

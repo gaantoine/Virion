@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://4wq3t8uc0nmq"
-path="res://.godot/imported/Snipe Icon.png-47a6613ccc4d03744a27cd9274673454.ctex"
+uid="uid://co4kx4y845h4o"
+path="res://.godot/imported/Blade Icon.png-748a8d59e9f6f0aa7b713965e65d10fc.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Scenes/Pickups/Pickup_PNGS/Snipe Icon.png"
-dest_files=["res://.godot/imported/Snipe Icon.png-47a6613ccc4d03744a27cd9274673454.ctex"]
+source_file="res://Scenes/Pickups/Blade Icon.png"
+dest_files=["res://.godot/imported/Blade Icon.png-748a8d59e9f6f0aa7b713965e65d10fc.ctex"]
 
 [params]
 

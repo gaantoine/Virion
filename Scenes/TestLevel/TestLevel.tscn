@@ -38,7 +38,7 @@ position = Vector2(641, 222)
 
 [node name="SnipePickup" parent="." instance=ExtResource("4_k6ggg")]
 position = Vector2(672, 608)
-pickup_type = 1
+pickup_type = 10
 
 [node name="BasePickup" parent="." instance=ExtResource("4_k6ggg")]
 position = Vector2(538, 444)

@@ -36,11 +36,12 @@ position = Vector2(64, 64)
 [node name="EnemyBruiser" parent="." instance=ExtResource("1_8rsap")]
 position = Vector2(641, 222)
 
+[node name="SnipePickup" parent="." instance=ExtResource("4_k6ggg")]
+position = Vector2(672, 608)
+pickup_type = 1
+
 [node name="BasePickup" parent="." instance=ExtResource("4_k6ggg")]
 position = Vector2(538, 444)
-mods = {
-"bullet_firing_rate": "+50%"
-}
 
 [node name="EnemyBruiser2" parent="." instance=ExtResource("1_8rsap")]
 position = Vector2(891, 317)

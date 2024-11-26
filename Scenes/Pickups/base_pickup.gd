@@ -1,10 +1,9 @@
 extends Node2D
 class_name BasePickup
 
-@export_category("Icon")
-@export var texture:Texture2D
-@export var tex_scale:float = 0.125
-@export var type:Pickup = Pickup.UNASSIGNED
+var texture:Texture2D
+var tex_scale:float = 0.125
+@export var pickup_type:Pickup = Pickup.UNASSIGNED
 @export var mods:Dictionary
 
 
@@ -141,10 +140,10 @@ func _on_pickup_detector_body_entered(body: Node2D) -> void:
 		queue_free()
 
 func _ready() -> void:
-	if type == Pickup.UNASSIGNED:
+	if pickup_type == Pickup.UNASSIGNED:
 		push_warning("unassigned pickup: ", self)
 	else:
-		var entry:Dictionary = pickups[type]
+		var entry:Dictionary = pickups[pickup_type]
 		texture = load(entry["texture"])
 		mods = entry["mods"]
 	if texture != null:

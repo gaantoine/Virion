@@ -91,7 +91,7 @@ tile_map_data = PackedByteArray("AAABAAUAAAACAAAAAFACAAUAAAACAAAAAFADAAUAAAACAAA
 tile_set = SubResource("TileSet_i2dcx")
 
 [node name="EnemyRanger" parent="." instance=ExtResource("3_34wsm")]
-position = Vector2(840, -80)
+position = Vector2(824, -96)
 
 [node name="EnemyBruiser" parent="." instance=ExtResource("4_shhcg")]
 position = Vector2(-16, -440)

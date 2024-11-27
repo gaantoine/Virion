@@ -70,7 +70,7 @@ sources/3 = SubResource("TileSetAtlasSource_dex4v")
 [node name="Room5" type="Node2D"]
 
 [node name="Exit" type="Node2D" parent="."]
-position = Vector2(-1056, -1344)
+position = Vector2(-896, -1280)
 
 [node name="BaseMapLayer" type="TileMapLayer" parent="."]
 position = Vector2(-1056, -1344)

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c2nmobab47w7g"
-path="res://.godot/imported/Slug Chip Logo.jpg-dd00ab0632d5282f670dd0dc46c77727.ctex"
+uid="uid://cf0o00f30mgio"
+path="res://.godot/imported/Repeat Icon.png-d8f7998f77c46428ee270448d6f7669f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Chip Logo Icons/Slug Chip Logo.jpg"
-dest_files=["res://.godot/imported/Slug Chip Logo.jpg-dd00ab0632d5282f670dd0dc46c77727.ctex"]
+source_file="res://Scenes/Pickups/Repeat Icon.png"
+dest_files=["res://.godot/imported/Repeat Icon.png-d8f7998f77c46428ee270448d6f7669f.ctex"]
 
 [params]
 

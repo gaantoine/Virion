@@ -12,9 +12,9 @@ enum MOVEMODE {
 @export_group("Health and Damage")
 ## Maximum total health base
 @export var base_max_hp: float = 24
-# current HP, can implement scaling per level progressed later if needed
+# current HP
 var current_hp = base_max_hp
-## HP increase per level, does nothing currently
+## HP increase per level (ex. level 3 HP = 24 + (12 + 12))
 @export var max_hp_scaling: float = 12
 ## Attack damage per hit
 @export var damage: float = 16
@@ -87,6 +87,9 @@ func _ready():
 	for x in range(num_directions):
 		var angle_rad = deg_to_rad(x * angle_increment)
 		ray_directions.append(Vector2(cos(angle_rad), sin(angle_rad)).normalized())
+
+func on_spawn(level_counter: float) -> void:
+	current_hp = base_max_hp + (max_hp_scaling * (level_counter - 1))
 
 func update_distance_to_player():
 	distance_to_player = (player.global_position - global_position).length()

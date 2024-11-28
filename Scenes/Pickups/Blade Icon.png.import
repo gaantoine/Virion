@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cyie47q6ym6u4"
-path="res://.godot/imported/Spread Chip Logo.jpg-940176c172e03c268843da5252875c0d.ctex"
+uid="uid://co4kx4y845h4o"
+path="res://.godot/imported/Blade Icon.png-748a8d59e9f6f0aa7b713965e65d10fc.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Chip Logo Icons/Spread Chip Logo.jpg"
-dest_files=["res://.godot/imported/Spread Chip Logo.jpg-940176c172e03c268843da5252875c0d.ctex"]
+source_file="res://Scenes/Pickups/Blade Icon.png"
+dest_files=["res://.godot/imported/Blade Icon.png-748a8d59e9f6f0aa7b713965e65d10fc.ctex"]
 
 [params]
 

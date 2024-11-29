@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b6arfeqxecbr8"
-path="res://.godot/imported/Blade Chip Icon.jpg-cc1cfd27757197c548bb7c23a65bb664.ctex"
+uid="uid://bcxgg4fteeova"
+path="res://.godot/imported/ChargeEffectSpritesheet.png-f67cf3f8c872a4c12173b4756f602a14.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Chip Logo Icons/Blade Chip Icon.jpg"
-dest_files=["res://.godot/imported/Blade Chip Icon.jpg-cc1cfd27757197c548bb7c23a65bb664.ctex"]
+source_file="res://Animations/ChargeEffectSpritesheet.png"
+dest_files=["res://.godot/imported/ChargeEffectSpritesheet.png-f67cf3f8c872a4c12173b4756f602a14.ctex"]
 
 [params]
 

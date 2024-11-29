@@ -1,48 +1,21 @@
-[gd_scene load_steps=9 format=3 uid="uid://b3xp8gwm4pfb1"]
+[gd_scene load_steps=5 format=3 uid="uid://b3xp8gwm4pfb1"]
 
-[ext_resource type="PackedScene" uid="uid://dqrybci7j8w3k" path="res://Scenes/Rooms/Room1.tscn" id="1_tk33b"]
+[ext_resource type="Script" path="res://Scenes/Rooms/RandomRooms.gd" id="1_e44r6"]
 [ext_resource type="PackedScene" uid="uid://cfnck58mjxdjq" path="res://Scenes/Rooms/Room0.tscn" id="1_ur163"]
-[ext_resource type="PackedScene" uid="uid://b8exkr05vc8nn" path="res://Scenes/Rooms/Room2.tscn" id="2_n8gmo"]
-[ext_resource type="PackedScene" uid="uid://dxmpwobtluek3" path="res://Scenes/Rooms/Room3.tscn" id="3_isnjb"]
-[ext_resource type="PackedScene" uid="uid://d27dwvl5fhm0e" path="res://Scenes/Rooms/Room4.tscn" id="4_np8r8"]
-[ext_resource type="PackedScene" uid="uid://bumoohgb7ef05" path="res://Scenes/Rooms/Room5.tscn" id="5_0ix2t"]
 [ext_resource type="PackedScene" uid="uid://coujnnoiesx2e" path="res://Scenes/PlayerCharacter/player.tscn" id="8_81o76"]
 [ext_resource type="PackedScene" uid="uid://dl8067f70y3hq" path="res://Scenes/Rooms/InbetweenRooms.tscn" id="8_m8x2a"]
 
-[node name="5Rooms" type="Node2D"]
+[node name="5Rooms" type="Node2D" node_paths=PackedStringArray("StartRoom", "StartHallway")]
+script = ExtResource("1_e44r6")
+StartRoom = NodePath("StartingRoom")
+StartHallway = NodePath("0-1Path")
+MaxRooms = 5
 
 [node name="StartingRoom" parent="." instance=ExtResource("1_ur163")]
-position = Vector2(1535, 2112)
-
-[node name="Room1" parent="." instance=ExtResource("1_tk33b")]
-position = Vector2(1344, 1408)
-
-[node name="Room2" parent="." instance=ExtResource("2_n8gmo")]
-position = Vector2(1344, 640)
-
-[node name="Room3" parent="." instance=ExtResource("3_isnjb")]
-position = Vector2(1344, -192)
-
-[node name="Room4" parent="." instance=ExtResource("4_np8r8")]
-position = Vector2(2880, -1024)
-
-[node name="Room5" parent="." instance=ExtResource("5_0ix2t")]
-position = Vector2(2944, -2496)
+position = Vector2(1536, 2112)
 
 [node name="0-1Path" parent="." instance=ExtResource("8_m8x2a")]
-position = Vector2(2336, 2112)
-
-[node name="1-2Path" parent="." instance=ExtResource("8_m8x2a")]
-position = Vector2(1504, 1408)
-
-[node name="2-3Path" parent="." instance=ExtResource("8_m8x2a")]
-position = Vector2(1504, 640)
-
-[node name="3-4Path" parent="." instance=ExtResource("8_m8x2a")]
-position = Vector2(3040, -192)
-
-[node name="4-5Path" parent="." instance=ExtResource("8_m8x2a")]
-position = Vector2(4000, -1024)
+position = Vector2(2336, 2176)
 
 [node name="Player" parent="." instance=ExtResource("8_81o76")]
 position = Vector2(1813, 2528)

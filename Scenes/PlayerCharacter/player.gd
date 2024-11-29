@@ -23,14 +23,15 @@ static var current:Player
 @export var dodge_cooldown:float = 0.75
 
 @export_category("Energy")
-## Max number of consecutive dodges
-@export var max_energy:float = 4
 ## Rate at which energy regenerates per second.
 @export var energy_regen_rate:float = 1
 ## Delay (in seconds) after consuming energy before regeneration resumes. 
 @export var energy_regen_delay:float = 1
 
-@onready var energy:float = max_energy
+var max_energy:float:
+	get: return attrs["stamina"]
+
+@onready var energy:float = 4
 
 @onready var t_EnergyRegenDelay:Timer = $EnergyRegenDelayTimer
 
@@ -49,6 +50,7 @@ var can_dodge := true
 	"bullet_arc": 10, # for multi-shot weapons
 	"melee_damage": 5,
 	"melee_knockback": 2,
+	"bullet_size": 1,
 	#"consumable_damage": 5,
 	#"consumable_size": 1,
 	#"droprate_grenade": 1,
@@ -167,7 +169,7 @@ func add_mods(mods:Dictionary) -> void:
 			attr_mods[key] = []
 		var mod_list:Array = attr_mods[key]
 		var i:int = 0
-		while i < len(mod_list) and mod_prio(mod_list[i]) < prio:
+		while i < len(mod_list) and mod_prio(mod_list[i]) <= prio:
 			i += 1
 		mod_list.insert(i, mod)
 	apply_mods()
@@ -183,12 +185,12 @@ func apply_mods() -> void:
 				if mod[-1] == "%":
 					attrs[attr] *= int(mod.left(-1)) / 100.0
 				else:
-					attrs[attr] = int(mod)
+					attrs[attr] = float(mod)
 			else:
 				if mod[-1] == "%":
 					attrs[attr] += attrs[attr] * int(mod.left(-1)) / 100.0
 				else:
-					attrs[attr] += int(mod)
+					attrs[attr] += float(mod)
 
 func mod_prio(mod:String) -> int:
 	if mod[0] in "+-":

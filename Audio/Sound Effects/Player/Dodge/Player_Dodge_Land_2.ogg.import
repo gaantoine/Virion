@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://c0jvg11garpgl"
+path="res://.godot/imported/Player_Dodge_Land_2.ogg-3884c4b946056462e95e28b3f8080f6f.oggvorbisstr"
+
+[deps]
+
+source_file="res://Audio/Sound Effects/Player/Dodge/Player_Dodge_Land_2.ogg"
+dest_files=["res://.godot/imported/Player_Dodge_Land_2.ogg-3884c4b946056462e95e28b3f8080f6f.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

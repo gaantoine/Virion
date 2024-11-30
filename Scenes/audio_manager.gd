@@ -1,11 +1,23 @@
 extends Node2D
 
 var intensity = 1.0
+#Test AudioStreamPlayer for use in troubleshooting
+#@onready var TestAudio = $TestAudio
+#reference to Music System AudioStreamPlayer
 @onready var MusicSystem = $Music_System
+#reference to the MusicSystem stream
 @onready var MusicStreams = MusicSystem.stream
+#reference to PlayerFootstep AudioStreamPlayer
+@onready var PlayerFootstep = $Player_Footstep
+#reference to the Player Character
+@onready var PlayerCharacter = $"../Player"
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	#this line connects the _on_player_footstep_ function in this script
+	#to the player_footstep signal triggered in the player.gd script
+	PlayerCharacter.player_footstep.connect(_on_player_footstep)
+	#set initial volume levels for MusicSystem sub-streams
 	MusicStreams.set_sync_stream_volume(1, -99.0)
 	MusicStreams.set_sync_stream_volume(2, -99.0)
 	MusicStreams.set_sync_stream_volume(3, -99.0)
@@ -59,6 +71,16 @@ func updateMusicStreams(intensity) -> void:
 			MusicStreams.set_sync_stream_volume(1, lerpf(-99.0, 0.0, 0.0))
 			MusicStreams.set_sync_stream_volume(2, lerpf(-99.0, 0.0, 0.0))
 			MusicStreams.set_sync_stream_volume(3, lerpf(-99.0, 0.0, 0.0))
+
+#this function is triggered every time the player_footstep signal is emitted from the
+#player.gd script and plays a footstep in response
+func _on_player_footstep() -> void:
+	#print("_on_player_footstep was called")
+	#By default the AudioStreamPlayer exists at the origin, so we need to set its
+	#position to wherever the player is in order for it to be heard correctly
+	PlayerFootstep.set_global_position(PlayerCharacter.global_position)
+	PlayerFootstep.play()
+	#TestAudio.play()
 
 #Implemented input events to manually change Intensity
 func _input(event):

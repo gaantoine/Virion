@@ -65,6 +65,9 @@ var attr_mods:Dictionary # string -> array[string]
 
 # Renzo -- This will store the tilemaps the player is colliding with
 var collidingTileMaps:Array = []
+
+#signal variable for player footsteps called in Animation Player
+signal player_footstep
 		
 func _ready():
 	current = self
@@ -226,3 +229,8 @@ func _on_area_2d_body_entered(collider: Node2D) -> void:
 func _on_area_2d_body_exited(body: Node2D) -> void:
 	if body is TileMapLayer:
 		collidingTileMaps.erase(body)
+
+#This function is triggered from the animation player to call for footsteps sounds
+#from the audio manager when specific frames of animation are played
+func call_player_footstep() -> void:
+	player_footstep.emit()

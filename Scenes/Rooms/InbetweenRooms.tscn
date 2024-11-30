@@ -71,7 +71,7 @@ sources/3 = SubResource("TileSetAtlasSource_mct3e")
 [node name="InBetweenRooms" type="Node2D"]
 
 [node name="BaseMapLayer" type="TileMapLayer" parent="."]
-position = Vector2(-160, -192)
+position = Vector2(-160, -256)
 scale = Vector2(0.25, 0.25)
 tile_map_data = PackedByteArray("AAACAAQAAwABAAAAAAACAAMAAwABAAAAAAACAAIAAwABAAAAAAACAAEAAwABAAAAAAABAAMAAAACAAAAAAABAAQAAAACAAEAAAABAAEAAAACAAAAAAABAAIAAAACAAEAAAADAAEAAAACAAEAADADAAIAAAACAAAAADADAAMAAAACAAEAADADAAQAAAACAAAAADA=")
 tile_set = SubResource("TileSet_ynyo3")
@@ -91,6 +91,9 @@ Doors = NodePath("../Doors")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BaseMapLayer/EntranceExit"]
 shape = SubResource("CircleShape2D_euejb")
+
+[node name="Exit" type="Node2D" parent="."]
+position = Vector2(0, -192)
 
 [connection signal="body_entered" from="BaseMapLayer/EntranceExit" to="BaseMapLayer/EntranceExit" method="_on_body_entered"]
 [connection signal="body_exited" from="BaseMapLayer/EntranceExit" to="BaseMapLayer/EntranceExit" method="_on_body_exited"]

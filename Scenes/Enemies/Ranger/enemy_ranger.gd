@@ -37,6 +37,9 @@ var current_hp = base_max_hp
 @export var avoid_weight: float = 100
 @export var aggro_range: float = 900
 
+#signal variable for ranger shooting to be used by listeners
+signal ranger_shoot
+
 var state = MOVEMODE.AIMING
 var player:Player:
 	get:return Player.current
@@ -220,6 +223,8 @@ func shoot() -> void:
 	
 	# Play sound effect
 	# $AudioStreamPlayer.play()
+	#emit shoot signal for listeners
+	ranger_shoot.emit()
 
 func handle_waiting_state() -> void:
 	velocity = Vector2.ZERO

@@ -65,6 +65,13 @@ var attr_mods:Dictionary # string -> array[string]
 
 # Renzo -- This will store the tilemaps the player is colliding with
 var collidingTileMaps:Array = []
+
+#signal variable for player footsteps called in Animation Player
+signal player_footstep
+#signal variable for player dodge start called in Animation Player
+signal player_dodge_start
+#signal variable for player dodge end called in Animation Player
+signal player_dodge_end
 		
 func _ready():
 	current = self
@@ -226,3 +233,18 @@ func _on_area_2d_body_entered(collider: Node2D) -> void:
 func _on_area_2d_body_exited(body: Node2D) -> void:
 	if body is TileMapLayer:
 		collidingTileMaps.erase(body)
+
+#This function is triggered from the animation player to call for footsteps sounds
+#from the audio manager when specific frames of animation are played
+func call_player_footstep() -> void:
+	player_footstep.emit()
+
+#This function is triggered from the animation player to call for the dodge jump sound
+#from the audio manager when specific frames of animation are played	
+func call_player_dodge_start() -> void:
+	player_dodge_start.emit()
+
+#This function is triggered from the animation player to call for the dodge land sound
+#from the audio manager when specific frames of animation are played
+func call_player_dodge_end() -> void:
+	player_dodge_end.emit()

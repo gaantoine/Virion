@@ -74,6 +74,10 @@ var seek_map = []
 var collision_map = []
 var seek_map_buffer = 0.5
 
+#signal variable to be used by the Animation Player to call for bruiser footstep sounds
+#from the audio manager
+signal bruiser_footstep
+
 var player:Player:
 	get:return Player.current
 
@@ -131,13 +135,6 @@ func handle_aiming_state(delta: float) -> void:
 
 # Aim at the player, return true if player is in range and unobstructed
 func take_aim() -> bool:
-	# Null catch for debugging, should be ok to remove with draw method
-	raycast_from = global_position
-	raycast_to = global_position
-	predict_from = global_position
-	predict_to = global_position
-	# =====================================================
-	
 	var dash_distance = dash_speed * dash_duration + ((dash_speed * dash_speed) \
 		/ (2 * deceleration))
 	
@@ -160,11 +157,6 @@ func take_aim() -> bool:
 	
 	predicted_position = player.global_position + player.velocity * lead_time
 	dash_direction = (predicted_position - global_position).normalized()
-	
-	# Debug drawing
-	predict_from = global_position
-	predict_to = global_position + dash_direction * dash_speed 
-	#call_deferred("queue_redraw")
 	
 	return true
 
@@ -311,3 +303,7 @@ func _draw() -> void:
 	local_to = to_local(predict_to)
 	
 	draw_line(local_from, local_to, Color.GREEN, 2)
+
+#function to emit bruiser footstep signal for all listeners to hear	
+func call_bruiser_footstep() -> void:
+	bruiser_footstep.emit()

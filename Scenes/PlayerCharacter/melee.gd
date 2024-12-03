@@ -3,6 +3,9 @@ class_name PlayerMelee
 
 @onready var t_MeleeCD:Timer = $MeleeCooldownTimer
 
+#signal variable for player melee to be used by listeners
+signal player_melee
+
 var player:Player:
 	get:return Player.current
 var attrs:Dictionary:
@@ -29,6 +32,8 @@ func try_melee() -> void:
 	$MelColl.debug_color.h = 0
 	
 	$AnimationPlayer.play("Melee_Anim")
+	#emit player_melee signal for listeners
+	player_melee.emit()
 	t_MeleeCD.start(MELEE_DELAY__S)
 	
 	for target:Node2D in get_overlapping_bodies():

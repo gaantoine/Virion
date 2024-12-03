@@ -3,6 +3,9 @@ class_name PlayerShooter
 
 @onready var t_Refire:Timer = $RefireTimer
 
+#signal variable for player shooting to be used by audio manager
+signal player_shoot
+
 const sc_bullet := preload("res://Animations/VFX/projectile_1.tscn")
 const REFIRE__S:float = 0.2 # base refire delay
 const BULLET_SPREAD:float = deg_to_rad(3)
@@ -30,7 +33,8 @@ func try_shoot() -> void:
 		return
 		
 	t_Refire.start(refire__s)
-	
+	#emit player shoot signal for listeners
+	player_shoot.emit()
 	
 	var count:int = attrs["bullet_count"]
 	var arc:float = deg_to_rad(attrs["bullet_arc"])

@@ -35,8 +35,12 @@ var max_energy:float:
 
 @onready var t_EnergyRegenDelay:Timer = $EnergyRegenDelayTimer
 
+@onready var c_healthbar:ProgressBar = $AspectRatioContainer/Healthbar
+
 var move_mode := MOVEMODE.WALKING
 var can_dodge := true
+
+var health:float = 100
 
 @export_category("Player Base Attributes")
 @export var attr_defaults:Dictionary = {
@@ -77,7 +81,6 @@ func _ready():
 	current = self
 	
 	attrs = attr_defaults.duplicate()
-
 
 func _physics_process(delta:float) -> void:
 	
@@ -168,6 +171,24 @@ func regen_energy(delta:float) -> void:
 		energy = min(max_energy, energy + delta * energy_regen_rate)
 	$EnergyLabel.text = str(int(energy))
 
+func take_damage(damage:float) -> void:
+	health -= damage
+	modulate = Color.RED
+	update_health_display()
+	if health <= 0:
+		health = 0
+		die()
+	else:
+		create_tween().tween_property(self, "modulate", Color.WHITE, 6.0/60)
+		
+
+func update_health_display() -> void:
+	c_healthbar.value = health
+	
+
+func die() -> void:
+	print("aaaaaaaa dying dying dying")
+	
 func add_mods(mods:Dictionary) -> void:
 	for key in mods:
 		var mod:String = mods[key]
@@ -181,7 +202,6 @@ func add_mods(mods:Dictionary) -> void:
 		mod_list.insert(i, mod)
 	apply_mods()
 	
-
 func apply_mods() -> void:
 	attrs = attr_defaults.duplicate()
 	for attr in attr_mods:

@@ -18,6 +18,7 @@ func _process(delta: float) -> void:
 # Ehmry Bay
 func CreateRooms() -> void:
 	var previousHall = StartHallway
+	var saveHall = null
 	var prevRoom = -1
 	var allRooms = [1, 2, 3, 4, 5]
 	
@@ -29,12 +30,15 @@ func CreateRooms() -> void:
 		var holdRoom = load(randomRoom).instantiate()
 		StartRoom.add_child(holdRoom)
 		holdRoom.global_position = exitPos
+		saveHall = holdRoom
+		saveHall.PrevHallway = previousHall
 		
 		# Add the hallway here
 		exitPos = holdRoom.find_child("Exit").global_position
 		holdRoom = load("res://Scenes/Rooms/InbetweenRooms.tscn").instantiate()
 		StartHallway.add_child(holdRoom)
 		holdRoom.global_position = exitPos
+		saveHall.NextHallway = holdRoom
 		
 		allRooms = [1, 2, 3, 4, 5]
 		allRooms.pop_at(allRooms.find(pickRand))

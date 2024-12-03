@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=4 uid="uid://dl8067f70y3hq"]
+[gd_scene load_steps=7 format=4 uid="uid://dl8067f70y3hq"]
 
 [ext_resource type="Texture2D" uid="uid://6tsm52cuk5af" path="res://Scenes/Tilesets/Tiles1.png" id="1_niffs"]
 [ext_resource type="Texture2D" uid="uid://bc75dxvsc61bg" path="res://Scenes/Tilesets/TestTiles002.png" id="2_y05pb"]
@@ -66,9 +66,9 @@ custom_data_layer_0/type = 1
 sources/0 = SubResource("TileSetAtlasSource_vjghk")
 sources/3 = SubResource("TileSetAtlasSource_mct3e")
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_euejb"]
-
-[node name="InBetweenRooms" type="Node2D"]
+[node name="InBetweenRooms" type="Node2D" node_paths=PackedStringArray("Doors")]
+script = ExtResource("3_vr751")
+Doors = NodePath("BaseMapLayer/Doors")
 
 [node name="BaseMapLayer" type="TileMapLayer" parent="."]
 position = Vector2(-160, -256)
@@ -77,23 +77,10 @@ tile_map_data = PackedByteArray("AAACAAQAAwABAAAAAAACAAMAAwABAAAAAAACAAIAAwABAAA
 tile_set = SubResource("TileSet_ynyo3")
 
 [node name="Doors" type="TileMapLayer" parent="BaseMapLayer"]
+visible = false
 tile_map_data = PackedByteArray("AAACAAQAAAACAAIAAAACAAMAAAAEAAEAAAACAAEAAAAFAAEAAAA=")
 tile_set = SubResource("TileSet_ynyo3")
-
-[node name="EntranceExit" type="Area2D" parent="BaseMapLayer" node_paths=PackedStringArray("Doors")]
-position = Vector2(640, 768)
-scale = Vector2(80, 80)
-collision_layer = 0
-collision_mask = 16
-monitorable = false
-script = ExtResource("3_vr751")
-Doors = NodePath("../Doors")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="BaseMapLayer/EntranceExit"]
-shape = SubResource("CircleShape2D_euejb")
+collision_enabled = false
 
 [node name="Exit" type="Node2D" parent="."]
 position = Vector2(0, -192)
-
-[connection signal="body_entered" from="BaseMapLayer/EntranceExit" to="BaseMapLayer/EntranceExit" method="_on_body_entered"]
-[connection signal="body_exited" from="BaseMapLayer/EntranceExit" to="BaseMapLayer/EntranceExit" method="_on_body_exited"]

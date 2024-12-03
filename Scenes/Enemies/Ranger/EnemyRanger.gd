@@ -7,6 +7,9 @@ enum MOVEMODE {
 	WAITING,
 }
 
+#Gonna need this for spawners
+@export var SpawnRef: Node2D
+
 @export_group("Health and Damage")
 ## Maximum total health base
 @export var base_max_hp: float = 24
@@ -245,6 +248,8 @@ func take_knockback(displacement: Vector2) -> void:
 	pass
 
 func die() -> void:
+	SpawnRef.EnemyDie()
+	
 	set_process(false)
 	# Trigger death animation
 	# $AnimationPlayer.play("death")

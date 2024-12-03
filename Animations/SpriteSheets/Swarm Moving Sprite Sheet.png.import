@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dsudg1nprpktx"
-path="res://.godot/imported/Nebula idol roll animation Ver1.png-00d30b721414f1d10b63ec7fb123c7cc.ctex"
+uid="uid://0rpb0v6rw43t"
+path="res://.godot/imported/Swarm Moving Sprite Sheet.png-41653fa7e86f821077e9028a02556085.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Animations/Nebula idol roll animation Ver1.png"
-dest_files=["res://.godot/imported/Nebula idol roll animation Ver1.png-00d30b721414f1d10b63ec7fb123c7cc.ctex"]
+source_file="res://Animations/SpriteSheets/Swarm Moving Sprite Sheet.png"
+dest_files=["res://.godot/imported/Swarm Moving Sprite Sheet.png-41653fa7e86f821077e9028a02556085.ctex"]
 
 [params]
 

@@ -3,8 +3,8 @@
 [ext_resource type="Script" path="res://Scenes/PlayerCharacter/player.gd" id="1_nm4sk"]
 [ext_resource type="Script" path="res://Scenes/PlayerCharacter/shooter.gd" id="3_slfig"]
 [ext_resource type="Script" path="res://Scenes/PlayerCharacter/melee.gd" id="4_oputj"]
-[ext_resource type="Texture2D" uid="uid://c3075f8qxamhx" path="res://VFX_PNGs/MeleeSpriteSheet.png" id="4_warth"]
-[ext_resource type="Texture2D" uid="uid://cr18de700u81t" path="res://Animations/Nebula idol down animation first pass.png" id="4_wogfe"]
+[ext_resource type="Texture2D" uid="uid://c3075f8qxamhx" path="res://Animations/VFX/VFX_PNGs/MeleeSpriteSheet.png" id="4_warth"]
+[ext_resource type="Texture2D" uid="uid://cr18de700u81t" path="res://Animations/SpriteSheets/Nebula idol down animation first pass.png" id="4_wogfe"]
 
 [sub_resource type="Animation" id="Animation_1s1ai"]
 resource_name = "Nebula_Down_Idle"

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d555i1a0h23x"
-path="res://.godot/imported/Nebula move up animation ver1.png-d60a8f221b7520fa244eb0000d3dae55.ctex"
+uid="uid://dj6pvs6tl8oee"
+path="res://.godot/imported/Nebula idol up animation first pass.png-bf55168228dfe36ad8827a6ef300e6fc.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Animations/Nebula move up animation ver1.png"
-dest_files=["res://.godot/imported/Nebula move up animation ver1.png-d60a8f221b7520fa244eb0000d3dae55.ctex"]
+source_file="res://Animations/SpriteSheets/Nebula idol up animation first pass.png"
+dest_files=["res://.godot/imported/Nebula idol up animation first pass.png-bf55168228dfe36ad8827a6ef300e6fc.ctex"]
 
 [params]
 

@@ -1,0 +1,21 @@
+[gd_resource type="AnimationNodeBlendSpace2D" load_steps=4 format=3 uid="uid://orfptdelhje7"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_tl174"]
+animation = &"Bruiser_Charge_Down"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_8yim2"]
+animation = &"Bruiser_Charge_Down"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_1dq6o"]
+animation = &"Bruiser_Charge_Up"
+
+[resource]
+auto_triangles = false
+blend_point_0/node = SubResource("AnimationNodeAnimation_tl174")
+blend_point_0/pos = Vector2(-0.2, 0.6)
+blend_point_1/node = SubResource("AnimationNodeAnimation_8yim2")
+blend_point_1/pos = Vector2(0.2, 0.6)
+blend_point_2/node = SubResource("AnimationNodeAnimation_1dq6o")
+blend_point_2/pos = Vector2(0, -0.8)
+triangles = PackedInt32Array(0, 1, 2)
+blend_mode = 1

@@ -1,194 +1,15 @@
-[gd_scene load_steps=16 format=3 uid="uid://f6n573w57vu6"]
+[gd_scene load_steps=41 format=3 uid="uid://f6n573w57vu6"]
 
 [ext_resource type="Texture2D" uid="uid://cminetoyt22sf" path="res://Misc PNGs and assets/placeholder_icon.png" id="1_p1dxc"]
 [ext_resource type="Script" path="res://Scenes/Enemies/Bruiser/enemy_bruiser.gd" id="1_rmu8v"]
-[ext_resource type="Texture2D" uid="uid://tbcfi0kndp1y" path="res://Animations/BruiserWalk&AttackSpritesheet.png" id="3_2bwsm"]
-[ext_resource type="Texture2D" uid="uid://bcxgg4fteeova" path="res://Animations/ChargeEffectSpritesheet.png" id="4_wrjut"]
+[ext_resource type="Texture2D" uid="uid://tbcfi0kndp1y" path="res://Animations/SpriteSheets/BruiserWalk&AttackSpritesheet.png" id="3_2bwsm"]
+[ext_resource type="Texture2D" uid="uid://bcxgg4fteeova" path="res://Animations/SpriteSheets/ChargeEffectSpritesheet.png" id="4_wrjut"]
+[ext_resource type="Script" path="res://Scenes/Enemies/Bruiser/bruiser_animation_tree.gd" id="5_6blug"]
+[ext_resource type="AnimationNodeBlendSpace2D" uid="uid://bh180jm4lg2ux" path="res://Animations/BruiserAnimations/BruiserWalk2DBlend.tres" id="6_clqsv"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_kcvma"]
 radius = 3.7
 height = 8.0
-
-[sub_resource type="Animation" id="Animation_4sl46"]
-resource_name = "Bruiser_Down_Walk"
-loop_mode = 1
-step = 0.05
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("BruiserSpriteSheet:frame")
-tracks/0/interp = 2
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.25, 0.35, 0.45, 0.5, 0.6, 0.75, 0.85, 0.95),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("BruiserSpriteSheet:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("ChargeEffectDown:visible")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("ChargeEffectUp:visible")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-
-[sub_resource type="Animation" id="Animation_mhkqm"]
-resource_name = "Bruiser_Walk_Up"
-loop_mode = 1
-step = 0.05
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("BruiserSpriteSheet:frame")
-tracks/0/interp = 2
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.25, 0.35, 0.45, 0.5, 0.6, 0.75, 0.85, 0.95),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [10, 11, 12, 13, 14, 15, 16, 17, 18, 19]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("BruiserSpriteSheet:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("ChargeEffectDown:visible")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("ChargeEffectUp:visible")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-
-[sub_resource type="Animation" id="Animation_x7nhy"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("BruiserSpriteSheet:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("BruiserSpriteSheet:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("ChargeEffectDown:frame")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("ChargeEffectDown:visible")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("ChargeEffectUp:visible")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("ChargeEffectUp:frame")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
 
 [sub_resource type="Animation" id="Animation_5klsa"]
 resource_name = "Bruiser_Attack"
@@ -375,30 +196,415 @@ tracks/4/keys = {
 "values": [true]
 }
 
+[sub_resource type="Animation" id="Animation_mhkqm"]
+resource_name = "Bruiser_Walk_Up"
+loop_mode = 1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BruiserSpriteSheet:frame")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.25, 0.35, 0.45, 0.5, 0.6, 0.75, 0.85, 0.95),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [10, 11, 12, 13, 14, 15, 16, 17, 18, 19]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BruiserSpriteSheet:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ChargeEffectDown:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("ChargeEffectUp:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_x7nhy"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BruiserSpriteSheet:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BruiserSpriteSheet:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ChargeEffectDown:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("ChargeEffectDown:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("ChargeEffectUp:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("ChargeEffectUp:frame")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_vswu6"]
+resource_name = "Bruiser_Wait_Down"
+length = 0.25
+loop_mode = 1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BruiserSpriteSheet:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [4]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BruiserSpriteSheet:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ChargeEffectUp:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("ChargeEffectDown:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_trvsh"]
+resource_name = "Bruiser_Wait_Up"
+length = 0.25
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BruiserSpriteSheet:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [14]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BruiserSpriteSheet:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ChargeEffectUp:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("ChargeEffectDown:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_4sl46"]
+resource_name = "Bruiser_Walk_Down"
+loop_mode = 1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BruiserSpriteSheet:frame")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.25, 0.35, 0.45, 0.5, 0.6, 0.75, 0.85, 0.95),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BruiserSpriteSheet:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ChargeEffectDown:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("ChargeEffectUp:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_1jak8"]
 _data = {
 "Bruiser_Attack": SubResource("Animation_5klsa"),
 "Bruiser_Charge_Down": SubResource("Animation_jsot5"),
 "Bruiser_Charge_Up": SubResource("Animation_2um80"),
-"Bruiser_Down_Walk": SubResource("Animation_4sl46"),
+"Bruiser_Wait_Down": SubResource("Animation_vswu6"),
+"Bruiser_Wait_Up": SubResource("Animation_trvsh"),
+"Bruiser_Walk_Down": SubResource("Animation_4sl46"),
 "Bruiser_Walk_Up": SubResource("Animation_mhkqm"),
 "RESET": SubResource("Animation_x7nhy")
 }
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_rkmhs"]
-animation = &"Bruiser_Walk_Up"
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_wjofa"]
+animation = &"Bruiser_Attack"
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_acixw"]
-animation = &"Bruiser_Down_Walk"
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_gxx5m"]
+animation = &"Bruiser_Attack"
 
-[sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_7wew7"]
-auto_triangles = false
-blend_point_0/node = SubResource("AnimationNodeAnimation_rkmhs")
-blend_point_0/pos = Vector2(0, 0.5)
-blend_point_1/node = SubResource("AnimationNodeAnimation_acixw")
-blend_point_1/pos = Vector2(0, -0.5)
-triangles = PackedInt32Array()
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_whxgo"]
+animation = &"Bruiser_Attack"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_h5whi"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_wjofa")
+blend_point_0/pos = Vector2(-0.1, 0.4)
+blend_point_1/node = SubResource("AnimationNodeAnimation_gxx5m")
+blend_point_1/pos = Vector2(0.1, 0.4)
+blend_point_2/node = SubResource("AnimationNodeAnimation_whxgo")
+blend_point_2/pos = Vector2(0, -0.4)
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_33gac"]
+animation = &"Bruiser_Charge_Down"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_dkwps"]
+animation = &"Bruiser_Charge_Up"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_n6krh"]
+animation = &"Bruiser_Charge_Down"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_q2do6"]
+animation = &"Bruiser_Charge_Up"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_4ci0b"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_33gac")
+blend_point_0/pos = Vector2(-0.2, 0.7)
+blend_point_1/node = SubResource("AnimationNodeAnimation_dkwps")
+blend_point_1/pos = Vector2(0.2, -0.7)
+blend_point_2/node = SubResource("AnimationNodeAnimation_n6krh")
+blend_point_2/pos = Vector2(0.2, 0.7)
+blend_point_3/node = SubResource("AnimationNodeAnimation_q2do6")
+blend_point_3/pos = Vector2(-0.2, -0.7)
 blend_mode = 1
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_mp3ow"]
+animation = &"Bruiser_Wait_Down"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_nw2hb"]
+animation = &"Bruiser_Wait_Down"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_yb8iv"]
+animation = &"Bruiser_Wait_Up"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_a4rxl"]
+animation = &"Bruiser_Wait_Up"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_f3dfg"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_mp3ow")
+blend_point_0/pos = Vector2(-0.2, 0.5)
+blend_point_1/node = SubResource("AnimationNodeAnimation_nw2hb")
+blend_point_1/pos = Vector2(0.2, 0.5)
+blend_point_2/node = SubResource("AnimationNodeAnimation_yb8iv")
+blend_point_2/pos = Vector2(0.2, -0.6)
+blend_point_3/node = SubResource("AnimationNodeAnimation_a4rxl")
+blend_point_3/pos = Vector2(-0.2, -0.6)
+blend_mode = 1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_d4cli"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_2d35q"]
+advance_mode = 2
+advance_condition = &"wait"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_31ycb"]
+advance_mode = 2
+advance_condition = &"charge"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_xqby2"]
+advance_mode = 2
+advance_condition = &"walk"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_nre2k"]
+advance_mode = 2
+advance_condition = &"walk"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_k7kcs"]
+advance_mode = 2
+advance_condition = &"attack"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_w4is8"]
+advance_mode = 2
+advance_condition = &"wait"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_npm0k"]
+advance_mode = 2
+advance_condition = &"walk"
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_xy5pk"]
+states/Attack/node = SubResource("AnimationNodeBlendSpace2D_h5whi")
+states/Attack/position = Vector2(592, 60)
+states/Charge/node = SubResource("AnimationNodeBlendSpace2D_4ci0b")
+states/Charge/position = Vector2(592, 190)
+states/End/position = Vector2(922, 100)
+states/Start/position = Vector2(199, 100)
+states/Wait/node = SubResource("AnimationNodeBlendSpace2D_f3dfg")
+states/Wait/position = Vector2(394, 190)
+states/Walk/node = ExtResource("6_clqsv")
+states/Walk/position = Vector2(394, 100)
+transitions = ["Start", "Walk", SubResource("AnimationNodeStateMachineTransition_d4cli"), "Walk", "Wait", SubResource("AnimationNodeStateMachineTransition_2d35q"), "Wait", "Charge", SubResource("AnimationNodeStateMachineTransition_31ycb"), "Wait", "Walk", SubResource("AnimationNodeStateMachineTransition_xqby2"), "Charge", "Walk", SubResource("AnimationNodeStateMachineTransition_nre2k"), "Charge", "Attack", SubResource("AnimationNodeStateMachineTransition_k7kcs"), "Attack", "Wait", SubResource("AnimationNodeStateMachineTransition_w4is8"), "Attack", "Walk", SubResource("AnimationNodeStateMachineTransition_npm0k")]
+graph_offset = Vector2(33, 22)
+
+[sub_resource type="GDScript" id="GDScript_p73qi"]
 
 [node name="EnemyBruiser" type="CharacterBody2D" groups=["enemy"]]
 collision_layer = 256
@@ -437,12 +643,24 @@ scale = Vector2(0.256, 0.254)
 texture = ExtResource("4_wrjut")
 hframes = 4
 
+[node name="BruiserAnimation" type="Node2D" parent="." node_paths=PackedStringArray("animation_tree")]
+script = ExtResource("5_6blug")
+animation_tree = NodePath("../Bruiser_AnimationTree")
+
 [node name="Bruiser_AnimationP" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_1jak8")
 }
 
 [node name="Bruiser_AnimationTree" type="AnimationTree" parent="."]
-tree_root = SubResource("AnimationNodeBlendSpace2D_7wew7")
+tree_root = SubResource("AnimationNodeStateMachine_xy5pk")
 anim_player = NodePath("../Bruiser_AnimationP")
-parameters/blend_position = Vector2(-0.00440526, -0.0859729)
+parameters/conditions/attack = false
+parameters/conditions/charge = false
+parameters/conditions/wait = false
+parameters/conditions/walk = false
+parameters/Attack/blend_position = Vector2(0.00939369, 0.221239)
+parameters/Charge/blend_position = Vector2(-0.028181, 0.530973)
+parameters/Wait/blend_position = Vector2(-0.00768572, 0.185841)
+parameters/Walk/blend_position = Vector2(-0.30316, 0.522124)
+script = SubResource("GDScript_p73qi")

@@ -18,9 +18,9 @@ func _ready() -> void:
 	#to the player_footstep signal triggered in the player.gd script
 	PlayerCharacter.player_footstep.connect(_on_player_footstep)
 	#set initial volume levels for MusicSystem sub-streams
-	MusicStreams.set_sync_stream_volume(1, -99.0)
-	MusicStreams.set_sync_stream_volume(2, -99.0)
-	MusicStreams.set_sync_stream_volume(3, -99.0)
+	#MusicStreams.set_sync_stream_volume(1, -99.0)
+	#MusicStreams.set_sync_stream_volume(2, -99.0)
+	#MusicStreams.set_sync_stream_volume(3, -99.0)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

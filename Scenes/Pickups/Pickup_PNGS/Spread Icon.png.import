@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bxg4u2xyhcqsi"
-path="res://.godot/imported/Spread Icon.png-194b609aeb708a9a9d291f35fe58709c.ctex"
+path="res://.godot/imported/Spread Icon.png-15ba610df0bd6c31ab2cddfe4560fdad.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Scenes/Pickups/Spread Icon.png"
-dest_files=["res://.godot/imported/Spread Icon.png-194b609aeb708a9a9d291f35fe58709c.ctex"]
+source_file="res://Scenes/Pickups/Pickup_PNGS/Spread Icon.png"
+dest_files=["res://.godot/imported/Spread Icon.png-15ba610df0bd6c31ab2cddfe4560fdad.ctex"]
 
 [params]
 

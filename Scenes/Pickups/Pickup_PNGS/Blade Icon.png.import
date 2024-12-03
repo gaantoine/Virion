@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cf0o00f30mgio"
-path="res://.godot/imported/Repeat Icon.png-d8f7998f77c46428ee270448d6f7669f.ctex"
+uid="uid://co4kx4y845h4o"
+path="res://.godot/imported/Blade Icon.png-7033287a3346e297d4e3e30851797440.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Scenes/Pickups/Repeat Icon.png"
-dest_files=["res://.godot/imported/Repeat Icon.png-d8f7998f77c46428ee270448d6f7669f.ctex"]
+source_file="res://Scenes/Pickups/Pickup_PNGS/Blade Icon.png"
+dest_files=["res://.godot/imported/Blade Icon.png-7033287a3346e297d4e3e30851797440.ctex"]
 
 [params]
 

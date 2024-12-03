@@ -74,6 +74,10 @@ var seek_map = []
 var collision_map = []
 var seek_map_buffer = 0.5
 
+#signal variable to be used by the Animation Player to call for bruiser footstep sounds
+#from the audio manager
+signal bruiser_footstep
+
 var player:Player:
 	get:return Player.current
 
@@ -311,3 +315,7 @@ func _draw() -> void:
 	local_to = to_local(predict_to)
 	
 	draw_line(local_from, local_to, Color.GREEN, 2)
+
+#function to emit bruiser footstep signal for all listeners to hear	
+func call_bruiser_footstep() -> void:
+	bruiser_footstep.emit()

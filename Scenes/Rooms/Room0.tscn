@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=4 uid="uid://cfnck58mjxdjq"]
+[gd_scene load_steps=7 format=4 uid="uid://cfnck58mjxdjq"]
 
 [ext_resource type="Texture2D" uid="uid://bc75dxvsc61bg" path="res://Scenes/Tilesets/TestTiles002.png" id="2_4dmx7"]
 [ext_resource type="Texture2D" uid="uid://6tsm52cuk5af" path="res://Scenes/Tilesets/Tiles1.png" id="2_qkhuo"]
+[ext_resource type="PackedScene" uid="uid://b4104uqhnicp" path="res://Scenes/Enemies/EnemySpawner.tscn" id="3_t3qro"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_tqk6s"]
 texture = ExtResource("2_qkhuo")
@@ -79,3 +80,6 @@ tile_set = SubResource("TileSet_doko4")
 scale = Vector2(0.25, 0.25)
 tile_map_data = PackedByteArray("AAALAAEAAAACAAEAAAANAAEAAAACAAEAADA=")
 tile_set = SubResource("TileSet_doko4")
+
+[node name="EnemySpawner" parent="." instance=ExtResource("3_t3qro")]
+position = Vector2(800, 400)

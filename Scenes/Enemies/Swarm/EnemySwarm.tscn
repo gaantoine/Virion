@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://c075mkxaaxo6s"]
+
+[ext_resource type="Script" path="res://Scenes/Enemies/Swarm/EnemySwarm.gd" id="1_te2fv"]
+[ext_resource type="Texture2D" uid="uid://cr1k60xakb6g7" path="res://placeholder_icon2.png" id="2_rk0ej"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_s373b"]
+radius = 32.0
+
+[node name="EnemySwarm" type="CharacterBody2D" groups=["enemy"]]
+collision_layer = 256
+collision_mask = 289
+script = ExtResource("1_te2fv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_s373b")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_rk0ej")
+
+[node name="Timer" type="Timer" parent="."]

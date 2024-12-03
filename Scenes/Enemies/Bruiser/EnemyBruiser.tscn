@@ -1,7 +1,7 @@
 [gd_scene load_steps=16 format=3 uid="uid://f6n573w57vu6"]
 
 [ext_resource type="Texture2D" uid="uid://cminetoyt22sf" path="res://Misc PNGs and assets/placeholder_icon.png" id="1_p1dxc"]
-[ext_resource type="Script" path="res://Scenes/Enemies/Bruiser/enemy_bruiser.gd" id="1_rmu8v"]
+[ext_resource type="Script" path="res://Scenes/Enemies/Bruiser/EnemyBruiser.gd" id="1_rmu8v"]
 [ext_resource type="Texture2D" uid="uid://tbcfi0kndp1y" path="res://Animations/BruiserWalk&AttackSpritesheet.png" id="3_2bwsm"]
 [ext_resource type="Texture2D" uid="uid://bcxgg4fteeova" path="res://Animations/ChargeEffectSpritesheet.png" id="4_wrjut"]
 
@@ -245,17 +245,6 @@ tracks/3/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [false]
-}
-tracks/4/type = "method"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath(".")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(),
-"transitions": PackedFloat32Array(),
-"values": []
 }
 
 [sub_resource type="Animation" id="Animation_mhkqm"]

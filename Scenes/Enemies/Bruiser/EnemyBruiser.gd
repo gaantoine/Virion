@@ -135,13 +135,6 @@ func handle_aiming_state(delta: float) -> void:
 
 # Aim at the player, return true if player is in range and unobstructed
 func take_aim() -> bool:
-	# Null catch for debugging, should be ok to remove with draw method
-	raycast_from = global_position
-	raycast_to = global_position
-	predict_from = global_position
-	predict_to = global_position
-	# =====================================================
-	
 	var dash_distance = dash_speed * dash_duration + ((dash_speed * dash_speed) \
 		/ (2 * deceleration))
 	
@@ -164,11 +157,6 @@ func take_aim() -> bool:
 	
 	predicted_position = player.global_position + player.velocity * lead_time
 	dash_direction = (predicted_position - global_position).normalized()
-	
-	# Debug drawing
-	predict_from = global_position
-	predict_to = global_position + dash_direction * dash_speed 
-	#call_deferred("queue_redraw")
 	
 	return true
 

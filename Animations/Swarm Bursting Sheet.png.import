@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://co11bnjyx1mke"
-path="res://.godot/imported/Slug Icon.png-7af1fbe7cdf0272556085d98bf6f20d4.ctex"
+uid="uid://bmox4ydc0kebs"
+path="res://.godot/imported/Swarm Bursting Sheet.png-66e7549b27eca84ec35ca630566659cb.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Scenes/Pickups/Slug Icon.png"
-dest_files=["res://.godot/imported/Slug Icon.png-7af1fbe7cdf0272556085d98bf6f20d4.ctex"]
+source_file="res://Animations/Swarm Bursting Sheet.png"
+dest_files=["res://.godot/imported/Swarm Bursting Sheet.png-66e7549b27eca84ec35ca630566659cb.ctex"]
 
 [params]
 

@@ -1,8 +1,8 @@
 [gd_scene load_steps=12 format=3 uid="uid://b0msrln4lgeup"]
 
-[ext_resource type="Script" path="res://Scenes/Enemies/Ranger/enemy_ranger.gd" id="1_0kdd3"]
-[ext_resource type="Texture2D" uid="uid://dtpjwp8nmmwry" path="res://Animations/SpriteSheets/Ranger_Front_SpriteSheet.png" id="2_a1csd"]
-[ext_resource type="Texture2D" uid="uid://7gomw2gmeaky" path="res://Animations/SpriteSheets/Ranger_Back_SpriteSheet.png" id="3_p44jq"]
+[ext_resource type="Script" path="res://Scenes/Enemies/Ranger/EnemyRanger.gd" id="1_0kdd3"]
+[ext_resource type="Texture2D" uid="uid://dtpjwp8nmmwry" path="res://Animations/Ranger_Front_SpriteSheet.png" id="2_a1csd"]
+[ext_resource type="Texture2D" uid="uid://7gomw2gmeaky" path="res://Animations/Ranger_Back_SpriteSheet.png" id="3_p44jq"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_s373b"]
 radius = 32.0

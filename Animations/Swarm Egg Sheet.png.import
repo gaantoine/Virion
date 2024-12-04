@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cf0o00f30mgio"
-path="res://.godot/imported/Repeat Icon.png-d8f7998f77c46428ee270448d6f7669f.ctex"
+uid="uid://fbshnvolyqx1"
+path="res://.godot/imported/Swarm Egg Sheet.png-f10983300261f08a9943b62236a2cd60.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Scenes/Pickups/Repeat Icon.png"
-dest_files=["res://.godot/imported/Repeat Icon.png-d8f7998f77c46428ee270448d6f7669f.ctex"]
+source_file="res://Animations/Swarm Egg Sheet.png"
+dest_files=["res://.godot/imported/Swarm Egg Sheet.png-f10983300261f08a9943b62236a2cd60.ctex"]
 
 [params]
 

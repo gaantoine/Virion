@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bxg4u2xyhcqsi"
-path="res://.godot/imported/Spread Icon.png-194b609aeb708a9a9d291f35fe58709c.ctex"
+uid="uid://lsilnd55p7b7"
+path="res://.godot/imported/magnet.png-2daba628d8ac07665397d17aadf7860e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Scenes/Pickups/Spread Icon.png"
-dest_files=["res://.godot/imported/Spread Icon.png-194b609aeb708a9a9d291f35fe58709c.ctex"]
+source_file="res://Scenes/Pickups/Pickup_PNGS/magnet.png"
+dest_files=["res://.godot/imported/magnet.png-2daba628d8ac07665397d17aadf7860e.ctex"]
 
 [params]
 

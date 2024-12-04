@@ -51,7 +51,7 @@ var pickups:Dictionary = {
 		}
 	},
 	Pickup.snipe_chip: {
-		"texture": "",
+		"texture": "res://Scenes/Pickups/Pickup_PNGS/Snipe Icon.png",
 		"mods": {
 			"bullet_damage": "=8",
 			"bullet_speed": "=2",
@@ -67,7 +67,7 @@ var pickups:Dictionary = {
 		}
 	},
 	Pickup.spread_chip: {
-		"texture": "",
+		"texture": "res://Scenes/Pickups/Pickup_PNGS/Spread Icon.png",
 		"mods": {
 			"bullet_damage": "=3",
 			"bullet_speed": "=1",
@@ -85,7 +85,7 @@ var pickups:Dictionary = {
 	},
 	
 	Pickup.repeat_chip: {
-		"texture": "",
+		"texture": "res://Scenes/Pickups/Pickup_PNGS/Repeat Icon.png",
 		"mods": {
 			"bullet_damage": "=3",
 			"bullet_speed": "=1",
@@ -101,7 +101,7 @@ var pickups:Dictionary = {
 		}
 	},
 	Pickup.slug_chip: {
-		"texture": "",
+		"texture": "res://Scenes/Pickups/Pickup_PNGS/Slug Icon.png",
 		"mods": {
 			"bullet_damage": "=8",
 			"bullet_speed": "=0.5",
@@ -117,7 +117,7 @@ var pickups:Dictionary = {
 		}
 	},
 	Pickup.blade_chip: {
-		"texture": "",
+		"texture": "res://Scenes/Pickups/Pickup_PNGS/Blade Icon.png",
 		"mods": {
 			"bullet_damage": "=2",
 			"bullet_speed": "=1",

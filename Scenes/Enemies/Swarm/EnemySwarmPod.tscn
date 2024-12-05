@@ -3,13 +3,14 @@
 [ext_resource type="Script" path="res://Scenes/Enemies/Swarm/EnemySwarmPod.gd" id="1_tbp0m"]
 [ext_resource type="Texture2D" uid="uid://cvlppoc7xdoti" path="res://placeholder_icon3.png" id="2_i2iyv"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_sdlyh"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_s373b"]
+radius = 32.0
 
 [node name="EnemySwarmPod" type="CharacterBody2D"]
 script = ExtResource("1_tbp0m")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_sdlyh")
+shape = SubResource("CircleShape2D_s373b")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.5, 0.5)

@@ -26,3 +26,4 @@ scale = Vector2(0.125, 0.125)
 texture = ExtResource("2_pfs3b")
 
 [connection signal="body_entered" from="PickupDetector" to="." method="_on_pickup_detector_body_entered"]
+[connection signal="body_exited" from="PickupDetector" to="." method="_on_pickup_detector_body_exited"]

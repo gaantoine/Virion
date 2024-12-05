@@ -54,5 +54,5 @@ position = Vector2(106, 356)
 [node name="EnemySwarm" parent="." instance=ExtResource("6_krdos")]
 position = Vector2(728, 288)
 
-[node name="PickupAlternator" parent="." groups=["PickupAlternator"] instance=ExtResource("7_f03jw")]
+[node name="PickupAlternator" parent="." instance=ExtResource("7_f03jw")]
 position = Vector2(352, 800)

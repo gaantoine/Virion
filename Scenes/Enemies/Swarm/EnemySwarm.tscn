@@ -9,7 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://fbshnvolyqx1" path="res://Animations/Swarm Egg Sheet.png" id="7_ofq0u"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_s373b"]
-radius = 32.0
+radius = 17.0
 
 [node name="EnemySwarm" type="CharacterBody2D" groups=["enemy"]]
 collision_layer = 256
@@ -20,7 +20,7 @@ script = ExtResource("1_te2fv")
 shape = SubResource("CircleShape2D_s373b")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.5, 0.5)
+scale = Vector2(0.25, 0.25)
 texture = ExtResource("2_rk0ej")
 
 [node name="Timer" type="Timer" parent="."]

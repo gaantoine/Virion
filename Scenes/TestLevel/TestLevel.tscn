@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://coujnnoiesx2e" path="res://Scenes/PlayerCharacter/player.tscn" id="4_srbm1"]
 [ext_resource type="PackedScene" uid="uid://b0msrln4lgeup" path="res://Scenes/Enemies/Ranger/EnemyRanger.tscn" id="5_d0q74"]
 [ext_resource type="PackedScene" uid="uid://cxr3k7a4r5c8w" path="res://Scenes/NPCs/npc.tscn" id="6_2kn80"]
-[ext_resource type="PackedScene" uid="uid://c075mkxaaxo6s" path="res://Scenes/Enemies/Swarm/EnemySwarm.tscn" id="6_krdos"]
+[ext_resource type="PackedScene" uid="uid://syk60eq0cp0f" path="res://Scenes/Enemies/Swarm/EnemySwarmPod.tscn" id="6_8r8yq"]
 
 [node name="Node2D" type="Node2D"]
 
@@ -50,5 +50,5 @@ collision_mask = 33
 [node name="NPC" parent="." instance=ExtResource("6_2kn80")]
 position = Vector2(106, 356)
 
-[node name="EnemySwarm" parent="." instance=ExtResource("6_krdos")]
-position = Vector2(728, 288)
+[node name="EnemySwarmPod" parent="." instance=ExtResource("6_8r8yq")]
+position = Vector2(1064, 100)

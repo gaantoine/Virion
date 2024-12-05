@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://by0200nc3sigq"]
+[gd_scene load_steps=8 format=3 uid="uid://by0200nc3sigq"]
 
 [ext_resource type="PackedScene" uid="uid://bd4nwu5b2pj1g" path="res://Scenes/TestLevel/test_obstacle.tscn" id="3_hjgaq"]
 [ext_resource type="PackedScene" uid="uid://j1hchdq3d8b5" path="res://Scenes/Pickups/BasePickup.tscn" id="4_k6ggg"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://b0msrln4lgeup" path="res://Scenes/Enemies/Ranger/EnemyRanger.tscn" id="5_d0q74"]
 [ext_resource type="PackedScene" uid="uid://cxr3k7a4r5c8w" path="res://Scenes/NPCs/npc.tscn" id="6_2kn80"]
 [ext_resource type="PackedScene" uid="uid://c075mkxaaxo6s" path="res://Scenes/Enemies/Swarm/EnemySwarm.tscn" id="6_krdos"]
+[ext_resource type="PackedScene" uid="uid://b2ryb8i6lffh4" path="res://Scenes/Pickups/PickupAlternator.tscn" id="7_f03jw"]
 
 [node name="Node2D" type="Node2D"]
 
@@ -52,3 +53,6 @@ position = Vector2(106, 356)
 
 [node name="EnemySwarm" parent="." instance=ExtResource("6_krdos")]
 position = Vector2(728, 288)
+
+[node name="PickupAlternator" parent="." groups=["PickupAlternator"] instance=ExtResource("7_f03jw")]
+position = Vector2(352, 800)

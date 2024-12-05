@@ -30,6 +30,7 @@ window/size/initial_position=Vector2i(1920, 1080)
 
 enemy=""
 player=""
+PickupAlternator=""
 
 [input]
 

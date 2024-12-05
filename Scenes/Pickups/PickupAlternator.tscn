@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://b2ryb8i6lffh4"]
+
+[ext_resource type="Script" path="res://Scenes/Pickups/pickup_alternator.gd" id="1_7ale3"]
+[ext_resource type="PackedScene" uid="uid://j1hchdq3d8b5" path="res://Scenes/Pickups/BasePickup.tscn" id="1_obmih"]
+
+[node name="PickupAlternator" type="Node2D"]
+script = ExtResource("1_7ale3")
+
+[node name="BasePickup" parent="." instance=ExtResource("1_obmih")]
+pickup_type = 2
+
+[node name="BasePickup2" parent="." instance=ExtResource("1_obmih")]
+position = Vector2(-128, 0)
+pickup_type = 3
+
+[node name="BasePickup3" parent="." instance=ExtResource("1_obmih")]
+position = Vector2(128, 0)
+pickup_type = 5

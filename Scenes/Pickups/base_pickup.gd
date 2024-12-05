@@ -208,7 +208,11 @@ var pickups:Dictionary = {
 func _on_pickup_detector_body_entered(body: Node2D) -> void:
 	if body is Player:
 		body.add_mods(mods)
-		queue_free()
+		var parent:Node2D = get_parent()
+		if parent.is_in_group("PickupAlternator"):
+			parent.queue_free()
+		else:
+			queue_free()
 
 func _ready() -> void:
 	if pickup_type == Pickup.UNASSIGNED:

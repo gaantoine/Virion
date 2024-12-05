@@ -1,8 +1,9 @@
-[gd_scene load_steps=12 format=3 uid="uid://b0msrln4lgeup"]
+[gd_scene load_steps=17 format=3 uid="uid://b0msrln4lgeup"]
 
 [ext_resource type="Script" path="res://Scenes/Enemies/Ranger/EnemyRanger.gd" id="1_0kdd3"]
 [ext_resource type="Texture2D" uid="uid://dtpjwp8nmmwry" path="res://Animations/SpriteSheets/Ranger_Front_SpriteSheet.png" id="2_a1csd"]
 [ext_resource type="Texture2D" uid="uid://7gomw2gmeaky" path="res://Animations/SpriteSheets/Ranger_Back_SpriteSheet.png" id="3_p44jq"]
+[ext_resource type="Script" path="res://Scenes/Enemies/Ranger/ranger_animation.gd" id="4_rjgm0"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_s373b"]
 radius = 32.0
@@ -13,7 +14,7 @@ tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/path = NodePath("RangerDown:frame")
-tracks/0/interp = 1
+tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
@@ -37,7 +38,7 @@ tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/path = NodePath("RangerDown:visible")
-tracks/2/interp = 1
+tracks/2/interp = 2
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0),
@@ -78,7 +79,7 @@ tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/path = NodePath("RangerDown:visible")
-tracks/1/interp = 1
+tracks/1/interp = 2
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
@@ -123,18 +124,35 @@ _data = {
 "Ranger_Up_Idle": SubResource("Animation_0fhbv")
 }
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_qcmc4"]
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_l2587"]
 animation = &"Ranger_Down_Idle"
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_i6kt1"]
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_nt6aq"]
+animation = &"Ranger_Down_Idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_7n3u3"]
 animation = &"Ranger_Up_Idle"
 
-[sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_tkyc3"]
-blend_point_0/node = SubResource("AnimationNodeAnimation_qcmc4")
-blend_point_0/pos = Vector2(0, -0.4)
-blend_point_1/node = SubResource("AnimationNodeAnimation_i6kt1")
-blend_point_1/pos = Vector2(0, 0.4)
-blend_mode = 2
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_va0xx"]
+animation = &"Ranger_Up_Idle"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_t004d"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_l2587")
+blend_point_0/pos = Vector2(-0.2, 0.3)
+blend_point_1/node = SubResource("AnimationNodeAnimation_nt6aq")
+blend_point_1/pos = Vector2(0.2, 0.3)
+blend_point_2/node = SubResource("AnimationNodeAnimation_7n3u3")
+blend_point_2/pos = Vector2(0.2, -0.3)
+blend_point_3/node = SubResource("AnimationNodeAnimation_va0xx")
+blend_point_3/pos = Vector2(-0.2, -0.3)
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_1x3wy"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_6l1xs"]
+states/Idle/node = SubResource("AnimationNodeBlendSpace2D_t004d")
+states/Idle/position = Vector2(347, 100)
+transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_1x3wy")]
 
 [node name="EnemyRanger" type="CharacterBody2D" groups=["enemy"]]
 collision_layer = 256
@@ -150,9 +168,10 @@ libraries = {
 }
 
 [node name="Ranger_AnimationTree" type="AnimationTree" parent="."]
-tree_root = SubResource("AnimationNodeBlendSpace2D_tkyc3")
+tree_root = SubResource("AnimationNodeStateMachine_6l1xs")
+advance_expression_base_node = NodePath("..")
 anim_player = NodePath("../Ranger_AnimationP")
-parameters/blend_position = Vector2(-0.00440526, 0)
+parameters/Idle/blend_position = Vector2(0, 0)
 
 [node name="RangerDown" type="Sprite2D" parent="."]
 visible = false
@@ -167,3 +186,7 @@ texture = ExtResource("3_p44jq")
 hframes = 5
 
 [node name="Timer" type="Timer" parent="."]
+
+[node name="RangerAnimation" type="Node2D" parent="." node_paths=PackedStringArray("animation_tree")]
+script = ExtResource("4_rjgm0")
+animation_tree = NodePath("../Ranger_AnimationTree")

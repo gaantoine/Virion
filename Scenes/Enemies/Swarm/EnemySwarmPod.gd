@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 var pop_distance = 300
 var number_to_spawn = 3
-var spawn_delay = 0.001 # set to a really small number to make instant, increase to add delay between spawns
+var spawn_delay = 0.1 # set to a really small number to make instant, increase to add delay between spawns
 
 var player: Player:
 	get: return Player.current

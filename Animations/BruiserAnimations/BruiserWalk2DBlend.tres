@@ -1,0 +1,24 @@
+[gd_resource type="AnimationNodeBlendSpace2D" load_steps=5 format=3 uid="uid://bh180jm4lg2ux"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_020db"]
+animation = &"Bruiser_Walk_Down"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_mrtmc"]
+animation = &"Bruiser_Walk_Down"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_wyaiv"]
+animation = &"Bruiser_Walk_Up"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_1h7qh"]
+animation = &"Bruiser_Walk_Up"
+
+[resource]
+blend_point_0/node = SubResource("AnimationNodeAnimation_020db")
+blend_point_0/pos = Vector2(-0.3, 0.5)
+blend_point_1/node = SubResource("AnimationNodeAnimation_mrtmc")
+blend_point_1/pos = Vector2(0.3, 0.5)
+blend_point_2/node = SubResource("AnimationNodeAnimation_wyaiv")
+blend_point_2/pos = Vector2(-0.3, -0.6)
+blend_point_3/node = SubResource("AnimationNodeAnimation_1h7qh")
+blend_point_3/pos = Vector2(0.3, -0.6)
+blend_mode = 1

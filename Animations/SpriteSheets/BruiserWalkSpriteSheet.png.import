@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://0rpb0v6rw43t"
-path="res://.godot/imported/Swarm Moving Sprite Sheet.png-c320442b83ffd01c444b892a3f6dfabc.ctex"
+uid="uid://law1tbcbwmlm"
+path="res://.godot/imported/BruiserWalkSpriteSheet.png-62d8e6b25cebfd8d4dd8e4c2c521a7a6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Animations/Swarm Moving Sprite Sheet.png"
-dest_files=["res://.godot/imported/Swarm Moving Sprite Sheet.png-c320442b83ffd01c444b892a3f6dfabc.ctex"]
+source_file="res://Animations/SpriteSheets/BruiserWalkSpriteSheet.png"
+dest_files=["res://.godot/imported/BruiserWalkSpriteSheet.png-62d8e6b25cebfd8d4dd8e4c2c521a7a6.ctex"]
 
 [params]
 

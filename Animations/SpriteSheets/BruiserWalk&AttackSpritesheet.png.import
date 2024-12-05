@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://tbcfi0kndp1y"
-path="res://.godot/imported/BruiserWalk&AttackSpritesheet.png-450a4a9d35219856827030bbd53628bb.ctex"
+path="res://.godot/imported/BruiserWalk&AttackSpritesheet.png-d94b9fff210dd3d5b7cd8caba4fd3b3e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Animations/BruiserWalk&AttackSpritesheet.png"
-dest_files=["res://.godot/imported/BruiserWalk&AttackSpritesheet.png-450a4a9d35219856827030bbd53628bb.ctex"]
+source_file="res://Animations/SpriteSheets/BruiserWalk&AttackSpritesheet.png"
+dest_files=["res://.godot/imported/BruiserWalk&AttackSpritesheet.png-d94b9fff210dd3d5b7cd8caba4fd3b3e.ctex"]
 
 [params]
 

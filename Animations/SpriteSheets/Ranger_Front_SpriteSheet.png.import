@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dj6pvs6tl8oee"
-path="res://.godot/imported/Nebula idol up animation first pass.png-f8db081a8bd8cd201a02c5a6e93e2351.ctex"
+uid="uid://dtpjwp8nmmwry"
+path="res://.godot/imported/Ranger_Front_SpriteSheet.png-a4088a6000c1d4061ed4f3017ca51dae.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Animations/Nebula idol up animation first pass.png"
-dest_files=["res://.godot/imported/Nebula idol up animation first pass.png-f8db081a8bd8cd201a02c5a6e93e2351.ctex"]
+source_file="res://Animations/SpriteSheets/Ranger_Front_SpriteSheet.png"
+dest_files=["res://.godot/imported/Ranger_Front_SpriteSheet.png-a4088a6000c1d4061ed4f3017ca51dae.ctex"]
 
 [params]
 

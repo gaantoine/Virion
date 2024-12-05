@@ -205,18 +205,9 @@ var pickups:Dictionary = {
 	}
 }
 
-func _on_pickup_detector_body_entered(body: Node2D) -> void:
-	if body is Player:
-		body.add_mods(mods)
-		var parent:Node2D = get_parent()
-		if parent.is_in_group("PickupAlternator"):
-			parent.queue_free()
-		else:
-			queue_free()
-			
+var interactable:bool = false
 
 func _ready() -> void:
-	print(pickups.keys())
 	if pickup_type == Pickup.RANDOM:
 		pickup_type = randi_range(Pickup.snipe_chip, Pickup.ram)
 
@@ -228,3 +219,22 @@ func _ready() -> void:
 		sprite.scale = Vector2(tex_scale, tex_scale)
 	else:
 		sprite.modulate = Color.RED
+
+func _on_pickup_detector_body_entered(body: Node2D) -> void:
+	if body is Player:
+		interactable = true
+
+func _physics_process(delta: float) -> void:
+	if interactable and Input.is_action_pressed("interact"):
+		Player.current.add_mods(mods)
+		var parent:Node2D = get_parent()
+		if parent.is_in_group("PickupAlternator"):
+			parent.queue_free()
+		else:
+			queue_free()
+
+
+
+func _on_pickup_detector_body_exited(body: Node2D) -> void:
+	if body is Player:
+		interactable = false

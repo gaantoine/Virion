@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://jmorwrplsbd3"
-path="res://.godot/imported/ProjectileSpriteSheet.png-760944f0bb32d6ea7f0d36f77f40340b.ctex"
+uid="uid://7gomw2gmeaky"
+path="res://.godot/imported/Ranger_Back_SpriteSheet.png-ed7e0520691430e6a0cac68c0216bb73.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://VFX_PNGs/ProjectileSpriteSheet.png"
-dest_files=["res://.godot/imported/ProjectileSpriteSheet.png-760944f0bb32d6ea7f0d36f77f40340b.ctex"]
+source_file="res://Animations/SpriteSheets/Ranger_Back_SpriteSheet.png"
+dest_files=["res://.godot/imported/Ranger_Back_SpriteSheet.png-ed7e0520691430e6a0cac68c0216bb73.ctex"]
 
 [params]
 

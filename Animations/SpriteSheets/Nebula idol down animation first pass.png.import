@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d1u5uxxwjml8q"
-path="res://.godot/imported/Nebula idol animation Ver5 Clean Up 2.png-5c40a9f9513aab05882047fb6e187cab.ctex"
+uid="uid://cr18de700u81t"
+path="res://.godot/imported/Nebula idol down animation first pass.png-01e4239240620fb2d38bfcd43cb7a269.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Animations/Nebula idol animation Ver5 Clean Up 2.png"
-dest_files=["res://.godot/imported/Nebula idol animation Ver5 Clean Up 2.png-5c40a9f9513aab05882047fb6e187cab.ctex"]
+source_file="res://Animations/SpriteSheets/Nebula idol down animation first pass.png"
+dest_files=["res://.godot/imported/Nebula idol down animation first pass.png-01e4239240620fb2d38bfcd43cb7a269.ctex"]
 
 [params]
 

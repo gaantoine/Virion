@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://cpbqc3ej7wnf5"]
 
 [ext_resource type="Script" path="res://Animations/VFX/projectile_2.gd" id="1_c5g0j"]
-[ext_resource type="Texture2D" uid="uid://jmorwrplsbd3" path="res://VFX_PNGs/ProjectileSpriteSheet.png" id="2_3jqm8"]
+[ext_resource type="Texture2D" uid="uid://jmorwrplsbd3" path="res://Animations/VFX/VFX_PNGs/ProjectileSpriteSheet.png" id="2_3jqm8"]
 
 [sub_resource type="Animation" id="Animation_lhonu"]
 resource_name = "Proj_Anim1"

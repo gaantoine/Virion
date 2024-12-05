@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://7gomw2gmeaky"
-path="res://.godot/imported/Ranger_Back_SpriteSheet.png-fb56b59974a6c828778fa2cf21bbec5e.ctex"
+uid="uid://tbcfi0kndp1y"
+path="res://.godot/imported/BruiserWalk&AttackSpritesheet.png-d94b9fff210dd3d5b7cd8caba4fd3b3e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Animations/Ranger_Back_SpriteSheet.png"
-dest_files=["res://.godot/imported/Ranger_Back_SpriteSheet.png-fb56b59974a6c828778fa2cf21bbec5e.ctex"]
+source_file="res://Animations/SpriteSheets/BruiserWalk&AttackSpritesheet.png"
+dest_files=["res://.godot/imported/BruiserWalk&AttackSpritesheet.png-d94b9fff210dd3d5b7cd8caba4fd3b3e.ctex"]
 
 [params]
 

@@ -231,7 +231,6 @@ shape = SubResource("RectangleShape2D_it6tm")
 one_shot = true
 
 [node name="AspectRatioContainer" type="AspectRatioContainer" parent="."]
-anchors_preset = -1
 offset_left = -800.0
 offset_top = -450.0
 offset_right = 800.0

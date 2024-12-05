@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://law1tbcbwmlm"
-path="res://.godot/imported/BruiserWalkSpriteSheet.png-6b462fb8519a881365f17c72dcc0ab6c.ctex"
+uid="uid://jmorwrplsbd3"
+path="res://.godot/imported/ProjectileSpriteSheet.png-bbe16eaac9d46d85b3d3f279e7991397.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Animations/BruiserWalkSpriteSheet.png"
-dest_files=["res://.godot/imported/BruiserWalkSpriteSheet.png-6b462fb8519a881365f17c72dcc0ab6c.ctex"]
+source_file="res://Animations/VFX/VFX_PNGs/ProjectileSpriteSheet.png"
+dest_files=["res://.godot/imported/ProjectileSpriteSheet.png-bbe16eaac9d46d85b3d3f279e7991397.ctex"]
 
 [params]
 

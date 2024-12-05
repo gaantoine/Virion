@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cr18de700u81t"
-path="res://.godot/imported/Nebula idol down animation first pass.png-e9fdf0a20b6ecfc304ec5a2a9e8d7107.ctex"
+uid="uid://bcxgg4fteeova"
+path="res://.godot/imported/ChargeEffectSpritesheet.png-8075a6572203b242b025f2e7e27a465d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Animations/Nebula idol down animation first pass.png"
-dest_files=["res://.godot/imported/Nebula idol down animation first pass.png-e9fdf0a20b6ecfc304ec5a2a9e8d7107.ctex"]
+source_file="res://Animations/SpriteSheets/ChargeEffectSpritesheet.png"
+dest_files=["res://.godot/imported/ChargeEffectSpritesheet.png-8075a6572203b242b025f2e7e27a465d.ctex"]
 
 [params]
 

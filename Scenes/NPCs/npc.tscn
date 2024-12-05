@@ -25,5 +25,15 @@ script = ExtResource("2_h5mv3")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DialogInteractionArea"]
 shape = SubResource("CircleShape2D_3qxs1")
 
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+offset_left = -166.0
+offset_top = -120.0
+offset_right = 168.0
+offset_bottom = -46.0
+scroll_following = true
+
+[node name="Timer" type="Timer" parent="."]
+
 [connection signal="body_entered" from="DialogInteractionArea" to="DialogInteractionArea" method="_on_body_entered"]
 [connection signal="body_exited" from="DialogInteractionArea" to="DialogInteractionArea" method="_on_body_exited"]
+[connection signal="timeout" from="Timer" to="DialogInteractionArea" method="_on_timer_timeout"]

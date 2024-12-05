@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c3075f8qxamhx"
-path="res://.godot/imported/MeleeSpriteSheet.png-eb1cb7555787907327aca6226725ef75.ctex"
+uid="uid://0rpb0v6rw43t"
+path="res://.godot/imported/Swarm Moving Sprite Sheet.png-41653fa7e86f821077e9028a02556085.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://VFX_PNGs/MeleeSpriteSheet.png"
-dest_files=["res://.godot/imported/MeleeSpriteSheet.png-eb1cb7555787907327aca6226725ef75.ctex"]
+source_file="res://Animations/SpriteSheets/Swarm Moving Sprite Sheet.png"
+dest_files=["res://.godot/imported/Swarm Moving Sprite Sheet.png-41653fa7e86f821077e9028a02556085.ctex"]
 
 [params]
 

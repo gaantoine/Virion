@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://ds6q3yyngxxoh"]
 
-[ext_resource type="Texture2D" uid="uid://c3075f8qxamhx" path="res://VFX_PNGs/MeleeSpriteSheet.png" id="1_1hvec"]
+[ext_resource type="Texture2D" uid="uid://c3075f8qxamhx" path="res://Animations/VFX/VFX_PNGs/MeleeSpriteSheet.png" id="1_1hvec"]
 
 [sub_resource type="Animation" id="Animation_c7rpo"]
 resource_name = "Melee_Anim"

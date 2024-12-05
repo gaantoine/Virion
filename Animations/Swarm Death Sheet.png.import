@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://tbcfi0kndp1y"
-path="res://.godot/imported/BruiserWalk&AttackSpritesheet.png-450a4a9d35219856827030bbd53628bb.ctex"
+uid="uid://klt5vsvnrsyf"
+path="res://.godot/imported/Swarm Death Sheet.png-cce85159f586963e226b41fb2241213a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Animations/BruiserWalk&AttackSpritesheet.png"
-dest_files=["res://.godot/imported/BruiserWalk&AttackSpritesheet.png-450a4a9d35219856827030bbd53628bb.ctex"]
+source_file="res://Animations/Swarm Death Sheet.png"
+dest_files=["res://.godot/imported/Swarm Death Sheet.png-cce85159f586963e226b41fb2241213a.ctex"]
 
 [params]
 

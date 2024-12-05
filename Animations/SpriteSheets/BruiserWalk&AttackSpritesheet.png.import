@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://u30pmrun3ck1"
-path="res://.godot/imported/Nebula idol animation Ver4.png-dfb0a4a40564bba868a003dd228d8313.ctex"
+uid="uid://tbcfi0kndp1y"
+path="res://.godot/imported/BruiserWalk&AttackSpritesheet.png-d94b9fff210dd3d5b7cd8caba4fd3b3e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Animations/Nebula idol animation Ver4.png"
-dest_files=["res://.godot/imported/Nebula idol animation Ver4.png-dfb0a4a40564bba868a003dd228d8313.ctex"]
+source_file="res://Animations/SpriteSheets/BruiserWalk&AttackSpritesheet.png"
+dest_files=["res://.godot/imported/BruiserWalk&AttackSpritesheet.png-d94b9fff210dd3d5b7cd8caba4fd3b3e.ctex"]
 
 [params]
 

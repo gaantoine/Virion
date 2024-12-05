@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b3pu0585b7oy3"
-path="res://.godot/imported/Nebula_idol_roll_animation_Ver1.png-5726aab6357dc13a0463792db1f4d0a0.ctex"
+uid="uid://dxyfmbh8eqduv"
+path="res://.godot/imported/Nebula idol animation Ver5 Clean Up.png-965508187620ae021c42b74d68ae8741.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Animations/Nebula_idol_roll_animation_Ver1.png"
-dest_files=["res://.godot/imported/Nebula_idol_roll_animation_Ver1.png-5726aab6357dc13a0463792db1f4d0a0.ctex"]
+source_file="res://Animations/SpriteSheets/Nebula idol animation Ver5 Clean Up.png"
+dest_files=["res://.godot/imported/Nebula idol animation Ver5 Clean Up.png-965508187620ae021c42b74d68ae8741.ctex"]
 
 [params]
 

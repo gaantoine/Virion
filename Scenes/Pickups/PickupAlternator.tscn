@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://b2ryb8i6lffh4"]
+
+[ext_resource type="PackedScene" uid="uid://j1hchdq3d8b5" path="res://Scenes/Pickups/BasePickup.tscn" id="1_obmih"]
+
+[node name="PickupAlternator" type="Node2D" groups=["PickupAlternator"]]
+
+[node name="BasePickup" parent="." instance=ExtResource("1_obmih")]
+
+[node name="BasePickup2" parent="." instance=ExtResource("1_obmih")]
+position = Vector2(-128, 0)
+
+[node name="BasePickup3" parent="." instance=ExtResource("1_obmih")]
+position = Vector2(128, 0)

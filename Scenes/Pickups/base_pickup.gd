@@ -3,14 +3,14 @@ class_name BasePickup
 
 var texture:Texture2D
 var tex_scale:float = 0.125
-@export var pickup_type:Pickup = Pickup.UNASSIGNED
+@export var pickup_type:Pickup = Pickup.RANDOM
 @export var mods:Dictionary
 
 
 @onready var sprite:Sprite2D = $Sprite2D
 
 enum Pickup { 
-	UNASSIGNED,
+	RANDOM,
 	base_chip,
 	snipe_chip,
 	spread_chip,
@@ -22,15 +22,15 @@ enum Pickup {
 	power_converter,
 	power_diverter,
 	voltage_regulator,
+	malware,
+	overclock,
+	virus,
+	ram, # UNIMPLEMENTED PAST THIS POINT
+	magnet,
 	dual_processors,
 	wide_lens,
 	short_circuit,
-	power_adapter,
-	malware,
-	magnet,
-	overclock,
-	virus,
-	ram
+	power_adapter
 }
 
 var pickups:Dictionary = {
@@ -205,20 +205,36 @@ var pickups:Dictionary = {
 	}
 }
 
-func _on_pickup_detector_body_entered(body: Node2D) -> void:
-	if body is Player:
-		body.add_mods(mods)
-		queue_free()
+var interactable:bool = false
 
 func _ready() -> void:
-	if pickup_type == Pickup.UNASSIGNED:
-		push_warning("unassigned pickup: ", self)
-	else:
-		var entry:Dictionary = pickups[pickup_type]
-		texture = load(entry["texture"])
-		mods = entry["mods"]
+	if pickup_type == Pickup.RANDOM:
+		pickup_type = randi_range(Pickup.snipe_chip, Pickup.ram)
+
+	var entry:Dictionary = pickups[pickup_type]
+	texture = load(entry["texture"])
+	mods = entry["mods"]
 	if texture != null:
 		sprite.texture = texture
 		sprite.scale = Vector2(tex_scale, tex_scale)
 	else:
 		sprite.modulate = Color.RED
+
+func _on_pickup_detector_body_entered(body: Node2D) -> void:
+	if body is Player:
+		interactable = true
+
+func _physics_process(delta: float) -> void:
+	if interactable and Input.is_action_pressed("interact"):
+		Player.current.add_mods(mods)
+		var parent:Node2D = get_parent()
+		if parent.is_in_group("PickupAlternator"):
+			parent.queue_free()
+		else:
+			queue_free()
+
+
+
+func _on_pickup_detector_body_exited(body: Node2D) -> void:
+	if body is Player:
+		interactable = false

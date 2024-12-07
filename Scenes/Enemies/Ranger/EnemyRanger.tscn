@@ -1,8 +1,7 @@
-[gd_scene load_steps=17 format=3 uid="uid://b0msrln4lgeup"]
+[gd_scene load_steps=27 format=3 uid="uid://b0msrln4lgeup"]
 
 [ext_resource type="Script" path="res://Scenes/Enemies/Ranger/EnemyRanger.gd" id="1_0kdd3"]
-[ext_resource type="Texture2D" uid="uid://dtpjwp8nmmwry" path="res://Animations/SpriteSheets/Ranger_Front_SpriteSheet.png" id="2_a1csd"]
-[ext_resource type="Texture2D" uid="uid://7gomw2gmeaky" path="res://Animations/SpriteSheets/Ranger_Back_SpriteSheet.png" id="3_p44jq"]
+[ext_resource type="Texture2D" uid="uid://c5en0wm12dwa4" path="res://Animations/SpriteSheets/RangerSpriteSheet.png" id="2_xbogt"]
 [ext_resource type="Script" path="res://Scenes/Enemies/Ranger/ranger_animation.gd" id="4_rjgm0"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_s373b"]
@@ -13,7 +12,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("RangerDown:frame")
+tracks/0/path = NodePath("RangerSpriteSheet:frame")
 tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -21,42 +20,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [0]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("RangerUp:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("RangerDown:visible")
-tracks/2/interp = 2
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("RangerUp:visible")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
 }
 
 [sub_resource type="Animation" id="Animation_7c5k4"]
@@ -66,7 +29,7 @@ step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("RangerDown:frame")
+tracks/0/path = NodePath("RangerSpriteSheet:frame")
 tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -74,18 +37,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 1,
 "values": [0, 1, 2, 3, 4]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("RangerDown:visible")
-tracks/1/interp = 2
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
 }
 
 [sub_resource type="Animation" id="Animation_0fhbv"]
@@ -95,34 +46,112 @@ step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("RangerUp:frame")
+tracks/0/path = NodePath("RangerSpriteSheet:frame")
 tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0.05, 0.2, 0.45, 0.7, 0.85),
+"times": PackedFloat32Array(0.05, 0.2, 0.5, 0.8, 0.95),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 1,
-"values": [0, 1, 2, 3, 4]
+"values": [7, 8, 9, 10, 11]
 }
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("RangerUp:visible")
-tracks/1/interp = 2
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+
+[sub_resource type="Animation" id="Animation_267n3"]
+resource_name = "Ranger_Move_Up"
+loop_mode = 2
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RangerSpriteSheet:frame")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.4, 0.55, 0.8, 0.95),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [true]
+"values": [21, 22, 23, 24, 25, 26]
+}
+
+[sub_resource type="Animation" id="Animation_xfcv0"]
+resource_name = "Ranger_Move_Down"
+loop_mode = 2
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RangerSpriteSheet:frame")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.4, 0.55, 0.8, 0.95),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [14, 15, 16, 17, 18, 19]
+}
+
+[sub_resource type="Animation" id="Animation_31ko1"]
+resource_name = "Ranger_Attack_Up"
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RangerSpriteSheet:frame")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.3, 0.45, 0.6, 0.8, 0.95),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [35, 36, 37, 38, 39, 40, 41]
+}
+
+[sub_resource type="Animation" id="Animation_wdxnj"]
+resource_name = "Ranger_Attack_Down"
+step = 0.45
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RangerSpriteSheet:frame")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.3, 0.45, 0.6, 0.8, 0.95),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [28, 29, 30, 31, 32, 33, 34]
+}
+
+[sub_resource type="Animation" id="Animation_eh6fs"]
+resource_name = "Ranger_Death"
+length = 0.8
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RangerSpriteSheet:frame")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.3, 0.45, 0.6, 0.75),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [42, 43, 44, 45, 46, 47]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_x0efe"]
 _data = {
 "RESET": SubResource("Animation_vkvr6"),
+"Ranger_Attack_Down": SubResource("Animation_wdxnj"),
+"Ranger_Attack_Up": SubResource("Animation_31ko1"),
+"Ranger_Death": SubResource("Animation_eh6fs"),
 "Ranger_Down_Idle": SubResource("Animation_7c5k4"),
+"Ranger_Move_Down": SubResource("Animation_xfcv0"),
+"Ranger_Move_Up": SubResource("Animation_267n3"),
 "Ranger_Up_Idle": SubResource("Animation_0fhbv")
 }
+
+[sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_3ebj0"]
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_l2587"]
 animation = &"Ranger_Down_Idle"
@@ -138,21 +167,45 @@ animation = &"Ranger_Up_Idle"
 
 [sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_t004d"]
 blend_point_0/node = SubResource("AnimationNodeAnimation_l2587")
-blend_point_0/pos = Vector2(-0.2, 0.3)
+blend_point_0/pos = Vector2(-0.2, 0.4)
 blend_point_1/node = SubResource("AnimationNodeAnimation_nt6aq")
-blend_point_1/pos = Vector2(0.2, 0.3)
+blend_point_1/pos = Vector2(0.2, -0.4)
 blend_point_2/node = SubResource("AnimationNodeAnimation_7n3u3")
-blend_point_2/pos = Vector2(0.2, -0.3)
+blend_point_2/pos = Vector2(0.2, 0.4)
 blend_point_3/node = SubResource("AnimationNodeAnimation_va0xx")
-blend_point_3/pos = Vector2(-0.2, -0.3)
+blend_point_3/pos = Vector2(-0.2, -0.4)
+
+[sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_xe72e"]
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_1x3wy"]
 advance_mode = 2
 
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_w0giw"]
+advance_mode = 2
+advance_condition = &"move"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_girga"]
+advance_mode = 2
+advance_condition = &"idle"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_6i3v6"]
+switch_mode = 2
+advance_mode = 2
+advance_condition = &"idle"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_28qfn"]
+advance_mode = 2
+advance_condition = &"attack"
+
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_6l1xs"]
+states/Attack/node = SubResource("AnimationNodeBlendSpace2D_3ebj0")
+states/Attack/position = Vector2(347, 210)
 states/Idle/node = SubResource("AnimationNodeBlendSpace2D_t004d")
 states/Idle/position = Vector2(347, 100)
-transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_1x3wy")]
+states/Move/node = SubResource("AnimationNodeBlendSpace2D_xe72e")
+states/Move/position = Vector2(520, 100)
+transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_1x3wy"), "Idle", "Move", SubResource("AnimationNodeStateMachineTransition_w0giw"), "Move", "Idle", SubResource("AnimationNodeStateMachineTransition_girga"), "Attack", "Idle", SubResource("AnimationNodeStateMachineTransition_6i3v6"), "Idle", "Attack", SubResource("AnimationNodeStateMachineTransition_28qfn")]
+graph_offset = Vector2(-56, 37)
 
 [node name="EnemyRanger" type="CharacterBody2D" groups=["enemy"]]
 collision_layer = 256
@@ -161,6 +214,14 @@ script = ExtResource("1_0kdd3")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["enemy"]]
 shape = SubResource("CircleShape2D_s373b")
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="RangerSpriteSheet" type="Sprite2D" parent="."]
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("2_xbogt")
+hframes = 7
+vframes = 7
 
 [node name="Ranger_AnimationP" type="AnimationPlayer" parent="."]
 libraries = {
@@ -171,21 +232,12 @@ libraries = {
 tree_root = SubResource("AnimationNodeStateMachine_6l1xs")
 advance_expression_base_node = NodePath("..")
 anim_player = NodePath("../Ranger_AnimationP")
-parameters/Idle/blend_position = Vector2(0, 0)
-
-[node name="RangerDown" type="Sprite2D" parent="."]
-visible = false
-scale = Vector2(0.25, 0.25)
-texture = ExtResource("2_a1csd")
-hframes = 5
-
-[node name="RangerUp" type="Sprite2D" parent="."]
-visible = false
-scale = Vector2(0.25, 0.25)
-texture = ExtResource("3_p44jq")
-hframes = 5
-
-[node name="Timer" type="Timer" parent="."]
+parameters/conditions/attack = false
+parameters/conditions/idle = false
+parameters/conditions/move = false
+parameters/Attack/blend_position = Vector2(0, 0)
+parameters/Idle/blend_position = Vector2(0.180188, -0.382979)
+parameters/Move/blend_position = Vector2(0, 0)
 
 [node name="RangerAnimation" type="Node2D" parent="." node_paths=PackedStringArray("animation_tree")]
 script = ExtResource("4_rjgm0")

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dtpjwp8nmmwry"
-path="res://.godot/imported/Ranger_Front_SpriteSheet.png-a4088a6000c1d4061ed4f3017ca51dae.ctex"
+uid="uid://bsykgnf7kh8tm"
+path="res://.godot/imported/SwarmSpriteSheet.png-63f1d29b1fcdd5c901ce388973d16eff.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Animations/SpriteSheets/Ranger_Front_SpriteSheet.png"
-dest_files=["res://.godot/imported/Ranger_Front_SpriteSheet.png-a4088a6000c1d4061ed4f3017ca51dae.ctex"]
+source_file="res://Animations/SpriteSheets/SwarmSpriteSheet.png"
+dest_files=["res://.godot/imported/SwarmSpriteSheet.png-63f1d29b1fcdd5c901ce388973d16eff.ctex"]
 
 [params]
 

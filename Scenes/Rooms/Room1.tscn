@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://Scenes/Rooms/EachRoom.gd" id="1_np4ho"]
 [ext_resource type="Texture2D" uid="uid://bc75dxvsc61bg" path="res://Scenes/Tilesets/TestTiles002.png" id="2_cabwb"]
 [ext_resource type="PackedScene" uid="uid://f6n573w57vu6" path="res://Scenes/Enemies/Bruiser/EnemyBruiser.tscn" id="3_r8ohk"]
-[ext_resource type="PackedScene" uid="uid://b4104uqhnicp" path="res://Scenes/Enemies/EnemySpawner.tscn" id="4_3glim"]
+[ext_resource type="PackedScene" uid="uid://b4104uqhnicp" path="res://Scenes/Enemies/EnemySpawner/EnemySpawner.tscn" id="4_3glim"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ugv5b"]
 texture = ExtResource("1_dgdyx")

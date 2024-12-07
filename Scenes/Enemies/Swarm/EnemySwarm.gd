@@ -146,9 +146,9 @@ func take_damage(damage_taken: float) -> void:
 	if current_hp <= 0:
 		die()
 	else:
-		$Sprite2D.modulate = Color.RED
+		$SwarmSpriteSheet.modulate = Color.RED
 		await get_tree().create_timer(3/60.0).timeout
-		$Sprite2D.modulate = Color.WHITE
+		$SwarmSpriteSheet.modulate = Color.WHITE
 
 func take_knockback(displacement: Vector2) -> void:
 	pass
@@ -156,10 +156,10 @@ func take_knockback(displacement: Vector2) -> void:
 func die() -> void:
 	set_process(false)
 	# Trigger death animation
-	# $AnimationPlayer.play("death")
+	$Swarm_AnimationP.play("Swarm_Death")
 	# Play sound effect
 	# $AudioStreamPlayer.play()
 	# Emit a death signal, useful for later
-	# emit_signal("enemy_died")
-	# await $AnimationPlayer.animation_finished
+	emit_signal("enemy_died")
+	await $Swarm_AnimationP.animation_finished
 	queue_free()

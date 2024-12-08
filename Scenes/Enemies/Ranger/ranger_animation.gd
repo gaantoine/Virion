@@ -21,6 +21,6 @@ func _physics_process(_delta: float) -> void:
 	#This makes sure the Ranger faces down or up when moving in the respective direction.
 	animation_tree.set("parameters/Idle/blend_position", last_facing_direction)
 	animation_tree.set("parameters/Move/blend_position", last_facing_direction)
-	animation_tree.set("parameters/Attack/blend_position", last_facing_direction)
+	#animation_tree.set("parameters/Attack/blend_position", last_facing_direction)
 	
 	

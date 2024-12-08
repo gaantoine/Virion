@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bsxnsus0hmvwr"
-path="res://.godot/imported/SwarmSpriteSheet.png-63f1d29b1fcdd5c901ce388973d16eff.ctex"
+uid="uid://5t6fgu07mqy4"
+path="res://.godot/imported/PlayerSpriteSheet.png-bdea86bb57a73d150eab1746bdf897cf.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Animations/SpriteSheets/SwarmSpriteSheet.png"
-dest_files=["res://.godot/imported/SwarmSpriteSheet.png-63f1d29b1fcdd5c901ce388973d16eff.ctex"]
+source_file="res://Animations/SpriteSheets/PlayerSpriteSheet.png"
+dest_files=["res://.godot/imported/PlayerSpriteSheet.png-bdea86bb57a73d150eab1746bdf897cf.ctex"]
 
 [params]
 

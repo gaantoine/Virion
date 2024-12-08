@@ -252,10 +252,10 @@ func die() -> void:
 	
 	set_process(false)
 	# Trigger death animation
-	$Ranger_AnimationP.play("Ranger_Death")
+	# $Ranger_AnimationP.play("Ranger_Death")
 	# Play sound effect
 	# $AudioStreamPlayer.play()
 	# Emit a death signal, useful for later
-	emit_signal("enemy_died")
-	await $Ranger_AnimationP.animation_finished
+	# emit_signal("enemy_died")
+	# await $Ranger_AnimationP.animation_finished
 	queue_free()

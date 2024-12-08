@@ -600,12 +600,10 @@ advance_mode = 2
 advance_condition = &"chase"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_5p5d0"]
-switch_mode = 2
 advance_mode = 2
 advance_condition = &"dash"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_hvkrb"]
-switch_mode = 2
 advance_mode = 2
 advance_condition = &"chase"
 

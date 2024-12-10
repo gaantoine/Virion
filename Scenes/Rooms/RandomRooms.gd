@@ -3,7 +3,9 @@ extends Node
 @export var StartRoom: Node2D
 @export var StartHallway: Node2D
 @export var MaxRooms: int
+@export var MaxSideRooms: int
 var CurrentRooms = 0
+var SideRoomHold = []
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -33,6 +35,7 @@ func CreateRooms() -> void:
 		var holdRoom = load(randomRoom).instantiate()
 		StartRoom.add_child(holdRoom)  # Add the room to the scene
 		holdRoom.global_position = exitPos  # Set its position
+		SideRoomHold.append(holdRoom) # Add room to array of all rooms (for side rooms)
 		
 		# Store the current room and set its previous hallway
 		saveHall = holdRoom
@@ -64,3 +67,11 @@ func CreateRooms() -> void:
 		# Set the previous hallway for the EndRoom if the property exists
 		if "PrevHallway" in endRoom:
 			endRoom.PrevHallway = previousHall
+	
+	# Add side rooms randomly here
+	# First, we can't have more side rooms than rooms
+	if MaxSideRooms > MaxRooms:
+		MaxSideRooms = MaxRooms
+	
+	while (MaxSideRooms):
+		pass

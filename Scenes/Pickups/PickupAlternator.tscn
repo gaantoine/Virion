@@ -5,9 +5,11 @@
 [node name="PickupAlternator" type="Node2D" groups=["PickupAlternator"]]
 
 [node name="BasePickup" parent="." instance=ExtResource("1_obmih")]
+pickup_type = 1
 
 [node name="BasePickup2" parent="." instance=ExtResource("1_obmih")]
 position = Vector2(-128, 0)
 
 [node name="BasePickup3" parent="." instance=ExtResource("1_obmih")]
 position = Vector2(128, 0)
+pickup_type = 1

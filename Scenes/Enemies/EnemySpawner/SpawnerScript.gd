@@ -15,6 +15,10 @@ func _process(delta: float) -> void:
 
 
 func SpawnEnemies() -> void:
+	call_deferred("SpawnEm")
+
+
+func SpawnEm():
 	var holdEnemy = load(TheEnemy.resource_path).instantiate()
 	self.add_child(holdEnemy)
 	holdEnemy.global_position = self.global_position

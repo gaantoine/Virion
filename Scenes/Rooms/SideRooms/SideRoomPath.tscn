@@ -1,11 +1,10 @@
-[gd_scene load_steps=7 format=4 uid="uid://dl8067f70y3hq"]
+[gd_scene load_steps=6 format=4 uid="uid://2grjxo88e3su"]
 
-[ext_resource type="Texture2D" uid="uid://6tsm52cuk5af" path="res://Scenes/Tilesets/Tiles1.png" id="1_niffs"]
-[ext_resource type="Texture2D" uid="uid://bc75dxvsc61bg" path="res://Scenes/Tilesets/TestTiles002.png" id="2_y05pb"]
-[ext_resource type="Script" path="res://Scenes/Rooms/entrance_exit.gd" id="3_vr751"]
+[ext_resource type="Texture2D" uid="uid://6tsm52cuk5af" path="res://Scenes/Tilesets/Tiles1.png" id="1_a8bj8"]
+[ext_resource type="Texture2D" uid="uid://bc75dxvsc61bg" path="res://Scenes/Tilesets/TestTiles002.png" id="2_phc3q"]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_efrfw"]
-texture = ExtResource("1_niffs")
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5ml7w"]
+texture = ExtResource("1_a8bj8")
 texture_region_size = Vector2i(256, 256)
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(88.5, 128, 128, 128, 128, 85, 89.5, 86)
@@ -37,8 +36,8 @@ texture_region_size = Vector2i(256, 256)
 5:1/0 = 0
 5:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(128, -128, -128, -128, -128, -87.5, 128, -87.5)
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4834n"]
-texture = ExtResource("2_y05pb")
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_tcs6q"]
+texture = ExtResource("2_phc3q")
 texture_region_size = Vector2i(256, 256)
 0:0/0 = 0
 0:1/0 = 0
@@ -56,31 +55,32 @@ texture_region_size = Vector2i(256, 256)
 4:1/0 = 0
 5:1/0 = 0
 
-[sub_resource type="TileSet" id="TileSet_ynyo3"]
+[sub_resource type="TileSet" id="TileSet_bjlad"]
 tile_size = Vector2i(256, 256)
 physics_layer_0/collision_layer = 1
 physics_layer_1/collision_layer = 512
 physics_layer_1/collision_mask = 0
 custom_data_layer_0/name = "is_destructive"
 custom_data_layer_0/type = 1
-sources/0 = SubResource("TileSetAtlasSource_efrfw")
-sources/3 = SubResource("TileSetAtlasSource_4834n")
+sources/0 = SubResource("TileSetAtlasSource_5ml7w")
+sources/3 = SubResource("TileSetAtlasSource_tcs6q")
 
-[node name="InBetweenRooms" type="Node2D" node_paths=PackedStringArray("Doors")]
-script = ExtResource("3_vr751")
-Doors = NodePath("BaseMapLayer/Doors")
+[node name="SideRoomPath" type="Node2D"]
 
 [node name="BaseMapLayer" type="TileMapLayer" parent="."]
-position = Vector2(-160, -256)
+position = Vector2(-288, 0)
 scale = Vector2(0.25, 0.25)
-tile_map_data = PackedByteArray("AAACAAQAAwABAAAAAAACAAMAAwABAAAAAAACAAIAAwABAAAAAAACAAEAAwABAAAAAAABAAMAAAACAAAAAAABAAQAAAACAAEAAAABAAEAAAACAAAAAAABAAIAAAACAAEAAAADAAEAAAACAAEAADADAAIAAAACAAAAADADAAMAAAACAAEAADADAAQAAAACAAAAADA=")
-tile_set = SubResource("TileSet_ynyo3")
+tile_map_data = PackedByteArray("AAAAAP//AwABAAAAAAABAP//AwABAAAAAAACAP//AwABAAAAAAADAP//AwABAAAAAAAEAP//AwABAAAAAAAFAP//AwABAAAAAAAGAP//AwABAAAAAAAIAP//AwABAAAAAAAHAP//AwABAAAAAAAAAP7/AAAAAAIAAAABAP7/AAAAAAIAAAACAP7/AAAAAAIAAAADAP7/AAAAAAIAAAAEAP7/AAAAAAIAAAAFAP7/AAAAAAIAAAAGAP7/AAAAAAIAAAAHAP7/AAAAAAIAAAAIAP7/AAAAAAIAAAAAAP3/AAAEAAAAAAACAP3/AAAEAAAAAAAEAP3/AAAEAAAAAAAGAP3/AAAEAAAAAAAIAP3/AAAEAAAAAAAHAP3/AAAEAAEAAAAFAP3/AAAEAAEAAAADAP3/AAAEAAEAAAABAP3/AAAEAAEAAAAIAAAAAAAFAAEAAAAGAAAAAAAFAAEAAAAEAAAAAAAFAAEAAAACAAAAAAAFAAEAAAAAAAAAAAAFAAEAAAAHAAAAAAAFAAAAAAAFAAAAAAAFAAAAAAADAAAAAAAFAAAAAAABAAAAAAAFAAAAAAA=")
+tile_set = SubResource("TileSet_bjlad")
 
 [node name="Doors" type="TileMapLayer" parent="BaseMapLayer"]
 visible = false
-tile_map_data = PackedByteArray("AAACAAQAAAACAAIAAAACAAMAAAAEAAEAAAACAAEAAAAFAAEAAAA=")
-tile_set = SubResource("TileSet_ynyo3")
+tile_map_data = PackedByteArray("AAD/////AAACAAAAAAAJAP//AAADAAEAAAA=")
+tile_set = SubResource("TileSet_bjlad")
 collision_enabled = false
 
-[node name="Exit" type="Node2D" parent="."]
-position = Vector2(0, -192)
+[node name="PathL" type="Node2D" parent="."]
+position = Vector2(288, -32)
+
+[node name="PathR" type="Node2D" parent="."]
+position = Vector2(-288, -32)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://f6n573w57vu6"]
+[gd_scene load_steps=45 format=3 uid="uid://f6n573w57vu6"]
 
 [ext_resource type="Texture2D" uid="uid://cminetoyt22sf" path="res://Misc PNGs and assets/placeholder_icon.png" id="1_p1dxc"]
 [ext_resource type="Script" path="res://Scenes/Enemies/Bruiser/EnemyBruiser.gd" id="1_rmu8v"]
@@ -18,7 +18,7 @@ tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/path = NodePath("BruiserSpriteSheet:frame")
-tracks/0/interp = 1
+tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.1, 0.25, 0.3, 0.35, 0.6, 0.65, 0.7),
@@ -128,6 +128,32 @@ tracks/4/keys = {
 "update": 1,
 "values": [false]
 }
+tracks/5/type = "method"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath(".")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.05, 0.175, 0.25, 0.375, 0.475),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"values": [{
+"args": [],
+"method": &"call_bruiser_footstep"
+}, {
+"args": [],
+"method": &"call_bruiser_footstep"
+}, {
+"args": [],
+"method": &"call_bruiser_footstep"
+}, {
+"args": [],
+"method": &"call_bruiser_footstep"
+}, {
+"args": [],
+"method": &"call_bruiser_footstep"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_2um80"]
 resource_name = "Bruiser_Charge_Up"
@@ -150,7 +176,7 @@ tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/path = NodePath("BruiserSpriteSheet:frame")
-tracks/1/interp = 1
+tracks/1/interp = 2
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.05, 0.125, 0.175, 0.225, 0.25, 0.3, 0.375, 0.425, 0.475),
@@ -193,6 +219,32 @@ tracks/4/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
+}
+tracks/5/type = "method"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath(".")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.05, 0.175, 0.25, 0.375, 0.475),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"values": [{
+"args": [],
+"method": &"call_bruiser_footstep"
+}, {
+"args": [],
+"method": &"call_bruiser_footstep"
+}, {
+"args": [],
+"method": &"call_bruiser_footstep"
+}, {
+"args": [],
+"method": &"call_bruiser_footstep"
+}, {
+"args": [],
+"method": &"call_bruiser_footstep"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_4sl46"]
@@ -247,6 +299,32 @@ tracks/3/keys = {
 "update": 1,
 "values": [false]
 }
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.1, 0.25, 0.45, 0.6, 0.85),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"values": [{
+"args": [],
+"method": &"call_bruiser_footstep"
+}, {
+"args": [],
+"method": &"call_bruiser_footstep"
+}, {
+"args": [],
+"method": &"call_bruiser_footstep"
+}, {
+"args": [],
+"method": &"call_bruiser_footstep"
+}, {
+"args": [],
+"method": &"call_bruiser_footstep"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_kfpxq"]
 resource_name = "Bruiser_Wait_down"
@@ -257,7 +335,7 @@ tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/path = NodePath("BruiserSpriteSheet:frame")
-tracks/0/interp = 1
+tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
@@ -311,7 +389,7 @@ tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/path = NodePath("BruiserSpriteSheet:frame")
-tracks/0/interp = 1
+tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
@@ -407,6 +485,32 @@ tracks/3/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [false]
+}
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.1, 0.25, 0.45, 0.6, 0.85),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"values": [{
+"args": [],
+"method": &"call_bruiser_footstep"
+}, {
+"args": [],
+"method": &"call_bruiser_footstep"
+}, {
+"args": [],
+"method": &"call_bruiser_footstep"
+}, {
+"args": [],
+"method": &"call_bruiser_footstep"
+}, {
+"args": [],
+"method": &"call_bruiser_footstep"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_x7nhy"]
@@ -607,6 +711,20 @@ advance_condition = &"dash"
 advance_mode = 2
 advance_condition = &"chase"
 
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_bor5l"]
+advance_mode = 2
+advance_condition = &"attack"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_c0bld"]
+switch_mode = 2
+advance_mode = 2
+advance_condition = &"wait"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_go4qi"]
+switch_mode = 2
+advance_mode = 2
+advance_condition = &"chase"
+
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_vlx5t"]
 states/Attack/node = SubResource("AnimationNodeBlendSpace2D_ox865")
 states/Attack/position = Vector2(545, 100)
@@ -618,7 +736,7 @@ states/End/position = Vector2(919, 100)
 states/Start/position = Vector2(182, 100)
 states/Wait/node = SubResource("AnimationNodeBlendSpace2D_wcouf")
 states/Wait/position = Vector2(326, 213)
-transitions = ["Start", "Chase", SubResource("AnimationNodeStateMachineTransition_th22c"), "Chase", "Wait", SubResource("AnimationNodeStateMachineTransition_bctfv"), "Wait", "Chase", SubResource("AnimationNodeStateMachineTransition_gdd1w"), "Wait", "Dash", SubResource("AnimationNodeStateMachineTransition_5p5d0"), "Dash", "Chase", SubResource("AnimationNodeStateMachineTransition_hvkrb")]
+transitions = ["Start", "Chase", SubResource("AnimationNodeStateMachineTransition_th22c"), "Chase", "Wait", SubResource("AnimationNodeStateMachineTransition_bctfv"), "Wait", "Chase", SubResource("AnimationNodeStateMachineTransition_gdd1w"), "Wait", "Dash", SubResource("AnimationNodeStateMachineTransition_5p5d0"), "Dash", "Chase", SubResource("AnimationNodeStateMachineTransition_hvkrb"), "Dash", "Attack", SubResource("AnimationNodeStateMachineTransition_bor5l"), "Attack", "Wait", SubResource("AnimationNodeStateMachineTransition_c0bld"), "Attack", "Chase", SubResource("AnimationNodeStateMachineTransition_go4qi")]
 graph_offset = Vector2(-91, 35)
 
 [node name="EnemyBruiser" type="CharacterBody2D" groups=["enemy"]]
@@ -667,14 +785,14 @@ libraries = {
 tree_root = SubResource("AnimationNodeStateMachine_vlx5t")
 advance_expression_base_node = NodePath("..")
 anim_player = NodePath("../Bruiser_AnimationP")
+parameters/conditions/attack = false
 parameters/conditions/chase = false
 parameters/conditions/dash = false
 parameters/conditions/wait = false
 parameters/Attack/blend_position = Vector2(0.0111016, 0.00884962)
 parameters/Chase/blend_position = Vector2(-0.00939369, -0.0182768)
-parameters/Dash/blend_position = Vector2(0.0247651, 0.115044)
-parameters/Wait/blend_position = Vector2(0.00426984, -0.263708)
+parameters/Dash/blend_position = Vector2(0.0350128, 0.382979)
+parameters/Wait/blend_position = Vector2(-0.376601, -0.914894)
 
-[node name="BruiserAnimation" type="Node2D" parent="." node_paths=PackedStringArray("animation_tree")]
+[node name="BruiserAnimation" type="Node2D" parent="."]
 script = ExtResource("5_r7me6")
-animation_tree = NodePath("../Bruiser_AnimationTree")

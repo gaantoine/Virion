@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://c8nbxa3n65iil"]
+[gd_scene load_steps=14 format=3 uid="uid://c8nbxa3n65iil"]
 
 [ext_resource type="Script" path="res://Scenes/Enemies/Swarm/Pod/EnemySwarmPod.gd" id="1_tbp0m"]
 [ext_resource type="Texture2D" uid="uid://cvlppoc7xdoti" path="res://placeholder_icon3.png" id="2_i2iyv"]
@@ -23,6 +23,22 @@ tracks/0/keys = {
 "values": [37, 38, 39, 40, 41, 42, 43]
 }
 
+[sub_resource type="Animation" id="Animation_0j3f2"]
+resource_name = "Pod_Idle"
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SwarmSpriteSheet:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [36]
+}
+
 [sub_resource type="Animation" id="Animation_kwl5m"]
 length = 0.001
 tracks/0/type = "value"
@@ -41,19 +57,29 @@ tracks/0/keys = {
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_s8obm"]
 _data = {
 "Pod_Burst": SubResource("Animation_r7hsv"),
+"Pod_Idle": SubResource("Animation_0j3f2"),
 "RESET": SubResource("Animation_kwl5m")
 }
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_q04o8"]
 animation = &"Pod_Burst"
 
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_6ohd5"]
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_vrgi0"]
+animation = &"Pod_Idle"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_q3aw2"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_nrdad"]
 advance_mode = 2
 
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_gqdir"]
 states/Pod_Burst/node = SubResource("AnimationNodeAnimation_q04o8")
-states/Pod_Burst/position = Vector2(368, 99)
-transitions = ["Start", "Pod_Burst", SubResource("AnimationNodeStateMachineTransition_6ohd5")]
+states/Pod_Burst/position = Vector2(493, 100)
+states/Pod_Idle/node = SubResource("AnimationNodeAnimation_vrgi0")
+states/Pod_Idle/position = Vector2(334, 100)
+states/Start/position = Vector2(196, 100)
+transitions = ["Start", "Pod_Idle", SubResource("AnimationNodeStateMachineTransition_q3aw2"), "Pod_Idle", "Pod_Burst", SubResource("AnimationNodeStateMachineTransition_nrdad")]
 
 [node name="EnemySwarmPod" type="CharacterBody2D"]
 script = ExtResource("1_tbp0m")

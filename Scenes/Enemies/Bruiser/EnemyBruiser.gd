@@ -53,6 +53,8 @@ var current_hp = base_max_hp
 @export var avoid_weight: float = 100
 @export var aggro_range: float = 900
 
+@onready var animation_tree : AnimationTree = $Bruiser_AnimationTree
+
 var state = MOVEMODE.WAITING
 var distance_to_player
 
@@ -85,6 +87,7 @@ var player:Player:
 	get:return Player.current
 
 func _ready():
+	animation_tree.active = true
 	$Timer.timeout.connect(_on_Timer_timeout)
 	
 	# Generate ray directions
@@ -312,3 +315,30 @@ func _draw() -> void:
 #function to emit bruiser footstep signal for all listeners to hear	
 func call_bruiser_footstep() -> void:
 	bruiser_footstep.emit()
+	
+func _process(delta):
+	update_animation_parameters()
+
+func update_animation_parameters():
+	if(state == MOVEMODE.WAITING):
+		animation_tree["parameters/conditions/wait"] = true
+		animation_tree["parameters/conditions/chase"] = false
+		animation_tree["parameters/conditions/dash"] = false
+	if(state == MOVEMODE.CHASING):
+		animation_tree["parameters/conditions/wait"] = false
+		animation_tree["parameters/conditions/chase"] = true
+		animation_tree["parameters/conditions/dash"] = false
+	if(state == MOVEMODE.DASHING):
+		animation_tree["parameters/conditions/wait"] = false
+		animation_tree["parameters/conditions/chase"] = false
+		animation_tree["parameters/conditions/dash"] = true
+	if(state == MOVEMODE.ATTACKING):
+		animation_tree["parameters/conditions/wait"] = false
+		animation_tree["parameters/conditions/chase"] = false
+		animation_tree["parameters/conditions/dash"] = true
+		animation_tree["parameters/conditions/attack"] = true
+	if(velocity != Vector2.ZERO):
+		animation_tree["parameters/Attack/blend_position"] = velocity.normalized()
+		animation_tree["parameters/Chase/blend_position"] = velocity.normalized()
+		animation_tree["parameters/Dash/blend_position"] = velocity.normalized()
+		animation_tree["parameters/Wait/blend_position"] = velocity.normalized()

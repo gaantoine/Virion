@@ -22,4 +22,5 @@ func _physics_process(_delta: float) -> void:
 	#This makes sure the bruiser faces down or up when moving in the respective direction.
 	animation_tree.set("parameters/Idle/blend_position", last_facing_direction)
 	animation_tree.set("parameters/Walk/blend_position", last_facing_direction)
+	animation_tree.set("parameters/Rolling/blend_position", last_facing_direction)
 	

@@ -25,3 +25,7 @@ func SpawnEnemies() -> void:
 func EnemyDie() -> void:
 	TheRoom.NumEnemies -= 1
 	TheRoom.EnemiesKilled()
+
+
+func _on_area_2d_body_entered(body: Node2D) -> void:
+	pass # Replace with function body.

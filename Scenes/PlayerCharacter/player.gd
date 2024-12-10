@@ -2,7 +2,7 @@ extends CharacterBody2D
 class_name Player
 
 enum MOVEMODE {
-	WALKING, 
+	WALKING,
 	DODGING
 }
 
@@ -25,7 +25,7 @@ static var current:Player
 @export_category("Energy")
 ## Rate at which energy regenerates per second.
 @export var energy_regen_rate:float = 1
-## Delay (in seconds) after consuming energy before regeneration resumes. 
+## Delay (in seconds) after consuming energy before regeneration resumes.
 @export var energy_regen_delay:float = 1
 
 var max_energy:float:
@@ -35,14 +35,19 @@ var max_energy:float:
 
 @onready var t_EnergyRegenDelay:Timer = $EnergyRegenDelayTimer
 
-@onready var c_healthbar:ProgressBar = $AspectRatioContainer/Healthbar
+@onready var c_healthbar:ProgressBar = $CanvasLayer/VBoxContainer/Healthbar
+@onready var c_graybar:ProgressBar = $CanvasLayer/VBoxContainer/GrayHealth
 
 var move_mode := MOVEMODE.WALKING
 var can_dodge := true
 
+
 @export_category("Health and Damage")
 ## Total player Health
 @export var health:float = 100
+var max_hp:float = 100
+var GRAY_COEFF:float = 0.5
+var LIFESTEAL_RATIO:float = 0.1
 ## The duration of the immunity window after taking damage
 @export var immunity_duration:float = 0.5
 var is_immune:bool = false
@@ -81,32 +86,32 @@ signal player_footstep
 signal player_dodge_start
 #signal variable for player dodge end called in Animation Player
 signal player_dodge_end
-		
+
 func _ready():
 	current = self
-	
+
 	attrs = attr_defaults.duplicate()
 
 func _physics_process(delta:float) -> void:
-	
+
 	var move_dir := Input.get_vector("move_left", "move_right", "move_up", "move_down").normalized()
-	
+
 	# movement functions test validity of a move action and perform it if necessary
 	move_dodge(move_dir)
 	move_walk(delta, move_dir)
-	
+
 	regen_energy(delta)
-	
+
 	move_and_slide()
-	
+
 	if Input.is_action_just_pressed("ui_focus_next"): # mod system testing
 		print(attrs["bullet_firing_rate"])
-		
+
 	# Renzo -- It will detect tile map collision and if Custom Data "is_destructive" is true, it will destroy player
 	for layer:TileMapLayer in collidingTileMaps:
 		var tile_pos:Vector2i = layer.local_to_map(layer.to_local(global_position))
 		var tile_data:TileData = layer.get_cell_tile_data(tile_pos)
-		
+
 		if tile_data and tile_data.get_custom_data("is_destructive"):
 			destroy_player()
 
@@ -116,18 +121,18 @@ func _physics_process(delta:float) -> void:
 		if collider is TileMapLayer:
 			var tile_pos = collider.local_to_map(collider.to_local(get_slide_collision(i).get_position()-get_slide_collision(i).get_normal()))
 			var tile_data = collider.get_cell_tile_data(tile_pos)
-			
+
 			if tile_data and tile_data.get_custom_data("is_destructive"):
 				take_damage(5)
 
 func move_walk(delta:float, move_dir:Vector2) -> void:
 	if move_mode != MOVEMODE.WALKING:
 		return
-	
+
 	# math for exponential decay for movement decel
 	var accel:Vector2 = move_dir * max_speed * accel_ratio * delta
 	var decay:float = exp(-accel_ratio * delta) # exponential decay per second for speed limiting, turning, and deceleration
-	
+
 	# apply decay then movement accel
 	velocity *= decay
 	velocity += accel * (decay - 1) / log(decay) # integrate decay over acceleration interval instead of approximating with `accel * decay`
@@ -143,21 +148,21 @@ func move_dodge(move_dir:Vector2) -> void:
 		return
 	if not use_energy():
 		return
-	
+
 	# initiate dodge
 	move_mode = MOVEMODE.DODGING
 	velocity = move_dir * dodge_range / dodge_time
 	set_collision_layer_value(6, false) # make player invisible to collision layer 6 (enemies and damage search for the player on this layer)
 	$CollisionShape2D.debug_color = Color(0, 1, 0.5, 0.5) # placeholder dodge effect
 	can_dodge = false
-	
+
 	# return to normal movement
 	await get_tree().create_timer(dodge_time).timeout
 	move_mode = MOVEMODE.WALKING
 	velocity = velocity.limit_length(max_speed)
 	set_collision_layer_value(6, true) # re-enable enemy collision detection
 	$CollisionShape2D.debug_color = Color(1, 0.5, 0.5, 0.5)
-	
+
 	# reset dodge
 	await get_tree().create_timer(maxf(0, dodge_cooldown / attrs["dodge_speed"] - dodge_time)).timeout
 	can_dodge = true
@@ -175,11 +180,18 @@ func regen_energy(delta:float) -> void:
 		energy = min(max_energy, energy + delta * energy_regen_rate)
 	$EnergyLabel.text = str(int(energy))
 
+func regen_health(damage:float) -> void:
+	health += damage * LIFESTEAL_RATIO
+	if health > max_hp:
+		health = max_hp
+	update_health_display()
+
 func take_damage(damage:float) -> void:
 	if is_immune:
 		return
 	
 	health -= damage
+	max_hp -= damage * GRAY_COEFF
 	modulate = Color.RED
 	update_health_display()
 	if health <= 0:
@@ -196,11 +208,12 @@ func start_immunity() -> void:
 
 func update_health_display() -> void:
 	c_healthbar.value = health
-	
+	c_graybar.value = max_hp
+
 
 func die() -> void:
 	print("aaaaaaaa dying dying dying")
-	
+
 func add_mods(mods:Dictionary) -> void:
 	for key in mods:
 		var mod:String = mods[key]
@@ -213,7 +226,7 @@ func add_mods(mods:Dictionary) -> void:
 			i += 1
 		mod_list.insert(i, mod)
 	apply_mods()
-	
+
 func apply_mods() -> void:
 	attrs = attr_defaults.duplicate()
 	for attr in attr_mods:
@@ -240,7 +253,7 @@ func mod_prio(mod:String) -> int:
 		return 0
 	push_error("invalid mod format: ", mod)
 	return -1
-	
+
 
 
 # Renzo -- Pit Collision Event
@@ -272,7 +285,7 @@ func call_player_footstep() -> void:
 	player_footstep.emit()
 
 #This function is triggered from the animation player to call for the dodge jump sound
-#from the audio manager when specific frames of animation are played	
+#from the audio manager when specific frames of animation are played
 func call_player_dodge_start() -> void:
 	player_dodge_start.emit()
 

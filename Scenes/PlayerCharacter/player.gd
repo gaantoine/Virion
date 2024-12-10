@@ -47,6 +47,7 @@ var health:float = 100
 	"bullet_damage": 5,
 	"bullet_speed": 1, # tiles per second
 	"bullet_range": 10, # in tiles
+	"bullet_size": 1,
 	"bullet_firing_rate": 1,
 	"bullet_accuracy": 1,
 	"bullet_piercing": 1,
@@ -54,7 +55,6 @@ var health:float = 100
 	"bullet_arc": 10, # for multi-shot weapons
 	"melee_damage": 5,
 	"melee_knockback": 2,
-	"bullet_size": 1,
 	#"consumable_damage": 5,
 	#"consumable_size": 1,
 	#"droprate_grenade": 1,

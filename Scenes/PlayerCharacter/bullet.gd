@@ -14,6 +14,8 @@ func _ready() -> void:
 	var speed__px_s:float = speed__tile_s * Global.TILE_SIZE
 	
 	velocity = Vector2.from_angle(global_rotation) * speed__px_s
+	var temp_scale:float = attrs["bullet_size"]
+	scale = Vector2(temp_scale, temp_scale)
 	
 	t_Lifetime.start(attrs["bullet_range"] / speed__tile_s)
 	t_Lifetime.timeout.connect(break_bullet)

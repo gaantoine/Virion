@@ -7,7 +7,7 @@ class_name PlayerShooter
 signal player_shoot
 
 const sc_bullet := preload("res://Animations/VFX/projectile_1.tscn")
-const REFIRE__S:float = 0.2 # base refire delay
+const REFIRE__S:float = 0.4 # base refire delay
 const BULLET_SPREAD:float = deg_to_rad(3)
 
 

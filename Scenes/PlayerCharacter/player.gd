@@ -38,6 +38,8 @@ var max_energy:float:
 @onready var c_healthbar:ProgressBar = $CanvasLayer/VBoxContainer/Healthbar
 @onready var c_graybar:ProgressBar = $CanvasLayer/VBoxContainer/GrayHealth
 
+@onready var animation_tree : AnimationTree = $Nebula_AnimationTree
+
 var move_mode := MOVEMODE.WALKING
 var can_dodge := true
 
@@ -88,6 +90,7 @@ signal player_dodge_start
 signal player_dodge_end
 
 func _ready():
+	animation_tree.active = true
 	current = self
 
 	attrs = attr_defaults.duplicate()

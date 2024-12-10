@@ -10,6 +10,7 @@ var dialog_hide_time: float = 5
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	dialog = load_dialog_data("res://Scenes/NPCs/Dialog.json")
+	
 	dialog_displayed_counter = 0
 	label = $"../RichTextLabel"
 
@@ -34,12 +35,10 @@ func load_dialog_data(file_path: String) -> Dictionary:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if !player_in_range:
+		label.text = ""
 		return
 	
-	if Input.is_action_just_pressed("interact"):
-		label.text = dialog["1"][dialog_displayed_counter]
-		$"../Timer".start(dialog_hide_time)
-		dialog_displayed_counter = (dialog_displayed_counter + 1) % dialog["1"].size()
+	label.text = dialog[str(get_parent().pickup_type + 1)]
 
 
 func _on_body_entered(body):

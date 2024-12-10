@@ -22,5 +22,20 @@
 		"I think Mother Computer's methods can be a little... extreme. Wait, please don't report me!",
 		"I hope that virus doesn't end up stronger than the antiviral programs...",
 		"Not to doubt Mother Computer, but I don't know how easily this virus will go down."
-	]
+	],
+	
+	"3": "[font_size=12][b]Snipe Chip:[/b] Significantly reduces rate of fire for increased damage and range[/font_size]",
+	"4": "[font_size=12][b]Spread Chip:[/b] Causes Bullets shoot in a wide, short range cone[/font_size]",
+	"5": "[font_size=12][b]Repeat Chip:[/b] Significantly increases fire rate at the cost of reduced bullet damage and size[/font_size]",
+	"6": "[font_size=12][b]Slug Chip:[/b] Increases bullet damage and size, but reduces bullet speed, range, and fire rate[/font_size]",
+	"7": "[font_size=12][b]Blade Chip:[/b] Significantly increases melee damage and stamina at the cost of reduced bullet damage[/font_size]",
+	"8": "[font_size=12][b]Transformer:[/b] Reduces bullet speed but increases damage and size[/font_size]",
+	"9": "[font_size=12][b]Radiator:[/b] Increases fire rate, bullet speed, and stamina[/font_size]",
+	"10": "[font_size=12][b]Power Converter:[/b] Reduces bullet damage but increases melee damage[/font_size]",
+	"11": "[font_size=12][b]Power Diverter:[/b] Reduces melee damage but increases bullet damage[/font_size]",
+	"12": "[font_size=12][b]Voltage Regulator:[/b] Increases bullet accuracy and range[/font_size]",
+	"13": "[font_size=12][b]Malware:[/b] Increases bullet damage but reduces accuracy and dodge speed[/font_size]",
+	"14": "[font_size=12][b]Overclock:[/b] Increases fire rate, bullet speed, and dodge speed[/font_size]",
+	"15": "[font_size=12][b]Virus:[/b] Causes bullets to pierce through enemies and slightly increases bullet damage[/font_size]",
+	"16": "[font_size=12][b]RAM:[/b] Increases melee damage and dodge speed[/font_size]"
 }

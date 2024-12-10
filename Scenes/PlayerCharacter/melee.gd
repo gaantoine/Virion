@@ -44,3 +44,5 @@ func try_melee() -> void:
 			var knock_dir := Vector2.from_angle(global_rotation) + global_position.direction_to(target.global_position)
 			knock_dir = knock_dir.normalized()
 			target.take_knockback(knock_dir * attrs["melee_knockback"] * Global.TILE_SIZE)
+		if target.is_in_group("enemy_projectile"):
+			target.reflect(global_rotation)

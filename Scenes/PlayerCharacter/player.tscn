@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=3 uid="uid://coujnnoiesx2e"]
+[gd_scene load_steps=43 format=3 uid="uid://coujnnoiesx2e"]
 
 [ext_resource type="Script" path="res://Scenes/PlayerCharacter/player.gd" id="1_nm4sk"]
 [ext_resource type="Script" path="res://Scenes/PlayerCharacter/nebula_animation.gd" id="2_ndwgd"]
@@ -604,7 +604,7 @@ debug_color = Color(0.3732, 0, 0.0882858, 1)
 position = Vector2(16, 0)
 rotation = 1.5708
 collision_layer = 0
-collision_mask = 256
+collision_mask = 1280
 script = ExtResource("4_oputj")
 
 [node name="Sprite2D" type="Sprite2D" parent="Shooter/MeleeDetectorArea"]

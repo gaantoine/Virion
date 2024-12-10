@@ -15,11 +15,12 @@ func _physics_process(_delta: float) -> void:
 		last_facing_direction = enemy.velocity.normalized()
 	
 	animation_tree.set("parameters/conditions/idle", idle)
-	#animation_tree.set("parameters/conditions/chase", !wait) Placeholder
-	
+	animation_tree.set("parameters/conditions/move", !idle)
 	
 	#These all use the current velocity to determine the blend position.
-	#This makes sure the bruiser faces down or up when moving in the respective direction.
+	#This makes sure the Ranger faces down or up when moving in the respective direction.
 	animation_tree.set("parameters/Idle/blend_position", last_facing_direction)
-	#animation_tree.set("parameters/Wait/blend_position", last_facing_direction) Placeholder
+	animation_tree.set("parameters/Move/blend_position", last_facing_direction)
+	#animation_tree.set("parameters/Attack/blend_position", last_facing_direction)
+	
 	

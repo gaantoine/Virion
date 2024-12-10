@@ -600,12 +600,10 @@ advance_mode = 2
 advance_condition = &"chase"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_5p5d0"]
-switch_mode = 2
 advance_mode = 2
 advance_condition = &"dash"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_hvkrb"]
-switch_mode = 2
 advance_mode = 2
 advance_condition = &"chase"
 
@@ -625,7 +623,7 @@ graph_offset = Vector2(-91, 35)
 
 [node name="EnemyBruiser" type="CharacterBody2D" groups=["enemy"]]
 collision_layer = 256
-collision_mask = 289
+collision_mask = 291
 script = ExtResource("1_rmu8v")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

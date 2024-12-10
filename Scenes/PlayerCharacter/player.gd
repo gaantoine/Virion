@@ -41,10 +41,16 @@ var max_energy:float:
 var move_mode := MOVEMODE.WALKING
 var can_dodge := true
 
-var health:float = 100
+
+@export_category("Health and Damage")
+## Total player Health
+@export var health:float = 100
 var max_hp:float = 100
 var GRAY_COEFF:float = 0.5
 var LIFESTEAL_RATIO:float = 0.1
+## The duration of the immunity window after taking damage
+@export var immunity_duration:float = 0.5
+var is_immune:bool = false
 
 @export_category("Player Base Attributes")
 @export var attr_defaults:Dictionary = {
@@ -117,8 +123,7 @@ func _physics_process(delta:float) -> void:
 			var tile_data = collider.get_cell_tile_data(tile_pos)
 
 			if tile_data and tile_data.get_custom_data("is_destructive"):
-				print("damaging player")
-				velocity = get_slide_collision(i).get_normal()*1000
+				take_damage(5)
 
 func move_walk(delta:float, move_dir:Vector2) -> void:
 	if move_mode != MOVEMODE.WALKING:
@@ -182,6 +187,9 @@ func regen_health(damage:float) -> void:
 	update_health_display()
 
 func take_damage(damage:float) -> void:
+	if is_immune:
+		return
+	
 	health -= damage
 	max_hp -= damage * GRAY_COEFF
 	modulate = Color.RED
@@ -191,7 +199,12 @@ func take_damage(damage:float) -> void:
 		die()
 	else:
 		create_tween().tween_property(self, "modulate", Color.WHITE, 6.0/60)
+		start_immunity()
 
+func start_immunity() -> void:
+	is_immune = true
+	await get_tree().create_timer(immunity_duration).timeout
+	is_immune = false
 
 func update_health_display() -> void:
 	c_healthbar.value = health

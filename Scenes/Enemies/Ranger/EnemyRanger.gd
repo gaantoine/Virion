@@ -240,9 +240,9 @@ func take_damage(damage_taken: float) -> void:
 	if current_hp <= 0:
 		die()
 	else:
-		$RangerDown.modulate = Color.RED
+		$RangerSpriteSheet.modulate = Color.RED
 		await get_tree().create_timer(3/60.0).timeout
-		$RangerDown.modulate = Color.WHITE
+		$RangerSpriteSheet.modulate = Color.WHITE
 
 func take_knockback(displacement: Vector2) -> void:
 	pass
@@ -252,10 +252,10 @@ func die() -> void:
 	
 	set_process(false)
 	# Trigger death animation
-	# $AnimationPlayer.play("death")
+	# $Ranger_AnimationP.play("Ranger_Death")
 	# Play sound effect
 	# $AudioStreamPlayer.play()
 	# Emit a death signal, useful for later
 	# emit_signal("enemy_died")
-	# await $AnimationPlayer.animation_finished
+	# await $Ranger_AnimationP.animation_finished
 	queue_free()

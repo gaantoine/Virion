@@ -38,7 +38,9 @@ func try_melee() -> void:
 	
 	for target:Node2D in get_overlapping_bodies():
 		if target.is_in_group("enemy"):
-			target.take_damage(attrs["melee_damage"])
+			var damage:float = attrs["melee_damage"]
+			target.take_damage(damage)
+			Player.current.regen_health(damage)
 			var knock_dir := Vector2.from_angle(global_rotation) + global_position.direction_to(target.global_position)
 			knock_dir = knock_dir.normalized()
 			target.take_knockback(knock_dir * attrs["melee_knockback"] * Global.TILE_SIZE)

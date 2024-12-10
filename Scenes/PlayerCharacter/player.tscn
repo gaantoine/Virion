@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=3 uid="uid://coujnnoiesx2e"]
+[gd_scene load_steps=47 format=3 uid="uid://coujnnoiesx2e"]
 
 [ext_resource type="Script" path="res://Scenes/PlayerCharacter/player.gd" id="1_nm4sk"]
 [ext_resource type="Script" path="res://Scenes/PlayerCharacter/nebula_animation.gd" id="2_ndwgd"]
@@ -1586,6 +1586,9 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_it6tm"]
 size = Vector2(137, 90)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_l80wi"]
+bg_color = Color(1, 1, 1, 1)
+
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 collision_layer = 48
 motion_mode = 1
@@ -1744,9 +1747,27 @@ size_flags_vertical = 3
 stretch_mode = 0
 alignment_vertical = 2
 
-[node name="Healthbar" type="ProgressBar" parent="AspectRatioContainer"]
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer"]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -900.0
+offset_right = 1600.0
+grow_vertical = 0
+alignment = 2
+
+[node name="GrayHealth" type="ProgressBar" parent="CanvasLayer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 8
+value = 100.0
+
+[node name="Healthbar" type="ProgressBar" parent="CanvasLayer/VBoxContainer"]
+self_modulate = Color(0, 1, 0, 1)
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_styles/fill = SubResource("StyleBoxFlat_l80wi")
 value = 100.0
 
 [connection signal="body_entered" from="TileDetectorArea" to="." method="_on_area_2d_body_entered"]

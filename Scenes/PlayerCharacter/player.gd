@@ -42,7 +42,8 @@ var can_dodge := true
 
 var health:float = 100
 var is_immune:bool = false
-var immunity_duration:float = 0.5
+## The duration of the immunity window after taking damage
+@export var immunity_duration:float = 0.5
 
 @export_category("Player Base Attributes")
 @export var attr_defaults:Dictionary = {
@@ -115,7 +116,6 @@ func _physics_process(delta:float) -> void:
 			var tile_data = collider.get_cell_tile_data(tile_pos)
 			
 			if tile_data and tile_data.get_custom_data("is_destructive"):
-				print("damaging player")
 				take_damage(5)
 
 func move_walk(delta:float, move_dir:Vector2) -> void:

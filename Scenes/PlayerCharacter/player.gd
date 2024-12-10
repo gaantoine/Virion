@@ -40,10 +40,12 @@ var max_energy:float:
 var move_mode := MOVEMODE.WALKING
 var can_dodge := true
 
-var health:float = 100
-var is_immune:bool = false
+@export_category("Health and Damage")
+## Total player Health
+@export var health:float = 100
 ## The duration of the immunity window after taking damage
 @export var immunity_duration:float = 0.5
+var is_immune:bool = false
 
 @export_category("Player Base Attributes")
 @export var attr_defaults:Dictionary = {

@@ -58,7 +58,7 @@ var pickups:Dictionary = {
 			"bullet_range": "=16",
 			"bullet_size": "=0.5",
 			"bullet_firing_rate": "=0.5",
-			"bullet_accuracy": "=1.5",
+			"bullet_accuracy": "=1.75",
 			"bullet_piercing": "=2",
 			"bullet_count": "=1",
 			"melee_damage": "=5",
@@ -89,10 +89,10 @@ var pickups:Dictionary = {
 		"mods": {
 			"bullet_damage": "=3",
 			"bullet_speed": "=1",
-			"bullet_range": "=8",
+			"bullet_range": "=7",
 			"bullet_size": "=0.5",
-			"bullet_firing_rate": "=2.5",
-			"bullet_accuracy": "=0.9",
+			"bullet_firing_rate": "=2.2",
+			"bullet_accuracy": "=0.5",
 			"bullet_piercing": "=1",
 			"bullet_count": "=1",
 			"melee_damage": "=5",
@@ -104,7 +104,7 @@ var pickups:Dictionary = {
 		"texture": "res://Scenes/Pickups/Pickup_PNGS/Slug Icon.png",
 		"mods": {
 			"bullet_damage": "=8",
-			"bullet_speed": "=0.5",
+			"bullet_speed": "=0.6",
 			"bullet_range": "=4",
 			"bullet_size": "=2",
 			"bullet_firing_rate": "=0.5",
@@ -127,8 +127,8 @@ var pickups:Dictionary = {
 			"bullet_accuracy": "=1",
 			"bullet_piercing": "=1",
 			"bullet_count": "=1",
-			"melee_damage": "=7",
-			"dodge_speed": "=1.1",
+			"melee_damage": "=10",
+			"dodge_speed": "=1.2",
 			"stamina": "=5"
 		}
 	},
@@ -144,7 +144,7 @@ var pickups:Dictionary = {
 		"texture": "res://Scenes/Pickups/Pickup_PNGS/radiator1.png",
 		"mods": {
 			"bullet_accuracy": "-10%",
-			"bullet_firing_rate": "-25%",
+			"bullet_firing_rate": "+25%",
 			"bullet_speed": "+10%",
 			"stamina": "+1"
 		}
@@ -175,8 +175,8 @@ var pickups:Dictionary = {
 	Pickup.malware: {
 		"texture": "res://Scenes/Pickups/Pickup_PNGS/malware.png",
 		"mods": {
-			"dodge_speed": "-10%",
-			"bullet_accuracy": "-5%",
+			"dodge_speed": "-20%",
+			"bullet_accuracy": "-10%",
 			"bullet_damage": "+3"
 		}
 	},

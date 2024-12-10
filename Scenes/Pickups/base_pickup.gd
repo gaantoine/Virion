@@ -11,6 +11,7 @@ var tex_scale:float = 0.125
 
 enum Pickup { 
 	RANDOM,
+	RANDOMWEP,
 	base_chip,
 	snipe_chip,
 	spread_chip,
@@ -209,7 +210,9 @@ var interactable:bool = false
 
 func _ready() -> void:
 	if pickup_type == Pickup.RANDOM:
-		pickup_type = randi_range(Pickup.snipe_chip, Pickup.ram)
+		pickup_type = randi_range(Pickup.transformer, Pickup.ram)
+	if pickup_type == Pickup.RANDOMWEP:
+		pickup_type = randi_range(Pickup.snipe_chip, Pickup.blade_chip)
 
 	var entry:Dictionary = pickups[pickup_type]
 	texture = load(entry["texture"])

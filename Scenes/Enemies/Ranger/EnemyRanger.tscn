@@ -218,7 +218,7 @@ graph_offset = Vector2(-197, 7)
 
 [node name="EnemyRanger" type="CharacterBody2D" groups=["enemy"]]
 collision_layer = 256
-collision_mask = 289
+collision_mask = 291
 script = ExtResource("1_0kdd3")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["enemy"]]

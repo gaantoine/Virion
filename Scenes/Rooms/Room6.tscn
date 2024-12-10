@@ -1,5 +1,6 @@
-[gd_scene load_steps=8 format=4 uid="uid://dx3ufqiywxgfh"]
+[gd_scene load_steps=10 format=4 uid="uid://dx3ufqiywxgfh"]
 
+[ext_resource type="Script" path="res://Scenes/Rooms/EachRoom.gd" id="1_0srxt"]
 [ext_resource type="Texture2D" uid="uid://6tsm52cuk5af" path="res://Scenes/Tilesets/Tiles1.png" id="1_kf71v"]
 [ext_resource type="Texture2D" uid="uid://bc75dxvsc61bg" path="res://Scenes/Tilesets/TestTiles002.png" id="2_slr7i"]
 [ext_resource type="PackedScene" uid="uid://b4104uqhnicp" path="res://Scenes/Enemies/EnemySpawner/EnemySpawner.tscn" id="3_ntt0k"]
@@ -67,7 +68,12 @@ custom_data_layer_0/type = 1
 sources/0 = SubResource("TileSetAtlasSource_l2s86")
 sources/3 = SubResource("TileSetAtlasSource_v7fa0")
 
-[node name="Room6" type="Node2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qgsqg"]
+size = Vector2(858, 154)
+
+[node name="Room6" type="Node2D" node_paths=PackedStringArray("Spawners")]
+script = ExtResource("1_0srxt")
+Spawners = [NodePath("EnemySpawner"), NodePath("EnemySpawner2"), NodePath("EnemySpawner3"), NodePath("EnemySpawner4"), NodePath("EnemySpawner5")]
 
 [node name="BaseMapLayer" type="TileMapLayer" parent="."]
 position = Vector2(-608, -768)
@@ -108,3 +114,14 @@ TheRoom = NodePath("..")
 position = Vector2(544, -704)
 TheEnemy = ExtResource("4_vdyap")
 TheRoom = NodePath("..")
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(0, -832)
+collision_layer = 0
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-1, 697)
+shape = SubResource("RectangleShape2D_qgsqg")
+
+[connection signal="body_entered" from="Area2D" to="." method="EnteredRoom"]

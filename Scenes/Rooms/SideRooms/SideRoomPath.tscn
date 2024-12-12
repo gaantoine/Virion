@@ -75,7 +75,7 @@ tile_set = SubResource("TileSet_bjlad")
 
 [node name="Doors" type="TileMapLayer" parent="BaseMapLayer"]
 visible = false
-tile_map_data = PackedByteArray("AAD/////AAACAAAAAAAJAP//AAADAAEAAAA=")
+tile_map_data = PackedByteArray("AAAAAP7/AAADAAAAAAAAAP//AAADAAEAAAAIAP7/AAACAAAAAAAIAP//AAACAAEAAAA=")
 tile_set = SubResource("TileSet_bjlad")
 collision_enabled = false
 

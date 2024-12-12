@@ -96,18 +96,26 @@ func CreateRooms() -> void:
 		var LROffset = 0
 		if LR == "Left": # No exact positions so we need the offset to the right spot added on...
 			LROffset = holdRoom.global_position - holdRoom.find_child("PathL").global_position
+			holdRoom.global_position = LRSide.global_position + LROffset # ... which we add on here...
+			LRSide = holdRoom.find_child("PathR")
 		else:
 			LROffset = holdRoom.global_position - holdRoom.find_child("PathR").global_position
-		holdRoom.global_position = LRSide.global_position + LROffset # ... which we add on here
+			holdRoom.global_position = LRSide.global_position + LROffset # ... or here
+			LRSide = holdRoom.find_child("PathL")
 		
 		# Now create a random side room and put it in the correct area
-		#randomRoom = "res://Scenes/Rooms/SideRooms/SideRoom" + str(randi_range(1, 3)) + ".tscn"
-		#holdRoom = load(randomRoom).instantiate()
-		#StartRoom.add_child(holdRoom)
-		#if LR == "Left": # No exact positions so we need the offset to the right spot added on...
-		#	LROffset = holdRoom.global_position - holdRoom.find_child("DoorL").global_position
-		#else:
-		#	LROffset = holdRoom.global_position - holdRoom.find_child("DoorR").global_position
+		randomRoom = "res://Scenes/Rooms/SideRooms/SideRoom" + str(randi_range(1, 3)) + ".tscn"
+		holdRoom = load(randomRoom).instantiate()
+		StartRoom.add_child(holdRoom)
+		if LR == "Left": # No exact positions so we need the offset to the right spot added on...
+			LROffset = holdRoom.global_position - holdRoom.find_child("DoorL").global_position
+			holdRoom.find_child("DoorL").visible = false
+			holdRoom.find_child("DoorL").collision_enabled = false
+		else:
+			LROffset = holdRoom.global_position - holdRoom.find_child("DoorR").global_position
+			holdRoom.find_child("DoorR").visible = false
+			holdRoom.find_child("DoorR").collision_enabled = false
+		holdRoom.global_position = LRSide.global_position + LROffset
 		
 		SideRoomHold.erase(RandSide)
 		MaxSideRooms -= 1

@@ -35,8 +35,8 @@ var max_energy:float:
 
 @onready var t_EnergyRegenDelay:Timer = $EnergyRegenDelayTimer
 
-@onready var c_healthbar:ProgressBar = $CanvasLayer/VBoxContainer/Healthbar
-@onready var c_graybar:ProgressBar = $CanvasLayer/VBoxContainer/GrayHealth
+@onready var c_healthbar:ProgressBar = $CanvasLayer/AspectRatioContainer/VBoxContainer/Healthbar
+@onready var c_graybar:ProgressBar = $CanvasLayer/AspectRatioContainer/VBoxContainer/GrayHealth
 
 @onready var animation_tree : AnimationTree = $Nebula_AnimationTree
 

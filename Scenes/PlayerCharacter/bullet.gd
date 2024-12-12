@@ -37,6 +37,7 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.is_in_group("enemy"):
 		var damage:float = attrs["bullet_damage"]
 		body.take_damage(damage)
+		print(Player.current)
 		Player.current.regen_health(damage)
 		pierces -= 1
 	else:

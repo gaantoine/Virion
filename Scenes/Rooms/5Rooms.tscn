@@ -26,4 +26,4 @@ scale = Vector2(0.8, 0.8)
 [node name="AudioManager" parent="." instance=ExtResource("9_26a36")]
 
 [node name="PickupAlternator" parent="." instance=ExtResource("6_mdd7d")]
-position = Vector2(2208, 2328)
+position = Vector2(2144, 2336)

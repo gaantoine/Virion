@@ -21,6 +21,8 @@ var current_hp = base_max_hp
 @export var max_hp_scaling: float = 12
 ## Attack damage per hit
 @export var damage: float = 16
+## Wind up window before damage is applied after the enemy starts attacking in seconds
+@export var attack_buffer: float = 0.5
 
 
 @export_group("Dash Settings")
@@ -213,7 +215,7 @@ func handle_attacking_state() -> void:
 	
 	var timer = Timer.new()
 	timer.one_shot = true
-	timer.wait_time = (0.5)
+	timer.wait_time = (attack_buffer)
 	add_child(timer)
 	timer.start()
 	

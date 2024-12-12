@@ -1,8 +1,7 @@
-[gd_scene load_steps=33 format=3 uid="uid://c075mkxaaxo6s"]
+[gd_scene load_steps=32 format=3 uid="uid://c075mkxaaxo6s"]
 
 [ext_resource type="Script" path="res://Scenes/Enemies/Swarm/EnemySwarm.gd" id="1_te2fv"]
 [ext_resource type="Texture2D" uid="uid://bsxnsus0hmvwr" path="res://Animations/SpriteSheets/SwarmSpriteSheet.png" id="3_hnmur"]
-[ext_resource type="Script" path="res://Scenes/Enemies/Swarm/swarm_animation.gd" id="4_lbxlq"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_s373b"]
 radius = 17.0
@@ -262,7 +261,3 @@ parameters/conditions/walk = false
 parameters/Attack/blend_position = Vector2(0, 0)
 parameters/Burst/blend_position = Vector2(0.0315969, -0.451327)
 parameters/Walk/blend_position = Vector2(-0.0247651, 0.185841)
-
-[node name="SwarmAnimation" type="Node2D" parent="." node_paths=PackedStringArray("animation_tree")]
-script = ExtResource("4_lbxlq")
-animation_tree = NodePath("../Swarm_AnimationTree")

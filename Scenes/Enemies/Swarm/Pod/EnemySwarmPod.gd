@@ -39,4 +39,4 @@ func _on_timer_timeout() -> void:
 func finish_spawning():
 	spawn_counter = 0  # Reset counter for future spawns
 	spawning_active = false  # Allow spawning to trigger again
-	queue_free()  # Optional: remove the spawner node if it's temporary
+	queue_free()  

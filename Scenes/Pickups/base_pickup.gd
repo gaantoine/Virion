@@ -227,7 +227,7 @@ func _on_pickup_detector_body_entered(body: Node2D) -> void:
 	if body is Player:
 		interactable = true
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	if interactable and Input.is_action_pressed("interact"):
 		Player.current.add_mods(mods)
 		var parent:Node2D = get_parent()

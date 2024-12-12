@@ -1,10 +1,14 @@
-[gd_scene load_steps=4 format=3 uid="uid://j1hchdq3d8b5"]
+[gd_scene load_steps=6 format=3 uid="uid://j1hchdq3d8b5"]
 
 [ext_resource type="Script" path="res://Scenes/Pickups/base_pickup.gd" id="1_avmmo"]
 [ext_resource type="Texture2D" uid="uid://kqqxsn0i00an" path="res://Scenes/Pickups/Pickup_PNGS/basechip.png" id="2_pfs3b"]
+[ext_resource type="Script" path="res://Scenes/Pickups/item_description.gd" id="3_3uly6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_n44if"]
 size = Vector2(64, 64)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_y6nud"]
+radius = 150.0
 
 [node name="BasePickup" type="Node2D"]
 script = ExtResource("1_avmmo")
@@ -25,5 +29,23 @@ position = Vector2(-1.90735e-06, 4.76837e-07)
 scale = Vector2(0.125, 0.125)
 texture = ExtResource("2_pfs3b")
 
+[node name="DialogInteractionArea" type="Area2D" parent="."]
+collision_mask = 48
+script = ExtResource("3_3uly6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DialogInteractionArea"]
+shape = SubResource("CircleShape2D_y6nud")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+offset_left = -100.0
+offset_top = -121.0
+offset_right = 100.0
+offset_bottom = -57.0
+bbcode_enabled = true
+fit_content = true
+scroll_following = true
+
 [connection signal="body_entered" from="PickupDetector" to="." method="_on_pickup_detector_body_entered"]
 [connection signal="body_exited" from="PickupDetector" to="." method="_on_pickup_detector_body_exited"]
+[connection signal="body_entered" from="DialogInteractionArea" to="DialogInteractionArea" method="_on_body_entered"]
+[connection signal="body_exited" from="DialogInteractionArea" to="DialogInteractionArea" method="_on_body_exited"]

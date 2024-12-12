@@ -21,6 +21,8 @@ var current_hp = base_max_hp
 @export var max_hp_scaling: float = 12
 ## Attack damage per hit
 @export var damage: float = 16
+## Wind up window before damage is applied after the enemy starts attacking in seconds
+@export var attack_buffer: float = 0.5
 
 
 @export_group("Dash Settings")
@@ -108,6 +110,7 @@ func _physics_process(delta: float) -> void:
 	update_distance_to_player()
 	if distance_to_player >= aggro_range:
 		state = MOVEMODE.WAITING
+
 	match state:
 		MOVEMODE.CHASING:
 			handle_chasing_state(delta)
@@ -121,6 +124,12 @@ func _physics_process(delta: float) -> void:
 			handle_attacking_state()
 		MOVEMODE.WAITING:
 			handle_waiting_state()
+
+	if(velocity != Vector2.ZERO):
+		animation_tree["parameters/Attack/blend_position"] = velocity.normalized()
+		animation_tree["parameters/Chase/blend_position"] = velocity.normalized()
+		animation_tree["parameters/Dash/blend_position"] = velocity.normalized()
+		animation_tree["parameters/Wait/blend_position"] = velocity.normalized()
 
 # Aim at the player for the aim_duration, if still in range, dash
 func handle_aiming_state(delta: float) -> void:
@@ -155,7 +164,7 @@ func take_aim() -> bool:
 	var query = PhysicsRayQueryParameters2D.new()
 	query.from = raycast_from
 	query.to = raycast_to
-	query.collision_mask = 1 | (1<<4)
+	query.collision_mask = 1 | (1 << 2) | (1 << 4)
 	
 	var result = space_state.intersect_ray(query)
 	if result.get("collider") != player:
@@ -169,6 +178,10 @@ func take_aim() -> bool:
 # Dash for dash_duration
 func handle_dashing_state(delta: float) -> void:
 	dash_timer += delta
+	
+	animation_tree["parameters/conditions/wait"] = false
+	animation_tree["parameters/conditions/chase"] = false
+	animation_tree["parameters/conditions/dash"] = true
 	
 	# Check if within attack range or dash duration has ended
 	if distance_to_player <= middash_attack_range:
@@ -192,13 +205,34 @@ func handle_decelerating_state(delta: float) -> void:
 
 # Attack
 func handle_attacking_state() -> void:
+	animation_tree["parameters/conditions/wait"] = false
+	animation_tree["parameters/conditions/chase"] = false
+	animation_tree["parameters/conditions/dash"] = true
+	animation_tree["parameters/conditions/attack"] = true
+	
 	$Sprite2D.modulate = Color.RED
 	$Timer.start(attack_duration)
+	
+	var timer = Timer.new()
+	timer.one_shot = true
+	timer.wait_time = (attack_buffer)
+	add_child(timer)
+	timer.start()
+	
+	await timer.timeout
+	
+	if distance_to_player < middash_attack_range * 1.15:
+		player.take_damage(damage)
+	
 	state = MOVEMODE.WAITING
 
 # Chase
 func handle_chasing_state(delta: float) -> void:
 	var steering_force = get_steering()
+	
+	animation_tree["parameters/conditions/wait"] = false
+	animation_tree["parameters/conditions/chase"] = true
+	animation_tree["parameters/conditions/dash"] = false
 	
 	if take_aim():
 		state = MOVEMODE.AIMING
@@ -255,6 +289,10 @@ func get_steering() -> Vector2:
 
 # Wait
 func handle_waiting_state() -> void:
+	animation_tree["parameters/conditions/wait"] = true
+	animation_tree["parameters/conditions/chase"] = false
+	animation_tree["parameters/conditions/dash"] = false
+
 	velocity = Vector2.ZERO
 	move_and_slide()
 	if distance_to_player > aggro_range:
@@ -316,29 +354,3 @@ func _draw() -> void:
 func call_bruiser_footstep() -> void:
 	bruiser_footstep.emit()
 	
-func _process(delta):
-	update_animation_parameters()
-
-func update_animation_parameters():
-	if(state == MOVEMODE.WAITING):
-		animation_tree["parameters/conditions/wait"] = true
-		animation_tree["parameters/conditions/chase"] = false
-		animation_tree["parameters/conditions/dash"] = false
-	if(state == MOVEMODE.CHASING):
-		animation_tree["parameters/conditions/wait"] = false
-		animation_tree["parameters/conditions/chase"] = true
-		animation_tree["parameters/conditions/dash"] = false
-	if(state == MOVEMODE.DASHING):
-		animation_tree["parameters/conditions/wait"] = false
-		animation_tree["parameters/conditions/chase"] = false
-		animation_tree["parameters/conditions/dash"] = true
-	if(state == MOVEMODE.ATTACKING):
-		animation_tree["parameters/conditions/wait"] = false
-		animation_tree["parameters/conditions/chase"] = false
-		animation_tree["parameters/conditions/dash"] = true
-		animation_tree["parameters/conditions/attack"] = true
-	if(velocity != Vector2.ZERO):
-		animation_tree["parameters/Attack/blend_position"] = velocity.normalized()
-		animation_tree["parameters/Chase/blend_position"] = velocity.normalized()
-		animation_tree["parameters/Dash/blend_position"] = velocity.normalized()
-		animation_tree["parameters/Wait/blend_position"] = velocity.normalized()

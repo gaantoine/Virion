@@ -1,6 +1,7 @@
 extends CharacterBody2D
 class_name Projectile_2
 
+@onready var animation_tree : AnimationTree = $Projectile_AnimationTree
 @onready var t_Lifetime:Timer = $BulletLifeTime
 
 const SPEED__TILE_S:float = 10 # base bullet speed, tiles/second
@@ -9,6 +10,7 @@ var target_group:String = "player"
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	animation_tree.active = true
 	start_projectile()
 	
 	t_Lifetime.timeout.connect(break_bullet)

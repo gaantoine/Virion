@@ -1,10 +1,9 @@
-[gd_scene load_steps=45 format=3 uid="uid://f6n573w57vu6"]
+[gd_scene load_steps=44 format=3 uid="uid://f6n573w57vu6"]
 
 [ext_resource type="Texture2D" uid="uid://cminetoyt22sf" path="res://Misc PNGs and assets/placeholder_icon.png" id="1_p1dxc"]
 [ext_resource type="Script" path="res://Scenes/Enemies/Bruiser/EnemyBruiser.gd" id="1_rmu8v"]
 [ext_resource type="Texture2D" uid="uid://tbcfi0kndp1y" path="res://Animations/SpriteSheets/BruiserWalk&AttackSpritesheet.png" id="3_2bwsm"]
 [ext_resource type="Texture2D" uid="uid://bcxgg4fteeova" path="res://Animations/SpriteSheets/ChargeEffectSpritesheet.png" id="4_wrjut"]
-[ext_resource type="Script" path="res://Scenes/Enemies/Bruiser/bruiser_animation.gd" id="5_r7me6"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_kcvma"]
 radius = 3.7
@@ -793,7 +792,3 @@ parameters/Attack/blend_position = Vector2(0.0111016, 0.00884962)
 parameters/Chase/blend_position = Vector2(-0.00939369, -0.0182768)
 parameters/Dash/blend_position = Vector2(0.0350128, 0.382979)
 parameters/Wait/blend_position = Vector2(-0.376601, -0.914894)
-
-[node name="BruiserAnimation" type="Node2D" parent="." node_paths=PackedStringArray("animation_tree")]
-script = ExtResource("5_r7me6")
-animation_tree = NodePath("../Bruiser_AnimationTree")

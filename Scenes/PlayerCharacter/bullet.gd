@@ -25,7 +25,7 @@ func init(player_attrs:Dictionary, pos:Vector2, rot:float) -> void:
 	global_rotation = rot
 	attrs = player_attrs
 
-func _physics_process(delta:float) -> void:
+func _physics_process(_delta:float) -> void:
 	move_and_slide()
 
 

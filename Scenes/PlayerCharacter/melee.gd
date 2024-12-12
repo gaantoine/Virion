@@ -17,7 +17,7 @@ const MELEE_DELAY__S:float = 0.8
 func _ready() -> void:
 	t_MeleeCD.timeout.connect(try_melee)
 
-func _physics_process(delta:float) -> void:
+func _physics_process(_delta:float) -> void:
 	if Input.is_action_just_pressed("melee"):
 		try_melee()
 		

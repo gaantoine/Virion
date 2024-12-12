@@ -35,18 +35,15 @@ var distance_to_player
 
 var current_speed = 0.0
 
-# Debug Draw
-var raycast_from = Vector2.ZERO
-var raycast_to = Vector2.ZERO
-var predict_from = Vector2.ZERO
-var predict_to = Vector2.ZERO
-
 # Directions for object detection
 var ray_directions = []
 
 var seek_map = []
 var collision_map = []
 var seek_map_buffer = 0.5
+
+var last_facing_direction
+
 
 func _ready():
 	$Timer.timeout.connect(_on_Timer_timeout)
@@ -59,11 +56,14 @@ func _ready():
 		var angle_rad = deg_to_rad(x * angle_increment)
 		ray_directions.append(Vector2(cos(angle_rad), sin(angle_rad)).normalized())
 
+
 func update_distance_to_player():
 	distance_to_player = (player.global_position - global_position).length()
 
+
 func on_spawn(level_counter: float) -> void:
 	current_hp = base_max_hp + (max_hp_scaling * (level_counter - 1))
+
 
 func _physics_process(delta: float) -> void:
 	update_distance_to_player()
@@ -76,14 +76,22 @@ func _physics_process(delta: float) -> void:
 		MOVEMODE.WAITING:
 			handle_waiting_state()
 
+
 func handle_chasing_state(delta: float) -> void:
 	var steering_force = get_steering()
+	
+	if velocity:
+		last_facing_direction = velocity.normalized()
+	
+	$Swarm_AnimationTree.set("parameters/Attack/blend_position", last_facing_direction)
+	$Swarm_AnimationTree.set("parameters/Walk/blend_position", last_facing_direction)
 	
 	velocity += steering_force * delta
 	
 	if velocity.length() > move_speed:
 		velocity = velocity.normalized() * move_speed
 	move_and_slide()
+
 
 func update_collision_map() -> void:
 	collision_map.clear()
@@ -101,6 +109,7 @@ func update_collision_map() -> void:
 		if result:
 			collision_map[x] = global_position.distance_to(result.position)
 
+
 func update_seek_map(player_position: Vector2) -> void:
 	seek_map.clear()
 	var to_player = (player_position - global_position)
@@ -109,6 +118,7 @@ func update_seek_map(player_position: Vector2) -> void:
 	for dir in ray_directions:
 		var projection = to_player.normalized().dot(dir)
 		seek_map.append(max(0, projection) + seek_map_buffer)
+
 
 # Return the final movement velocity vector based on Seek and Avoid vectors
 func get_steering() -> Vector2:
@@ -128,14 +138,17 @@ func get_steering() -> Vector2:
 	
 	return final_vector
 
+
 func handle_waiting_state() -> void:
 	velocity = Vector2.ZERO
 	move_and_slide()
 	if distance_to_player > aggro_range:
 		state = MOVEMODE.CHASING
 
+
 func _on_Timer_timeout():
 	state = MOVEMODE.CHASING
+
 
 func take_damage(damage_taken: float) -> void:
 	current_hp -= damage_taken
@@ -150,8 +163,10 @@ func take_damage(damage_taken: float) -> void:
 		await get_tree().create_timer(3/60.0).timeout
 		$SwarmSpriteSheet.modulate = Color.WHITE
 
+
 func take_knockback(displacement: Vector2) -> void:
 	pass
+
 
 func die() -> void:
 	set_process(false)

@@ -1,8 +1,12 @@
 extends Node
 class_name RoomFunc
 
+signal In_Combat
+signal Out_Combat
+
 @export var NextHallway: DoorFunc
 @export var PrevHallway: DoorFunc
+@export var ItemSpawn: BasePickup
 @export var Spawners: Array[SpawnerFunc]
 var NumEnemies = 0
 var Entered = false
@@ -23,17 +27,22 @@ func EnteredRoom(body: Node2D) -> void:
 		
 	Entered = true
 	
-	NextHallway.CloseDoor()
+	if NextHallway:
+		NextHallway.CloseDoor()
 	PrevHallway.CloseDoor()
 	
 	for spawns in Spawners:
 		spawns.SpawnEnemies()
+	
+	In_Combat.emit()
 
 
 func EnemiesKilled() -> void:
 	if NumEnemies > 0:
 		return
 	
-	NextHallway.OpenDoor()
+	if NextHallway:
+		NextHallway.OpenDoor()
 	PrevHallway.OpenDoor()
-	pass
+	
+	Out_Combat.emit()

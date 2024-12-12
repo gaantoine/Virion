@@ -794,5 +794,6 @@ parameters/Chase/blend_position = Vector2(-0.00939369, -0.0182768)
 parameters/Dash/blend_position = Vector2(0.0350128, 0.382979)
 parameters/Wait/blend_position = Vector2(-0.376601, -0.914894)
 
-[node name="BruiserAnimation" type="Node2D" parent="."]
+[node name="BruiserAnimation" type="Node2D" parent="." node_paths=PackedStringArray("animation_tree")]
 script = ExtResource("5_r7me6")
+animation_tree = NodePath("../Bruiser_AnimationTree")

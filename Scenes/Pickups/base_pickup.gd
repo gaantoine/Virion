@@ -145,7 +145,7 @@ var pickups:Dictionary = {
 		"texture": "res://Scenes/Pickups/Pickup_PNGS/radiator1.png",
 		"mods": {
 			"bullet_accuracy": "-10%",
-			"bullet_firing_rate": "+25%",
+			"bullet_firing_rate": "+20%",
 			"bullet_speed": "+10%",
 			"stamina": "+1"
 		}
@@ -170,7 +170,7 @@ var pickups:Dictionary = {
 		"texture": "res://Scenes/Pickups/Pickup_PNGS/voltage regulator.png",
 		"mods": {
 			"bullet_accuracy": "+50%",
-			"bullet_range": "+30%"
+			"bullet_range": "+20%"
 		}
 	},
 	Pickup.malware: {
@@ -201,7 +201,7 @@ var pickups:Dictionary = {
 		"texture": "res://Scenes/Pickups/Pickup_PNGS/ram.png",
 		"mods": {
 			"melee_damage": "+1",
-			"dodge_speed": "+25%"
+			"dodge_speed": "+30%"
 		}
 	}
 }

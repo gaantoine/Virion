@@ -70,8 +70,44 @@ func CreateRooms() -> void:
 	
 	# Add side rooms randomly here
 	# First, we can't have more side rooms than rooms
+	MaxSideRooms -= 1
 	if MaxSideRooms > MaxRooms:
 		MaxSideRooms = MaxRooms
 	
-	while (MaxSideRooms):
-		pass
+	# ALL THE SIDE ROOM STUFF HERE
+	while (MaxSideRooms > -1):
+		var LR = ""
+		# Save a random room and it's side door position to add a side room later on
+		var RandSide = SideRoomHold.pick_random()
+		var LRSide # Redundant but it works, room positions are different based on left or right side
+		if RandSide.find_child("RSideRoomDoor"):
+			LRSide = RandSide.find_child("RSideRoomDoor")
+			LR = "Right"
+		else:
+			LRSide = RandSide.find_child("LSideRoomDoor")
+			LR = "Left"
+		LRSide.visible = false # Also make the side doors not visible
+		LRSide.collision_enabled = false
+		
+		# Create a side room path and put it in place
+		var randomRoom = "res://Scenes/Rooms/SideRooms/SideRoomPath.tscn"
+		var holdRoom = load(randomRoom).instantiate()
+		StartHallway.add_child(holdRoom)
+		var LROffset = 0
+		if LR == "Left": # No exact positions so we need the offset to the right spot added on...
+			LROffset = holdRoom.global_position - holdRoom.find_child("PathL").global_position
+		else:
+			LROffset = holdRoom.global_position - holdRoom.find_child("PathR").global_position
+		holdRoom.global_position = LRSide.global_position + LROffset # ... which we add on here
+		
+		# Now create a random side room and put it in the correct area
+		#randomRoom = "res://Scenes/Rooms/SideRooms/SideRoom" + str(randi_range(1, 3)) + ".tscn"
+		#holdRoom = load(randomRoom).instantiate()
+		#StartRoom.add_child(holdRoom)
+		#if LR == "Left": # No exact positions so we need the offset to the right spot added on...
+		#	LROffset = holdRoom.global_position - holdRoom.find_child("DoorL").global_position
+		#else:
+		#	LROffset = holdRoom.global_position - holdRoom.find_child("DoorR").global_position
+		
+		SideRoomHold.erase(RandSide)
+		MaxSideRooms -= 1

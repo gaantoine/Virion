@@ -41,6 +41,8 @@ var current_hp = base_max_hp
 @export var avoid_weight: float = 100
 @export var aggro_range: float = 900
 
+@onready var animation_tree : AnimationTree = $Ranger_AnimationTree
+
 #signal variable for ranger shooting to be used by listeners
 signal ranger_shoot
 
@@ -70,6 +72,7 @@ var collision_map = []
 var seek_map_buffer = 0.5
 
 func _ready():
+	animation_tree.active = true
 	$Timer.timeout.connect(_on_Timer_timeout)
 	
 	# Generate ray directions
@@ -90,8 +93,16 @@ func _physics_process(delta: float) -> void:
 	update_distance_to_player()
 	if (distance_to_player <= min_flee_range):
 		state = MOVEMODE.FLEEING
+		animation_tree["parameters/conditions/attack"] = false
+		animation_tree["parameters/conditions/idle"] = false
+		animation_tree["parameters/conditions/move"] = true
+		animation_tree["parameters/Move/blend_position"] = velocity.normalized()
 	if (distance_to_player >= aggro_range):
 		state = MOVEMODE.WAITING
+		animation_tree["parameters/conditions/attack"] = false
+		animation_tree["parameters/conditions/idle"] = true
+		animation_tree["parameters/conditions/move"] = false
+		animation_tree["parameters/Idle/blend_position"] = velocity.normalized()
 	# State Machine
 	match state:
 		MOVEMODE.CHASING:
@@ -121,6 +132,10 @@ func handle_fleeing_state(delta: float) -> void:
 	
 	if distance_to_player >= max_flee_range and take_aim():
 		state = MOVEMODE.AIMING
+		animation_tree["parameters/conditions/attack"] = true
+		animation_tree["parameters/conditions/idle"] = false
+		animation_tree["parameters/conditions/move"] = false
+		animation_tree["parameters/Attack/blend_position"] = velocity.normalized()
 		return
 	
 	velocity += steering_force * delta
@@ -227,6 +242,10 @@ func handle_waiting_state() -> void:
 	move_and_slide()
 	if distance_to_player > aggro_range:
 		state = MOVEMODE.CHASING
+		animation_tree["parameters/conditions/attack"] = false
+		animation_tree["parameters/conditions/idle"] = false
+		animation_tree["parameters/conditions/move"] = true
+		animation_tree["parameters/Move/blend_position"] = velocity.normalized()
 
 func _on_Timer_timeout():
 	state = MOVEMODE.AIMING
@@ -248,6 +267,10 @@ func take_knockback(displacement: Vector2) -> void:
 	pass
 
 func die() -> void:
+	animation_tree["parameters/conditions/attack"] = false
+	animation_tree["parameters/conditions/idle"] = false
+	animation_tree["parameters/conditions/move"] = false
+	animation_tree["parameters/conditions/death"] = true
 	SpawnRef.EnemyDie()
 	
 	set_process(false)
@@ -259,3 +282,32 @@ func die() -> void:
 	# emit_signal("enemy_died")
 	# await $Ranger_AnimationP.animation_finished
 	queue_free()
+	
+func _process(_delta):
+	update_animation_parameters()
+
+func update_animation_parameters():
+	#if(state == MOVEMODE.CHASING):
+		#animation_tree["parameters/conditions/attack"] = false
+		#animation_tree["parameters/conditions/idle"] = false
+		#animation_tree["parameters/conditions/move"] = true
+	#if(state == MOVEMODE.FLEEING):
+		#animation_tree["parameters/conditions/attack"] = false
+		#animation_tree["parameters/conditions/idle"] = false
+		#animation_tree["parameters/conditions/move"] = true
+	#if(state == MOVEMODE.WAITING):
+		#animation_tree["parameters/conditions/attack"] = false
+		#animation_tree["parameters/conditions/idle"] = true
+		#animation_tree["parameters/conditions/move"] = false
+	#if(state == MOVEMODE.AIMING):
+		#animation_tree["parameters/conditions/attack"] = true
+		#animation_tree["parameters/conditions/idle"] = false
+		#animation_tree["parameters/conditions/move"] = false
+	#if(ranger_shoot):
+		#animation_tree["parameters/conditions/attack"] = true
+		#animation_tree["parameters/conditions/idle"] = false
+		#animation_tree["parameters/conditions/move"] = false
+	if(velocity != Vector2.ZERO):
+		animation_tree["parameters/Attack/blend_position"] = velocity.normalized()
+		animation_tree["parameters/Idle/blend_position"] = velocity.normalized()
+		animation_tree["parameters/Move/blend_position"] = velocity.normalized()

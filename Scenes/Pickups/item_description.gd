@@ -38,7 +38,7 @@ func _process(delta: float) -> void:
 		label.text = ""
 		return
 	
-	label.text = dialog[str(get_parent().pickup_type + 1)]
+	label.text = dialog[str(get_parent().pickup_type + 0)]
 
 
 func _on_body_entered(body):

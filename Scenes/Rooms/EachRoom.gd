@@ -1,18 +1,17 @@
 extends Node
 class_name RoomFunc
 
-signal In_Combat
-signal Out_Combat
-
 @export var NextHallway: DoorFunc
 @export var PrevHallway: DoorFunc
 @export var ItemSpawn: BasePickup
 @export var Spawners: Array[SpawnerFunc]
+var ThePlayer
 var NumEnemies = 0
 var Entered = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	ThePlayer = get_parent().get_parent().find_child("Player")
 	pass # Replace with function body.
 
 
@@ -34,7 +33,7 @@ func EnteredRoom(body: Node2D) -> void:
 	for spawns in Spawners:
 		spawns.SpawnEnemies()
 	
-	In_Combat.emit()
+	ThePlayer.emit_signal("In_Combat")
 
 
 func EnemiesKilled() -> void:
@@ -45,4 +44,4 @@ func EnemiesKilled() -> void:
 		NextHallway.OpenDoor()
 	PrevHallway.OpenDoor()
 	
-	Out_Combat.emit()
+	ThePlayer.emit_signal("Out_Combat")

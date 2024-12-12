@@ -35,8 +35,8 @@ var max_energy:float:
 
 @onready var t_EnergyRegenDelay:Timer = $EnergyRegenDelayTimer
 
-@onready var c_healthbar:ProgressBar = $CanvasLayer/AspectRatioContainer/VBoxContainer/Healthbar
-@onready var c_graybar:ProgressBar = $CanvasLayer/AspectRatioContainer/VBoxContainer/GrayHealth
+@onready var c_healthbar:ProgressBar = $CanvasLayer/AspectRatioContainer/HealthContainer/Healthbar
+@onready var c_graybar:ProgressBar = $CanvasLayer/AspectRatioContainer2/GrayContainer/GrayHealth
 
 @onready var animation_tree : AnimationTree = $Nebula_AnimationTree
 
@@ -296,3 +296,27 @@ func call_player_dodge_start() -> void:
 #from the audio manager when specific frames of animation are played
 func call_player_dodge_end() -> void:
 	player_dodge_end.emit()
+
+func _process(_delta):
+	update_animation_parameters()
+
+func update_animation_parameters():
+	if(move_mode == MOVEMODE.WALKING):
+		animation_tree["parameters/conditions/walk"] = true
+		animation_tree["parameters/conditions/dodging"] = false
+		animation_tree["parameters/conditions/idle"] = false
+		animation_tree["parameters/Walk/blend_position"] = velocity.normalized()
+	if(move_mode == MOVEMODE.WALKING and Input.get_vector("move_left", "move_right", "move_up", "move_down").normalized() == Vector2.ZERO):
+		animation_tree["parameters/conditions/walk"] = false
+		animation_tree["parameters/conditions/dodging"] = false
+		animation_tree["parameters/conditions/idle"] = true
+		animation_tree["parameters/Idle/blend_position"] = velocity.normalized()
+	if(move_mode == MOVEMODE.DODGING):
+		animation_tree["parameters/conditions/walk"] = false
+		animation_tree["parameters/conditions/dodging"] = true
+		animation_tree["parameters/conditions/idle"] = false
+		animation_tree["parameters/Rolling/blend_position"] = velocity.normalized()
+		
+		#animation_tree["parameters/Walk/blend_position"] = velocity.normalized()
+		#animation_tree["parameters/Rolling/blend_position"] = velocity.normalized()
+		#animation_tree["parameters/Idle/blend_position"] = velocity.normalized()

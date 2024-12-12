@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://6tsm52cuk5af" path="res://Scenes/Tilesets/Tiles1.png" id="1_koxc2"]
 [ext_resource type="Texture2D" uid="uid://bc75dxvsc61bg" path="res://Scenes/Tilesets/TestTiles002.png" id="2_m7kxs"]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8eb8e"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_yg2ls"]
 texture = ExtResource("1_koxc2")
 texture_region_size = Vector2i(256, 256)
 0:0/0 = 0
@@ -36,7 +36,7 @@ texture_region_size = Vector2i(256, 256)
 5:1/0 = 0
 5:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(128, -128, -128, -128, -128, -87.5, 128, -87.5)
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_w6per"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lkpre"]
 texture = ExtResource("2_m7kxs")
 texture_region_size = Vector2i(256, 256)
 0:0/0 = 0
@@ -62,8 +62,8 @@ physics_layer_1/collision_layer = 512
 physics_layer_1/collision_mask = 0
 custom_data_layer_0/name = "is_destructive"
 custom_data_layer_0/type = 1
-sources/0 = SubResource("TileSetAtlasSource_8eb8e")
-sources/3 = SubResource("TileSetAtlasSource_w6per")
+sources/0 = SubResource("TileSetAtlasSource_yg2ls")
+sources/3 = SubResource("TileSetAtlasSource_lkpre")
 
 [node name="SideRoomPath" type="Node2D"]
 
@@ -86,17 +86,13 @@ position = Vector2(-320, 0)
 position = Vector2(512, -192)
 
 [node name="DoorL" type="TileMapLayer" parent="."]
-visible = false
 position = Vector2(-320, 32)
 scale = Vector2(0.25, 0.25)
 tile_map_data = PackedByteArray("AAD/////AAACAAAAAAA=")
 tile_set = SubResource("TileSet_4nkxu")
-collision_enabled = false
 
 [node name="DoorR" type="TileMapLayer" parent="."]
-visible = false
-position = Vector2(-320, 32)
+position = Vector2(512, -160)
 scale = Vector2(0.25, 0.25)
-tile_map_data = PackedByteArray("AAANAPz/AAADAAAAAAA=")
+tile_map_data = PackedByteArray("AAAAAP//AAADAAAAAAA=")
 tile_set = SubResource("TileSet_4nkxu")
-collision_enabled = false

@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://c6i6acq6ukd1n"]
+[gd_scene load_steps=12 format=3 uid="uid://c6i6acq6ukd1n"]
 
 [ext_resource type="Script" path="res://Scenes/PlayerCharacter/bullet.gd" id="1_wkyt2"]
 [ext_resource type="Texture2D" uid="uid://jmorwrplsbd3" path="res://Animations/VFX/VFX_PNGs/ProjectileSpriteSheet.png" id="1_xtm55"]
@@ -41,6 +41,29 @@ _data = {
 "RESET": SubResource("Animation_yddi3")
 }
 
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_h456p"]
+animation = &"Proj_Anim1"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_gtqiy"]
+animation = &"Proj_Anim1"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_eshf4"]
+animation = &"Proj_Anim1"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_urudq"]
+animation = &"Proj_Anim1"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_2qgt1"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_h456p")
+blend_point_0/pos = Vector2(0, 1)
+blend_point_1/node = SubResource("AnimationNodeAnimation_gtqiy")
+blend_point_1/pos = Vector2(1, 0)
+blend_point_2/node = SubResource("AnimationNodeAnimation_eshf4")
+blend_point_2/pos = Vector2(0, -1)
+blend_point_3/node = SubResource("AnimationNodeAnimation_urudq")
+blend_point_3/pos = Vector2(-1, 0)
+blend_mode = 1
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_ldcv1"]
 radius = 68.0294
 
@@ -60,6 +83,12 @@ root_node = NodePath("../Sprite2D")
 libraries = {
 "": SubResource("AnimationLibrary_07s0u")
 }
+
+[node name="Projectile_AnimationTree" type="AnimationTree" parent="."]
+root_node = NodePath("../Sprite2D")
+tree_root = SubResource("AnimationNodeBlendSpace2D_2qgt1")
+anim_player = NodePath("../Projectile_AnimationP")
+parameters/blend_position = Vector2(0, 0)
 
 [node name="ProjColl" type="CollisionShape2D" parent="."]
 visible = false

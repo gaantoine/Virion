@@ -14,6 +14,7 @@ var current_hp = base_max_hp
 @export var max_hp_scaling: float = 12
 ## Attack damage per hit
 @export var damage: float = 16
+@export var attack_radius: float = 50
 
 @export_group("Movement")
 ## How fast this enemy normally moves
@@ -69,6 +70,8 @@ func _physics_process(delta: float) -> void:
 	update_distance_to_player()
 	if (distance_to_player >= aggro_range):
 		state = MOVEMODE.WAITING
+	if (distance_to_player < attack_radius):
+		player.take_damage(damage)
 	# State Machine
 	match state:
 		MOVEMODE.CHASING:

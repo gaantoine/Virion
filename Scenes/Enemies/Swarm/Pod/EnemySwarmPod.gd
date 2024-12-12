@@ -17,15 +17,9 @@ func update_distance_to_player():
 
 func _physics_process(delta: float) -> void:
 	update_distance_to_player()
-	if not spawning_active:
-		$AnimationTree.set("parameters/Pod_Idle/active", true)
-		$AnimationTree.set("parameters/Pod_Burst/active", false)
-	
 	
 	# Check if spawning should begin
 	if not spawning_active and distance_to_player <= pop_distance:
-		$AnimationTree.set("parameters/Pod_Idle/active", false)
-		$AnimationTree.set("parameters/Pod_Burst/active", true)
 		spawning_active = true
 		spawn_next()
 
@@ -45,4 +39,4 @@ func _on_timer_timeout() -> void:
 func finish_spawning():
 	spawn_counter = 0  # Reset counter for future spawns
 	spawning_active = false  # Allow spawning to trigger again
-	queue_free()  # Optional: remove the spawner node if it's temporary
+	queue_free()  

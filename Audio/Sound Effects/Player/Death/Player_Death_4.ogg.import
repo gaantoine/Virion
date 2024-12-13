@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://bal6xpfc6qj7b"
+path="res://.godot/imported/Player_Death_4.ogg-fff93661cc3ac127e53ce98fb1df2f7e.oggvorbisstr"
+
+[deps]
+
+source_file="res://Audio/Sound Effects/Player/Death/Player_Death_4.ogg"
+dest_files=["res://.godot/imported/Player_Death_4.ogg-fff93661cc3ac127e53ce98fb1df2f7e.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://d0vw3tc8v1jx"
+path="res://.godot/imported/Ranger_Shoot.ogg-e6bc87f6df1b4167bbd881cfed60d51f.oggvorbisstr"
+
+[deps]
+
+source_file="res://Audio/Sound Effects/Enemies/Ranger/Ranger_Shoot.ogg"
+dest_files=["res://.godot/imported/Ranger_Shoot.ogg-e6bc87f6df1b4167bbd881cfed60d51f.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

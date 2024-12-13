@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://jam8qqmsqncm"
+path="res://.godot/imported/Swarm_Damage_1.ogg-38436367a40f20487481319817c724bb.oggvorbisstr"
+
+[deps]
+
+source_file="res://Audio/Sound Effects/Enemies/Swarm/Damage/Swarm_Damage_1.ogg"
+dest_files=["res://.godot/imported/Swarm_Damage_1.ogg-38436367a40f20487481319817c724bb.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

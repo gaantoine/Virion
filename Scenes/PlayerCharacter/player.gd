@@ -11,6 +11,12 @@ signal Out_Combat
 
 static var current:Player
 
+# Renzo Vignette -- Declare vignette_node
+var vignette_node : ColorRect
+
+# Renzo Vignette In Combat
+var in_combat = false
+
 @export_category("Walking")
 ## Top movement speed of character, pixels/second
 @export var max_speed:float = 300
@@ -82,7 +88,7 @@ var is_immune:bool = false
 var attrs:Dictionary # string -> int
 var attr_mods:Dictionary # string -> array[string]
 
-# Renzo -- This will store the tilemaps the player is colliding with
+# Renzo TileMapLayer Collision -- This will store the tilemaps the player is colliding with
 var collidingTileMaps:Array = []
 
 #signal variable for player footsteps called in Animation Player
@@ -93,13 +99,26 @@ signal player_dodge_start
 signal player_dodge_end
 
 func _ready():
-	self.connect("In_Combat", In_Combat_Func)
-	self.connect("Out_Combat", Out_Combat_Func)
-	
 	animation_tree.active = true
 	current = self
 
 	attrs = attr_defaults.duplicate()
+	
+	# Renzo Vignette - Load the RoomVignette scene and get the ColorRect node
+	var vignette_scene = get_node("CanvasLayer/RoomVignette")
+	if vignette_scene:
+		vignette_node = vignette_scene.get_node("CanvasLayer/ColorRect")
+		if vignette_node:
+			# Ensure the vignette is visible by setting its color and alpha
+			vignette_node.visible = true
+			vignette_node.color.a = 1.0  # Set alpha to fully opaque
+			# Set initial outer radius if needed (optional)
+			vignette_node.material.set_shader_parameter("outer_radius", 0.4)
+
+	self.connect("In_Combat", In_Combat_Func)
+	self.connect("Out_Combat", Out_Combat_Func)
+
+
 
 func _physics_process(delta:float) -> void:
 
@@ -116,7 +135,7 @@ func _physics_process(delta:float) -> void:
 	if Input.is_action_just_pressed("ui_focus_next"): # mod system testing
 		print(attrs["bullet_firing_rate"])
 
-	# Renzo -- It will detect tile map collision and if Custom Data "is_destructive" is true, it will destroy player
+	# Renzo TileMapLayer Collision -- It will detect tile map collision and if Custom Data "is_destructive" is true, it will destroy player
 	for layer:TileMapLayer in collidingTileMaps:
 		var tile_pos:Vector2i = layer.local_to_map(layer.to_local(global_position))
 		var tile_data:TileData = layer.get_cell_tile_data(tile_pos)
@@ -124,7 +143,7 @@ func _physics_process(delta:float) -> void:
 		if tile_data and tile_data.get_custom_data("is_destructive"):
 			destroy_player()
 
-	# Renzo -- Spike Collision Event
+	# Renzo TileMapLayer Collision -- Spike Collision Event
 	for i in get_slide_collision_count():
 		var collider = get_slide_collision(i).get_collider()
 		if collider is TileMapLayer:
@@ -327,10 +346,26 @@ func update_animation_parameters():
 		#animation_tree["parameters/Rolling/blend_position"] = velocity.normalized()
 		#animation_tree["parameters/Idle/blend_position"] = velocity.normalized()
 
+# Renzo Vignette -- Function to smoothly change outer radius
+func smooth_outer_radius_change(target_radius: float, duration: float) -> void:
+	# Create a tween for this node
+	var tween = create_tween()
+	# Animate the outer_radius property of the vignette material
+	tween.tween_property(
+		vignette_node.material,
+		"shader_parameter/outer_radius",
+		target_radius,
+		duration
+	)
+
 func In_Combat_Func() -> void:
 	print("combatmode")
-	pass
+	# Renzo Vignette -- If combat true, then increase view
+	in_combat = true
+	smooth_outer_radius_change(0.55, 1.0)  # 1-second transition
 
 func Out_Combat_Func() -> void:
 	print("outcombat")
-	pass
+	# Renzo Vignette -- If combat false, then decrease view
+	in_combat = false
+	smooth_outer_radius_change(0.4, 1.0)  # 1-second transition

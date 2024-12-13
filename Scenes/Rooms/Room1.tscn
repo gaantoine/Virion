@@ -44,7 +44,7 @@ texture = ExtResource("2_cabwb")
 texture_region_size = Vector2i(256, 256)
 0:0/0 = 0
 0:1/0 = 0
-0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-82.5, -78, 77.5, -78, 76.5, 76, -79.5, 77)
+0:1/0/physics_layer_1/polygon_0/points = PackedVector2Array(-128, -128, 128, -128, 128, 128, -128, 128)
 0:1/0/custom_data_0 = true
 1:0/0 = 0
 1:1/0 = 0
@@ -60,9 +60,8 @@ texture_region_size = Vector2i(256, 256)
 
 [sub_resource type="TileSet" id="TileSet_ylc3o"]
 tile_size = Vector2i(256, 256)
-physics_layer_0/collision_layer = 1
-physics_layer_1/collision_layer = 512
-physics_layer_1/collision_mask = 0
+physics_layer_0/collision_layer = 3
+physics_layer_1/collision_layer = 513
 custom_data_layer_0/name = "is_destructive"
 custom_data_layer_0/type = 1
 sources/0 = SubResource("TileSetAtlasSource_sff86")

@@ -182,6 +182,7 @@ func handle_dashing_state(delta: float) -> void:
 	animation_tree["parameters/conditions/wait"] = false
 	animation_tree["parameters/conditions/chase"] = false
 	animation_tree["parameters/conditions/dash"] = true
+	animation_tree["parameters/conditions/attack"] = false
 	
 	# Check if within attack range or dash duration has ended
 	if distance_to_player <= middash_attack_range:
@@ -207,7 +208,7 @@ func handle_decelerating_state(delta: float) -> void:
 func handle_attacking_state() -> void:
 	animation_tree["parameters/conditions/wait"] = false
 	animation_tree["parameters/conditions/chase"] = false
-	animation_tree["parameters/conditions/dash"] = true
+	animation_tree["parameters/conditions/dash"] = false
 	animation_tree["parameters/conditions/attack"] = true
 	
 	$Sprite2D.modulate = Color.RED
@@ -233,6 +234,7 @@ func handle_chasing_state(delta: float) -> void:
 	animation_tree["parameters/conditions/wait"] = false
 	animation_tree["parameters/conditions/chase"] = true
 	animation_tree["parameters/conditions/dash"] = false
+	animation_tree["parameters/conditions/attack"] = false
 	
 	if take_aim():
 		state = MOVEMODE.AIMING
@@ -292,6 +294,7 @@ func handle_waiting_state() -> void:
 	animation_tree["parameters/conditions/wait"] = true
 	animation_tree["parameters/conditions/chase"] = false
 	animation_tree["parameters/conditions/dash"] = false
+	animation_tree["parameters/conditions/attack"] = false
 
 	velocity = Vector2.ZERO
 	move_and_slide()

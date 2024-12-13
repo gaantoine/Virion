@@ -29,6 +29,8 @@ var current_hp = base_max_hp
 @export var avoid_weight: float = 100
 @export var aggro_range: float = 900
 
+@onready var animation_tree : AnimationTree = $Swarm_AnimationTree
+
 var state = MOVEMODE.CHASING
 var player:Player:
 	get:return Player.current
@@ -47,6 +49,7 @@ var last_facing_direction
 
 
 func _ready():
+	animation_tree.active = true
 	$Timer.timeout.connect(_on_Timer_timeout)
 	
 	# Generate ray directions
@@ -174,10 +177,10 @@ func take_knockback(displacement: Vector2) -> void:
 func die() -> void:
 	set_process(false)
 	# Trigger death animation
-	$Swarm_AnimationP.play("Swarm_Death")
+	$Swarm_AnimationTree.play("Swarm_Death")
 	# Play sound effect
 	# $AudioStreamPlayer.play()
 	# Emit a death signal, useful for later
-	emit_signal("enemy_died")
-	await $Swarm_AnimationP.animation_finished
+	#emit_signal("enemy_died")
+	await $Swarm_AnimationTree.animation_finished
 	queue_free()

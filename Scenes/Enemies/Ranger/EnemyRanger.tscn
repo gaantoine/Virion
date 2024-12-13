@@ -23,7 +23,6 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_wdxnj"]
 resource_name = "Ranger_Attack_Down"
-loop_mode = 1
 step = 0.45
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -40,7 +39,6 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_31ko1"]
 resource_name = "Ranger_Attack_Up"
-loop_mode = 1
 step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -228,10 +226,12 @@ animation = &"Ranger_Death"
 advance_mode = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_w0giw"]
+priority = 2
 advance_mode = 2
 advance_condition = &"move"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_girga"]
+priority = 2
 advance_mode = 2
 advance_condition = &"idle"
 
@@ -240,6 +240,8 @@ advance_mode = 2
 advance_condition = &"attack"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_gtxnh"]
+priority = 2
+switch_mode = 2
 advance_mode = 2
 advance_condition = &"idle"
 
@@ -265,7 +267,7 @@ states/Move/position = Vector2(520, 100)
 states/Ranger_Death/node = SubResource("AnimationNodeAnimation_7p3gv")
 states/Ranger_Death/position = Vector2(520, 218)
 transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_1x3wy"), "Idle", "Move", SubResource("AnimationNodeStateMachineTransition_w0giw"), "Move", "Idle", SubResource("AnimationNodeStateMachineTransition_girga"), "Idle", "Attack", SubResource("AnimationNodeStateMachineTransition_u0gul"), "Attack", "Idle", SubResource("AnimationNodeStateMachineTransition_gtxnh"), "Attack", "Ranger_Death", SubResource("AnimationNodeStateMachineTransition_8p184"), "Idle", "Ranger_Death", SubResource("AnimationNodeStateMachineTransition_fxdat"), "Move", "Ranger_Death", SubResource("AnimationNodeStateMachineTransition_67tw5")]
-graph_offset = Vector2(-192, 63)
+graph_offset = Vector2(-180, 48)
 
 [node name="EnemyRanger" type="CharacterBody2D" groups=["enemy"]]
 collision_layer = 256

@@ -6,6 +6,9 @@ enum MOVEMODE {
 	DODGING
 }
 
+signal In_Combat
+signal Out_Combat
+
 static var current:Player
 
 @export_category("Walking")
@@ -90,6 +93,9 @@ signal player_dodge_start
 signal player_dodge_end
 
 func _ready():
+	self.connect("In_Combat", In_Combat_Func)
+	self.connect("Out_Combat", Out_Combat_Func)
+	
 	animation_tree.active = true
 	current = self
 
@@ -321,10 +327,10 @@ func update_animation_parameters():
 		#animation_tree["parameters/Rolling/blend_position"] = velocity.normalized()
 		#animation_tree["parameters/Idle/blend_position"] = velocity.normalized()
 
-func In_Combat() -> void:
+func In_Combat_Func() -> void:
 	print("combatmode")
 	pass
 
-func Out_Combat() -> void:
+func Out_Combat_Func() -> void:
 	print("outcombat")
 	pass

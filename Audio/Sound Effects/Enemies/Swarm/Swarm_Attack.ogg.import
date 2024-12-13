@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://c3lf2au6831ph"
+path="res://.godot/imported/Swarm_Attack.ogg-4e187d16b587cac540af39f6c8c93ec1.oggvorbisstr"
+
+[deps]
+
+source_file="res://Audio/Sound Effects/Enemies/Swarm/Swarm_Attack.ogg"
+dest_files=["res://.godot/imported/Swarm_Attack.ogg-4e187d16b587cac540af39f6c8c93ec1.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

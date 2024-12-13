@@ -96,13 +96,13 @@ func _physics_process(delta: float) -> void:
 		animation_tree["parameters/conditions/attack"] = false
 		animation_tree["parameters/conditions/idle"] = false
 		animation_tree["parameters/conditions/move"] = true
-		animation_tree["parameters/Move/blend_position"] = velocity.normalized()
+		animation_tree["parameters/conditions/death"] = false
 	if (distance_to_player >= aggro_range):
 		state = MOVEMODE.WAITING
 		animation_tree["parameters/conditions/attack"] = false
 		animation_tree["parameters/conditions/idle"] = true
 		animation_tree["parameters/conditions/move"] = false
-		animation_tree["parameters/Idle/blend_position"] = velocity.normalized()
+		animation_tree["parameters/conditions/death"] = false
 	# State Machine
 	match state:
 		MOVEMODE.CHASING:
@@ -113,6 +113,11 @@ func _physics_process(delta: float) -> void:
 			handle_aiming_state(delta)
 		MOVEMODE.WAITING:
 			handle_waiting_state()
+			
+	if(velocity != Vector2.ZERO):
+		animation_tree["parameters/Attack/blend_position"] = velocity.normalized()
+		animation_tree["parameters/Idle/blend_position"] = velocity.normalized()
+		animation_tree["parameters/Move/blend_position"] = velocity.normalized()
 
 func handle_chasing_state(delta: float) -> void:
 	var steering_force = get_steering(false)
@@ -135,7 +140,7 @@ func handle_fleeing_state(delta: float) -> void:
 		animation_tree["parameters/conditions/attack"] = true
 		animation_tree["parameters/conditions/idle"] = false
 		animation_tree["parameters/conditions/move"] = false
-		animation_tree["parameters/Attack/blend_position"] = velocity.normalized()
+		animation_tree["parameters/conditions/death"] = false
 		return
 	
 	velocity += steering_force * delta
@@ -245,7 +250,7 @@ func handle_waiting_state() -> void:
 		animation_tree["parameters/conditions/attack"] = false
 		animation_tree["parameters/conditions/idle"] = false
 		animation_tree["parameters/conditions/move"] = true
-		animation_tree["parameters/Move/blend_position"] = velocity.normalized()
+		animation_tree["parameters/conditions/death"] = false
 
 func _on_Timer_timeout():
 	state = MOVEMODE.AIMING
@@ -267,47 +272,21 @@ func take_knockback(displacement: Vector2) -> void:
 	pass
 
 func die() -> void:
-	animation_tree["parameters/conditions/attack"] = false
-	animation_tree["parameters/conditions/idle"] = false
-	animation_tree["parameters/conditions/move"] = false
-	animation_tree["parameters/conditions/death"] = true
 	SpawnRef.EnemyDie()
 	
 	set_process(false)
 	# Trigger death animation
-	# $Ranger_AnimationP.play("Ranger_Death")
+	#$Ranger_AnimationP.play("Ranger_Death")
+	animation_tree["parameters/conditions/attack"] = false
+	animation_tree["parameters/conditions/idle"] = false
+	animation_tree["parameters/conditions/move"] = false
+	animation_tree["parameters/conditions/death"] = true
 	# Play sound effect
 	# $AudioStreamPlayer.play()
 	# Emit a death signal, useful for later
-	# emit_signal("enemy_died")
-	# await $Ranger_AnimationP.animation_finished
+	#emit_signal("enemy_died")
+	await $Ranger_AnimationTree.animation_finished
 	queue_free()
 	
-func _process(_delta):
-	update_animation_parameters()
-
-func update_animation_parameters():
-	#if(state == MOVEMODE.CHASING):
-		#animation_tree["parameters/conditions/attack"] = false
-		#animation_tree["parameters/conditions/idle"] = false
-		#animation_tree["parameters/conditions/move"] = true
-	#if(state == MOVEMODE.FLEEING):
-		#animation_tree["parameters/conditions/attack"] = false
-		#animation_tree["parameters/conditions/idle"] = false
-		#animation_tree["parameters/conditions/move"] = true
-	#if(state == MOVEMODE.WAITING):
-		#animation_tree["parameters/conditions/attack"] = false
-		#animation_tree["parameters/conditions/idle"] = true
-		#animation_tree["parameters/conditions/move"] = false
-	#if(state == MOVEMODE.AIMING):
-		#animation_tree["parameters/conditions/attack"] = true
-		#animation_tree["parameters/conditions/idle"] = false
-		#animation_tree["parameters/conditions/move"] = false
-	#if(ranger_shoot):
-		#animation_tree["parameters/conditions/attack"] = true
-		#animation_tree["parameters/conditions/idle"] = false
-		#animation_tree["parameters/conditions/move"] = false
-	if(velocity != Vector2.ZERO):
-		animation_tree["parameters/Attack/blend_position"] = velocity.normalized()
-		animation_tree["parameters/Idle/blend_position"] = velocity.normalized()
-		animation_tree["parameters/Move/blend_position"] = velocity.normalized()
+#func _process(_delta):
+	#update_animation_parameters()

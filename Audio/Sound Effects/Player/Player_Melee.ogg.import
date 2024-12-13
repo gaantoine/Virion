@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://bqasye00bvub"
+path="res://.godot/imported/Player_Melee.ogg-5efa2d088499b5e4649cdd964eaea25d.oggvorbisstr"
+
+[deps]
+
+source_file="res://Audio/Sound Effects/Player/Player_Melee.ogg"
+dest_files=["res://.godot/imported/Player_Melee.ogg-5efa2d088499b5e4649cdd964eaea25d.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

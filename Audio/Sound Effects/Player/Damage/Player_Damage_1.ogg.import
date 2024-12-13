@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://2y0fwf7s8086"
+path="res://.godot/imported/Player_Damage_1.ogg-91ba6eb3216f3589995579ccd5ac3bfc.oggvorbisstr"
+
+[deps]
+
+source_file="res://Audio/Sound Effects/Player/Damage/Player_Damage_1.ogg"
+dest_files=["res://.godot/imported/Player_Damage_1.ogg-91ba6eb3216f3589995579ccd5ac3bfc.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

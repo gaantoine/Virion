@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://bwb0h3jtxki46"
+path="res://.godot/imported/Bruiser_Footstep_1.ogg-c8a05e20c18335982add4633eeca6e6c.oggvorbisstr"
+
+[deps]
+
+source_file="res://Audio/Sound Effects/Enemies/Bruiser/Footstep/Bruiser_Footstep_1.ogg"
+dest_files=["res://.godot/imported/Bruiser_Footstep_1.ogg-c8a05e20c18335982add4633eeca6e6c.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

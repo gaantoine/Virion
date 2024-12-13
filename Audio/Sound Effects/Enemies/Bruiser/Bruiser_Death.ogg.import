@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://reecxer6wa64"
+path="res://.godot/imported/Bruiser_Death.ogg-5c7ed4d9d08abc19f794be7a8db20127.oggvorbisstr"
+
+[deps]
+
+source_file="res://Audio/Sound Effects/Enemies/Bruiser/Bruiser_Death.ogg"
+dest_files=["res://.godot/imported/Bruiser_Death.ogg-5c7ed4d9d08abc19f794be7a8db20127.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

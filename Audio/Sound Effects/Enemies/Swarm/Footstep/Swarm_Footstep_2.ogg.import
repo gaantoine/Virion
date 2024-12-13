@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://yhyen40b4qju"
+path="res://.godot/imported/Swarm_Footstep_2.ogg-6a80590698323304b8b3c34d54d1422b.oggvorbisstr"
+
+[deps]
+
+source_file="res://Audio/Sound Effects/Enemies/Swarm/Footstep/Swarm_Footstep_2.ogg"
+dest_files=["res://.godot/imported/Swarm_Footstep_2.ogg-6a80590698323304b8b3c34d54d1422b.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

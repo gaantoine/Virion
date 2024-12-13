@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://c4q8d1vdet63j"
+path="res://.godot/imported/Ranger_Move.ogg-3b1b88eeef0db06c1ec2f15d2a5710f3.oggvorbisstr"
+
+[deps]
+
+source_file="res://Audio/Sound Effects/Enemies/Ranger/Ranger_Move.ogg"
+dest_files=["res://.godot/imported/Ranger_Move.ogg-3b1b88eeef0db06c1ec2f15d2a5710f3.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

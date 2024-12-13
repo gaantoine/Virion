@@ -320,3 +320,11 @@ func update_animation_parameters():
 		#animation_tree["parameters/Walk/blend_position"] = velocity.normalized()
 		#animation_tree["parameters/Rolling/blend_position"] = velocity.normalized()
 		#animation_tree["parameters/Idle/blend_position"] = velocity.normalized()
+
+func In_Combat() -> void:
+	print("combatmode")
+	pass
+
+func Out_Combat() -> void:
+	print("outcombat")
+	pass

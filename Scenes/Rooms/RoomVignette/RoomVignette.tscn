@@ -1,0 +1,26 @@
+[gd_scene load_steps=3 format=3 uid="uid://c83s37k7bmu2w"]
+
+[ext_resource type="Shader" path="res://Scenes/Rooms/RoomVignette/RoomVignette.gdshader" id="1_cu2ge"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3hs68"]
+shader = ExtResource("1_cu2ge")
+shader_parameter/vignette_color = Color(0, 0, 0, 0.94902)
+shader_parameter/inner_radius = 0.0
+shader_parameter/outer_radius = 0.5
+
+[node name="RoomVignette" type="Node2D"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+material = SubResource("ShaderMaterial_3hs68")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1.0
+offset_top = 1.0
+offset_right = 1.0
+offset_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0)

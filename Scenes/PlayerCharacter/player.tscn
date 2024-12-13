@@ -1,10 +1,11 @@
-[gd_scene load_steps=49 format=3 uid="uid://coujnnoiesx2e"]
+[gd_scene load_steps=50 format=3 uid="uid://coujnnoiesx2e"]
 
 [ext_resource type="Script" path="res://Scenes/PlayerCharacter/player.gd" id="1_nm4sk"]
 [ext_resource type="Texture2D" uid="uid://boo70448o6p2j" path="res://Animations/SpriteSheets/PlayerSpriteSheet.png" id="3_pjgny"]
 [ext_resource type="Script" path="res://Scenes/PlayerCharacter/shooter.gd" id="3_slfig"]
 [ext_resource type="Script" path="res://Scenes/PlayerCharacter/melee.gd" id="4_oputj"]
 [ext_resource type="Texture2D" uid="uid://c3075f8qxamhx" path="res://Animations/VFX/VFX_PNGs/MeleeSpriteSheet.png" id="4_warth"]
+[ext_resource type="PackedScene" uid="uid://c83s37k7bmu2w" path="res://Scenes/Rooms/RoomVignette/RoomVignette.tscn" id="6_yb74a"]
 
 [sub_resource type="Animation" id="Animation_1fjir"]
 resource_name = "Death"
@@ -677,6 +678,8 @@ one_shot = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 follow_viewport_scale = 0.001
+
+[node name="RoomVignette" parent="CanvasLayer" instance=ExtResource("6_yb74a")]
 
 [node name="AspectRatioContainer" type="AspectRatioContainer" parent="CanvasLayer"]
 anchors_preset = 15

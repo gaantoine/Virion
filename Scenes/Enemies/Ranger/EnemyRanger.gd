@@ -71,6 +71,8 @@ var seek_map = []
 var collision_map = []
 var seek_map_buffer = 0.5
 
+var dead = false
+
 func _ready():
 	animation_tree.active = true
 	$Timer.timeout.connect(_on_Timer_timeout)
@@ -261,7 +263,10 @@ func take_damage(damage_taken: float) -> void:
 	# $Sprite.modulate = Color.RED # Maybe?
 	# Play sound effect
 	# $AudioStreamPlayer.play()
-	if current_hp <= 0:
+	if dead:
+		return
+	elif current_hp <= 0:
+		dead = true
 		die()
 	else:
 		$RangerSpriteSheet.modulate = Color.RED
@@ -274,7 +279,7 @@ func take_knockback(displacement: Vector2) -> void:
 func die() -> void:
 	SpawnRef.EnemyDie()
 	
-	set_process(false)
+	set_physics_process(false)
 	# Trigger death animation
 	#$Ranger_AnimationP.play("Ranger_Death")
 	animation_tree["parameters/conditions/attack"] = false

@@ -46,6 +46,7 @@ var collision_map = []
 var seek_map_buffer = 0.5
 
 var last_facing_direction
+var dead = false
 
 
 func _ready():
@@ -162,7 +163,10 @@ func take_damage(damage_taken: float) -> void:
 	# $Sprite.modulate = Color.RED # Maybe?
 	# Play sound effect
 	# $AudioStreamPlayer.play()
-	if current_hp <= 0:
+	if dead:
+		return
+	elif current_hp <= 0:
+		dead = true
 		die()
 	else:
 		$SwarmSpriteSheet.modulate = Color.RED
@@ -175,7 +179,9 @@ func take_knockback(displacement: Vector2) -> void:
 
 
 func die() -> void:
-	set_process(false)
+	$Timer.stop()
+	velocity = Vector2.ZERO
+	set_physics_process(false)
 	# Trigger death animation
 	$Swarm_AnimationTree.play("Swarm_Death")
 	# Play sound effect

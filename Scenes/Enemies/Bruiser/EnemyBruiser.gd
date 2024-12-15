@@ -12,6 +12,12 @@ enum MOVEMODE {
 #Gonna need this for spawners
 @export var SpawnRef: Node2D
 
+#references to Bruiser AudioStreamPlayers
+@onready var BruiserFootstepAudio = $Bruiser_Footstep
+@onready var BruiserAttackAudio = $Bruiser_Attack
+@onready var BruiserDamageAudio = $Bruiser_Damage
+@onready var BruiserDeathAudio = $Bruiser_Death
+
 @export_group("Health and Damage")
 ## Maximum total health base
 @export var base_max_hp: float = 24
@@ -321,7 +327,7 @@ func take_damage(damage_taken: float) -> void:
 	# $AnimationPlayer.play("damage")
 	# $Sprite.modulate = Color.RED # Maybe?
 	# Play sound effect
-	# $AudioStreamPlayer.play()
+	BruiserDamageAudio.play()
 	if current_hp <= 0:
 		die()
 	else:
@@ -334,7 +340,6 @@ func take_knockback(displacement: Vector2) -> void:
 
 func die() -> void:
 	SpawnRef.EnemyDie()
-	
 	set_physics_process(false)
 	# Trigger death animation
 	#$Ranger_AnimationP.play("Ranger_Death")
@@ -344,7 +349,7 @@ func die() -> void:
 	animation_tree["parameters/conditions/wait"] = false
 	animation_tree["parameters/conditions/death"] = true
 	# Play sound effect
-	# $AudioStreamPlayer.play()
+	BruiserDeathAudio.play()
 	# Emit a death signal, useful for later
 	#emit_signal("enemy_died")
 	await $Bruiser_AnimationTree.animation_finished
@@ -365,4 +370,7 @@ func _draw() -> void:
 #function to emit bruiser footstep signal for all listeners to hear	
 func call_bruiser_footstep() -> void:
 	bruiser_footstep.emit()
+	BruiserFootstepAudio.play()
 	
+func call_bruiser_attack() -> void:
+	BruiserAttackAudio.play()

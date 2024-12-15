@@ -1,7 +1,11 @@
-[gd_scene load_steps=38 format=3 uid="uid://b0msrln4lgeup"]
+[gd_scene load_steps=46 format=3 uid="uid://b0msrln4lgeup"]
 
 [ext_resource type="Script" path="res://Scenes/Enemies/Ranger/EnemyRanger.gd" id="1_0kdd3"]
 [ext_resource type="Texture2D" uid="uid://c5en0wm12dwa4" path="res://Animations/SpriteSheets/RangerSpriteSheet.png" id="2_xbogt"]
+[ext_resource type="AudioStream" uid="uid://b2wodtm1kj0j2" path="res://Audio/Sound Effects/Enemies/Ranger/Ranger_Damage.ogg" id="3_b2wmb"]
+[ext_resource type="AudioStream" uid="uid://d2nhg7wcwxg8x" path="res://Audio/Sound Effects/Enemies/Ranger/Ranger_Death.ogg" id="4_q4es7"]
+[ext_resource type="AudioStream" uid="uid://c4q8d1vdet63j" path="res://Audio/Sound Effects/Enemies/Ranger/Ranger_Move.ogg" id="5_n3o18"]
+[ext_resource type="AudioStream" uid="uid://d0vw3tc8v1jx" path="res://Audio/Sound Effects/Enemies/Ranger/Ranger_Shoot.ogg" id="6_iaqa0"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_s373b"]
 radius = 32.0
@@ -103,6 +107,20 @@ tracks/0/keys = {
 "update": 1,
 "values": [14, 15, 16, 17, 18, 19]
 }
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"call_ranger_move"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_267n3"]
 resource_name = "Ranger_Move_Up"
@@ -119,6 +137,20 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [21, 22, 23, 24, 25, 26]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"call_ranger_move"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_0fhbv"]
@@ -269,6 +301,25 @@ states/Ranger_Death/position = Vector2(520, 218)
 transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_1x3wy"), "Idle", "Move", SubResource("AnimationNodeStateMachineTransition_w0giw"), "Move", "Idle", SubResource("AnimationNodeStateMachineTransition_girga"), "Idle", "Attack", SubResource("AnimationNodeStateMachineTransition_u0gul"), "Attack", "Idle", SubResource("AnimationNodeStateMachineTransition_gtxnh"), "Attack", "Ranger_Death", SubResource("AnimationNodeStateMachineTransition_8p184"), "Idle", "Ranger_Death", SubResource("AnimationNodeStateMachineTransition_fxdat"), "Move", "Ranger_Death", SubResource("AnimationNodeStateMachineTransition_67tw5")]
 graph_offset = Vector2(-180, 48)
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_rpdsg"]
+random_pitch = 1.1
+streams_count = 1
+stream_0/stream = ExtResource("3_b2wmb")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_wbwmd"]
+random_pitch = 1.1
+streams_count = 1
+stream_0/stream = ExtResource("4_q4es7")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_cd61e"]
+random_pitch = 1.1
+streams_count = 1
+stream_0/stream = ExtResource("5_n3o18")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_iscfs"]
+streams_count = 1
+stream_0/stream = ExtResource("6_iaqa0")
+
 [node name="EnemyRanger" type="CharacterBody2D" groups=["enemy"]]
 collision_layer = 256
 collision_mask = 291
@@ -301,3 +352,23 @@ parameters/conditions/move = false
 parameters/Attack/blend_position = Vector2(-0.164816, -0.648936)
 parameters/Idle/blend_position = Vector2(-0.308284, 0.43617)
 parameters/Move/blend_position = Vector2(0, 0)
+
+[node name="Ranger_Damage" type="AudioStreamPlayer2D" parent="."]
+stream = SubResource("AudioStreamRandomizer_rpdsg")
+max_polyphony = 3
+bus = &"Ranger_SFX"
+
+[node name="Ranger_Death" type="AudioStreamPlayer2D" parent="."]
+stream = SubResource("AudioStreamRandomizer_wbwmd")
+max_polyphony = 3
+bus = &"Ranger_SFX"
+
+[node name="Ranger_Move" type="AudioStreamPlayer2D" parent="."]
+stream = SubResource("AudioStreamRandomizer_cd61e")
+max_polyphony = 3
+bus = &"Ranger_SFX"
+
+[node name="Ranger_Shoot" type="AudioStreamPlayer2D" parent="."]
+stream = SubResource("AudioStreamRandomizer_iscfs")
+max_polyphony = 5
+bus = &"Ranger_SFX"

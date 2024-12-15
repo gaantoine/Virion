@@ -2,6 +2,7 @@ extends Area2D
 class_name PlayerMelee
 
 @onready var t_MeleeCD:Timer = $MeleeCooldownTimer
+@onready var PlayerMeleeAudio = $"../../Player_Melee"
 
 #signal variable for player melee to be used by listeners
 signal player_melee
@@ -34,6 +35,8 @@ func try_melee() -> void:
 	$AnimationPlayer.play("Melee_Anim")
 	#emit player_melee signal for listeners
 	player_melee.emit()
+	#play melee audio
+	PlayerMeleeAudio.play()
 	t_MeleeCD.start(MELEE_DELAY__S)
 	
 	for target:Node2D in get_overlapping_bodies():

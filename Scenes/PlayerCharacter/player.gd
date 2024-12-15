@@ -91,6 +91,10 @@ signal player_footstep
 signal player_dodge_start
 #signal variable for player dodge end called in Animation Player
 signal player_dodge_end
+#signal variable for player damage called in damage function
+signal player_damage
+#signal variable for player death called in die function
+signal player_death
 
 func _ready():
 	self.connect("In_Combat", In_Combat_Func)
@@ -203,6 +207,8 @@ func take_damage(damage:float) -> void:
 	max_hp -= damage * GRAY_COEFF
 	modulate = Color.RED
 	update_health_display()
+	#send damage signal for audiomanager listener
+	player_damage.emit()
 	if health <= 0:
 		health = 0
 		die()
@@ -222,6 +228,8 @@ func update_health_display() -> void:
 
 func die() -> void:
 	print("aaaaaaaa dying dying dying")
+	#emit death signal for audio manager listener
+	player_death.emit()
 
 func add_mods(mods:Dictionary) -> void:
 	for key in mods:

@@ -1,9 +1,16 @@
-[gd_scene load_steps=44 format=3 uid="uid://f6n573w57vu6"]
+[gd_scene load_steps=55 format=3 uid="uid://f6n573w57vu6"]
 
 [ext_resource type="Texture2D" uid="uid://cminetoyt22sf" path="res://Misc PNGs and assets/placeholder_icon.png" id="1_p1dxc"]
 [ext_resource type="Script" path="res://Scenes/Enemies/Bruiser/EnemyBruiser.gd" id="1_rmu8v"]
 [ext_resource type="Texture2D" uid="uid://tbcfi0kndp1y" path="res://Animations/SpriteSheets/BruiserWalk&AttackSpritesheet.png" id="3_2bwsm"]
 [ext_resource type="Texture2D" uid="uid://bcxgg4fteeova" path="res://Animations/SpriteSheets/ChargeEffectSpritesheet.png" id="4_wrjut"]
+[ext_resource type="AudioStream" uid="uid://bwb0h3jtxki46" path="res://Audio/Sound Effects/Enemies/Bruiser/Footstep/Bruiser_Footstep_1.ogg" id="5_mxpfe"]
+[ext_resource type="AudioStream" uid="uid://u2505drke4cv" path="res://Audio/Sound Effects/Enemies/Bruiser/Footstep/Bruiser_Footstep_2.ogg" id="6_p33bp"]
+[ext_resource type="AudioStream" uid="uid://b2tka611f5v1d" path="res://Audio/Sound Effects/Enemies/Bruiser/Footstep/Bruiser_Footstep_3.ogg" id="7_kl3rk"]
+[ext_resource type="AudioStream" uid="uid://cs1s41412hyh7" path="res://Audio/Sound Effects/Enemies/Bruiser/Footstep/Bruiser_Footstep_4.ogg" id="8_66ue1"]
+[ext_resource type="AudioStream" uid="uid://cyvuk65r4n1mm" path="res://Audio/Sound Effects/Enemies/Bruiser/Bruiser_Attack.ogg" id="9_vh45y"]
+[ext_resource type="AudioStream" uid="uid://c576fi0ufqr8n" path="res://Audio/Sound Effects/Enemies/Bruiser/Bruiser_Damage.ogg" id="10_d2nkv"]
+[ext_resource type="AudioStream" uid="uid://reecxer6wa64" path="res://Audio/Sound Effects/Enemies/Bruiser/Bruiser_Death.ogg" id="11_fpx57"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_kcvma"]
 radius = 3.7
@@ -60,6 +67,20 @@ tracks/3/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [false]
+}
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.6),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"call_bruiser_attack"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_jsot5"]
@@ -738,6 +759,29 @@ states/Wait/position = Vector2(326, 213)
 transitions = ["Start", "Chase", SubResource("AnimationNodeStateMachineTransition_th22c"), "Chase", "Wait", SubResource("AnimationNodeStateMachineTransition_bctfv"), "Wait", "Chase", SubResource("AnimationNodeStateMachineTransition_gdd1w"), "Wait", "Dash", SubResource("AnimationNodeStateMachineTransition_5p5d0"), "Dash", "Chase", SubResource("AnimationNodeStateMachineTransition_hvkrb"), "Dash", "Attack", SubResource("AnimationNodeStateMachineTransition_bor5l"), "Attack", "Wait", SubResource("AnimationNodeStateMachineTransition_c0bld"), "Attack", "Chase", SubResource("AnimationNodeStateMachineTransition_go4qi")]
 graph_offset = Vector2(-91, 35)
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_2hg78"]
+random_pitch = 1.1
+streams_count = 4
+stream_0/stream = ExtResource("5_mxpfe")
+stream_1/stream = ExtResource("6_p33bp")
+stream_2/stream = ExtResource("7_kl3rk")
+stream_3/stream = ExtResource("8_66ue1")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_dv14v"]
+random_pitch = 1.1
+streams_count = 1
+stream_0/stream = ExtResource("9_vh45y")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_exji3"]
+random_pitch = 1.1
+streams_count = 1
+stream_0/stream = ExtResource("10_d2nkv")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_xy720"]
+random_pitch = 1.1
+streams_count = 1
+stream_0/stream = ExtResource("11_fpx57")
+
 [node name="EnemyBruiser" type="CharacterBody2D" groups=["enemy"]]
 collision_layer = 256
 collision_mask = 291
@@ -792,3 +836,23 @@ parameters/Attack/blend_position = Vector2(0.0111016, 0.00884962)
 parameters/Chase/blend_position = Vector2(-0.00939369, -0.0182768)
 parameters/Dash/blend_position = Vector2(0.0350128, 0.382979)
 parameters/Wait/blend_position = Vector2(-0.376601, -0.914894)
+
+[node name="Bruiser_Footstep" type="AudioStreamPlayer2D" parent="."]
+stream = SubResource("AudioStreamRandomizer_2hg78")
+max_polyphony = 3
+bus = &"Bruiser_SFX"
+
+[node name="Bruiser_Attack" type="AudioStreamPlayer2D" parent="."]
+stream = SubResource("AudioStreamRandomizer_dv14v")
+max_polyphony = 3
+bus = &"Bruiser_SFX"
+
+[node name="Bruiser_Damage" type="AudioStreamPlayer2D" parent="."]
+stream = SubResource("AudioStreamRandomizer_exji3")
+max_polyphony = 3
+bus = &"Bruiser_SFX"
+
+[node name="Bruiser_Death" type="AudioStreamPlayer2D" parent="."]
+stream = SubResource("AudioStreamRandomizer_xy720")
+max_polyphony = 3
+bus = &"Bruiser_SFX"

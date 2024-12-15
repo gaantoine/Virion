@@ -2,6 +2,7 @@ extends Node2D
 class_name PlayerShooter
 
 @onready var t_Refire:Timer = $RefireTimer
+@onready var PlayerShootAudio = $"../Player_Shoot"
 
 #signal variable for player shooting to be used by audio manager
 signal player_shoot
@@ -35,6 +36,8 @@ func try_shoot() -> void:
 	t_Refire.start(refire__s)
 	#emit player shoot signal for listeners
 	player_shoot.emit()
+	#play shoot audio
+	PlayerShootAudio.play()
 	
 	var count:int = attrs["bullet_count"]
 	var arc:float = deg_to_rad(attrs["bullet_arc"])

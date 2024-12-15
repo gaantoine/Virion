@@ -1,4 +1,4 @@
-[gd_scene load_steps=84 format=3 uid="uid://cutapgcxin544"]
+[gd_scene load_steps=46 format=3 uid="uid://cutapgcxin544"]
 
 [ext_resource type="Script" path="res://Scenes/audio_manager.gd" id="1_dmmbd"]
 [ext_resource type="AudioStream" uid="uid://vrv264cm0dqr" path="res://Audio/Music/Explore/E_1_Drums_104bpm_26b_4-4.ogg" id="2_cdpsy"]
@@ -25,8 +25,6 @@
 [ext_resource type="AudioStream" uid="uid://bgxk2ftfh1ey7" path="res://Audio/Sound Effects/Player/Dodge/Player_Dodge_Land_1.ogg" id="23_b4o2p"]
 [ext_resource type="AudioStream" uid="uid://c0jvg11garpgl" path="res://Audio/Sound Effects/Player/Dodge/Player_Dodge_Land_2.ogg" id="24_mo8pv"]
 [ext_resource type="AudioStream" uid="uid://17vgmmyvlhhg" path="res://Audio/Sound Effects/Player/Dodge/Player_Dodge_Land_3.ogg" id="25_pbqiw"]
-[ext_resource type="AudioStream" uid="uid://bqasye00bvub" path="res://Audio/Sound Effects/Player/Player_Melee.ogg" id="26_qosoy"]
-[ext_resource type="AudioStream" uid="uid://di5tvly0bq864" path="res://Audio/Sound Effects/Player/Player_Shoot.ogg" id="27_3tsac"]
 [ext_resource type="AudioStream" uid="uid://2y0fwf7s8086" path="res://Audio/Sound Effects/Player/Damage/Player_Damage_1.ogg" id="28_gf4nm"]
 [ext_resource type="AudioStream" uid="uid://csj3c0n7ahg5v" path="res://Audio/Sound Effects/Player/Damage/Player_Damage_2.ogg" id="29_ii53w"]
 [ext_resource type="AudioStream" uid="uid://dww7cdjuasrnp" path="res://Audio/Sound Effects/Player/Damage/Player_Damage_3.ogg" id="30_hiqsl"]
@@ -35,29 +33,6 @@
 [ext_resource type="AudioStream" uid="uid://bom5axaktryk6" path="res://Audio/Sound Effects/Player/Death/Player_Death_2.ogg" id="33_1sfw2"]
 [ext_resource type="AudioStream" uid="uid://drqi0ol6bo5pm" path="res://Audio/Sound Effects/Player/Death/Player_Death_3.ogg" id="34_a227f"]
 [ext_resource type="AudioStream" uid="uid://bal6xpfc6qj7b" path="res://Audio/Sound Effects/Player/Death/Player_Death_4.ogg" id="35_jyf5m"]
-[ext_resource type="AudioStream" uid="uid://bwb0h3jtxki46" path="res://Audio/Sound Effects/Enemies/Bruiser/Footstep/Bruiser_Footstep_1.ogg" id="36_w2m8k"]
-[ext_resource type="AudioStream" uid="uid://u2505drke4cv" path="res://Audio/Sound Effects/Enemies/Bruiser/Footstep/Bruiser_Footstep_2.ogg" id="37_t1oo6"]
-[ext_resource type="AudioStream" uid="uid://b2tka611f5v1d" path="res://Audio/Sound Effects/Enemies/Bruiser/Footstep/Bruiser_Footstep_3.ogg" id="38_u10hk"]
-[ext_resource type="AudioStream" uid="uid://cs1s41412hyh7" path="res://Audio/Sound Effects/Enemies/Bruiser/Footstep/Bruiser_Footstep_4.ogg" id="39_jqdbf"]
-[ext_resource type="AudioStream" uid="uid://cyvuk65r4n1mm" path="res://Audio/Sound Effects/Enemies/Bruiser/Bruiser_Attack.ogg" id="40_scm88"]
-[ext_resource type="AudioStream" uid="uid://c576fi0ufqr8n" path="res://Audio/Sound Effects/Enemies/Bruiser/Bruiser_Damage.ogg" id="41_o8e7e"]
-[ext_resource type="AudioStream" uid="uid://reecxer6wa64" path="res://Audio/Sound Effects/Enemies/Bruiser/Bruiser_Death.ogg" id="42_uylx7"]
-[ext_resource type="AudioStream" uid="uid://b2wodtm1kj0j2" path="res://Audio/Sound Effects/Enemies/Ranger/Ranger_Damage.ogg" id="43_yrtpf"]
-[ext_resource type="AudioStream" uid="uid://d2nhg7wcwxg8x" path="res://Audio/Sound Effects/Enemies/Ranger/Ranger_Death.ogg" id="44_75pgt"]
-[ext_resource type="AudioStream" uid="uid://c4q8d1vdet63j" path="res://Audio/Sound Effects/Enemies/Ranger/Ranger_Move.ogg" id="45_v1fsu"]
-[ext_resource type="AudioStream" uid="uid://d0vw3tc8v1jx" path="res://Audio/Sound Effects/Enemies/Ranger/Ranger_Shoot.ogg" id="46_jfgfa"]
-[ext_resource type="AudioStream" uid="uid://jam8qqmsqncm" path="res://Audio/Sound Effects/Enemies/Swarm/Damage/Swarm_Damage_1.ogg" id="47_4p4at"]
-[ext_resource type="AudioStream" uid="uid://bb23b7blpt7dk" path="res://Audio/Sound Effects/Enemies/Swarm/Damage/Swarm_Damage_2.ogg" id="48_r1jrr"]
-[ext_resource type="AudioStream" uid="uid://c7irfn0b2vjty" path="res://Audio/Sound Effects/Enemies/Swarm/Damage/Swarm_Damage_3.ogg" id="49_t87ww"]
-[ext_resource type="AudioStream" uid="uid://bpd8pxc20g5w0" path="res://Audio/Sound Effects/Enemies/Swarm/Damage/Swarm_Damage_4.ogg" id="50_57l33"]
-[ext_resource type="AudioStream" uid="uid://d1slywv3yh2vp" path="res://Audio/Sound Effects/Enemies/Swarm/Death/Swarm_Death_1.ogg" id="51_gsfm5"]
-[ext_resource type="AudioStream" uid="uid://bcytjxkukiamm" path="res://Audio/Sound Effects/Enemies/Swarm/Death/Swarm_Death_2.ogg" id="52_oo7c6"]
-[ext_resource type="AudioStream" uid="uid://bb7tvf8q6lj4w" path="res://Audio/Sound Effects/Enemies/Swarm/Death/Swarm_Death_3.ogg" id="53_8sibs"]
-[ext_resource type="AudioStream" uid="uid://dodt4gxgivf61" path="res://Audio/Sound Effects/Enemies/Swarm/Footstep/Swarm_Footstep_1.ogg" id="54_1xh1w"]
-[ext_resource type="AudioStream" uid="uid://yhyen40b4qju" path="res://Audio/Sound Effects/Enemies/Swarm/Footstep/Swarm_Footstep_2.ogg" id="55_en725"]
-[ext_resource type="AudioStream" uid="uid://dpbgpe1u883a5" path="res://Audio/Sound Effects/Enemies/Swarm/Footstep/Swarm_Footstep_3.ogg" id="56_2wyxj"]
-[ext_resource type="AudioStream" uid="uid://bh51nvedotvx4" path="res://Audio/Sound Effects/Enemies/Swarm/Footstep/Swarm_Footstep_4.ogg" id="57_35373"]
-[ext_resource type="AudioStream" uid="uid://c3lf2au6831ph" path="res://Audio/Sound Effects/Enemies/Swarm/Swarm_Attack.ogg" id="58_otqbd"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_t3d1q"]
 playback_mode = 1
@@ -155,11 +130,6 @@ stream_0/stream = ExtResource("23_b4o2p")
 stream_1/stream = ExtResource("24_mo8pv")
 stream_2/stream = ExtResource("25_pbqiw")
 
-[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_au2ue"]
-random_pitch = 1.3
-streams_count = 1
-stream_0/stream = ExtResource("26_qosoy")
-
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_ha8vd"]
 random_pitch = 1.1
 streams_count = 4
@@ -176,80 +146,12 @@ stream_1/stream = ExtResource("33_1sfw2")
 stream_2/stream = ExtResource("34_a227f")
 stream_3/stream = ExtResource("35_jyf5m")
 
-[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_y7y6f"]
-random_pitch = 1.1
-streams_count = 4
-stream_0/stream = ExtResource("36_w2m8k")
-stream_1/stream = ExtResource("37_t1oo6")
-stream_2/stream = ExtResource("38_u10hk")
-stream_3/stream = ExtResource("39_jqdbf")
-
-[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_7djkm"]
-random_pitch = 1.1
-streams_count = 1
-stream_0/stream = ExtResource("40_scm88")
-
-[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_o3pfy"]
-random_pitch = 1.1
-streams_count = 1
-stream_0/stream = ExtResource("41_o8e7e")
-
-[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_asmst"]
-random_pitch = 1.1
-streams_count = 1
-stream_0/stream = ExtResource("42_uylx7")
-
-[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_3xtjn"]
-random_pitch = 1.1
-streams_count = 1
-stream_0/stream = ExtResource("43_yrtpf")
-
-[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_7onm0"]
-random_pitch = 1.1
-streams_count = 1
-stream_0/stream = ExtResource("44_75pgt")
-
-[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_6trs3"]
-random_pitch = 1.1
-streams_count = 1
-stream_0/stream = ExtResource("45_v1fsu")
-
-[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_pw5xv"]
-streams_count = 1
-stream_0/stream = ExtResource("46_jfgfa")
-
-[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_no3y0"]
-random_pitch = 1.3
-streams_count = 4
-stream_0/stream = ExtResource("47_4p4at")
-stream_1/stream = ExtResource("48_r1jrr")
-stream_2/stream = ExtResource("49_t87ww")
-stream_3/stream = ExtResource("50_57l33")
-
-[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_aidr8"]
-random_pitch = 1.3
-streams_count = 3
-stream_0/stream = ExtResource("51_gsfm5")
-stream_1/stream = ExtResource("52_oo7c6")
-stream_2/stream = ExtResource("53_8sibs")
-
-[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_1dkmi"]
-random_pitch = 1.1
-streams_count = 4
-stream_0/stream = ExtResource("54_1xh1w")
-stream_1/stream = ExtResource("55_en725")
-stream_2/stream = ExtResource("56_2wyxj")
-stream_3/stream = ExtResource("57_35373")
-
-[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_brc0b"]
-streams_count = 1
-stream_0/stream = ExtResource("58_otqbd")
-
 [node name="AudioManagerNode2D" type="Node2D"]
 script = ExtResource("1_dmmbd")
 
 [node name="Music_System" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamInteractive_ibhd2")
+autoplay = true
 bus = &"Music"
 
 [node name="Player_Footstep" type="AudioStreamPlayer2D" parent="."]
@@ -260,68 +162,17 @@ bus = &"Player_SFX"
 [node name="Player_Dodge_Jump" type="AudioStreamPlayer2D" parent="."]
 stream = SubResource("AudioStreamRandomizer_25dw4")
 max_polyphony = 2
+bus = &"Player_SFX"
 
 [node name="Player_Dodge_Land" type="AudioStreamPlayer2D" parent="."]
 stream = SubResource("AudioStreamRandomizer_sh65k")
 max_polyphony = 2
-
-[node name="Player_Melee" type="AudioStreamPlayer2D" parent="."]
-stream = SubResource("AudioStreamRandomizer_au2ue")
-max_polyphony = 3
-
-[node name="Player_Shoot" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("27_3tsac")
-max_polyphony = 3
+bus = &"Player_SFX"
 
 [node name="Player_Damage" type="AudioStreamPlayer2D" parent="."]
 stream = SubResource("AudioStreamRandomizer_ha8vd")
+bus = &"Player_SFX"
 
 [node name="Player_Death" type="AudioStreamPlayer2D" parent="."]
 stream = SubResource("AudioStreamRandomizer_4av7v")
-
-[node name="Bruiser_Footstep" type="AudioStreamPlayer2D" parent="."]
-stream = SubResource("AudioStreamRandomizer_y7y6f")
-max_polyphony = 3
-
-[node name="Bruiser_Attack" type="AudioStreamPlayer2D" parent="."]
-stream = SubResource("AudioStreamRandomizer_7djkm")
-max_polyphony = 3
-
-[node name="Bruiser_Damage" type="AudioStreamPlayer2D" parent="."]
-stream = SubResource("AudioStreamRandomizer_o3pfy")
-max_polyphony = 3
-
-[node name="Bruiser_Death" type="AudioStreamPlayer2D" parent="."]
-stream = SubResource("AudioStreamRandomizer_asmst")
-max_polyphony = 3
-
-[node name="Ranger_Damage" type="AudioStreamPlayer2D" parent="."]
-stream = SubResource("AudioStreamRandomizer_3xtjn")
-max_polyphony = 3
-
-[node name="Ranger_Death" type="AudioStreamPlayer2D" parent="."]
-stream = SubResource("AudioStreamRandomizer_7onm0")
-max_polyphony = 3
-
-[node name="Ranger_Move" type="AudioStreamPlayer2D" parent="."]
-stream = SubResource("AudioStreamRandomizer_6trs3")
-max_polyphony = 3
-
-[node name="Ranger_Shoot" type="AudioStreamPlayer2D" parent="."]
-stream = SubResource("AudioStreamRandomizer_pw5xv")
-max_polyphony = 5
-
-[node name="Swarm_Damage" type="AudioStreamPlayer2D" parent="."]
-stream = SubResource("AudioStreamRandomizer_no3y0")
-max_polyphony = 3
-
-[node name="Swarm_Death" type="AudioStreamPlayer2D" parent="."]
-stream = SubResource("AudioStreamRandomizer_aidr8")
-max_polyphony = 3
-
-[node name="Swarm_Footstep" type="AudioStreamPlayer2D" parent="."]
-stream = SubResource("AudioStreamRandomizer_1dkmi")
-max_polyphony = 5
-
-[node name="Swarm_Attack" type="AudioStreamPlayer2D" parent="."]
-stream = SubResource("AudioStreamRandomizer_brc0b")
+bus = &"Player_SFX"

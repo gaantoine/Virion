@@ -189,6 +189,7 @@ func handle_dashing_state(delta: float) -> void:
 	animation_tree["parameters/conditions/chase"] = false
 	animation_tree["parameters/conditions/dash"] = true
 	animation_tree["parameters/conditions/attack"] = false
+	animation_tree["parameters/conditions/death"] = false
 	
 	# Check if within attack range or dash duration has ended
 	if distance_to_player <= middash_attack_range:
@@ -216,6 +217,7 @@ func handle_attacking_state() -> void:
 	animation_tree["parameters/conditions/chase"] = false
 	animation_tree["parameters/conditions/dash"] = false
 	animation_tree["parameters/conditions/attack"] = true
+	animation_tree["parameters/conditions/death"] = false
 	
 	$Sprite2D.modulate = Color.RED
 	$Timer.start(attack_duration)
@@ -241,6 +243,7 @@ func handle_chasing_state(delta: float) -> void:
 	animation_tree["parameters/conditions/chase"] = true
 	animation_tree["parameters/conditions/dash"] = false
 	animation_tree["parameters/conditions/attack"] = false
+	animation_tree["parameters/conditions/death"] = false
 	
 	if take_aim():
 		state = MOVEMODE.AIMING
@@ -301,6 +304,7 @@ func handle_waiting_state() -> void:
 	animation_tree["parameters/conditions/chase"] = false
 	animation_tree["parameters/conditions/dash"] = false
 	animation_tree["parameters/conditions/attack"] = false
+	animation_tree["parameters/conditions/death"] = false
 
 	velocity = Vector2.ZERO
 	move_and_slide()
@@ -336,15 +340,19 @@ func take_knockback(displacement: Vector2) -> void:
 
 func die() -> void:
 	SpawnRef.EnemyDie()
-
-	set_process(false)
+	set_physics_process(false)
 	# Trigger death animation
-	# $AnimationPlayer.play("death")
+	#$Ranger_AnimationP.play("Ranger_Death")
+	animation_tree["parameters/conditions/attack"] = false
+	animation_tree["parameters/conditions/chase"] = false
+	animation_tree["parameters/conditions/dash"] = false
+	animation_tree["parameters/conditions/wait"] = false
+	animation_tree["parameters/conditions/death"] = true
 	# Play sound effect
 	BruiserDeathAudio.play()
 	# Emit a death signal, useful for later
-	# emit_signal("enemy_died")
-	#await $Bruiser_AnimationTree.animation_finished
+	#emit_signal("enemy_died")
+	await $Bruiser_AnimationTree.animation_finished
 	queue_free()
 
 # Debugging

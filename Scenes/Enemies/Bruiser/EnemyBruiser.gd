@@ -86,6 +86,7 @@ var ray_directions = []
 var seek_map = []
 var collision_map = []
 var seek_map_buffer = 0.5
+var dead = false
 
 #signal variable to be used by the Animation Player to call for bruiser footstep sounds
 #from the audio manager
@@ -328,7 +329,10 @@ func take_damage(damage_taken: float) -> void:
 	# $Sprite.modulate = Color.RED # Maybe?
 	# Play sound effect
 	BruiserDamageAudio.play()
-	if current_hp <= 0:
+	if dead:
+		return
+	elif current_hp <= 0:
+		dead = true
 		die()
 	else:
 		$BruiserSpriteSheet.modulate = Color.RED

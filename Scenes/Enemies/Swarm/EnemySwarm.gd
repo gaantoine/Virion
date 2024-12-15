@@ -182,8 +182,9 @@ func die() -> void:
 	$Timer.stop()
 	velocity = Vector2.ZERO
 	set_physics_process(false)
-	# Trigger death animation
-	$Swarm_AnimationTree.play("Swarm_Death")
+	animation_tree["parameters/conditions/attack"] = false
+	animation_tree["parameters/conditions/walk"] = false
+	animation_tree["parameters/conditions/death"] = true
 	# Play sound effect
 	# $AudioStreamPlayer.play()
 	# Emit a death signal, useful for later

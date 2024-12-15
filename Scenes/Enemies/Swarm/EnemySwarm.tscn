@@ -128,6 +128,17 @@ tracks/0/keys = {
 "update": 1,
 "values": [54, 55, 56, 57, 58, 59]
 }
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"values": []
+}
 
 [sub_resource type="Animation" id="Animation_sduqd"]
 resource_name = "Swarm_Walk_Down"
@@ -153,9 +164,21 @@ tracks/1/path = NodePath(".")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(),
-"transitions": PackedFloat32Array(),
-"values": []
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"values": [{
+"args": [],
+"method": &"call_swarm_footstep"
+}, {
+"args": [],
+"method": &"call_swarm_footstep"
+}, {
+"args": [],
+"method": &"call_swarm_footstep"
+}, {
+"args": [],
+"method": &"call_swarm_footstep"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_62gqf"]
@@ -174,6 +197,29 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
 "values": [9, 10, 11, 12]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"values": [{
+"args": [],
+"method": &"call_swarm_footstep"
+}, {
+"args": [],
+"method": &"call_swarm_footstep"
+}, {
+"args": [],
+"method": &"call_swarm_footstep"
+}, {
+"args": [],
+"method": &"call_swarm_footstep"
+}]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_4t8ks"]
@@ -271,6 +317,7 @@ advance_mode = 2
 advance_condition = &"attack"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_7yymo"]
+switch_mode = 2
 advance_mode = 2
 advance_condition = &"walk"
 

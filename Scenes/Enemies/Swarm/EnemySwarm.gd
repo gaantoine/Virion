@@ -5,6 +5,11 @@ enum MOVEMODE {
 	WAITING,
 }
 
+@onready var SwarmDamageAudio = $Swarm_Damage
+@onready var SwarmDeathAudio = $Swarm_Death
+@onready var SwarmFootstepAudio = $Swarm_Footstep
+@onready var SwarmAttackAudio = $Swarm_Attack
+
 @export_group("Health and Damage")
 ## Maximum total health base
 @export var base_max_hp: float = 24
@@ -162,7 +167,7 @@ func take_damage(damage_taken: float) -> void:
 	# $AnimationPlayer.play("damage")
 	# $Sprite.modulate = Color.RED # Maybe?
 	# Play sound effect
-	# $AudioStreamPlayer.play()
+	SwarmDamageAudio.play()
 	if dead:
 		return
 	elif current_hp <= 0:
@@ -185,8 +190,14 @@ func die() -> void:
 	# Trigger death animation
 	$Swarm_AnimationTree.play("Swarm_Death")
 	# Play sound effect
-	# $AudioStreamPlayer.play()
+	SwarmDeathAudio.play()
 	# Emit a death signal, useful for later
 	#emit_signal("enemy_died")
 	await $Swarm_AnimationTree.animation_finished
 	queue_free()
+	
+func call_swarm_attack() -> void:
+	SwarmAttackAudio.play()
+	
+func call_swarm_footstep() -> void:
+	SwarmFootstepAudio.play()

@@ -10,6 +10,11 @@ enum MOVEMODE {
 #Gonna need this for spawners
 @export var SpawnRef: Node2D
 
+@onready var RangerDamageAudio = $Ranger_Damage
+@onready var RangerDeathAudio = $Ranger_Death
+@onready var RangerMoveAudio = $Ranger_Move
+@onready var RangerShootAudio = $Ranger_Shoot
+
 @export_group("Health and Damage")
 ## Maximum total health base
 @export var base_max_hp: float = 24
@@ -240,7 +245,7 @@ func shoot() -> void:
 	get_tree().root.add_child(new_bullet)
 	
 	# Play sound effect
-	# $AudioStreamPlayer.play()
+	RangerShootAudio.play()
 	#emit shoot signal for listeners
 	ranger_shoot.emit()
 
@@ -262,7 +267,7 @@ func take_damage(damage_taken: float) -> void:
 	# $AnimationPlayer.play("damage")
 	# $Sprite.modulate = Color.RED # Maybe?
 	# Play sound effect
-	# $AudioStreamPlayer.play()
+	RangerDamageAudio.play()
 	if dead:
 		return
 	elif current_hp <= 0:
@@ -287,7 +292,7 @@ func die() -> void:
 	animation_tree["parameters/conditions/move"] = false
 	animation_tree["parameters/conditions/death"] = true
 	# Play sound effect
-	# $AudioStreamPlayer.play()
+	RangerDeathAudio.play()
 	# Emit a death signal, useful for later
 	#emit_signal("enemy_died")
 	await $Ranger_AnimationTree.animation_finished
@@ -295,3 +300,6 @@ func die() -> void:
 	
 #func _process(_delta):
 	#update_animation_parameters()
+	
+func call_ranger_move() -> void:
+	RangerMoveAudio.play()

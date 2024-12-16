@@ -1,6 +1,8 @@
 extends CharacterBody2D
 class_name Player
 
+@onready var startPos : Vector2 = global_position
+
 enum MOVEMODE {
 	WALKING,
 	DODGING
@@ -14,7 +16,7 @@ static var current:Player
 # Renzo Vignette -- Declare vignette_node
 var vignette_node : ColorRect
 
-# Renzo Vignette In Combat
+# Renzo Vignette -- In Combat
 var in_combat = false
 
 @export_category("Walking")
@@ -99,6 +101,8 @@ signal player_dodge_start
 signal player_dodge_end
 
 func _ready():
+	print(startPos)
+	
 	animation_tree.active = true
 	current = self
 

@@ -10,7 +10,7 @@ var intensity = 1.0
 #reference to PlayerFootstep AudioStreamPlayer
 @onready var PlayerFootstep = $Player_Footstep
 #reference to the Player Character
-@onready var PlayerCharacter = $"../Player"
+@onready var PlayerCharacter = Player.current
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

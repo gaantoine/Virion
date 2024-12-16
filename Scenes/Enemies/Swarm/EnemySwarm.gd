@@ -5,6 +5,11 @@ enum MOVEMODE {
 	WAITING,
 }
 
+@onready var SwarmDamageAudio = $Swarm_Damage
+@onready var SwarmDeathAudio = $Swarm_Death
+@onready var SwarmFootstepAudio = $Swarm_Footstep
+@onready var SwarmAttackAudio = $Swarm_Attack
+
 @export_group("Health and Damage")
 ## Maximum total health base
 @export var base_max_hp: float = 24
@@ -46,6 +51,7 @@ var collision_map = []
 var seek_map_buffer = 0.5
 
 var last_facing_direction
+var dead = false
 
 
 func _ready():
@@ -75,6 +81,14 @@ func _physics_process(delta: float) -> void:
 		state = MOVEMODE.WAITING
 	if (distance_to_player < attack_radius):
 		player.take_damage(damage)
+		animation_tree["parameters/conditions/attack"] = true
+		animation_tree["parameters/conditions/walk"] = false
+		animation_tree["parameters/conditions/death"] = false
+	if (distance_to_player > attack_radius):
+		animation_tree["parameters/conditions/attack"] = false
+		animation_tree["parameters/conditions/walk"] = true
+		animation_tree["parameters/conditions/death"] = false
+		
 	# State Machine
 	match state:
 		MOVEMODE.CHASING:
@@ -88,7 +102,6 @@ func handle_chasing_state(delta: float) -> void:
 	
 	if velocity:
 		last_facing_direction = velocity.normalized()
-	
 	$Swarm_AnimationTree.set("parameters/Attack/blend_position", last_facing_direction)
 	$Swarm_AnimationTree.set("parameters/Walk/blend_position", last_facing_direction)
 	
@@ -150,10 +163,16 @@ func handle_waiting_state() -> void:
 	move_and_slide()
 	if distance_to_player > aggro_range:
 		state = MOVEMODE.CHASING
+		animation_tree["parameters/conditions/attack"] = false
+		animation_tree["parameters/conditions/walk"] = true
+		animation_tree["parameters/conditions/death"] = false
 
 
 func _on_Timer_timeout():
 	state = MOVEMODE.CHASING
+	animation_tree["parameters/conditions/attack"] = false
+	animation_tree["parameters/conditions/walk"] = true
+	animation_tree["parameters/conditions/death"] = false
 
 
 func take_damage(damage_taken: float) -> void:
@@ -161,8 +180,11 @@ func take_damage(damage_taken: float) -> void:
 	# $AnimationPlayer.play("damage")
 	# $Sprite.modulate = Color.RED # Maybe?
 	# Play sound effect
-	# $AudioStreamPlayer.play()
-	if current_hp <= 0:
+	SwarmDamageAudio.play()
+	if dead:
+		return
+	elif current_hp <= 0:
+		dead = true
 		die()
 	else:
 		$SwarmSpriteSheet.modulate = Color.RED
@@ -175,12 +197,21 @@ func take_knockback(displacement: Vector2) -> void:
 
 
 func die() -> void:
-	set_process(false)
-	# Trigger death animation
-	$Swarm_AnimationTree.play("Swarm_Death")
+	$Timer.stop()
+	velocity = Vector2.ZERO
+	set_physics_process(false)
+	animation_tree["parameters/conditions/attack"] = false
+	animation_tree["parameters/conditions/walk"] = false
+	animation_tree["parameters/conditions/death"] = true
 	# Play sound effect
-	# $AudioStreamPlayer.play()
+	SwarmDeathAudio.play()
 	# Emit a death signal, useful for later
 	#emit_signal("enemy_died")
 	await $Swarm_AnimationTree.animation_finished
 	queue_free()
+	
+func call_swarm_attack() -> void:
+	SwarmAttackAudio.play()
+	
+func call_swarm_footstep() -> void:
+	SwarmFootstepAudio.play()

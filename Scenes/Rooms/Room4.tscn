@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=4 uid="uid://d27dwvl5fhm0e"]
+[gd_scene load_steps=15 format=4 uid="uid://d27dwvl5fhm0e"]
 
 [ext_resource type="Script" path="res://Scenes/Rooms/EachRoom.gd" id="1_dkdr0"]
 [ext_resource type="Texture2D" uid="uid://6tsm52cuk5af" path="res://Scenes/Tilesets/Tiles1.png" id="1_hglug"]
@@ -134,6 +134,12 @@ sources/3 = SubResource("TileSetAtlasSource_3mt01")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4msra"]
 size = Vector2(826, 154)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ccbxh"]
+size = Vector2(405, 273)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ayy1n"]
+size = Vector2(82, 211)
+
 [node name="Room4" type="Node2D" node_paths=PackedStringArray("Spawners")]
 script = ExtResource("1_dkdr0")
 Spawners = [NodePath("EnemySpawner"), NodePath("EnemySpawner2"), NodePath("EnemySpawner3")]
@@ -182,5 +188,21 @@ collision_mask = 16
 position = Vector2(168, -128)
 rotation = 0.310794
 shape = SubResource("RectangleShape2D_4msra")
+
+[node name="FlyOnlyZones" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FlyOnlyZones"]
+position = Vector2(480, -130.5)
+shape = SubResource("RectangleShape2D_ccbxh")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="FlyOnlyZones"]
+position = Vector2(192, -542.5)
+shape = SubResource("RectangleShape2D_ayy1n")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="FlyOnlyZones"]
+position = Vector2(768, -544)
+shape = SubResource("RectangleShape2D_ayy1n")
 
 [connection signal="body_entered" from="Area2D" to="." method="EnteredRoom"]

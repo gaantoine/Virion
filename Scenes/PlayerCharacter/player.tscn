@@ -1,4 +1,4 @@
-[gd_scene load_steps=50 format=3 uid="uid://coujnnoiesx2e"]
+[gd_scene load_steps=53 format=3 uid="uid://coujnnoiesx2e"]
 
 [ext_resource type="Script" path="res://Scenes/PlayerCharacter/player.gd" id="1_nm4sk"]
 [ext_resource type="Texture2D" uid="uid://boo70448o6p2j" path="res://Animations/SpriteSheets/PlayerSpriteSheet.png" id="3_pjgny"]
@@ -6,6 +6,8 @@
 [ext_resource type="Script" path="res://Scenes/PlayerCharacter/melee.gd" id="4_oputj"]
 [ext_resource type="Texture2D" uid="uid://c3075f8qxamhx" path="res://Animations/VFX/VFX_PNGs/MeleeSpriteSheet.png" id="4_warth"]
 [ext_resource type="PackedScene" uid="uid://c83s37k7bmu2w" path="res://Scenes/Rooms/RoomVignette/RoomVignette.tscn" id="6_yb74a"]
+[ext_resource type="AudioStream" uid="uid://bqasye00bvub" path="res://Audio/Sound Effects/Player/Player_Melee.ogg" id="7_46gnv"]
+[ext_resource type="AudioStream" uid="uid://di5tvly0bq864" path="res://Audio/Sound Effects/Player/Player_Shoot.ogg" id="8_goqcg"]
 
 [sub_resource type="Animation" id="Animation_1fjir"]
 resource_name = "Death"
@@ -187,7 +189,7 @@ tracks/1/path = NodePath(".")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.4),
+"times": PackedFloat32Array(0, 0.24),
 "transitions": PackedFloat32Array(1, 1),
 "values": [{
 "args": [],
@@ -577,6 +579,11 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_it6tm"]
 size = Vector2(137, 90)
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_r1v23"]
+random_pitch = 1.3
+streams_count = 1
+stream_0/stream = ExtResource("7_46gnv")
+
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 collision_layer = 48
 motion_mode = 1
@@ -715,6 +722,16 @@ alignment = 2
 layout_mode = 2
 size_flags_vertical = 8
 value = 100.0
+
+[node name="Player_Melee" type="AudioStreamPlayer2D" parent="."]
+stream = SubResource("AudioStreamRandomizer_r1v23")
+max_polyphony = 3
+bus = &"Player_SFX"
+
+[node name="Player_Shoot" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_goqcg")
+max_polyphony = 3
+bus = &"Player_SFX"
 
 [connection signal="body_entered" from="TileDetectorArea" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="TileDetectorArea" to="." method="_on_area_2d_body_exited"]

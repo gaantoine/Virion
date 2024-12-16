@@ -12,6 +12,12 @@ enum MOVEMODE {
 #Gonna need this for spawners
 @export var SpawnRef: Node2D
 
+#references to Bruiser AudioStreamPlayers
+@onready var BruiserFootstepAudio = $Bruiser_Footstep
+@onready var BruiserAttackAudio = $Bruiser_Attack
+@onready var BruiserDamageAudio = $Bruiser_Damage
+@onready var BruiserDeathAudio = $Bruiser_Death
+
 @export_group("Health and Damage")
 ## Maximum total health base
 @export var base_max_hp: float = 24
@@ -80,6 +86,7 @@ var ray_directions = []
 var seek_map = []
 var collision_map = []
 var seek_map_buffer = 0.5
+var dead = false
 
 #signal variable to be used by the Animation Player to call for bruiser footstep sounds
 #from the audio manager
@@ -183,6 +190,7 @@ func handle_dashing_state(delta: float) -> void:
 	animation_tree["parameters/conditions/chase"] = false
 	animation_tree["parameters/conditions/dash"] = true
 	animation_tree["parameters/conditions/attack"] = false
+	animation_tree["parameters/conditions/death"] = false
 	
 	# Check if within attack range or dash duration has ended
 	if distance_to_player <= middash_attack_range:
@@ -210,6 +218,7 @@ func handle_attacking_state() -> void:
 	animation_tree["parameters/conditions/chase"] = false
 	animation_tree["parameters/conditions/dash"] = false
 	animation_tree["parameters/conditions/attack"] = true
+	animation_tree["parameters/conditions/death"] = false
 	
 	$Sprite2D.modulate = Color.RED
 	$Timer.start(attack_duration)
@@ -235,6 +244,7 @@ func handle_chasing_state(delta: float) -> void:
 	animation_tree["parameters/conditions/chase"] = true
 	animation_tree["parameters/conditions/dash"] = false
 	animation_tree["parameters/conditions/attack"] = false
+	animation_tree["parameters/conditions/death"] = false
 	
 	if take_aim():
 		state = MOVEMODE.AIMING
@@ -255,7 +265,7 @@ func update_collision_map() -> void:
 		var query = PhysicsRayQueryParameters2D.new()
 		query.from = global_position
 		query.to = global_position + ray_directions[x] * collision_detection_range
-		query.collision_mask = 1
+		query.collision_mask = 1 | (1 << 2)
 		
 		# Perform the raycast
 		var result = space_state.intersect_ray(query)
@@ -295,6 +305,7 @@ func handle_waiting_state() -> void:
 	animation_tree["parameters/conditions/chase"] = false
 	animation_tree["parameters/conditions/dash"] = false
 	animation_tree["parameters/conditions/attack"] = false
+	animation_tree["parameters/conditions/death"] = false
 
 	velocity = Vector2.ZERO
 	move_and_slide()
@@ -317,8 +328,11 @@ func take_damage(damage_taken: float) -> void:
 	# $AnimationPlayer.play("damage")
 	# $Sprite.modulate = Color.RED # Maybe?
 	# Play sound effect
-	# $AudioStreamPlayer.play()
-	if current_hp <= 0:
+	BruiserDamageAudio.play()
+	if dead:
+		return
+	elif current_hp <= 0:
+		dead = true
 		die()
 	else:
 		$BruiserSpriteSheet.modulate = Color.RED
@@ -330,15 +344,19 @@ func take_knockback(displacement: Vector2) -> void:
 
 func die() -> void:
 	SpawnRef.EnemyDie()
-	
-	set_process(false)
+	set_physics_process(false)
 	# Trigger death animation
-	# $AnimationPlayer.play("death")
+	#$Ranger_AnimationP.play("Ranger_Death")
+	animation_tree["parameters/conditions/attack"] = false
+	animation_tree["parameters/conditions/chase"] = false
+	animation_tree["parameters/conditions/dash"] = false
+	animation_tree["parameters/conditions/wait"] = false
+	animation_tree["parameters/conditions/death"] = true
 	# Play sound effect
-	# $AudioStreamPlayer.play()
+	BruiserDeathAudio.play()
 	# Emit a death signal, useful for later
-	# emit_signal("enemy_died")
-	# await $AnimationPlayer.animation_finished
+	#emit_signal("enemy_died")
+	await $Bruiser_AnimationTree.animation_finished
 	queue_free()
 
 # Debugging
@@ -356,4 +374,7 @@ func _draw() -> void:
 #function to emit bruiser footstep signal for all listeners to hear	
 func call_bruiser_footstep() -> void:
 	bruiser_footstep.emit()
+	BruiserFootstepAudio.play()
 	
+func call_bruiser_attack() -> void:
+	BruiserAttackAudio.play()

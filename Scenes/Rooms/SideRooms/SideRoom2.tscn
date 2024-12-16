@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=4 uid="uid://gjr4fw1kr72o"]
+[gd_scene load_steps=8 format=4 uid="uid://gjr4fw1kr72o"]
 
 [ext_resource type="Texture2D" uid="uid://6tsm52cuk5af" path="res://Scenes/Tilesets/Tiles1.png" id="1_34spq"]
 [ext_resource type="Texture2D" uid="uid://bc75dxvsc61bg" path="res://Scenes/Tilesets/TestTiles002.png" id="2_qq3qy"]
@@ -65,6 +65,12 @@ custom_data_layer_0/type = 1
 sources/0 = SubResource("TileSetAtlasSource_evd5j")
 sources/3 = SubResource("TileSetAtlasSource_im7qp")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_smi41"]
+size = Vector2(467, 84)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hrs1y"]
+size = Vector2(467.75, 87)
+
 [node name="SideRoomPath" type="Node2D"]
 
 [node name="BaseMapLayer" type="TileMapLayer" parent="."]
@@ -84,3 +90,15 @@ position = Vector2(480, -160)
 scale = Vector2(0.25, 0.25)
 tile_map_data = PackedByteArray("AAAAAP//AAADAAAAAAAAAP7/AAADAAEAAAA=")
 tile_set = SubResource("TileSet_oghsq")
+
+[node name="FlyOnlyZones" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FlyOnlyZones"]
+position = Vector2(0.5, 129)
+shape = SubResource("RectangleShape2D_smi41")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="FlyOnlyZones"]
+position = Vector2(-0.875, -127.5)
+shape = SubResource("RectangleShape2D_hrs1y")

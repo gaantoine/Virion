@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://csxyy2qylfx1m"]
+
+[ext_resource type="PackedScene" uid="uid://b3xp8gwm4pfb1" path="res://Scenes/Rooms/5Rooms.tscn" id="1_oih12"]
+[ext_resource type="PackedScene" uid="uid://coujnnoiesx2e" path="res://Scenes/PlayerCharacter/player.tscn" id="2_u8g2l"]
+
+[node name="MainLevel" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource("2_u8g2l")]
+z_index = 10
+position = Vector2(4322, 6581)
+scale = Vector2(0.8, 0.8)
+
+[node name="5Rooms" parent="." instance=ExtResource("1_oih12")]
+position = Vector2(2509, 4053)

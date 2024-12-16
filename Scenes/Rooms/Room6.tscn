@@ -168,27 +168,27 @@ tile_set = SubResource("TileSet_o2b8x")
 position = Vector2(0, -832)
 
 [node name="EnemySpawner" parent="." node_paths=PackedStringArray("TheRoom") instance=ExtResource("3_ntt0k")]
-position = Vector2(-544, -703)
+position = Vector2(-544, -351)
 TheEnemy = ExtResource("4_vdyap")
 TheRoom = NodePath("..")
 
 [node name="EnemySpawner2" parent="." node_paths=PackedStringArray("TheRoom") instance=ExtResource("3_ntt0k")]
-position = Vector2(-272, -704)
+position = Vector2(-544, -533)
 TheEnemy = ExtResource("4_vdyap")
 TheRoom = NodePath("..")
 
 [node name="EnemySpawner3" parent="." node_paths=PackedStringArray("TheRoom") instance=ExtResource("3_ntt0k")]
-position = Vector2(0, -704)
+position = Vector2(0, -533)
 TheEnemy = ExtResource("4_vdyap")
 TheRoom = NodePath("..")
 
 [node name="EnemySpawner4" parent="." node_paths=PackedStringArray("TheRoom") instance=ExtResource("3_ntt0k")]
-position = Vector2(272, -704)
+position = Vector2(544, -533)
 TheEnemy = ExtResource("4_vdyap")
 TheRoom = NodePath("..")
 
 [node name="EnemySpawner5" parent="." node_paths=PackedStringArray("TheRoom") instance=ExtResource("3_ntt0k")]
-position = Vector2(544, -704)
+position = Vector2(544, -352)
 TheEnemy = ExtResource("4_vdyap")
 TheRoom = NodePath("..")
 

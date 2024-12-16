@@ -107,7 +107,6 @@ texture = ExtResource("2_ikgkf")
 texture_region_size = Vector2i(256, 256)
 0:0/0 = 0
 0:1/0 = 0
-0:1/0/physics_layer_1/polygon_0/points = PackedVector2Array(-128, -128, 128, -128, 128, 128, -128, 128)
 0:1/0/custom_data_0 = true
 1:0/0 = 0
 1:1/0 = 0

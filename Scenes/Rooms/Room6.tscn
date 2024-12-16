@@ -164,17 +164,17 @@ TheEnemy = ExtResource("4_vdyap")
 TheRoom = NodePath("..")
 
 [node name="EnemySpawner2" parent="." node_paths=PackedStringArray("TheRoom") instance=ExtResource("3_ntt0k")]
-position = Vector2(-544, -704)
+position = Vector2(-544, -533)
 TheEnemy = ExtResource("4_vdyap")
 TheRoom = NodePath("..")
 
 [node name="EnemySpawner3" parent="." node_paths=PackedStringArray("TheRoom") instance=ExtResource("3_ntt0k")]
-position = Vector2(0, -704)
+position = Vector2(0, -533)
 TheEnemy = ExtResource("4_vdyap")
 TheRoom = NodePath("..")
 
 [node name="EnemySpawner4" parent="." node_paths=PackedStringArray("TheRoom") instance=ExtResource("3_ntt0k")]
-position = Vector2(544, -704)
+position = Vector2(544, -533)
 TheEnemy = ExtResource("4_vdyap")
 TheRoom = NodePath("..")
 

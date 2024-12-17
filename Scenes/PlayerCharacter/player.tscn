@@ -1,4 +1,4 @@
-[gd_scene load_steps=53 format=3 uid="uid://coujnnoiesx2e"]
+[gd_scene load_steps=54 format=3 uid="uid://coujnnoiesx2e"]
 
 [ext_resource type="Script" path="res://Scenes/PlayerCharacter/player.gd" id="1_nm4sk"]
 [ext_resource type="Texture2D" uid="uid://boo70448o6p2j" path="res://Animations/SpriteSheets/PlayerSpriteSheet.png" id="3_pjgny"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://c83s37k7bmu2w" path="res://Scenes/Rooms/RoomVignette/RoomVignette.tscn" id="6_yb74a"]
 [ext_resource type="AudioStream" uid="uid://bqasye00bvub" path="res://Audio/Sound Effects/Player/Player_Melee.ogg" id="7_46gnv"]
 [ext_resource type="AudioStream" uid="uid://di5tvly0bq864" path="res://Audio/Sound Effects/Player/Player_Shoot.ogg" id="8_goqcg"]
+[ext_resource type="PackedScene" uid="uid://cwh4xtp1vdhny" path="res://Scenes/Menus/GameOver.tscn" id="9_0n7jn"]
 
 [sub_resource type="Animation" id="Animation_1fjir"]
 resource_name = "Death"
@@ -736,5 +737,12 @@ stream = ExtResource("8_goqcg")
 max_polyphony = 3
 bus = &"Player_SFX"
 
+[node name="GameOver" parent="." instance=ExtResource("9_0n7jn")]
+
+[node name="CanvasLayer" parent="GameOver" index="0"]
+visible = false
+
 [connection signal="body_entered" from="TileDetectorArea" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="TileDetectorArea" to="." method="_on_area_2d_body_exited"]
+
+[editable path="GameOver"]

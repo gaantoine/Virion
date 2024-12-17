@@ -27,7 +27,7 @@ func init(pos:Vector2, rot:float) -> void:
 	global_position = pos
 	global_rotation = rot
 
-func _physics_process(delta:float) -> void:
+func _physics_process(_delta:float) -> void:
 	move_and_slide()
 
 func break_bullet() -> void:

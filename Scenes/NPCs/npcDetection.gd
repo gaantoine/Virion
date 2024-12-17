@@ -32,7 +32,7 @@ func load_dialog_data(file_path: String) -> Dictionary:
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if !player_in_range:
 		return
 	

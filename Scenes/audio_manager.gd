@@ -36,7 +36,7 @@ func _ready() -> void:
 	PlayerCharacter.Out_Combat.connect(_on_combat_end)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	pass
 
 #this function is triggered every time the player_footstep signal is emitted from the

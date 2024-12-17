@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://cxr3k7a4r5c8w"]
 
-[ext_resource type="Texture2D" uid="uid://cr1k60xakb6g7" path="res://placeholder_icon2.png" id="1_mjgfi"]
+[ext_resource type="Texture2D" uid="uid://nfsnwphlwecq" path="res://Scenes/NPCs/npc.png" id="1_e3kxx"]
 [ext_resource type="Script" path="res://Scenes/NPCs/npcDetection.gd" id="2_h5mv3"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_s373b"]
@@ -15,8 +15,8 @@ radius = 150.0
 shape = SubResource("CircleShape2D_s373b")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("1_mjgfi")
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("1_e3kxx")
 
 [node name="DialogInteractionArea" type="Area2D" parent="."]
 collision_mask = 48

@@ -16,7 +16,7 @@ const SWARM_SCENE = preload("res://Scenes/Enemies/Swarm/EnemySwarm.tscn")
 func update_distance_to_player():
 	distance_to_player = (player.global_position - global_position).length()
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	update_distance_to_player()
 	
 	# Check if spawning should begin

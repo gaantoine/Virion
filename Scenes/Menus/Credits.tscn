@@ -1,7 +1,8 @@
 [gd_scene load_steps=6 format=3 uid="uid://b1tnc5g8spe7d"]
 
 [ext_resource type="Script" path="res://Scenes/Menus/credits.gd" id="1_1s07x"]
-[ext_resource type="Texture2D" uid="uid://d6reysah8rgj" path="res://Menus/Credits Title and Godot Revision ver 4.png" id="2_njq40"]
+
+[ext_resource type="Texture2D" uid="uid://hye2d4fkdxsk" path="res://Menus/Credits Title and Godot Revision ver 5.png" id="2_4l4io"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_imkxb"]
 bg_color = Color(0, 1, 0, 1)
@@ -46,7 +47,8 @@ stretch_mode = 1
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer/AspectRatioContainer"]
 z_index = -1
 layout_mode = 2
-texture = ExtResource("2_njq40")
+
+texture = ExtResource("2_4l4io")
 expand_mode = 2
 stretch_mode = 5
 

@@ -12,8 +12,8 @@ var intensity = 1.0
 @onready var PlayerCharacter = Player.current
 #@onready var Shooter:PlayerShooter = Player.current.find_child("Shooter")
 #@onready var Melee:PlayerMelee = Shooter.find_child("MeleeDetectorArea")
-@onready var PlayerMeleeStream = $Player_Melee
-@onready var PlayerShoot = $Player_Shoot
+#@onready var PlayerMeleeStream = $Player_Melee
+#@onready var PlayerShoot = $Player_Shoot
 @onready var PlayerFootstep = $Player_Footstep
 @onready var PlayerDodgeJump = $Player_Dodge_Jump
 @onready var PlayerDodgeLand = $Player_Dodge_Land
@@ -56,13 +56,13 @@ func _on_player_dodge_end() -> void:
 	PlayerDodgeLand.set_global_position(PlayerCharacter.global_position)
 	PlayerDodgeLand.play()
 	
-func _on_player_melee() -> void:
-	PlayerMeleeStream.set_global_position(PlayerCharacter.global_position)
-	PlayerMeleeStream.play()
+#func _on_player_melee() -> void:
+	#PlayerMeleeStream.set_global_position(PlayerCharacter.global_position)
+	#PlayerMeleeStream.play()
 	
-func _on_player_shoot() -> void:
-	PlayerShoot.set_global_position(PlayerCharacter.global_position)
-	PlayerShoot.play()
+#func _on_player_shoot() -> void:
+	#PlayerShoot.set_global_position(PlayerCharacter.global_position)
+	#PlayerShoot.play()
 	
 func _on_player_damage() -> void:
 	PlayerDamage.set_global_position(PlayerCharacter.global_position)

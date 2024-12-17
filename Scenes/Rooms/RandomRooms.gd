@@ -106,6 +106,7 @@ func CreateRooms() -> void:
 			holdRoom.global_position = LRSide.global_position + LROffset # ... or here
 			LRSide = holdRoom.find_child("PathL")
 		
+		RandSide.SideHallway = holdRoom
 		saveHall = holdRoom
 		
 		# Now create a random side room and put it in the correct area

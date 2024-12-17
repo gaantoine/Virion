@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://dofakeh2ep8pb"]
 
 [ext_resource type="Script" path="res://Scenes/Menus/main_menu.gd" id="1_qaw5q"]
-[ext_resource type="Texture2D" uid="uid://hye2d4fkdxsk" path="res://Menus/Credits Title and Godot Revision ver 5.png" id="2_sk3fx"]
+[ext_resource type="Texture2D" uid="uid://crae3hxdlfp85" path="res://Menus/Virion Main Menu 3.png" id="2_1hel3"]
 
 [sub_resource type="Theme" id="Theme_yyrgr"]
 default_font_size = 36
@@ -31,7 +31,7 @@ stretch_mode = 1
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer/AspectRatioContainer"]
 z_index = -1
 layout_mode = 2
-texture = ExtResource("2_sk3fx")
+texture = ExtResource("2_1hel3")
 expand_mode = 2
 stretch_mode = 5
 

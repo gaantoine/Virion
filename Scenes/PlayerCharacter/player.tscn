@@ -702,6 +702,7 @@ alignment = 2
 
 [node name="Healthbar" type="ProgressBar" parent="CanvasLayer/AspectRatioContainer/HealthContainer"]
 self_modulate = Color(0, 1, 0, 1)
+custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
 size_flags_vertical = 8
 value = 100.0
@@ -719,9 +720,11 @@ layout_mode = 2
 alignment = 2
 
 [node name="GrayHealth" type="ProgressBar" parent="CanvasLayer/AspectRatioContainer2/GrayContainer"]
+custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
 size_flags_vertical = 8
 value = 100.0
+show_percentage = false
 
 [node name="Player_Melee" type="AudioStreamPlayer2D" parent="."]
 stream = SubResource("AudioStreamRandomizer_r1v23")

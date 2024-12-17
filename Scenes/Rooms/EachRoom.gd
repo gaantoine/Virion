@@ -46,7 +46,7 @@ func EnemiesKilled() -> void:
 	
 	ThePlayer.emit_signal("Out_Combat")
 
-func _on_area_2d_body_entered(body: Node2D) -> void:
+func _on_area_2d_body_entered(_body: Node2D) -> void:
 	#get_tree().reload_current_scene()
 	#get_tree().reload("res://Scenes/Rooms/5Rooms.tscn")
 	var oldPos = $"../..".global_position

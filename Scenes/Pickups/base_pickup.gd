@@ -46,7 +46,7 @@ var pickups:Dictionary = {
 			"bullet_accuracy": "=1",
 			"bullet_piercing": "=1",
 			"bullet_count": "=1",
-			"melee_damage": "=5",
+			"melee_damage": "=10",
 			"dodge_speed": "=1",
 			"stamina": "=4"
 		}
@@ -62,7 +62,7 @@ var pickups:Dictionary = {
 			"bullet_accuracy": "=1.75",
 			"bullet_piercing": "=2",
 			"bullet_count": "=1",
-			"melee_damage": "=5",
+			"melee_damage": "=10",
 			"dodge_speed": "=1",
 			"stamina": "=4"
 		}
@@ -79,7 +79,7 @@ var pickups:Dictionary = {
 			"bullet_piercing": "=1",
 			"bullet_count": "=5",
 			"bullet_arc": "=30",
-			"melee_damage": "=5",
+			"melee_damage": "=10",
 			"dodge_speed": "=1",
 			"stamina": "=3"
 		}
@@ -92,13 +92,13 @@ var pickups:Dictionary = {
 			"bullet_speed": "=1",
 			"bullet_range": "=7",
 			"bullet_size": "=0.5",
-			"bullet_firing_rate": "=2.2",
-			"bullet_accuracy": "=0.5",
+			"bullet_firing_rate": "=2.1",
+			"bullet_accuracy": "=0.4",
 			"bullet_piercing": "=1",
 			"bullet_count": "=1",
-			"melee_damage": "=5",
+			"melee_damage": "=7",
 			"dodge_speed": "=1",
-			"stamina": "=5"
+			"stamina": "=4"
 		}
 	},
 	Pickup.slug_chip: {
@@ -112,7 +112,7 @@ var pickups:Dictionary = {
 			"bullet_accuracy": "=1",
 			"bullet_piercing": "=3",
 			"bullet_count": "=1",
-			"melee_damage": "=5",
+			"melee_damage": "=10",
 			"dodge_speed": "=1",
 			"stamina": "=3"
 		}
@@ -120,7 +120,7 @@ var pickups:Dictionary = {
 	Pickup.blade_chip: {
 		"texture": "res://Scenes/Pickups/Pickup_PNGS/Blade Icon.png",
 		"mods": {
-			"bullet_damage": "=2",
+			"bullet_damage": "=3",
 			"bullet_speed": "=1",
 			"bullet_range": "=5",
 			"bullet_size": "=1",
@@ -128,9 +128,9 @@ var pickups:Dictionary = {
 			"bullet_accuracy": "=1",
 			"bullet_piercing": "=1",
 			"bullet_count": "=1",
-			"melee_damage": "=10",
+			"melee_damage": "=18",
 			"dodge_speed": "=1.2",
-			"stamina": "=5"
+			"stamina": "=6"
 		}
 	},
 	Pickup.transformer: {
@@ -162,8 +162,8 @@ var pickups:Dictionary = {
 		"texture": "res://Scenes/Pickups/Pickup_PNGS/power diverter.png",
 		"mods": {
 			"melee_damage": "-1",
-			"bullet_speed": "+10%",
-			"bullet_damage": "+3"
+			"bullet_speed": "+25%",
+			"bullet_damage": "+2"
 		}
 	},
 	Pickup.voltage_regulator: {
@@ -176,9 +176,9 @@ var pickups:Dictionary = {
 	Pickup.malware: {
 		"texture": "res://Scenes/Pickups/Pickup_PNGS/malware.png",
 		"mods": {
-			"dodge_speed": "-20%",
-			"bullet_accuracy": "-10%",
-			"bullet_damage": "+3"
+			"dodge_speed": "-10%",
+			"bullet_accuracy": "-50%",
+			"bullet_damage": "+2"
 		}
 	},
 	Pickup.overclock: {

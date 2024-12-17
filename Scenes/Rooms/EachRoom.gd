@@ -3,7 +3,7 @@ class_name RoomFunc
 
 @export var NextHallway: DoorFunc
 @export var PrevHallway: DoorFunc
-@export var ItemSpawn: BasePickup
+@export var ItemSpawn: PackedScene
 @export var Spawners: Array[SpawnerFunc]
 var ThePlayer
 var NumEnemies = 0
@@ -43,6 +43,11 @@ func EnemiesKilled() -> void:
 	if NextHallway:
 		NextHallway.OpenDoor()
 	PrevHallway.OpenDoor()
+	
+	if ItemSpawn:
+		var holdItem = load(ItemSpawn.resource_path).instantiate()
+		self.add_child(holdItem)
+		holdItem.global_position = self.find_child("ItemSpawnSpot").global_position
 	
 	ThePlayer.emit_signal("Out_Combat")
 

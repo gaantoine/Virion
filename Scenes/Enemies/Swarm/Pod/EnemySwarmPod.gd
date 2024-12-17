@@ -1,4 +1,5 @@
 extends CharacterBody2D
+@onready var animation_tree : AnimationTree = $Pod_AnimationTree
 
 var pop_distance = 300
 var number_to_spawn = 3
@@ -21,6 +22,7 @@ func _physics_process(delta: float) -> void:
 	# Check if spawning should begin
 	if not spawning_active and distance_to_player <= pop_distance:
 		spawning_active = true
+		animation_tree["parameters/conditions/Burst"] = true
 		spawn_next()
 
 func spawn_next():

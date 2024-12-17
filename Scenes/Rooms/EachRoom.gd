@@ -11,7 +11,7 @@ var Entered = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	ThePlayer = get_parent().get_parent().find_child("Player")
+	ThePlayer = Player.current
 	pass # Replace with function body.
 
 
@@ -45,3 +45,14 @@ func EnemiesKilled() -> void:
 	PrevHallway.OpenDoor()
 	
 	ThePlayer.emit_signal("Out_Combat")
+
+func _on_area_2d_body_entered(body: Node2D) -> void:
+	#get_tree().reload_current_scene()
+	#get_tree().reload("res://Scenes/Rooms/5Rooms.tscn")
+	var oldPos = $"../..".global_position
+	$"../..".queue_free()
+	var newNode = load("res://Scenes/Rooms/5Rooms.tscn").instantiate()
+	newNode.global_position = oldPos
+	get_tree().root.add_child(newNode)
+	print(ThePlayer.startPos)
+	ThePlayer.global_position = ThePlayer.startPos

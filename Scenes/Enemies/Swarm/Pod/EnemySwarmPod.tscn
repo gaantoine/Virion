@@ -72,6 +72,7 @@ advance_mode = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_nrdad"]
 advance_mode = 2
+advance_condition = &"Burst"
 
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_gqdir"]
 states/Pod_Burst/node = SubResource("AnimationNodeAnimation_q04o8")
@@ -101,14 +102,15 @@ hframes = 9
 vframes = 7
 frame = 36
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="Pod_AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_s8obm")
 }
 
-[node name="AnimationTree" type="AnimationTree" parent="."]
+[node name="Pod_AnimationTree" type="AnimationTree" parent="."]
 tree_root = SubResource("AnimationNodeStateMachine_gqdir")
 advance_expression_base_node = NodePath("..")
-anim_player = NodePath("../AnimationPlayer")
+anim_player = NodePath("../Pod_AnimationPlayer")
+parameters/conditions/Burst = false
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

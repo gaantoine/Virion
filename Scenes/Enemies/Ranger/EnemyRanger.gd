@@ -122,7 +122,6 @@ func _physics_process(delta: float) -> void:
 			handle_waiting_state()
 			
 	if(velocity != Vector2.ZERO):
-		animation_tree["parameters/Attack/blend_position"] = velocity.normalized()
 		animation_tree["parameters/Idle/blend_position"] = velocity.normalized()
 		animation_tree["parameters/Move/blend_position"] = velocity.normalized()
 
@@ -131,6 +130,10 @@ func handle_chasing_state(delta: float) -> void:
 	
 	if take_aim():
 		state = MOVEMODE.AIMING
+		animation_tree["parameters/conditions/attack"] = false
+		animation_tree["parameters/conditions/idle"] = true
+		animation_tree["parameters/conditions/move"] = false
+		animation_tree["parameters/conditions/death"] = false
 		return
 	
 	velocity += steering_force * delta
@@ -144,8 +147,8 @@ func handle_fleeing_state(delta: float) -> void:
 	
 	if distance_to_player >= max_flee_range and take_aim():
 		state = MOVEMODE.AIMING
-		animation_tree["parameters/conditions/attack"] = true
-		animation_tree["parameters/conditions/idle"] = false
+		animation_tree["parameters/conditions/attack"] = false
+		animation_tree["parameters/conditions/idle"] = true
 		animation_tree["parameters/conditions/move"] = false
 		animation_tree["parameters/conditions/death"] = false
 		return
@@ -204,14 +207,29 @@ func get_steering(fleeing: bool) -> Vector2:
 # Aim at the player for the aim_duration, if still in range, dash
 func handle_aiming_state(delta: float) -> void:
 	velocity = Vector2.ZERO
+	animation_tree["parameters/conditions/attack"] = false
+	animation_tree["parameters/conditions/idle"] = true
+	animation_tree["parameters/conditions/move"] = false
+	animation_tree["parameters/conditions/death"] = false
+	
 	
 	if !take_aim(): 
 		state = MOVEMODE.CHASING # SET TO CHASING
 		aim_build_up = 0
+		animation_tree["parameters/conditions/attack"] = false
+		animation_tree["parameters/conditions/idle"] = false
+		animation_tree["parameters/conditions/move"] = true
+		animation_tree["parameters/conditions/death"] = false
 		return
 
 	aim_build_up += delta
 	if aim_build_up >= aim_duration:
+		
+		animation_tree["parameters/conditions/attack"] = true
+		animation_tree["parameters/conditions/idle"] = false
+		animation_tree["parameters/conditions/move"] = false
+		animation_tree["parameters/conditions/death"] = false
+		animation_tree["parameters/Attack/blend_position"] = velocity.normalized()
 		shoot()
 		aim_build_up = 0
 
@@ -243,7 +261,6 @@ func shoot() -> void:
 		
 	new_bullet.init(global_position, direction)
 	get_tree().root.add_child(new_bullet)
-	
 	# Play sound effect
 	RangerShootAudio.play()
 	#emit shoot signal for listeners
@@ -261,6 +278,10 @@ func handle_waiting_state() -> void:
 
 func _on_Timer_timeout():
 	state = MOVEMODE.AIMING
+	animation_tree["parameters/conditions/attack"] = false
+	animation_tree["parameters/conditions/idle"] = true
+	animation_tree["parameters/conditions/move"] = false
+	animation_tree["parameters/conditions/death"] = false
 
 func take_damage(damage_taken: float) -> void:
 	current_hp -= damage_taken
@@ -297,9 +318,6 @@ func die() -> void:
 	#emit_signal("enemy_died")
 	await $Ranger_AnimationTree.animation_finished
 	queue_free()
-	
-#func _process(_delta):
-	#update_animation_parameters()
-	
+		
 func call_ranger_move() -> void:
 	RangerMoveAudio.play()

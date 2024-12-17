@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Virion"
-run/main_scene="res://Scenes/Rooms/5Rooms.tscn"
+run/main_scene="res://Scenes/Rooms/MainLevel.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://Misc PNGs and assets/icon.svg"
 

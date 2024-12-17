@@ -10,8 +10,8 @@ var intensity = 1.0
 #references to PlayerFootstep AudioStreamPlayer
 #reference to the Player Character and Player Character AudioStreamPlayers
 @onready var PlayerCharacter = $"../Player"
-@onready var Shooter:PlayerShooter = Player.current.find_child("Shooter")
-@onready var Melee:PlayerMelee = Shooter.find_child("MeleeDetectorArea")
+#@onready var Shooter:PlayerShooter = Player.current.find_child("Shooter")
+#@onready var Melee:PlayerMelee = Shooter.find_child("MeleeDetectorArea")
 @onready var PlayerMeleeStream = $Player_Melee
 @onready var PlayerShoot = $Player_Shoot
 @onready var PlayerFootstep = $Player_Footstep
@@ -30,8 +30,8 @@ func _ready() -> void:
 	PlayerCharacter.player_dodge_end.connect(_on_player_dodge_end)
 	PlayerCharacter.player_damage.connect(_on_player_damage)
 	PlayerCharacter.player_death.connect(_on_player_death)
-	Melee.player_melee.connect(_on_player_melee)
-	Shooter.player_shoot.connect(_on_player_shoot)
+	#Melee.player_melee.connect(_on_player_melee)
+	#Shooter.player_shoot.connect(_on_player_shoot)
 	PlayerCharacter.In_Combat.connect(_on_combat_start)
 	PlayerCharacter.Out_Combat.connect(_on_combat_end)
 

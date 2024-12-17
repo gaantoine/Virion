@@ -4,6 +4,7 @@ extends Node
 @export var StartHallway: Node2D
 @export var MaxRooms: int
 @export var MaxSideRooms: int
+@export var DebugRoom: int = -1
 var CurrentRooms = 0
 var SideRoomHold = []
 
@@ -29,6 +30,8 @@ func CreateRooms() -> void:
 		
 		# Pick a random room number and create the path to its scene
 		var pickRand = allRooms.pick_random()
+		if DebugRoom != -1:
+			pickRand = DebugRoom
 		var randomRoom = "res://Scenes/Rooms/Room" + str(pickRand) + ".tscn"
 		
 		# Instantiate the randomly selected room
@@ -53,7 +56,8 @@ func CreateRooms() -> void:
 			saveHall.NextHallway = holdRoom
 		
 		# Update variables for the next iteration
-		allRooms.erase(pickRand)  # Remove the used room number
+		if DebugRoom == -1:
+			allRooms.erase(pickRand)  # Remove the used room number
 		previousHall = holdRoom  # The current hallway becomes the previous for next iteration
 		CurrentRooms += 1  # Increment the room count
 	

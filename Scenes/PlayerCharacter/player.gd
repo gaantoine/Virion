@@ -149,7 +149,7 @@ func _physics_process(delta:float) -> void:
 		var tile_data:TileData = layer.get_cell_tile_data(tile_pos)
 
 		if tile_data and tile_data.get_custom_data("is_destructive"):
-			destroy_player()
+			die()
 
 	# Renzo TileMapLayer Collision -- Spike Collision Event
 	for i in get_slide_collision_count():
@@ -250,9 +250,22 @@ func update_health_display() -> void:
 
 
 func die() -> void:
-	print("aaaaaaaa dying dying dying")
-	#emit death signal for audio manager listener
+	# Emit death signal for audio manager listener
 	player_death.emit()
+	
+	# Disable Player input
+	set_process_input(false)
+	set_physics_process(false)
+	
+	# Disable Shooter
+	find_child("Shooter").queue_free()
+	
+	# Play Death Animation
+	animation_tree["parameters/conditions/walk"] = false
+	animation_tree["parameters/conditions/dodging"] = false
+	animation_tree["parameters/conditions/idle"] = false
+	animation_tree["parameters/conditions/death"] = true
+	await $Nebula_AnimationTree.animation_finished
 
 func add_mods(mods:Dictionary) -> void:
 	for key in mods:
@@ -293,21 +306,6 @@ func mod_prio(mod:String) -> int:
 		return 0
 	push_error("invalid mod format: ", mod)
 	return -1
-
-
-
-# Renzo -- Pit Collision Event
-
-func destroy_player() -> void:
-	# Implement player destruction logic here
-	print("Player destroyed by destructive tile!")
-	# You might want to add effects, play a sound, or transition to a game over screen
-	# For example:
-	# $DeathSound.play()
-	# $DeathParticles.emitting = true
-	# await get_tree().create_timer(1.0).timeout
-	# get_tree().change_scene_to_file("res://game_over.tscn")
-	queue_free()
 
 
 func _on_area_2d_body_entered(collider: Node2D) -> void:

@@ -195,7 +195,7 @@ func take_damage(damage_taken: float) -> void:
 		$SwarmSpriteSheet.modulate = Color.WHITE
 
 
-func take_knockback(displacement: Vector2) -> void:
+func take_knockback(_displacement: Vector2) -> void:
 	pass
 
 

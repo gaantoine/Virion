@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://c83s37k7bmu2w" path="res://Scenes/Rooms/RoomVignette/RoomVignette.tscn" id="6_yb74a"]
 [ext_resource type="AudioStream" uid="uid://bqasye00bvub" path="res://Audio/Sound Effects/Player/Player_Melee.ogg" id="7_46gnv"]
 [ext_resource type="AudioStream" uid="uid://di5tvly0bq864" path="res://Audio/Sound Effects/Player/Player_Shoot.ogg" id="8_goqcg"]
-[ext_resource type="PackedScene" uid="uid://cwh4xtp1vdhny" path="res://Scenes/Menus/GameOver.tscn" id="9_0n7jn"]
+[ext_resource type="PackedScene" path="res://Scenes/Menus/GameOver.tscn" id="9_0n7jn"]
 
 [sub_resource type="Animation" id="Animation_1fjir"]
 resource_name = "Death"

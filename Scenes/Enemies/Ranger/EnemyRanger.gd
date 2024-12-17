@@ -77,10 +77,13 @@ var collision_map = []
 var seek_map_buffer = 0.5
 
 var dead = false
+var player_dead = false
 
 func _ready():
 	animation_tree.active = true
 	$Timer.timeout.connect(_on_Timer_timeout)
+	
+	player.connect("player_death", _on_player_dead)
 	
 	# Generate ray directions
 	var num_directions = 16
@@ -93,10 +96,15 @@ func _ready():
 func update_distance_to_player():
 	distance_to_player = (player.global_position - global_position).length()
 
+func _on_player_dead():
+	player_dead = true
+
 func on_spawn(level_counter: float) -> void:
 	current_hp = base_max_hp + (max_hp_scaling * (level_counter - 1))
 
 func _physics_process(delta: float) -> void:
+	if player_dead:
+		return
 	update_distance_to_player()
 	if (distance_to_player <= min_flee_range):
 		state = MOVEMODE.FLEEING

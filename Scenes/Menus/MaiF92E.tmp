@@ -28,13 +28,6 @@ size_flags_vertical = 3
 ratio = 1.7778
 stretch_mode = 1
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/AspectRatioContainer"]
-z_index = -1
-layout_mode = 2
-texture = ExtResource("1_67ysv")
-expand_mode = 2
-stretch_mode = 5
-
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/AspectRatioContainer"]
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
@@ -59,8 +52,6 @@ theme_override_font_sizes/font_size = 36
 text = "Credits"
 
 [node name="btn_exit" type="Button" parent="CanvasLayer/AspectRatioContainer/VBoxContainer"]
-process_mode = 3
-z_index = 4
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 1, 0, 1)
 theme_override_font_sizes/font_size = 36
@@ -72,6 +63,11 @@ theme = SubResource("Theme_yyrgr")
 text = " "
 fit_content = true
 
-[connection signal="pressed" from="CanvasLayer/AspectRatioContainer/VBoxContainer/btn_play" to="." method="_play_pressed"]
-[connection signal="pressed" from="CanvasLayer/AspectRatioContainer/VBoxContainer/btn_credits" to="." method="_credits_pressed"]
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/AspectRatioContainer"]
+z_index = -1
+layout_mode = 2
+texture = ExtResource("1_67ysv")
+expand_mode = 2
+stretch_mode = 5
+
 [connection signal="pressed" from="CanvasLayer/AspectRatioContainer/VBoxContainer/btn_exit" to="." method="_exit_pressed"]

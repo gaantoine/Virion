@@ -1,9 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://b3xp8gwm4pfb1"]
+[gd_scene load_steps=6 format=3 uid="uid://b3xp8gwm4pfb1"]
 
 [ext_resource type="Script" path="res://Scenes/Rooms/RandomRooms.gd" id="1_e44r6"]
 [ext_resource type="PackedScene" uid="uid://cfnck58mjxdjq" path="res://Scenes/Rooms/Room0.tscn" id="1_ur163"]
 [ext_resource type="PackedScene" uid="uid://b2ryb8i6lffh4" path="res://Scenes/Pickups/PickupAlternator.tscn" id="6_mdd7d"]
-[ext_resource type="PackedScene" uid="uid://coujnnoiesx2e" path="res://Scenes/PlayerCharacter/player.tscn" id="8_81o76"]
 [ext_resource type="PackedScene" uid="uid://dl8067f70y3hq" path="res://Scenes/Rooms/InbetweenRooms.tscn" id="8_m8x2a"]
 [ext_resource type="PackedScene" uid="uid://cutapgcxin544" path="res://Scenes/AudioManager.tscn" id="9_26a36"]
 
@@ -19,10 +18,6 @@ position = Vector2(1536, 2112)
 
 [node name="0-1Path" parent="." instance=ExtResource("8_m8x2a")]
 position = Vector2(2336, 2176)
-
-[node name="Player" parent="." instance=ExtResource("8_81o76")]
-position = Vector2(1813, 2528)
-scale = Vector2(0.8, 0.8)
 
 [node name="AudioManager" parent="." instance=ExtResource("9_26a36")]
 

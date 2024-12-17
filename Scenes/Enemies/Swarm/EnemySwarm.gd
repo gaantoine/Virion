@@ -81,6 +81,14 @@ func _physics_process(delta: float) -> void:
 		state = MOVEMODE.WAITING
 	if (distance_to_player < attack_radius):
 		player.take_damage(damage)
+		animation_tree["parameters/conditions/attack"] = true
+		animation_tree["parameters/conditions/walk"] = false
+		animation_tree["parameters/conditions/death"] = false
+	if (distance_to_player > attack_radius):
+		animation_tree["parameters/conditions/attack"] = false
+		animation_tree["parameters/conditions/walk"] = true
+		animation_tree["parameters/conditions/death"] = false
+		
 	# State Machine
 	match state:
 		MOVEMODE.CHASING:
@@ -94,7 +102,6 @@ func handle_chasing_state(delta: float) -> void:
 	
 	if velocity:
 		last_facing_direction = velocity.normalized()
-	
 	$Swarm_AnimationTree.set("parameters/Attack/blend_position", last_facing_direction)
 	$Swarm_AnimationTree.set("parameters/Walk/blend_position", last_facing_direction)
 	
@@ -156,10 +163,16 @@ func handle_waiting_state() -> void:
 	move_and_slide()
 	if distance_to_player > aggro_range:
 		state = MOVEMODE.CHASING
+		animation_tree["parameters/conditions/attack"] = false
+		animation_tree["parameters/conditions/walk"] = true
+		animation_tree["parameters/conditions/death"] = false
 
 
 func _on_Timer_timeout():
 	state = MOVEMODE.CHASING
+	animation_tree["parameters/conditions/attack"] = false
+	animation_tree["parameters/conditions/walk"] = true
+	animation_tree["parameters/conditions/death"] = false
 
 
 func take_damage(damage_taken: float) -> void:
@@ -187,8 +200,9 @@ func die() -> void:
 	$Timer.stop()
 	velocity = Vector2.ZERO
 	set_physics_process(false)
-	# Trigger death animation
-	$Swarm_AnimationTree.play("Swarm_Death")
+	animation_tree["parameters/conditions/attack"] = false
+	animation_tree["parameters/conditions/walk"] = false
+	animation_tree["parameters/conditions/death"] = true
 	# Play sound effect
 	SwarmDeathAudio.play()
 	# Emit a death signal, useful for later

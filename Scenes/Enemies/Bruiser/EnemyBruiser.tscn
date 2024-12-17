@@ -1,8 +1,8 @@
-[gd_scene load_steps=55 format=3 uid="uid://f6n573w57vu6"]
+[gd_scene load_steps=61 format=3 uid="uid://f6n573w57vu6"]
 
 [ext_resource type="Texture2D" uid="uid://cminetoyt22sf" path="res://Misc PNGs and assets/placeholder_icon.png" id="1_p1dxc"]
 [ext_resource type="Script" path="res://Scenes/Enemies/Bruiser/EnemyBruiser.gd" id="1_rmu8v"]
-[ext_resource type="Texture2D" uid="uid://tbcfi0kndp1y" path="res://Animations/SpriteSheets/BruiserWalk&AttackSpritesheet.png" id="3_2bwsm"]
+[ext_resource type="Texture2D" uid="uid://bssj3w3oalkfx" path="res://Animations/SpriteSheets/Bruiser_ComprehensiveSpriteSheet.png" id="4_dyjx2"]
 [ext_resource type="Texture2D" uid="uid://bcxgg4fteeova" path="res://Animations/SpriteSheets/ChargeEffectSpritesheet.png" id="4_wrjut"]
 [ext_resource type="AudioStream" uid="uid://bwb0h3jtxki46" path="res://Audio/Sound Effects/Enemies/Bruiser/Footstep/Bruiser_Footstep_1.ogg" id="5_mxpfe"]
 [ext_resource type="AudioStream" uid="uid://u2505drke4cv" path="res://Audio/Sound Effects/Enemies/Bruiser/Footstep/Bruiser_Footstep_2.ogg" id="6_p33bp"]
@@ -265,6 +265,46 @@ tracks/5/keys = {
 "args": [],
 "method": &"call_bruiser_footstep"
 }]
+}
+
+[sub_resource type="Animation" id="Animation_52odn"]
+resource_name = "Bruiser_Death"
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BruiserSpriteSheet:frame")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [28, 29, 30, 31, 32, 33, 34, 35]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ChargeEffectUp:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ChargeEffectDown:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
 }
 
 [sub_resource type="Animation" id="Animation_4sl46"]
@@ -613,6 +653,7 @@ _data = {
 "Bruiser_Attack": SubResource("Animation_5klsa"),
 "Bruiser_Charge_Down": SubResource("Animation_jsot5"),
 "Bruiser_Charge_Up": SubResource("Animation_2um80"),
+"Bruiser_Death": SubResource("Animation_52odn"),
 "Bruiser_Down_Walk": SubResource("Animation_4sl46"),
 "Bruiser_Wait_down": SubResource("Animation_kfpxq"),
 "Bruiser_Wait_up": SubResource("Animation_6jce2"),
@@ -642,6 +683,9 @@ blend_point_2/pos = Vector2(0.3, 0.3)
 blend_point_3/node = SubResource("AnimationNodeAnimation_82vn2")
 blend_point_3/pos = Vector2(0.3, -0.3)
 blend_mode = 1
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_1sjsl"]
+animation = &"Bruiser_Death"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_oh8bm"]
 animation = &"Bruiser_Down_Walk"
@@ -745,19 +789,37 @@ switch_mode = 2
 advance_mode = 2
 advance_condition = &"chase"
 
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_hag5d"]
+advance_mode = 2
+advance_condition = &"death"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_78oju"]
+advance_mode = 2
+advance_condition = &"death"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_1coj3"]
+advance_mode = 2
+advance_condition = &"death"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_f35cf"]
+advance_mode = 2
+advance_condition = &"death"
+
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_vlx5t"]
 states/Attack/node = SubResource("AnimationNodeBlendSpace2D_ox865")
-states/Attack/position = Vector2(545, 100)
+states/Attack/position = Vector2(545, -20)
+states/Bruiser_Death/node = SubResource("AnimationNodeAnimation_1sjsl")
+states/Bruiser_Death/position = Vector2(643, 147)
 states/Chase/node = SubResource("AnimationNodeBlendSpace2D_gcli2")
 states/Chase/position = Vector2(326, 100)
 states/Dash/node = SubResource("AnimationNodeBlendSpace2D_byhvn")
-states/Dash/position = Vector2(545, 213)
+states/Dash/position = Vector2(545, 317)
 states/End/position = Vector2(919, 100)
 states/Start/position = Vector2(182, 100)
 states/Wait/node = SubResource("AnimationNodeBlendSpace2D_wcouf")
 states/Wait/position = Vector2(326, 213)
-transitions = ["Start", "Chase", SubResource("AnimationNodeStateMachineTransition_th22c"), "Chase", "Wait", SubResource("AnimationNodeStateMachineTransition_bctfv"), "Wait", "Chase", SubResource("AnimationNodeStateMachineTransition_gdd1w"), "Wait", "Dash", SubResource("AnimationNodeStateMachineTransition_5p5d0"), "Dash", "Chase", SubResource("AnimationNodeStateMachineTransition_hvkrb"), "Dash", "Attack", SubResource("AnimationNodeStateMachineTransition_bor5l"), "Attack", "Wait", SubResource("AnimationNodeStateMachineTransition_c0bld"), "Attack", "Chase", SubResource("AnimationNodeStateMachineTransition_go4qi")]
-graph_offset = Vector2(-91, 35)
+transitions = ["Start", "Chase", SubResource("AnimationNodeStateMachineTransition_th22c"), "Chase", "Wait", SubResource("AnimationNodeStateMachineTransition_bctfv"), "Wait", "Chase", SubResource("AnimationNodeStateMachineTransition_gdd1w"), "Wait", "Dash", SubResource("AnimationNodeStateMachineTransition_5p5d0"), "Dash", "Chase", SubResource("AnimationNodeStateMachineTransition_hvkrb"), "Dash", "Attack", SubResource("AnimationNodeStateMachineTransition_bor5l"), "Attack", "Wait", SubResource("AnimationNodeStateMachineTransition_c0bld"), "Attack", "Chase", SubResource("AnimationNodeStateMachineTransition_go4qi"), "Attack", "Bruiser_Death", SubResource("AnimationNodeStateMachineTransition_hag5d"), "Chase", "Bruiser_Death", SubResource("AnimationNodeStateMachineTransition_78oju"), "Wait", "Bruiser_Death", SubResource("AnimationNodeStateMachineTransition_1coj3"), "Dash", "Bruiser_Death", SubResource("AnimationNodeStateMachineTransition_f35cf")]
+graph_offset = Vector2(117, 47)
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_2hg78"]
 random_pitch = 1.1
@@ -809,9 +871,9 @@ hframes = 4
 [node name="BruiserSpriteSheet" type="Sprite2D" parent="."]
 position = Vector2(1.5, -1)
 scale = Vector2(0.255859, 0.253906)
-texture = ExtResource("3_2bwsm")
+texture = ExtResource("4_dyjx2")
 hframes = 5
-vframes = 6
+vframes = 8
 
 [node name="ChargeEffectDown" type="Sprite2D" parent="."]
 visibility_layer = 2
@@ -831,6 +893,7 @@ anim_player = NodePath("../Bruiser_AnimationP")
 parameters/conditions/attack = false
 parameters/conditions/chase = false
 parameters/conditions/dash = false
+parameters/conditions/death = false
 parameters/conditions/wait = false
 parameters/Attack/blend_position = Vector2(0.0111016, 0.00884962)
 parameters/Chase/blend_position = Vector2(-0.00939369, -0.0182768)

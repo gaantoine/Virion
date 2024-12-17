@@ -246,7 +246,6 @@ tile_set = SubResource("TileSet_w4g3d")
 script = ExtResource("7_fuyr4")
 
 [node name="RNGTileLayer2" type="TileMapLayer" parent="RNGTileLayer"]
-tile_map_data = PackedByteArray("AAAJAPv/AAAAAAEAAGA=")
 tile_set = SubResource("TileSet_w4g3d")
 script = ExtResource("7_fuyr4")
 

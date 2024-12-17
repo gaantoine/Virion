@@ -87,6 +87,7 @@ var seek_map = []
 var collision_map = []
 var seek_map_buffer = 0.5
 var dead = false
+var player_dead = false
 
 #signal variable to be used by the Animation Player to call for bruiser footstep sounds
 #from the audio manager
@@ -99,6 +100,8 @@ func _ready():
 	animation_tree.active = true
 	$Timer.timeout.connect(_on_Timer_timeout)
 	
+	player.connect("player_death", _on_player_dead)
+	
 	# Generate ray directions
 	var num_directions = 16
 	var angle_increment = 360.0 / num_directions
@@ -109,6 +112,9 @@ func _ready():
 
 func on_spawn(level_counter: float) -> void:
 	current_hp = base_max_hp + (max_hp_scaling * (level_counter - 1))
+
+func _on_player_dead():
+	player_dead = true
 
 func update_distance_to_player():
 	distance_to_player = (player.global_position - global_position).length()

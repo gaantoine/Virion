@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=4 uid="uid://dxmpwobtluek3"]
+[gd_scene load_steps=21 format=4 uid="uid://dxmpwobtluek3"]
 
 [ext_resource type="Script" path="res://Scenes/Rooms/EachRoom.gd" id="1_ho4de"]
 [ext_resource type="Texture2D" uid="uid://6tsm52cuk5af" path="res://Scenes/Tilesets/Tiles1.png" id="1_nkx4p"]
@@ -6,6 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://b0msrln4lgeup" path="res://Scenes/Enemies/Ranger/EnemyRanger.tscn" id="3_bl5tu"]
 [ext_resource type="PackedScene" uid="uid://b4104uqhnicp" path="res://Scenes/Enemies/EnemySpawner/EnemySpawner.tscn" id="4_b1qro"]
 [ext_resource type="PackedScene" uid="uid://c8nbxa3n65iil" path="res://Scenes/Enemies/Swarm/Pod/EnemySwarmPod.tscn" id="6_owi0v"]
+[ext_resource type="Texture2D" uid="uid://b3vfp2knyqejs" path="res://Scenes/Tilesets/WallVariations.webp" id="7_tptof"]
+[ext_resource type="Script" path="res://Scenes/Rooms/ProtoTileRNG.gd" id="8_j5ils"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_dmjbf"]
 texture = ExtResource("1_nkx4p")
@@ -142,6 +144,30 @@ size = Vector2(333, 234)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cih50"]
 size = Vector2(144, 278)
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ewq70"]
+texture = ExtResource("7_tptof")
+texture_region_size = Vector2i(256, 256)
+1:0/0 = 0
+1:0/0/custom_data_1 = true
+0:0/0 = 0
+0:0/0/custom_data_1 = true
+2:0/0 = 0
+2:0/0/custom_data_0 = true
+2:1/0 = 0
+2:1/0/custom_data_0 = true
+1:1/0 = 0
+1:1/0/custom_data_0 = true
+0:1/0 = 0
+0:1/0/custom_data_0 = true
+
+[sub_resource type="TileSet" id="TileSet_cjgjr"]
+tile_size = Vector2i(256, 256)
+custom_data_layer_0/name = "isOuter"
+custom_data_layer_0/type = 1
+custom_data_layer_1/name = "isInner"
+custom_data_layer_1/type = 1
+sources/0 = SubResource("TileSetAtlasSource_ewq70")
+
 [node name="Room3" type="Node2D" node_paths=PackedStringArray("Spawners")]
 script = ExtResource("1_ho4de")
 Spawners = [NodePath("EnemySpawner"), NodePath("EnemySpawner2"), NodePath("EnemySpawner3"), NodePath("EnemySpawner4")]
@@ -215,5 +241,12 @@ shape = SubResource("RectangleShape2D_g8vrp")
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="FlyOnlyZones"]
 position = Vector2(1312, -450)
 shape = SubResource("RectangleShape2D_cih50")
+
+[node name="RNGTileLayer" type="TileMapLayer" parent="."]
+position = Vector2(32, 0)
+scale = Vector2(0.25, 0.25)
+tile_map_data = PackedByteArray("AAD+//X/AAAAAAEAAAD///X/AAAAAAEAAAAAAPX/AAAAAAEAAAABAPX/AAAAAAEAAAACAPX/AAAAAAEAAAADAPX/AAAAAAEAAAAEAPX/AAAAAAEAAAAFAPX/AAAAAAEAAAAGAPX/AAAAAAEAAAAHAPX/AAAAAAEAAAAIAPX/AAAAAAEAAAAJAPX/AAAAAAEAAAAKAPX/AAAAAAEAAAALAPX/AAAAAAEAAAAMAPX/AAAAAAEAAAANAPX/AAAAAAEAAAAOAPX/AAAAAAEAAAAPAPX/AAAAAAEAAAAQAPX/AAAAAAEAAAARAPX/AAAAAAEAAAASAPX/AAAAAAEAAAATAPX/AAAAAAEAAAAUAPX/AAAAAAEAAAAVAPX/AAAAAAEAAAAWAPX/AAAAAAEAAAAYAPX/AAAAAAEAAAAZAPb/AAAAAAEAAFAZAPf/AAAAAAEAAFAZAPj/AAAAAAEAAFAZAPn/AAAAAAEAAFAZAPr/AAAAAAEAAFAZAPv/AAAAAAEAAFAZAPz/AAAAAAEAAFAZAP3/AAAAAAEAAFAZAP7/AAAAAAEAAFAZAP//AAAAAAEAAFAYAAAAAAAAAAEAADAXAAAAAAAAAAEAADAWAAAAAAAAAAEAADAVAAAAAAAAAAEAADAUAAAAAAAAAAEAADATAAAAAAAAAAEAADASAAAAAAAAAAEAADARAAAAAAAAAAEAADAQAAAAAAAAAAEAADAPAAAAAAAAAAEAADAOAAAAAAAAAAEAADANAAAAAAAAAAEAADAMAAAAAAAAAAEAADALAAAAAAAAAAEAADAKAAAAAAAAAAEAADAJAAAAAAAAAAEAADAIAAAAAAAAAAEAADAHAAAAAAAAAAEAADAGAAAAAAAAAAEAADAFAAAAAAAAAAEAADAEAAAAAAAAAAEAADADAAAAAAAAAAEAADACAAAAAAAAAAEAADABAAAAAAAAAAEAADAAAAAAAAAAAAEAADD//wAAAAAAAAEAADD+/wAAAAAAAAEAADD9////AAAAAAEAAGD9//7/AAAAAAEAAGD9//3/AAAAAAEAAGD9//z/AAAAAAEAAGD9//v/AAAAAAEAAGD9//r/AAAAAAEAAGD9//n/AAAAAAEAAGD9//j/AAAAAAEAAGD9//f/AAAAAAEAAGD9//b/AAAAAAEAAGD+//b/AAAAAAAAAAD///b/AAABAAAAAAAAAPb/AAAAAAAAAAABAPb/AAABAAAAAAACAPb/AAAAAAAAAAADAPb/AAABAAAAAAAEAPb/AAAAAAAAAAAFAPb/AAABAAAAAAAGAPb/AAAAAAAAAAAHAPb/AAABAAAAAAAIAPb/AAAAAAAAAAAJAPb/AAABAAAAAAAKAPb/AAAAAAAAAAALAPb/AAABAAAAAAAMAPb/AAAAAAAAAAANAPb/AAABAAAAAAAOAPb/AAAAAAAAAAAPAPb/AAABAAAAAAAQAPb/AAAAAAAAAAARAPb/AAABAAAAAAASAPb/AAAAAAAAAAATAPb/AAABAAAAAAAUAPb/AAAAAAAAAAAVAPb/AAABAAAAAAAWAPb/AAAAAAAAAAAYAPb/AAAAAAAAAAA=")
+tile_set = SubResource("TileSet_cjgjr")
+script = ExtResource("8_j5ils")
 
 [connection signal="body_entered" from="Area2D" to="." method="EnteredRoom"]

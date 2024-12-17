@@ -578,7 +578,7 @@ _data = {
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_it6tm"]
-size = Vector2(137, 90)
+size = Vector2(137, 133)
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_r1v23"]
 random_pitch = 1.3
@@ -678,7 +678,7 @@ libraries = {
 }
 
 [node name="MelColl" type="CollisionShape2D" parent="Shooter/MeleeDetectorArea"]
-position = Vector2(0, -17)
+position = Vector2(-2.54659e-11, -38.5)
 shape = SubResource("RectangleShape2D_it6tm")
 
 [node name="MeleeCooldownTimer" type="Timer" parent="Shooter/MeleeDetectorArea"]

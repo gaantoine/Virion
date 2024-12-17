@@ -299,7 +299,7 @@ func take_damage(damage_taken: float) -> void:
 		await get_tree().create_timer(3/60.0).timeout
 		$RangerSpriteSheet.modulate = Color.WHITE
 
-func take_knockback(displacement: Vector2) -> void:
+func take_knockback(_displacement: Vector2) -> void:
 	pass
 
 func die() -> void:
@@ -307,7 +307,6 @@ func die() -> void:
 	
 	set_physics_process(false)
 	# Trigger death animation
-	#$Ranger_AnimationP.play("Ranger_Death")
 	animation_tree["parameters/conditions/attack"] = false
 	animation_tree["parameters/conditions/idle"] = false
 	animation_tree["parameters/conditions/move"] = false

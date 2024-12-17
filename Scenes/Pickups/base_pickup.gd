@@ -210,9 +210,9 @@ var interactable:bool = false
 
 func _ready() -> void:
 	if pickup_type == Pickup.RANDOM:
-		pickup_type = randi_range(Pickup.transformer, Pickup.ram)
+		pickup_type = int(randi_range(Pickup.transformer, Pickup.ram)) as Pickup
 	if pickup_type == Pickup.RANDOMWEP:
-		pickup_type = randi_range(Pickup.snipe_chip, Pickup.blade_chip)
+		pickup_type = int(randi_range(Pickup.snipe_chip, Pickup.blade_chip)) as Pickup
 
 	var entry:Dictionary = pickups[pickup_type]
 	texture = load(entry["texture"])

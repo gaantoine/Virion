@@ -10,10 +10,10 @@ var intensity = 1.0
 #references to PlayerFootstep AudioStreamPlayer
 #reference to the Player Character and Player Character AudioStreamPlayers
 @onready var PlayerCharacter = Player.current
-@onready var Melee = $Shooter/MeleeDetectorArea
-@onready var Shooter = $Shooter
-@onready var PlayerMeleeStream = $Player_Melee
-@onready var PlayerShoot = $Player_Shoot
+#@onready var Shooter:PlayerShooter = Player.current.find_child("Shooter")
+#@onready var Melee:PlayerMelee = Shooter.find_child("MeleeDetectorArea")
+#@onready var PlayerMeleeStream = $Player_Melee
+#@onready var PlayerShoot = $Player_Shoot
 @onready var PlayerFootstep = $Player_Footstep
 @onready var PlayerDodgeJump = $Player_Dodge_Jump
 @onready var PlayerDodgeLand = $Player_Dodge_Land
@@ -30,13 +30,13 @@ func _ready() -> void:
 	PlayerCharacter.player_dodge_end.connect(_on_player_dodge_end)
 	PlayerCharacter.player_damage.connect(_on_player_damage)
 	PlayerCharacter.player_death.connect(_on_player_death)
-	#Shooter.player_melee.connect(_on_player_melee)
+	#Melee.player_melee.connect(_on_player_melee)
 	#Shooter.player_shoot.connect(_on_player_shoot)
 	PlayerCharacter.In_Combat.connect(_on_combat_start)
 	PlayerCharacter.Out_Combat.connect(_on_combat_end)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	pass
 
 #this function is triggered every time the player_footstep signal is emitted from the
@@ -47,7 +47,6 @@ func _on_player_footstep() -> void:
 	#position to wherever the player is in order for it to be heard correctly
 	PlayerFootstep.set_global_position(PlayerCharacter.global_position)
 	PlayerFootstep.play()
-	#TestAudio.play()
 	
 func _on_player_dodge_start() -> void:
 	PlayerDodgeJump.set_global_position(PlayerCharacter.global_position)
@@ -57,13 +56,13 @@ func _on_player_dodge_end() -> void:
 	PlayerDodgeLand.set_global_position(PlayerCharacter.global_position)
 	PlayerDodgeLand.play()
 	
-func _on_player_melee() -> void:
-	PlayerMeleeStream.set_global_position(PlayerCharacter.global_position)
-	PlayerMeleeStream.play()
+#func _on_player_melee() -> void:
+	#PlayerMeleeStream.set_global_position(PlayerCharacter.global_position)
+	#PlayerMeleeStream.play()
 	
-func _on_player_shoot() -> void:
-	PlayerShoot.set_global_position(PlayerCharacter.global_position)
-	PlayerShoot.play()
+#func _on_player_shoot() -> void:
+	#PlayerShoot.set_global_position(PlayerCharacter.global_position)
+	#PlayerShoot.play()
 	
 func _on_player_damage() -> void:
 	PlayerDamage.set_global_position(PlayerCharacter.global_position)

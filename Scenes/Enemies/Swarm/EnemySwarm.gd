@@ -10,6 +10,9 @@ enum MOVEMODE {
 @onready var SwarmFootstepAudio = $Swarm_Footstep
 @onready var SwarmAttackAudio = $Swarm_Attack
 
+#Gonna need this for spawners
+@export var SpawnRef: Node2D
+
 @export_group("Health and Damage")
 ## Maximum total health base
 @export var base_max_hp: float = 24
@@ -197,6 +200,8 @@ func take_knockback(displacement: Vector2) -> void:
 
 
 func die() -> void:
+	SpawnRef.EnemyDie()
+	
 	$Timer.stop()
 	velocity = Vector2.ZERO
 	set_physics_process(false)

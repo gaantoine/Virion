@@ -9,7 +9,7 @@ var intensity = 1.0
 #@onready var MusicStreams = MusicSystem.stream
 #references to PlayerFootstep AudioStreamPlayer
 #reference to the Player Character and Player Character AudioStreamPlayers
-@onready var PlayerCharacter = $"../Player"
+@onready var PlayerCharacter = Player.current
 #@onready var Shooter:PlayerShooter = Player.current.find_child("Shooter")
 #@onready var Melee:PlayerMelee = Shooter.find_child("MeleeDetectorArea")
 @onready var PlayerMeleeStream = $Player_Melee

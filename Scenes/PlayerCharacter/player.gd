@@ -11,7 +11,10 @@ enum MOVEMODE {
 signal In_Combat
 signal Out_Combat
 
+
 static var current:Player
+
+var dead:bool = false
 
 # Renzo Vignette -- Declare vignette_node
 var vignette_node : ColorRect
@@ -250,6 +253,9 @@ func update_health_display() -> void:
 
 
 func die() -> void:
+	if dead:
+		return
+	dead = true
 	# Emit death signal for audio manager listener
 	player_death.emit()
 	
@@ -266,6 +272,8 @@ func die() -> void:
 	animation_tree["parameters/conditions/idle"] = false
 	animation_tree["parameters/conditions/death"] = true
 	await $Nebula_AnimationTree.animation_finished
+	
+	$GameOver/CanvasLayer.visible = true
 
 func add_mods(mods:Dictionary) -> void:
 	for key in mods:

@@ -26,6 +26,10 @@ func SpawnEm():
 	TheRoom.NumEnemies += 1
 
 
+func IncSpawn():
+	TheRoom.NumEnemies += 1
+
+
 func EnemyDie() -> void:
 	TheRoom.NumEnemies -= 1
 	TheRoom.EnemiesKilled()

@@ -9,9 +9,9 @@ var intensity = 1.0
 #@onready var MusicStreams = MusicSystem.stream
 #references to PlayerFootstep AudioStreamPlayer
 #reference to the Player Character and Player Character AudioStreamPlayers
-@onready var PlayerCharacter = Player.current
-@onready var Melee = $Shooter/MeleeDetectorArea
-@onready var Shooter = $Shooter
+@onready var PlayerCharacter = $"../Player"
+#@onready var Shooter:PlayerShooter = Player.current.find_child("Shooter")
+#@onready var Melee:PlayerMelee = Shooter.find_child("MeleeDetectorArea")
 @onready var PlayerMeleeStream = $Player_Melee
 @onready var PlayerShoot = $Player_Shoot
 @onready var PlayerFootstep = $Player_Footstep
@@ -30,7 +30,7 @@ func _ready() -> void:
 	PlayerCharacter.player_dodge_end.connect(_on_player_dodge_end)
 	PlayerCharacter.player_damage.connect(_on_player_damage)
 	PlayerCharacter.player_death.connect(_on_player_death)
-	#Shooter.player_melee.connect(_on_player_melee)
+	#Melee.player_melee.connect(_on_player_melee)
 	#Shooter.player_shoot.connect(_on_player_shoot)
 	PlayerCharacter.In_Combat.connect(_on_combat_start)
 	PlayerCharacter.Out_Combat.connect(_on_combat_end)
@@ -47,7 +47,6 @@ func _on_player_footstep() -> void:
 	#position to wherever the player is in order for it to be heard correctly
 	PlayerFootstep.set_global_position(PlayerCharacter.global_position)
 	PlayerFootstep.play()
-	#TestAudio.play()
 	
 func _on_player_dodge_start() -> void:
 	PlayerDodgeJump.set_global_position(PlayerCharacter.global_position)

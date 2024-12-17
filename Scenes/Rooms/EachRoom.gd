@@ -3,6 +3,7 @@ class_name RoomFunc
 
 @export var NextHallway: DoorFunc
 @export var PrevHallway: DoorFunc
+@export var SideHallway: DoorFunc
 @export var ItemSpawn: PackedScene
 @export var Spawners: Array[SpawnerFunc]
 var ThePlayer
@@ -29,6 +30,8 @@ func EnteredRoom(body: Node2D) -> void:
 	if NextHallway:
 		NextHallway.CloseDoor()
 	PrevHallway.CloseDoor()
+	if SideHallway:
+		SideHallway.CloseDoor()
 	
 	for spawns in Spawners:
 		spawns.SpawnEnemies()
@@ -43,6 +46,8 @@ func EnemiesKilled() -> void:
 	if NextHallway:
 		NextHallway.OpenDoor()
 	PrevHallway.OpenDoor()
+	if SideHallway:
+		SideHallway.OpenDoor()
 	
 	if ItemSpawn:
 		var holdItem = load(ItemSpawn.resource_path).instantiate()

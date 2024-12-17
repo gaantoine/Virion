@@ -307,7 +307,6 @@ func die() -> void:
 	
 	set_physics_process(false)
 	# Trigger death animation
-	#$Ranger_AnimationP.play("Ranger_Death")
 	animation_tree["parameters/conditions/attack"] = false
 	animation_tree["parameters/conditions/idle"] = false
 	animation_tree["parameters/conditions/move"] = false

@@ -1,10 +1,12 @@
-[gd_scene load_steps=10 format=4 uid="uid://dwsxbkqcgqlax"]
+[gd_scene load_steps=14 format=4 uid="uid://dwsxbkqcgqlax"]
 
 [ext_resource type="Script" path="res://Scenes/Rooms/EachRoom.gd" id="1_0bnmo"]
 [ext_resource type="Texture2D" uid="uid://6tsm52cuk5af" path="res://Scenes/Tilesets/Tiles1.png" id="1_ox55g"]
 [ext_resource type="Texture2D" uid="uid://bc75dxvsc61bg" path="res://Scenes/Tilesets/TestTiles002.png" id="2_7rud3"]
 [ext_resource type="PackedScene" uid="uid://b2ryb8i6lffh4" path="res://Scenes/Pickups/PickupAlternator.tscn" id="3_ampli"]
 [ext_resource type="PackedScene" uid="uid://cxr3k7a4r5c8w" path="res://Scenes/NPCs/npc.tscn" id="4_84yen"]
+[ext_resource type="Texture2D" uid="uid://b3vfp2knyqejs" path="res://Scenes/Tilesets/WallVariations.webp" id="6_koaq1"]
+[ext_resource type="Script" path="res://Scenes/Rooms/ProtoTileRNG.gd" id="7_nwwh5"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_11tvl"]
 texture = ExtResource("1_ox55g")
@@ -71,6 +73,30 @@ sources/3 = SubResource("TileSetAtlasSource_ac6y7")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nn0nx"]
 size = Vector2(129, 80.5)
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bobio"]
+texture = ExtResource("6_koaq1")
+texture_region_size = Vector2i(256, 256)
+1:0/0 = 0
+1:0/0/custom_data_1 = true
+0:0/0 = 0
+0:0/0/custom_data_1 = true
+2:0/0 = 0
+2:0/0/custom_data_0 = true
+2:1/0 = 0
+2:1/0/custom_data_0 = true
+1:1/0 = 0
+1:1/0/custom_data_0 = true
+0:1/0 = 0
+0:1/0/custom_data_0 = true
+
+[sub_resource type="TileSet" id="TileSet_qdii1"]
+tile_size = Vector2i(256, 256)
+custom_data_layer_0/name = "isOuter"
+custom_data_layer_0/type = 1
+custom_data_layer_1/name = "isInner"
+custom_data_layer_1/type = 1
+sources/0 = SubResource("TileSetAtlasSource_bobio")
+
 [node name="EndRoom" type="Node2D"]
 script = ExtResource("1_0bnmo")
 
@@ -93,5 +119,12 @@ collision_mask = 48
 position = Vector2(0, -471.86)
 scale = Vector2(1.08, 1.04)
 shape = SubResource("RectangleShape2D_nn0nx")
+
+[node name="RNGTileLayer" type="TileMapLayer" parent="."]
+position = Vector2(32, 0)
+scale = Vector2(0.25, 0.25)
+tile_map_data = PackedByteArray("AAAFAPj/AAAAAAAAAAAGAPj/AAABAAAAAAADAPj/AAAAAAAAAAAEAPj/AAABAAAAAAABAPj/AAAAAAAAAAACAPj/AAABAAAAAAAAAPj/AAABAAAAAAD9//j/AAAAAAAAAAD+//j/AAABAAAAAAD7//j/AAAAAAAAAAD8//j/AAABAAAAAAD5//j/AAAAAAAAAAD6//j/AAABAAAAAAD4//j/AAABAAAAAAD4//f/AAAAAAEAAAD5//f/AAAAAAEAAAD6//f/AAAAAAEAAAD7//f/AAAAAAEAAAD8//f/AAAAAAEAAAD9//f/AAAAAAEAAAD+//f/AAAAAAEAAAD///f/AAAAAAEAAAAAAPf/AAAAAAEAAAABAPf/AAAAAAEAAAACAPf/AAAAAAEAAAADAPf/AAAAAAEAAAAEAPf/AAAAAAEAAAAFAPf/AAAAAAEAAAAGAPf/AAAAAAEAAAAHAPj/AAAAAAEAAFAHAPn/AAAAAAEAAFAHAPr/AAAAAAEAAFAHAPv/AAAAAAEAAFAHAPz/AAAAAAEAAFAHAP3/AAAAAAEAAFAHAP7/AAAAAAEAAFAHAP//AAAAAAEAAFAGAAAAAAAAAAEAADAFAAAAAAAAAAEAADAEAAAAAAAAAAEAADADAAAAAAAAAAEAADACAAAAAAAAAAEAADABAAAAAAAAAAEAADAAAAAAAAAAAAEAADD//wAAAAAAAAEAADD+/wAAAAAAAAEAADD9/wAAAAAAAAEAADD8/wAAAAAAAAEAADD7/wAAAAAAAAEAADD6/wAAAAAAAAEAADD5/wAAAAAAAAEAADD4/wAAAAAAAAEAADD3////AAAAAAEAAGD3//7/AAAAAAEAAGD3//3/AAAAAAEAAGD3//z/AAAAAAEAAGD3//v/AAAAAAEAAGD3//r/AAAAAAEAAGD3//n/AAAAAAEAAGD3//j/AAAAAAEAAGA=")
+tile_set = SubResource("TileSet_qdii1")
+script = ExtResource("7_nwwh5")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

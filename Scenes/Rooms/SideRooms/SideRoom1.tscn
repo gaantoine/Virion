@@ -1,7 +1,9 @@
-[gd_scene load_steps=6 format=4 uid="uid://u46tbuobrnuv"]
+[gd_scene load_steps=10 format=4 uid="uid://u46tbuobrnuv"]
 
 [ext_resource type="Texture2D" uid="uid://6tsm52cuk5af" path="res://Scenes/Tilesets/Tiles1.png" id="1_koxc2"]
 [ext_resource type="Texture2D" uid="uid://bc75dxvsc61bg" path="res://Scenes/Tilesets/TestTiles002.png" id="2_m7kxs"]
+[ext_resource type="Texture2D" uid="uid://b3vfp2knyqejs" path="res://Scenes/Tilesets/WallVariations.webp" id="3_wyeur"]
+[ext_resource type="Script" path="res://Scenes/Rooms/ProtoTileRNG.gd" id="4_6ao0w"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_yg2ls"]
 texture = ExtResource("1_koxc2")
@@ -65,6 +67,30 @@ custom_data_layer_0/type = 1
 sources/0 = SubResource("TileSetAtlasSource_yg2ls")
 sources/3 = SubResource("TileSetAtlasSource_lkpre")
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_pilol"]
+texture = ExtResource("3_wyeur")
+texture_region_size = Vector2i(256, 256)
+1:0/0 = 0
+1:0/0/custom_data_1 = true
+0:0/0 = 0
+0:0/0/custom_data_1 = true
+2:0/0 = 0
+2:0/0/custom_data_0 = true
+2:1/0 = 0
+2:1/0/custom_data_0 = true
+1:1/0 = 0
+1:1/0/custom_data_0 = true
+0:1/0 = 0
+0:1/0/custom_data_0 = true
+
+[sub_resource type="TileSet" id="TileSet_2stbh"]
+tile_size = Vector2i(256, 256)
+custom_data_layer_0/name = "isOuter"
+custom_data_layer_0/type = 1
+custom_data_layer_1/name = "isInner"
+custom_data_layer_1/type = 1
+sources/0 = SubResource("TileSetAtlasSource_pilol")
+
 [node name="SideRoomPath" type="Node2D"]
 
 [node name="BaseMapLayer" type="TileMapLayer" parent="."]
@@ -90,3 +116,15 @@ position = Vector2(512, -160)
 scale = Vector2(0.25, 0.25)
 tile_map_data = PackedByteArray("AAAAAP//AAADAAAAAAAAAP7/AAADAAEAAAA=")
 tile_set = SubResource("TileSet_4nkxu")
+
+[node name="RNGTileLayer" type="TileMapLayer" parent="."]
+position = Vector2(320, 288)
+scale = Vector2(0.25, 0.25)
+tile_map_data = PackedByteArray("AAAAAPr/AAAAAAEAAFAAAPv/AAAAAAEAAFAAAPz/AAAAAAEAAFAAAP3/AAAAAAEAAFAAAP7/AAAAAAEAAFAAAP//AAAAAAEAAFD//wAAAAAAAAEAADD+/wAAAAAAAAEAADD9/wAAAAAAAAEAADD8/wAAAAAAAAEAADD7/wAAAAAAAAEAADD6/wAAAAAAAAEAADD5/wAAAAAAAAEAADD4/wAAAAAAAAEAADD3/wAAAAAAAAEAADD2/wAAAAAAAAEAADD1////AAAAAAEAAGD1//7/AAAAAAEAAGD1//3/AAAAAAEAAGD1//z/AAAAAAEAAGD1//r/AAAAAAEAAGD1//n/AAAAAAEAAGD1//j/AAAAAAEAAGD1//f/AAAAAAEAAGD1//b/AAAAAAEAAGD2//X/AAAAAAEAAAD3//X/AAAAAAEAAAD4//X/AAAAAAEAAAD5//X/AAAAAAEAAAD6//X/AAAAAAEAAAD7//X/AAAAAAEAAAD8//X/AAAAAAEAAAD9//X/AAAAAAEAAAD+//X/AAAAAAEAAAD///X/AAAAAAEAAAAAAPX/AAAAAAEAAAABAPX/AAAAAAEAAAACAPX/AAAAAAEAAAADAPb/AAAAAAEAAFADAPf/AAAAAAEAAFADAPn/AAAAAAEAAFACAPr/AAAAAAEAADABAPr/AAAAAAEAADABAPb/AAAAAAAAAAACAPb/AAABAAAAAAD///b/AAAAAAAAAAAAAPb/AAABAAAAAAD9//b/AAAAAAAAAAD+//b/AAABAAAAAAD7//b/AAAAAAAAAAD8//b/AAABAAAAAAD5//b/AAAAAAAAAAD6//b/AAABAAAAAAD3//b/AAAAAAAAAAD4//b/AAABAAAAAAD2//b/AAABAAAAAAA=")
+tile_set = SubResource("TileSet_2stbh")
+script = ExtResource("4_6ao0w")
+
+[node name="RNGTileLayer2" type="TileMapLayer" parent="RNGTileLayer"]
+tile_map_data = PackedByteArray("AAAAAPr/AAAAAAEAADA=")
+tile_set = SubResource("TileSet_2stbh")
+script = ExtResource("4_6ao0w")

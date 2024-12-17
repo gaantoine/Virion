@@ -12,7 +12,6 @@ StartRoom = NodePath("StartingRoom")
 StartHallway = NodePath("0-1Path")
 MaxRooms = 5
 MaxSideRooms = 5
-DebugRoom = 1
 
 [node name="StartingRoom" parent="." instance=ExtResource("1_ur163")]
 position = Vector2(1536, 2112)

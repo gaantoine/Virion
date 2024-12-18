@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=4 uid="uid://cfnck58mjxdjq"]
+[gd_scene load_steps=10 format=4 uid="uid://cfnck58mjxdjq"]
 
 [ext_resource type="Texture2D" uid="uid://bc75dxvsc61bg" path="res://Scenes/Tilesets/TestTiles002.png" id="2_4dmx7"]
 [ext_resource type="Texture2D" uid="uid://6tsm52cuk5af" path="res://Scenes/Tilesets/Tiles1.png" id="2_qkhuo"]
 [ext_resource type="Texture2D" uid="uid://b3vfp2knyqejs" path="res://Scenes/Tilesets/WallVariations.webp" id="3_pdbyh"]
+[ext_resource type="Script" path="res://Scenes/Rooms/ProtoTileRNG.gd" id="4_0iot1"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_tqk6s"]
 texture = ExtResource("2_qkhuo")
@@ -65,7 +66,7 @@ custom_data_layer_0/type = 1
 sources/3 = SubResource("TileSetAtlasSource_1uygh")
 sources/0 = SubResource("TileSetAtlasSource_tqk6s")
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_dol25"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8tano"]
 texture = ExtResource("3_pdbyh")
 texture_region_size = Vector2i(256, 256)
 1:0/0 = 0
@@ -87,7 +88,7 @@ custom_data_layer_0/name = "isOuter"
 custom_data_layer_0/type = 1
 custom_data_layer_1/name = "isInner"
 custom_data_layer_1/type = 1
-sources/0 = SubResource("TileSetAtlasSource_dol25")
+sources/0 = SubResource("TileSetAtlasSource_8tano")
 
 [node name="TilesetTest" type="Node2D"]
 
@@ -104,7 +105,8 @@ scale = Vector2(0.25, 0.25)
 tile_map_data = PackedByteArray("AAALAAEAAAACAAEAAAANAAEAAAACAAEAADA=")
 tile_set = SubResource("TileSet_doko4")
 
-[node name="RandTileVarLayer" type="TileMapLayer" parent="."]
+[node name="RNGTileLayer" type="TileMapLayer" parent="."]
 scale = Vector2(0.25, 0.25)
 tile_map_data = PackedByteArray("AAACAAEAAAAAAAAAAAADAAEAAAAAAAAAAAAEAAEAAAAAAAAAAAAFAAEAAAAAAAAAAAAGAAEAAAAAAAAAAAAHAAEAAAAAAAAAAAAIAAEAAAAAAAAAAAAJAAEAAAAAAAAAAAAKAAEAAAAAAAAAAAALAAEAAAAAAAAAAAANAAEAAAAAAAAAAAAOAAEAAAAAAAAAAAANAAAAAAAAAAEAAAAOAAAAAAAAAAEAAAALAAAAAAAAAAEAAAAKAAAAAAAAAAEAAAAJAAAAAAAAAAEAAAAIAAAAAAAAAAEAAAAHAAAAAAAAAAEAAAAGAAAAAAAAAAEAAAAFAAAAAAAAAAEAAAAEAAAAAAAAAAEAAAADAAAAAAAAAAEAAAACAAAAAAAAAAEAAAABAAEAAAAAAAEAAGABAAIAAAAAAAEAAGABAAMAAAAAAAEAAGABAAQAAAAAAAEAAGABAAUAAAAAAAEAAGABAAYAAAAAAAEAAGABAAcAAAAAAAEAAGACAAgAAAAAAAEAADADAAgAAAAAAAEAADAEAAgAAAAAAAEAADAFAAgAAAAAAAEAADAGAAgAAAAAAAEAADAHAAgAAAAAAAEAADAIAAgAAAAAAAEAADAJAAgAAAAAAAEAADAKAAgAAAAAAAEAADALAAgAAAAAAAEAADAMAAgAAAAAAAEAADANAAgAAAAAAAEAADAOAAgAAAAAAAEAADAPAAcAAAAAAAEAAFAPAAYAAAAAAAEAAFAPAAUAAAAAAAEAAFAPAAQAAAAAAAEAAFAPAAMAAAAAAAEAAFAPAAIAAAAAAAEAAFAPAAEAAAAAAAEAAFA=")
 tile_set = SubResource("TileSet_pyj0b")
+script = ExtResource("4_0iot1")

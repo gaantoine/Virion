@@ -20,13 +20,13 @@ enum MOVEMODE {
 
 @export_group("Health and Damage")
 ## Maximum total health base
-@export var base_max_hp: float = 24
+@export var base_max_hp: float = 32
 # current HP
 var current_hp = base_max_hp
 ## HP increase per level (ex. level 3 HP = 24 + (12 + 12))
 @export var max_hp_scaling: float = 12
 ## Attack damage per hit
-@export var damage: float = 16
+@export var damage: float = 20
 ## Wind up window before damage is applied after the enemy starts attacking in seconds
 @export var attack_buffer: float = 0.5
 

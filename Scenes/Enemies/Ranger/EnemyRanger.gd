@@ -35,7 +35,7 @@ var current_hp = base_max_hp
 
 @export_group("Movement")
 ## How fast this enemy normally moves
-@export var move_speed: float = 75
+@export var move_speed: float = 95
 @export var min_flee_range: float = 300
 @export var max_flee_range: float = 400
 ## How far an object can be before the enemy detects it in pixels

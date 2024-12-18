@@ -379,7 +379,7 @@ shape = SubResource("CircleShape2D_s373b")
 [node name="Timer" type="Timer" parent="."]
 
 [node name="SwarmSpriteSheet" type="Sprite2D" parent="."]
-scale = Vector2(0.25, 0.25)
+scale = Vector2(0.15, 0.15)
 texture = ExtResource("3_hnmur")
 hframes = 9
 vframes = 7
@@ -402,11 +402,13 @@ parameters/Walk/blend_position = Vector2(-0.0247651, 0.185841)
 
 [node name="Swarm_Damage" type="AudioStreamPlayer2D" parent="."]
 stream = SubResource("AudioStreamRandomizer_fok38")
+volume_db = -11.0
 max_polyphony = 3
 bus = &"Swarm_SFX"
 
 [node name="Swarm_Death" type="AudioStreamPlayer2D" parent="."]
 stream = SubResource("AudioStreamRandomizer_n0gey")
+volume_db = -11.0
 max_polyphony = 3
 bus = &"Swarm_SFX"
 
@@ -417,4 +419,5 @@ bus = &"Swarm_SFX"
 
 [node name="Swarm_Attack" type="AudioStreamPlayer2D" parent="."]
 stream = SubResource("AudioStreamRandomizer_ct5fk")
+volume_db = -12.0
 bus = &"Swarm_SFX"

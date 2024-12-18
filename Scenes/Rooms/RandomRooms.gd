@@ -94,8 +94,7 @@ func CreateRooms() -> void:
 		LRSide.collision_enabled = false
 		
 		# Create a side room path and put it in place
-		var randomRoom = "res://Scenes/Rooms/SideRooms/SideRoomPath.tscn"
-		var holdRoom = load(randomRoom).instantiate()
+		var holdRoom = load("res://Scenes/Rooms/SideRooms/SideRoomPath.tscn").instantiate()
 		StartHallway.add_child(holdRoom)
 		var LROffset = 0
 		if LR == "Left": # No exact positions so we need the offset to the right spot added on...
@@ -107,8 +106,11 @@ func CreateRooms() -> void:
 			holdRoom.global_position = LRSide.global_position + LROffset # ... or here
 			LRSide = holdRoom.find_child("PathL")
 		
+		RandSide.SideHallway = holdRoom
+		saveHall = holdRoom
+		
 		# Now create a random side room and put it in the correct area
-		randomRoom = "res://Scenes/Rooms/SideRooms/SideRoom" + str(randi_range(1, 3)) + ".tscn"
+		var randomRoom = "res://Scenes/Rooms/SideRooms/SideRoom" + str(randi_range(1, 3)) + ".tscn"
 		holdRoom = load(randomRoom).instantiate()
 		StartRoom.add_child(holdRoom)
 		if LR == "Left": # No exact positions so we need the offset to the right spot added on...
@@ -120,6 +122,7 @@ func CreateRooms() -> void:
 			holdRoom.find_child("DoorR").visible = false
 			holdRoom.find_child("DoorR").collision_enabled = false
 		holdRoom.global_position = LRSide.global_position + LROffset
+		holdRoom.PrevHallway = saveHall
 		
 		SideRoomHold.erase(RandSide)
 		MaxSideRooms -= 1

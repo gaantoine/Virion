@@ -20,13 +20,13 @@ enum MOVEMODE {
 
 @export_group("Health and Damage")
 ## Maximum total health base
-@export var base_max_hp: float = 24
+@export var base_max_hp: float = 32
 # current HP
 var current_hp = base_max_hp
 ## HP increase per level (ex. level 3 HP = 24 + (12 + 12))
 @export var max_hp_scaling: float = 12
 ## Attack damage per hit
-@export var damage: float = 16
+@export var damage: float = 20
 ## Wind up window before damage is applied after the enemy starts attacking in seconds
 @export var attack_buffer: float = 0.5
 
@@ -87,6 +87,7 @@ var seek_map = []
 var collision_map = []
 var seek_map_buffer = 0.5
 var dead = false
+var player_dead = false
 
 #signal variable to be used by the Animation Player to call for bruiser footstep sounds
 #from the audio manager
@@ -99,6 +100,8 @@ func _ready():
 	animation_tree.active = true
 	$Timer.timeout.connect(_on_Timer_timeout)
 	
+	player.connect("player_death", _on_player_dead)
+	
 	# Generate ray directions
 	var num_directions = 16
 	var angle_increment = 360.0 / num_directions
@@ -109,6 +112,9 @@ func _ready():
 
 func on_spawn(level_counter: float) -> void:
 	current_hp = base_max_hp + (max_hp_scaling * (level_counter - 1))
+
+func _on_player_dead():
+	player_dead = true
 
 func update_distance_to_player():
 	distance_to_player = (player.global_position - global_position).length()

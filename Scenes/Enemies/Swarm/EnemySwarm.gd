@@ -15,11 +15,11 @@ enum MOVEMODE {
 
 @export_group("Health and Damage")
 ## Maximum total health base
-@export var base_max_hp: float = 24
+@export var base_max_hp: float = 10
 #
 var current_hp = base_max_hp
 ## HP increase per level (ex. level 3 HP = 24 + (12 + 12))
-@export var max_hp_scaling: float = 12
+@export var max_hp_scaling: float = 4
 ## Attack damage per hit
 @export var damage: float = 16
 @export var attack_radius: float = 50
@@ -55,11 +55,13 @@ var seek_map_buffer = 0.5
 
 var last_facing_direction
 var dead = false
-
+var player_dead = false
 
 func _ready():
 	animation_tree.active = true
 	$Timer.timeout.connect(_on_Timer_timeout)
+	
+	player.connect("player_death", _on_player_dead)
 	
 	# Generate ray directions
 	var num_directions = 16
@@ -74,11 +76,17 @@ func update_distance_to_player():
 	distance_to_player = (player.global_position - global_position).length()
 
 
+func _on_player_dead():
+	player_dead = true
+
+
 func on_spawn(level_counter: float) -> void:
 	current_hp = base_max_hp + (max_hp_scaling * (level_counter - 1))
 
 
 func _physics_process(delta: float) -> void:
+	if player_dead:
+		return
 	update_distance_to_player()
 	if (distance_to_player >= aggro_range):
 		state = MOVEMODE.WAITING

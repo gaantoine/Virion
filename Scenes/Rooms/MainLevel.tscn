@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://csxyy2qylfx1m"]
+[gd_scene load_steps=3 format=3 uid="uid://d1aar6bnyh87r"]
 
 [ext_resource type="PackedScene" uid="uid://b3xp8gwm4pfb1" path="res://Scenes/Rooms/5Rooms.tscn" id="1_oih12"]
 [ext_resource type="PackedScene" uid="uid://coujnnoiesx2e" path="res://Scenes/PlayerCharacter/player.tscn" id="2_u8g2l"]

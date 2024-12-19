@@ -37,9 +37,9 @@ script = ExtResource("3_3uly6")
 shape = SubResource("CircleShape2D_y6nud")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
-offset_left = -100.0
+offset_left = -151.0
 offset_top = -121.0
-offset_right = 100.0
+offset_right = 152.0
 offset_bottom = -57.0
 bbcode_enabled = true
 fit_content = true
